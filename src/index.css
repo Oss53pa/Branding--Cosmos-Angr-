@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #C9943A;
+  --navy: #1a1a2e;
+  --bg: #f8f6f2;
+  --white: #fff;
+  --text: #1a1410;
+  --muted: rgba(26,20,16,.45);
+  --border: rgba(26,20,16,.08);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+}
+
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(26,20,16,.15); border-radius: 2px; }
+
+#sidebar::-webkit-scrollbar { width: 3px; }
+#sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+
+/* Spinner */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  width: 14px; height: 14px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+
+/* Print */
+@media print {
+  #sidebar { display: none !important; }
+  #main { height: auto !important; overflow: visible !important; }
+  .section { page-break-inside: avoid; }
+}

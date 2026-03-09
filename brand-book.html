@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brand Book — Cosmos Angré</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f5f2ec;color:#1a1410;min-height:100vh}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,242,236,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(26,20,16,.07);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:54px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.06em;color:#1a1410}
+.nav-tabs{display:flex;gap:4px}
+.nav-tab{padding:5px 16px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;color:rgba(26,20,16,.38);border:1px solid transparent}
+.nav-tab:hover{color:rgba(26,20,16,.7)}
+.nav-tab.active{color:#1a1410;background:#fff;border-color:rgba(26,20,16,.1);box-shadow:0 1px 4px rgba(26,20,16,.06)}
+.nav-meta{font-size:10px;color:rgba(26,20,16,.28);letter-spacing:.12em;text-transform:uppercase}
+
+/* PAGES */
+.page{display:none;padding-top:54px;min-height:100vh}
+.page.active{display:block}
+
+/* HERO */
+.hero{padding:56px 56px 48px;border-bottom:1px solid rgba(26,20,16,.06)}
+.hero-eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(26,20,16,.35);margin-bottom:12px}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1.05;color:#1a1410;margin-bottom:10px}
+.hero-sub{font-size:13px;color:rgba(26,20,16,.45);line-height:1.75;max-width:560px;margin-bottom:28px}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{padding:5px 14px;border-radius:20px;font-size:11px;font-weight:500;background:#fff;border:1px solid rgba(26,20,16,.1);color:rgba(26,20,16,.6)}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:12px;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.badge-green{background:#e8f5e9;color:#2e7d32}
+.badge-blue{background:#e3f2fd;color:#1565c0}
+.badge-orange{background:#fff3e0;color:#e65100}
+.badge-purple{background:#f3e5f5;color:#6a1b9a}
+.badge-grey{background:rgba(26,20,16,.06);color:rgba(26,20,16,.45)}
+
+/* CONTENT */
+.content{padding:40px 56px 56px}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+.section-eyebrow{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(26,20,16,.32)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:#1a1410}
+.section-lead{font-size:12px;color:rgba(26,20,16,.5);line-height:1.75;max-width:680px;margin-bottom:20px}
+
+/* CARD */
+.card{background:#fff;border-radius:16px;border:1px solid rgba(26,20,16,.07);box-shadow:0 1px 4px rgba(26,20,16,.04);overflow:hidden;margin-bottom:12px}
+.card-body{padding:22px 24px}
+.card-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(26,20,16,.32);margin-bottom:6px}
+.card-title{font-size:14px;font-weight:600;color:#1a1410;margin-bottom:6px}
+.card-text{font-size:12px;color:rgba(26,20,16,.58);line-height:1.7}
+
+/* GRID */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
+
+/* PALETTE DISPLAY */
+.palette-strip{display:flex;border-radius:12px;overflow:hidden;height:96px;box-shadow:0 1px 6px rgba(26,20,16,.08);margin-bottom:12px}
+.sw{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:10px 12px;transition:flex .25s;cursor:default}
+.sw:hover{flex:2}
+.sw-name{font-size:9px;letter-spacing:.1em;font-weight:500}
+.sw-hex{font-family:monospace;font-size:9px;opacity:.6;margin-top:1px}
+.sw-role{font-size:8px;opacity:.45;margin-top:1px}
+
+/* TYPO CARD */
+.typo-card{background:#fff;border-radius:14px;border:1px solid rgba(26,20,16,.07);padding:22px 24px}
+.typo-specimen{line-height:1.1;margin:10px 0 12px}
+.typo-name{font-size:12px;font-weight:600;margin-bottom:4px}
+.typo-specs{font-size:11px;color:rgba(26,20,16,.45);line-height:1.65}
+.typo-note{margin-top:10px;padding-top:10px;border-top:1px solid rgba(26,20,16,.05);font-size:11px;color:rgba(26,20,16,.4);line-height:1.6;font-style:italic}
+
+/* APP CARD */
+.app-card{background:#fff;border-radius:14px;border:1px solid rgba(26,20,16,.07);overflow:hidden}
+.app-preview{height:110px;display:flex;align-items:center;justify-content:center;padding:16px}
+.app-info{padding:14px 16px;border-top:1px solid rgba(26,20,16,.05)}
+.app-cat{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,20,16,.3);margin-bottom:4px}
+.app-title{font-size:12px;font-weight:600;margin-bottom:5px}
+.app-rules{font-size:11px;color:rgba(26,20,16,.5);line-height:1.6}
+
+/* MATIÈRE */
+.mat-card{background:#fff;border-radius:12px;border:1px solid rgba(26,20,16,.07);overflow:hidden}
+.mat-swatch{height:70px}
+.mat-info{padding:12px 14px}
+.mat-name{font-size:11px;font-weight:600;margin-bottom:2px}
+.mat-use{font-size:10px;color:rgba(26,20,16,.42)}
+
+/* SIGNATURE */
+.sig-main{border-radius:14px;padding:36px;text-align:center;margin-bottom:12px}
+.sig-quote{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;margin-bottom:8px;line-height:1.2}
+.sig-rule{font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.4}
+.sig-card{background:#fff;border-radius:12px;border:1px solid rgba(26,20,16,.07);padding:18px}
+.sig-type{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,20,16,.3);margin-bottom:8px}
+.sig-text{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:6px}
+.sig-why{font-size:11px;color:rgba(26,20,16,.5);line-height:1.6}
+
+/* STIM */
+.stim-card{background:#fff;border-radius:14px;border:1px solid rgba(26,20,16,.07);padding:22px 24px}
+.stim-num{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;line-height:1;margin-bottom:4px}
+.stim-title{font-size:13px;font-weight:600;margin-bottom:8px}
+.stim-intent{font-size:11px;color:rgba(26,20,16,.5);line-height:1.65;margin-bottom:14px}
+.stim-spec-box{background:#f5f2ec;border-radius:10px;padding:14px 16px}
+.stim-spec-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(26,20,16,.32);margin-bottom:6px}
+.stim-spec-text{font-size:11px;color:rgba(26,20,16,.6);line-height:1.7}
+.stim-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.stim-tag{padding:3px 9px;border-radius:10px;font-size:10px;border:1px solid rgba(26,20,16,.1);color:rgba(26,20,16,.5)}
+
+/* DIVIDER */
+.divider{height:1px;background:rgba(26,20,16,.05);margin:32px 0}
+
+/* STAT BOX */
+.stat-box{background:#fff;border-radius:12px;border:1px solid rgba(26,20,16,.07);padding:18px 20px}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;line-height:1;margin-bottom:4px}
+.stat-label{font-size:11px;color:rgba(26,20,16,.45);line-height:1.5}
+
+/* NOTE */
+.note{padding:14px 18px;border-radius:10px;background:rgba(26,20,16,.03);border:1px solid rgba(26,20,16,.05);font-size:11px;color:rgba(26,20,16,.4);line-height:1.8}
+
+/* PISTE NAV */
+.piste-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+.piste-nav-card{background:#fff;border-radius:14px;border:1px solid rgba(26,20,16,.07);padding:20px;cursor:pointer;transition:all .2s}
+.piste-nav-card:hover{box-shadow:0 2px 12px rgba(26,20,16,.08);transform:translateY(-1px)}
+.piste-nav-sc{font-size:9px;letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px;opacity:.5}
+.piste-nav-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:4px}
+.piste-nav-tag{font-size:11px;color:rgba(26,20,16,.42);line-height:1.5}
+
+.export-btn{position:fixed;bottom:20px;right:20px;z-index:200;padding:9px 18px;border-radius:8px;font-size:11px;font-weight:500;cursor:pointer;border:1px solid rgba(26,20,16,.12);background:#fff;color:#1a1410;box-shadow:0 2px 8px rgba(26,20,16,.08);transition:all .2s;font-family:'Inter',sans-serif}
+.export-btn:hover{background:#f0ede8}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Cosmos Angré — Brand Book</div>
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="show('intro')">Introduction</div>
+    <div class="nav-tab" onclick="show('scA')">Piste A</div>
+    <div class="nav-tab" onclick="show('scB')">Piste B</div>
+    <div class="nav-tab" onclick="show('scC')">Piste C</div>
+    <div class="nav-tab" onclick="show('fg')">Stimuli FG</div>
+  </div>
+  <div class="nav-meta">Livrable 2 · Mars 2026</div>
+</nav>
+
+<!-- ===== INTRO ===== -->
+<div class="page active" id="intro">
+  <div class="hero">
+    <div class="hero-eyebrow">Brand Book · Cosmos Angré · Livrable 2 · Confidentiel EXCO</div>
+    <div class="hero-title">Trois pistes créatives.<br>Une identité à construire.</div>
+    <div class="hero-sub">Palettes exactes, typographies nommées, règles d'application détaillées et brief complet pour Fernand (15 stimuli Focus Group). Chaque piste est opérationnelle — pas un moodboard vague.</div>
+    <div class="hero-pills">
+      <span class="pill">Palettes HEX précises</span>
+      <span class="pill">Typographies nommées + specs</span>
+      <span class="pill">6 supports par piste</span>
+      <span class="pill">15 stimuli visuels FG</span>
+      <span class="pill">Brief Fernand inclus</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Périmètre</div>
+        <div class="section-title">Ce que couvre ce Brand Book</div>
+      </div>
+      <div class="grid-4">
+        <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Pistes créatives complètes · A, B, C</div></div>
+        <div class="stat-box"><div class="stat-num">6</div><div class="stat-label">Couleurs exactes par piste avec HEX + rôle</div></div>
+        <div class="stat-box"><div class="stat-num">6</div><div class="stat-label">Supports par piste : façade, print, digital, pkg, signalétique, événement</div></div>
+        <div class="stat-box"><div class="stat-num">15</div><div class="stat-label">Stimuli visuels spécifiés au pixel pour Fernand</div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">Architecture</div>
+        <div class="section-title">Les 3 pistes en un coup d'œil</div>
+      </div>
+      <div class="piste-nav">
+        <div class="piste-nav-card" onclick="show('scA')">
+          <div class="piste-nav-sc" style="color:#4A7558">Piste A — Premium de Proximité</div>
+          <div class="piste-nav-title">"Enfin tout, enfin ici"</div>
+          <div class="piste-nav-tag">Vert forêt · Or cuivré · Crème chaude<br>Ancrage, modernité locale, chaleur premium</div>
+          <div style="margin-top:12px;display:flex;gap:6px">
+            <div style="width:16px;height:16px;border-radius:50%;background:#1E3A28"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:#C9943A"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:#F5F0E8;border:1px solid rgba(26,20,16,.1)"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:#2E5C3E"></div>
+          </div>
+        </div>
+        <div class="piste-nav-card" onclick="show('scB')">
+          <div class="piste-nav-sc" style="color:#0D1B4B">Piste B — Destination Premium</div>
+          <div class="piste-nav-title">"Un monde à part"</div>
+          <div class="piste-nav-tag">Bleu nuit profond · Or mat · Ivoire<br>Rupture totale, aspiration internationale</div>
+          <div style="margin-top:12px;display:flex;gap:6px">
+            <div style="width:16px;height:16px;border-radius:50%;background:#060E2A"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:#0D1B4B"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:#B8924A"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:#F2EDE3;border:1px solid rgba(26,20,16,.1)"></div>
+          </div>
+        </div>
+        <div class="piste-nav-card" onclick="show('scC')">
+          <div class="piste-nav-sc" style="color:#8a5a10">Piste C — Exception de Proximité</div>
+          <div class="piste-nav-title">"Vivez l'exception, ici chez vous"</div>
+          <div class="piste-nav-tag">Bronze africain · Terracotta · Sable<br>Premium chaud, identité africaine assumée</div>
+          <div style="margin-top:12px;display:flex;gap:6px">
+            <div style="width:16px;height:16px;border-radius:50%;background:#2C1A0A"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:#8B4A1A"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:#C9943A"></div>
+            <div style="width:16px;height:16px;border-radius:50%;background:#F5EDE0;border:1px solid rgba(26,20,16,.1)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="note">
+        Livrable 2 · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / CRMC<br>
+        Prochaine étape : Brief remis à Fernand → Production stimuli → Focus Group 20-25/03 → Arbitrage final EXCO
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PISTE A ===== -->
+<div class="page" id="scA">
+  <div class="hero">
+    <div class="hero-eyebrow">Brand Book · Piste A · Premium de Proximité</div>
+    <div class="hero-title">Vert Forêt & Or Cuivré</div>
+    <div class="hero-sub">Signal : qualité, ancrage, modernité locale. Premium accessible — pas intimidant. La palette qui dit "qualité qui n'a pas besoin de se justifier".</div>
+    <div class="hero-pills">
+      <span class="pill">Ancrage naturel</span>
+      <span class="pill">Modernité accessible</span>
+      <span class="pill">Chaleur premium</span>
+      <span class="pill">Lisible à distance</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">01</div>
+        <div class="section-title">Palette chromatique — 6 couleurs</div>
+      </div>
+      <div class="palette-strip">
+        <div class="sw" style="background:#1E3A28;flex:2"><div class="sw-name" style="color:rgba(255,255,255,.9)">Forêt Profond</div><div class="sw-hex" style="color:rgba(255,255,255,.5)">#1E3A28</div><div class="sw-role" style="color:rgba(255,255,255,.38)">Primaire · Façade · Fond</div></div>
+        <div class="sw" style="background:#2E5C3E"><div class="sw-name" style="color:rgba(255,255,255,.9)">Forêt Vivant</div><div class="sw-hex" style="color:rgba(255,255,255,.5)">#2E5C3E</div><div class="sw-role" style="color:rgba(255,255,255,.38)">Primaire clair</div></div>
+        <div class="sw" style="background:#C9943A"><div class="sw-name" style="color:rgba(255,255,255,.9)">Or Cuivré</div><div class="sw-hex" style="color:rgba(255,255,255,.5)">#C9943A</div><div class="sw-role" style="color:rgba(255,255,255,.38)">Accent · CTA · Signalétique</div></div>
+        <div class="sw" style="background:#E8C97A"><div class="sw-name" style="color:rgba(26,20,16,.75)">Or Doux</div><div class="sw-hex" style="color:rgba(26,20,16,.5)">#E8C97A</div><div class="sw-role" style="color:rgba(26,20,16,.38)">Accent secondaire</div></div>
+        <div class="sw" style="background:#F5F0E8"><div class="sw-name" style="color:rgba(26,20,16,.7)">Crème Chaude</div><div class="sw-hex" style="color:rgba(26,20,16,.5)">#F5F0E8</div><div class="sw-role" style="color:rgba(26,20,16,.38)">Fond · Print · Digital</div></div>
+        <div class="sw" style="background:#1A1410"><div class="sw-name" style="color:rgba(255,255,255,.75)">Noir Chaud</div><div class="sw-hex" style="color:rgba(255,255,255,.45)">#1A1410</div><div class="sw-role" style="color:rgba(255,255,255,.3)">Corps texte</div></div>
+      </div>
+      <div class="grid-3">
+        <div class="card"><div class="card-body"><div class="card-label">Proportion recommandée</div><div class="card-text">Forêt Profond 50% des surfaces · Or Cuivré 15% max (accents) · Crème 30% (espaces négatifs, fonds) · Noir : corps de texte uniquement</div></div></div>
+        <div class="card"><div class="card-body"><div class="card-label">Ce que la palette dit</div><div class="card-text">Le vert forêt ancre dans le naturel et le local (EDGE Advanced, végétalisation). L'or cuivré dit premium sans ostentation. Ensemble : qualité qui ne cherche pas à impressionner.</div></div></div>
+        <div class="card"><div class="card-body"><div class="card-label">Ce qu'on évite</div><div class="card-text">Jamais noir pur #000. Jamais or brillant métallisé. Jamais blanc pur #FFF — trop clinique. La chaleur est dans chaque teinte.</div></div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">02</div>
+        <div class="section-title">Système typographique</div>
+      </div>
+      <div class="grid-2">
+        <div class="typo-card">
+          <div class="card-label">Typographie Primaire — Titres & signature</div>
+          <div class="typo-specimen" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:36px;color:#1E3A28">Cosmos Angré</div>
+          <div class="typo-name">Cormorant Garamond Light (300)</div>
+          <div class="typo-specs">Usage · Nom de marque · Signature · Titres principaux · Façade<br>Corps façade : 80px+ · Print : 36–60px · Digital : 28–48px<br>Disponible : Google Fonts (gratuit) · Adobe Fonts</div>
+          <div class="typo-note">"Cormorant combine la distinction d'une serif classique et la légèreté d'une fine. Elle dit qualité sans arrogance — exactement l'ADN Piste A."</div>
+        </div>
+        <div class="typo-card">
+          <div class="card-label">Typographie Secondaire — Corps & navigation</div>
+          <div class="typo-specimen" style="font-family:'Inter',sans-serif;font-weight:400;font-size:24px;color:#1a1410">Le quartier que vous méritez</div>
+          <div class="typo-name">Inter Regular / Medium (400 · 500)</div>
+          <div class="typo-specs">Usage · Corps de texte · Signalétique · App · Navigation · Labels<br>Signalétique : 14–16px · App : 12–14px · Légendes : 10–11px<br>Disponible : Google Fonts (gratuit) · Système iOS/Android</div>
+          <div class="typo-note">"Inter est la référence du design digital moderne. Lisible à toutes les tailles, neutre mais pas froide. Elle porte l'information sans concurrencer la typo primaire."</div>
+        </div>
+      </div>
+      <div class="card"><div class="card-body"><div class="card-label">Fallback — si Cormorant non disponible (Word, PDF basique, email urgent)</div><div class="card-text">Georgia Italic (système) → Libre Baskerville (Google Fonts) → Times New Roman Light · À éviter si possible — toujours préférer Cormorant pour les supports contrôlés.</div></div></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">03</div>
+        <div class="section-title">Matières & textures de référence</div>
+      </div>
+      <div class="grid-4">
+        <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(135deg,#2a4a35,#1E3A28)"></div><div class="mat-info"><div class="mat-name">Enduit béton teinté vert</div><div class="mat-use">Façade principale · Murs colonnes</div></div></div>
+        <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(135deg,#C9943A,#b8832a)"></div><div class="mat-info"><div class="mat-name">Laiton brossé doré</div><div class="mat-use">Enseignes · Poignées · Accueil</div></div></div>
+        <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(135deg,#f5ede0,#ede5d5)"></div><div class="mat-info"><div class="mat-name">Pierre calcaire claire</div><div class="mat-use">Sols accueil · Banques</div></div></div>
+        <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(135deg,#3a5540,#2a4030)"></div><div class="mat-info"><div class="mat-name">Végétalisation naturelle</div><div class="mat-use">Murs végétaux · Jardins · Terrasses</div></div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">04</div>
+        <div class="section-title">Règles d'application — 6 supports</div>
+      </div>
+      <div class="grid-3">
+        <div class="app-card">
+          <div class="app-preview" style="background:#1E3A28">
+            <div style="text-align:center">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:#F5F0E8;letter-spacing:.08em">COSMOS</div>
+              <div style="font-size:10px;letter-spacing:.3em;color:#C9943A;margin-top:4px">ANGRÉ</div>
+              <div style="width:28px;height:1px;background:#C9943A;margin:6px auto"></div>
+              <div style="font-size:8px;color:rgba(245,240,232,.35);font-style:italic;letter-spacing:.06em">Le quartier que vous méritez</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Façade & signalétique extérieure</div><div class="app-title">Fond Forêt · Lettrage Crème + Or</div><div class="app-rules">COSMOS en Cormorant Light Maj. · ANGRÉ en Inter SemiBold +0.3em · Signature Cormorant Italic · Hauteur lettres façade min. 80cm · LED warm white 3000K</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:#F5F0E8">
+            <div style="text-align:center">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#1E3A28">COSMOS ANGRÉ</div>
+              <div style="width:32px;height:1px;background:#C9943A;margin:6px auto"></div>
+              <div style="font-size:9px;color:rgba(26,20,16,.4);letter-spacing:.12em">Ouverture Octobre 2026</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Print — Flyers, affiches, bâches</div><div class="app-title">Fond Crème · Titres Forêt · Accent Or</div><div class="app-rules">Papier mat min. 150g/m² · Jamais brillant · Titre Cormorant min. 28pt · Corps Inter Regular 10–12pt · Filet or cuivré séparateur</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:linear-gradient(135deg,#1E3A28,#2E5C3E)">
+            <div style="text-align:center">
+              <div style="font-size:8px;letter-spacing:.2em;color:rgba(255,255,255,.35);margin-bottom:5px">COSMOS ANGRÉ</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:#fff">Votre app. Votre centre.</div>
+              <div style="margin-top:8px;display:inline-block;padding:4px 14px;background:#C9943A;border-radius:12px;font-size:8px;color:#fff">Explorer</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Digital — App, site, réseaux sociaux</div><div class="app-title">Dark mode Forêt · CTAs Or Cuivré</div><div class="app-rules">Background : #1E3A28 ou #F5F0E8 (thèmes) · Boutons : #C9943A · Icônes filet 1.5px · Images 16:9 ou carré · Pas de fond blanc pur</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:#F5F0E8">
+            <div style="text-align:center">
+              <div style="width:52px;height:52px;border-radius:50%;background:#1E3A28;margin:0 auto;display:flex;align-items:center;justify-content:center"><span style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#C9943A">C</span></div>
+              <div style="font-size:8px;color:rgba(26,20,16,.35);margin-top:7px;letter-spacing:.15em">COSMOS ANGRÉ</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Packaging & merchandising</div><div class="app-title">Sacs kraft teinté vert / crème</div><div class="app-rules">Kraft naturel teinté #2E5C3E · Logo tampographié Or Cuivré · Cordons coton naturel · Tissu intérieur crème · Pas de plastique apparent</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:#1E3A28">
+            <div style="text-align:center">
+              <div style="font-size:9px;color:#C9943A;letter-spacing:.2em;margin-bottom:5px">NIVEAU P1</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:#fff">→ Cinéma</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Signalétique intérieure</div><div class="app-title">Fond Forêt · Crème · Flèches Or</div><div class="app-rules">Panneaux fond #1E3A28 · Texte Inter Medium Crème · Flèches #C9943A · Hauteur panneau directionnel min. 30cm · Police min. 16pt</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:linear-gradient(135deg,#1a2e20,#2a4a35)">
+            <div style="text-align:center">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:14px;color:rgba(255,255,255,.9);margin-bottom:3px">Cosmos Angré</div>
+              <div style="font-size:8px;color:#C9943A;letter-spacing:.2em">INAUGURATION</div>
+              <div style="font-size:9px;color:rgba(255,255,255,.4);margin-top:5px">16 Novembre 2026</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Événementiel — Inauguration</div><div class="app-title">Fond sombre · Accents or · Sobre</div><div class="app-rules">Scène fond #1E3A28 + éclairage 3000K · Pas de projection criarde · Tapis vert forêt uni · Totem accueil laiton + Cormorant</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">05</div>
+        <div class="section-title">Système de signatures</div>
+      </div>
+      <div class="sig-main" style="background:linear-gradient(135deg,#1E3A28,#2E5C3E)">
+        <div class="sig-quote" style="color:#fff">"Le quartier que vous méritez"</div>
+        <div class="sig-rule" style="color:rgba(255,255,255,.35)">Signature permanente · Façade · Institutionnel · Baux</div>
+      </div>
+      <div class="grid-2">
+        <div class="sig-card"><div class="sig-type">Signature campagne · Lancement · Inauguration</div><div class="sig-text" style="color:#2d5a3d">"Enfin tout, enfin ici"</div><div class="sig-why">Usage : pub extérieure, réseaux, teasing pré-ouverture. "Enfin" valide la frustration des 60% qui partaient. À retirer après 6 mois post-inauguration.</div></div>
+        <div class="sig-card"><div class="sig-type">Signature institutionnelle · Investisseurs · Partenaires</div><div class="sig-text" style="color:#2d5a3d">"Angré méritait mieux. Depuis octobre 2026, c'est fait."</div><div class="sig-why">Dossiers de presse, présentations investisseurs. Ancré dans le fait accompli. Fort, factuel, sans arrogance.</div></div>
+      </div>
+    </div>
+
+    <div class="note">Piste A · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / CRMC</div>
+  </div>
+</div>
+
+<!-- ===== PISTE B ===== -->
+<div class="page" id="scB">
+  <div class="hero">
+    <div class="hero-eyebrow">Brand Book · Piste B · Destination Premium</div>
+    <div class="hero-title">Bleu Nuit & Or Mat</div>
+    <div class="hero-sub">Signal : rupture totale, aspiration internationale, distinction silencieuse. La palette qui dit "on est entré dans un autre univers".</div>
+    <div class="hero-pills">
+      <span class="pill">Rupture totale</span>
+      <span class="pill">Aspiration internationale</span>
+      <span class="pill">Signal premium fort</span>
+      <span class="pill">Distinction silencieuse</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">01</div>
+        <div class="section-title">Palette chromatique — 6 couleurs</div>
+      </div>
+      <div class="palette-strip">
+        <div class="sw" style="background:#060E2A;flex:2"><div class="sw-name" style="color:rgba(255,255,255,.9)">Nuit Abyssale</div><div class="sw-hex" style="color:rgba(255,255,255,.5)">#060E2A</div><div class="sw-role" style="color:rgba(255,255,255,.38)">Primaire · Façade · Fond</div></div>
+        <div class="sw" style="background:#0D1B4B"><div class="sw-name" style="color:rgba(255,255,255,.9)">Bleu Nuit</div><div class="sw-hex" style="color:rgba(255,255,255,.5)">#0D1B4B</div><div class="sw-role" style="color:rgba(255,255,255,.38)">Primaire secondaire</div></div>
+        <div class="sw" style="background:#1A3060"><div class="sw-name" style="color:rgba(255,255,255,.9)">Bleu Profond</div><div class="sw-hex" style="color:rgba(255,255,255,.5)">#1A3060</div><div class="sw-role" style="color:rgba(255,255,255,.38)">Troisième plan</div></div>
+        <div class="sw" style="background:#B8924A"><div class="sw-name" style="color:rgba(255,255,255,.8)">Or Mat</div><div class="sw-hex" style="color:rgba(255,255,255,.5)">#B8924A</div><div class="sw-role" style="color:rgba(255,255,255,.38)">Accent noble · Signature</div></div>
+        <div class="sw" style="background:#D4B06A"><div class="sw-name" style="color:rgba(26,20,16,.75)">Or Clair</div><div class="sw-hex" style="color:rgba(26,20,16,.5)">#D4B06A</div><div class="sw-role" style="color:rgba(26,20,16,.38)">Accent · Titres</div></div>
+        <div class="sw" style="background:#F2EDE3"><div class="sw-name" style="color:rgba(26,20,16,.7)">Ivoire</div><div class="sw-hex" style="color:rgba(26,20,16,.5)">#F2EDE3</div><div class="sw-role" style="color:rgba(26,20,16,.38)">Fond neutre · Texte</div></div>
+      </div>
+      <div class="grid-3">
+        <div class="card"><div class="card-body"><div class="card-label">Proportion recommandée</div><div class="card-text">Nuit Abyssale 60% des surfaces · Or Mat 10% max (accents précis) · Ivoire 25% (textes, espaces) · Or Clair : titres secondaires uniquement</div></div></div>
+        <div class="card"><div class="card-body"><div class="card-label">Ce que la palette dit</div><div class="card-text">Le bleu nuit profond crée la rupture — on entre dans un autre univers. L'or mat (pas brillant) dit distinction sans ostentation. Ensemble : on est passé dans un monde différent.</div></div></div>
+        <div class="card"><div class="card-body"><div class="card-label">⚠ Point d'attention critique</div><div class="card-text">L'or de la bardade (#B8924A) et les accents or de la signalétique doivent être dans la même famille. Un décalage de teinte tue l'effet premium. À vérifier sur maquette réelle avec Fernand.</div></div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">02</div>
+        <div class="section-title">Système typographique</div>
+      </div>
+      <div class="grid-2">
+        <div class="typo-card">
+          <div class="card-label">Typographie Primaire — Titres & signature de marque</div>
+          <div class="typo-specimen" style="font-family:'Playfair Display',serif;font-size:34px;color:#0D1B4B">Cosmos Angré</div>
+          <div class="typo-name">Playfair Display Regular / Bold (400 · 700)</div>
+          <div class="typo-specs">Usage · Nom de marque · Titres principaux · Signature · Façade premium<br>Corps façade : 80px+ · Print : 40–64px · Digital : 32–52px<br>Disponible : Google Fonts (gratuit) · Adobe Fonts<br>Note : contraste fort pleins/déliés — parfaite pour le premium aspirationnel</div>
+          <div class="typo-note">"Playfair Display est utilisée par Cartier, Burberry, The Guardian. Elle encode immédiatement : haute qualité, culture, distinction."</div>
+        </div>
+        <div class="typo-card">
+          <div class="card-label">Typographie Secondaire — Labels, navigation, corps</div>
+          <div class="typo-specimen" style="font-family:'Inter',sans-serif;font-weight:300;font-size:22px;color:#0D1B4B;letter-spacing:.06em">UN MONDE À PART</div>
+          <div class="typo-name">Inter Light (300) — espacé +0.15em en capitales</div>
+          <div class="typo-specs">Usage · Signatures en capitales · Corps de texte · Labels signalétique<br>Règle clé : espacement +0.15em en capitales obligatoire · jamais gras pour le corps<br>Signalétique : 13–15px · App : 11–13px</div>
+          <div class="typo-note">"Inter Light très espacé en capitales est la recette de l'hôtellerie 5 étoiles et du retail premium international. Sobriété absolue = signal de confiance."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">03</div>
+        <div class="section-title">Matières & textures de référence</div>
+      </div>
+      <div class="grid-4">
+        <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(135deg,#B8924A,#9a7838)"></div><div class="mat-info"><div class="mat-name">Bronze anodisé mat</div><div class="mat-use">Bardade · Enseignes · Garde-corps</div></div></div>
+        <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(135deg,#1a1a2e,#0d1030)"></div><div class="mat-info"><div class="mat-name">Verre feuilleté teinté</div><div class="mat-use">Façades vitrées · Garde-corps premium</div></div></div>
+        <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(135deg,#d4cdc0,#c8c0b0)"></div><div class="mat-info"><div class="mat-name">Marbre blanc veiné</div><div class="mat-use">Sols accueil · Banques concierge</div></div></div>
+        <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(135deg,#2a2820,#1a1810)"></div><div class="mat-info"><div class="mat-name">Bois fumé ébène</div><div class="mat-use">Mobilier · Boiseries signalétique</div></div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">04</div>
+        <div class="section-title">Règles d'application — 6 supports</div>
+      </div>
+      <div class="grid-3">
+        <div class="app-card">
+          <div class="app-preview" style="background:#060E2A">
+            <div style="text-align:center">
+              <div style="font-family:'Playfair Display',serif;font-size:24px;color:#D4B06A;letter-spacing:.04em">COSMOS</div>
+              <div style="font-size:8px;letter-spacing:.4em;color:rgba(255,255,255,.45);margin-top:5px">A N G R É</div>
+              <div style="width:24px;height:1px;background:#B8924A;margin:6px auto"></div>
+              <div style="font-size:7px;color:rgba(255,255,255,.2);letter-spacing:.12em;font-style:italic">Un monde à part</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Façade & signalétique extérieure</div><div class="app-title">Fond Nuit · Lettrage Or · Filet Or 0.5px</div><div class="app-rules">COSMOS en Playfair Maj. or · ANGRÉ Inter Light +0.4em · Filet or 1px séparateur · LED 2700K directionnel rasant · Bardade bronze anodisé mat</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:#F2EDE3">
+            <div style="text-align:center">
+              <div style="font-family:'Playfair Display',serif;font-size:18px;color:#0D1B4B">Cosmos Angré</div>
+              <div style="width:24px;height:1px;background:#B8924A;margin:6px auto"></div>
+              <div style="font-size:8px;color:rgba(13,27,75,.4);letter-spacing:.18em">INAUGURATION · NOV. 2026</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Print — Invitations, programmes, presse</div><div class="app-title">Fond Ivoire · Titres Bleu Nuit · Or en Pantone</div><div class="app-rules">Papier couché mat min. 200g/m² · 2 passes (quadri + or Pantone 873C mat) · Jamais plastifié brillant · Enveloppe kraft blanc ivoire + cachet or</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:#060E2A">
+            <div style="text-align:center">
+              <div style="font-size:7px;letter-spacing:.25em;color:rgba(255,255,255,.25);margin-bottom:7px">COSMOS ANGRÉ</div>
+              <div style="font-family:'Playfair Display',serif;font-size:13px;color:#D4B06A">L'exception, à Abidjan.</div>
+              <div style="margin-top:9px;display:inline-block;padding:3px 12px;border:1px solid #B8924A;font-size:7px;color:#B8924A;letter-spacing:.15em">RÉSERVER</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Digital — App, site, réseaux</div><div class="app-title">Dark mode exclusif · CTAs Or bordure droite</div><div class="app-rules">Fond app unique : #060E2A · Jamais de light mode · Boutons bords droits + bordure or · Images haute résolution · Contenu curé, pas de volume</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:#F2EDE3">
+            <div style="text-align:center">
+              <div style="width:50px;height:50px;background:#060E2A;margin:0 auto;display:flex;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:18px;color:#B8924A">C</span></div>
+              <div style="font-size:7px;color:rgba(26,20,16,.3);margin-top:7px;letter-spacing:.15em">COSMOS ANGRÉ</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Packaging & merchandising</div><div class="app-title">Sacs noir mat · Frappé à chaud or mat</div><div class="app-rules">Papier noir mat grainé · Logo frappé or mat · Cordons satin noir · Aucun plastique · Boîtes : bleu nuit + couvercle or mat · Format unique</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:#060E2A">
+            <div style="text-align:center">
+              <div style="font-size:8px;color:#B8924A;letter-spacing:.28em;margin-bottom:5px">NIVEAU 2</div>
+              <div style="font-family:'Playfair Display',serif;font-size:16px;color:#fff">Restaurants</div>
+              <div style="font-size:9px;color:#D4B06A;margin-top:4px">→</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Signalétique intérieure</div><div class="app-title">Fond Nuit · Destinations Playfair · Or</div><div class="app-rules">Panneaux fond #060E2A · Destination Playfair Regular · Niveau Inter Light espacé · Flèches filet or 1px · Jamais signalétique plastique</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:linear-gradient(135deg,#040c22,#0D1B4B)">
+            <div style="text-align:center">
+              <div style="font-family:'Playfair Display',serif;font-size:12px;color:rgba(255,255,255,.9);margin-bottom:3px">Cosmos Angré</div>
+              <div style="font-size:7px;color:#B8924A;letter-spacing:.25em">INAUGURATION</div>
+              <div style="font-size:8px;color:rgba(255,255,255,.35);margin-top:4px">16 Novembre 2026 · Abidjan</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Événementiel — Inauguration</div><div class="app-title">Bleu nuit · Projection or · Formal</div><div class="app-rules">Scène fond #060E2A + projection mapping constellations or · Tapis bleu nuit · LED 2700K · Dress code : dark formal suggéré</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">05</div>
+        <div class="section-title">Système de signatures</div>
+      </div>
+      <div class="sig-main" style="background:linear-gradient(135deg,#060E2A,#0D1B4B)">
+        <div class="sig-quote" style="color:#D4B06A">"Un monde à part"</div>
+        <div class="sig-rule" style="color:rgba(212,176,106,.3)">Signature permanente · Façade · Institutionnel · Baux</div>
+      </div>
+      <div class="grid-2">
+        <div class="sig-card"><div class="sig-type">Signature campagne · Lancement · Inauguration</div><div class="sig-text" style="color:#0D1B4B">"Vivez l'exception"</div><div class="sig-why">Ton impératif qui crée l'aspiration. "Vivez" = expérience active. "L'exception" = promesse de singularité. Court, mémorable, international.</div></div>
+        <div class="sig-card"><div class="sig-type">Signature investisseurs / presse spécialisée</div><div class="sig-text" style="color:#0D1B4B">"La première destination mixed-use premium d'Abidjan"</div><div class="sig-why">Factuel, positionnel, différenciant. Encode la primauté et la catégorie en une phrase. Usage : pitchs investisseurs, communiqués officiels.</div></div>
+      </div>
+    </div>
+
+    <div class="note">Piste B · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / CRMC</div>
+  </div>
+</div>
+
+<!-- ===== PISTE C ===== -->
+<div class="page" id="scC">
+  <div class="hero">
+    <div class="hero-eyebrow">Brand Book · Piste C · Exception de Proximité</div>
+    <div class="hero-title">Bronze Africain & Terracotta</div>
+    <div class="hero-sub">Signal : premium chaud, identité africaine assumée, aspiration inclusive. La palette africaine premium — ni copie occidentale, ni folklore.</div>
+    <div class="hero-pills">
+      <span class="pill">Premium chaud</span>
+      <span class="pill">Identité africaine assumée</span>
+      <span class="pill">Aspiration inclusive</span>
+      <span class="pill">Cohérence bardade</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">01</div>
+        <div class="section-title">Palette chromatique — 6 couleurs</div>
+      </div>
+      <div class="palette-strip">
+        <div class="sw" style="background:#2C1A0A;flex:2"><div class="sw-name" style="color:rgba(255,255,255,.9)">Ébène Chaud</div><div class="sw-hex" style="color:rgba(255,255,255,.5)">#2C1A0A</div><div class="sw-role" style="color:rgba(255,255,255,.38)">Primaire profond · Façade</div></div>
+        <div class="sw" style="background:#8B4A1A"><div class="sw-name" style="color:rgba(255,255,255,.9)">Terracotta Foncé</div><div class="sw-hex" style="color:rgba(255,255,255,.5)">#8B4A1A</div><div class="sw-role" style="color:rgba(255,255,255,.38)">Primaire chaud · Bardade</div></div>
+        <div class="sw" style="background:#B8724A"><div class="sw-name" style="color:rgba(255,255,255,.88)">Terracotta Vif</div><div class="sw-hex" style="color:rgba(255,255,255,.5)">#B8724A</div><div class="sw-role" style="color:rgba(255,255,255,.38)">Accent secondaire</div></div>
+        <div class="sw" style="background:#C9943A"><div class="sw-name" style="color:rgba(255,255,255,.85)">Bronze Doré</div><div class="sw-hex" style="color:rgba(255,255,255,.5)">#C9943A</div><div class="sw-role" style="color:rgba(255,255,255,.38)">Accent premium · Logo</div></div>
+        <div class="sw" style="background:#E8C49A"><div class="sw-name" style="color:rgba(26,20,16,.75)">Sable Doré</div><div class="sw-hex" style="color:rgba(26,20,16,.5)">#E8C49A</div><div class="sw-role" style="color:rgba(26,20,16,.38)">Fond chaud · Intermédiaire</div></div>
+        <div class="sw" style="background:#F5EDE0"><div class="sw-name" style="color:rgba(26,20,16,.7)">Crème Sablée</div><div class="sw-hex" style="color:rgba(26,20,16,.5)">#F5EDE0</div><div class="sw-role" style="color:rgba(26,20,16,.38)">Fond principal · Print</div></div>
+      </div>
+      <div class="grid-3">
+        <div class="card"><div class="card-body"><div class="card-label">Cohérence avec la bardade réelle</div><div class="card-text">Le bronze de la bardade et le Bronze Doré (#C9943A) forment une continuité naturelle. Terracotta Foncé en accent architectural de façade — jamais dominant. La famille chaude dit "Afrique premium".</div></div></div>
+        <div class="card"><div class="card-body"><div class="card-label">Ce que la palette dit</div><div class="card-text">Une palette africaine assumée — ni tropicalisme caricatural, ni copie occidentale. Le sable, la terre, le bronze : le premium de la savane et de l'argile. Inédit dans le retail ivoirien.</div></div></div>
+        <div class="card"><div class="card-body"><div class="card-label">⚠ Règle des 3 couleurs max</div><div class="card-text">La palette est riche — 6 teintes. Règle absolue : jamais plus de 3 couleurs sur un même support. Fond + primaire + accent. La surcharge tuerait l'effet premium.</div></div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">02</div>
+        <div class="section-title">Système typographique</div>
+      </div>
+      <div class="grid-2">
+        <div class="typo-card">
+          <div class="card-label">Typographie Primaire — Titres & signature</div>
+          <div class="typo-specimen" style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:34px;color:#2C1A0A">Cosmos Angré</div>
+          <div class="typo-name">Cormorant Garamond SemiBold (600)</div>
+          <div class="typo-specs">Différence vs Piste A : Regular → SemiBold — plus de présence, plus d'ancrage<br>Usage · Nom de marque · Titres · Signature façade · Événements<br>Corps façade : 80px+ · Print : 36–60px · Digital : 28–48px</div>
+          <div class="typo-note">"Même famille que Piste A mais un grammage au-dessus. Ce choix dit : même chaleur, plus de caractère. Le SemiBold de Cormorant rappelle les enseignes artisanales premium africaines."</div>
+        </div>
+        <div class="typo-card">
+          <div class="card-label">Typographie Secondaire — Corps & signalétique</div>
+          <div class="typo-specimen" style="font-family:'Inter',sans-serif;font-weight:500;font-size:22px;color:#2C1A0A">L'exception, ici.</div>
+          <div class="typo-name">Inter Medium (500)</div>
+          <div class="typo-specs">Différence vs Piste A : Regular → Medium — plus de solidité<br>Usage · Corps · Signalétique · Labels · Navigation · CTAs<br>Inter Medium dans les teintes bronze donne une chaleur que le Regular n'a pas.</div>
+          <div class="typo-note">"Petit ajustement typographique, grand impact émotionnel. La teinte bronze + l'Inter Medium crée une chaleur que ni la Piste A ni la Piste B n'ont."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">03</div>
+        <div class="section-title">Matières & textures de référence</div>
+      </div>
+      <div class="grid-4">
+        <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(135deg,#B8724A,#8B4A1A)"></div><div class="mat-info"><div class="mat-name">Bardade terracotta bronze</div><div class="mat-use">Façade · Signature visuelle extérieure</div></div></div>
+        <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(135deg,#C9943A,#a87828)"></div><div class="mat-info"><div class="mat-name">Cuivre brossé mat</div><div class="mat-use">Enseignes · Poignées · Mobilier accueil</div></div></div>
+        <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(135deg,#e8d4b0,#d4c090)"></div><div class="mat-info"><div class="mat-name">Grès sablé / pierre de Caen</div><div class="mat-use">Sols intérieurs · Banques accueil</div></div></div>
+        <div class="mat-card"><div class="mat-swatch" style="background:linear-gradient(135deg,#4a3520,#3a2818)"></div><div class="mat-info"><div class="mat-name">Bois wengé / iroko</div><div class="mat-use">Mobilier · Plafonds · Boiseries</div></div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">04</div>
+        <div class="section-title">Règles d'application — 6 supports</div>
+      </div>
+      <div class="grid-3">
+        <div class="app-card">
+          <div class="app-preview" style="background:#2C1A0A">
+            <div style="text-align:center">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#E8C49A;letter-spacing:.06em">COSMOS</div>
+              <div style="font-size:10px;letter-spacing:.28em;color:#C9943A;margin-top:4px">ANGRÉ</div>
+              <div style="width:28px;height:4px;background:#8B4A1A;margin:6px auto 0;border-radius:2px"></div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Façade & signalétique extérieure</div><div class="app-title">Fond Ébène · Sable Doré · Accent Bronze</div><div class="app-rules">COSMOS Cormorant SemiBold Sable Doré · ANGRÉ Inter Medium +0.3em Bronze · Bardade terracotta bronze accent architectural · LED warm 2800K · Pas d'éclairage néon</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:#F5EDE0">
+            <div style="text-align:center">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#2C1A0A">Cosmos Angré</div>
+              <div style="width:28px;height:1px;background:#C9943A;margin:6px auto"></div>
+              <div style="font-size:9px;color:rgba(44,26,10,.4);letter-spacing:.12em">L'exception de proximité</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Print — Flyers, affiches, presse</div><div class="app-title">Fond Crème Sablée · Titres Ébène · Bronze</div><div class="app-rules">Papier mat naturel min. 150g/m² · Ton-sur-ton possible (Sable sur Crème) · Titres Cormorant SemiBold · Corps Inter Medium · Filet bronze cuivré séparateur</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:#2C1A0A">
+            <div style="text-align:center">
+              <div style="font-size:8px;letter-spacing:.18em;color:rgba(232,196,154,.3);margin-bottom:5px">COSMOS ANGRÉ</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;color:#E8C49A">L'exception, ici chez vous.</div>
+              <div style="margin-top:9px;display:inline-block;padding:4px 14px;background:#C9943A;border-radius:4px;font-size:8px;color:#2C1A0A;font-weight:600">EXPLORER</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Digital — App, site, réseaux</div><div class="app-title">Dark Ébène · CTA Bronze Doré arrondi 4px</div><div class="app-rules">Fond : #2C1A0A · Fond light : #F5EDE0 · Boutons #C9943A arrondi 4px · Images à lumière chaude obligatoire · Pas de photos froides ou bleues</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:#F5EDE0">
+            <div style="text-align:center">
+              <div style="width:50px;height:50px;border-radius:4px;background:#2C1A0A;margin:0 auto;display:flex;align-items:center;justify-content:center"><span style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#C9943A">C</span></div>
+              <div style="font-size:8px;color:rgba(44,26,10,.35);margin-top:7px;letter-spacing:.12em">COSMOS ANGRÉ</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Packaging & merchandising</div><div class="app-title">Kraft naturel brun · Cordons raphia cuivre</div><div class="app-rules">Kraft brun chaud · Logo tampon Cormorant Cuivré · Cordons raphia ou coton cuivre · Tissu intérieur crème · Identité artisanale premium</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:#2C1A0A">
+            <div style="text-align:center">
+              <div style="font-size:8px;color:#C9943A;letter-spacing:.22em;margin-bottom:5px">NIVEAU 1</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:#E8C49A">Restauration</div>
+              <div style="font-size:10px;color:#B8724A;margin-top:4px">→</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Signalétique intérieure</div><div class="app-title">Fond Ébène · Sable · Flèches Bronze</div><div class="app-rules">Panneaux fond #2C1A0A · Destination Cormorant Medium Sable · Niveau Inter Medium Bronze · Flèches cuivre brossé 2mm · Socles bois iroko</div></div>
+        </div>
+        <div class="app-card">
+          <div class="app-preview" style="background:linear-gradient(135deg,#2C1A0A,#3d2510)">
+            <div style="text-align:center">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:#E8C49A">Cosmos Angré</div>
+              <div style="font-size:8px;color:#C9943A;letter-spacing:.18em;margin-top:3px">INAUGURATION</div>
+              <div style="font-size:8px;color:rgba(232,196,154,.35);margin-top:4px">16 Novembre 2026</div>
+            </div>
+          </div>
+          <div class="app-info"><div class="app-cat">Événementiel — Inauguration</div><div class="app-title">Bronze · Wengé · Linge crème · Africain</div><div class="app-rules">Décor wengé + cuivre + tissus crème · LED 2700K warm · Tapis jute naturel + cuivre · Vaisselle crème mat bords cuivrés · Tenue soirée africaine valorisée</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-eyebrow">05</div>
+        <div class="section-title">Système de signatures</div>
+      </div>
+      <div class="sig-main" style="background:linear-gradient(135deg,#2C1A0A,#3d2510)">
+        <div class="sig-quote" style="color:#E8C49A">"Vivez l'exception, ici chez vous"</div>
+        <div class="sig-rule" style="color:rgba(232,196,154,.28)">Signature permanente · À tester FG (longueur) · Façade · Institutionnel</div>
+      </div>
+      <div class="grid-2">
+        <div class="sig-card"><div class="sig-type">Signature compacte — si FG juge la longue trop complexe</div><div class="sig-text" style="color:#8a5a10">"L'exception de proximité"</div><div class="sig-why">3 mots. Oxymoron volontaire — l'exception n'est plus inaccessible. Extrêmement mémorable. Territoire C en une expression.</div></div>
+        <div class="sig-card"><div class="sig-type">Signature institutionnelle · Investisseurs · Partenaires</div><div class="sig-text" style="color:#8a5a10">"La destination premium du quotidien."</div><div class="sig-why">Formule paradoxale volontaire. Encode les deux promesses en 5 mots. Usage : dossiers de presse, pitch enseignes.</div></div>
+      </div>
+    </div>
+
+    <div class="note">Piste C · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / CRMC</div>
+  </div>
+</div>
+
+<!-- ===== STIMULI FG ===== -->
+<div class="page" id="fg">
+  <div class="hero">
+    <div class="hero-eyebrow">Brief Fernand · Focus Group 20-25 Mars 2026</div>
+    <div class="hero-title">15 stimuli visuels.<br>3 pistes. 5 par piste.</div>
+    <div class="hero-sub">Chaque stimulus est spécifié au pixel. Fernand n'a pas besoin d'interprétation — il a besoin d'exécution. Deadline : 15 mars 2026.</div>
+    <div class="hero-pills">
+      <span class="pill">A3 portrait + 1920×1080px</span>
+      <span class="pill">PDF 300dpi + PNG 72dpi</span>
+      <span class="pill">Deadline 15 mars 2026</span>
+      <span class="pill">Validation Pamela Atokouna</span>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="card" style="margin-bottom:24px">
+      <div class="card-body">
+        <div class="card-label">Règles générales non négociables</div>
+        <div class="grid-3" style="margin-top:10px">
+          <div><div style="font-size:11px;font-weight:600;margin-bottom:4px">Format double</div><div class="card-text">A3 portrait (42×29.7cm) + 1920×1080px pour projection. Les deux formats pour chaque stimulus.</div></div>
+          <div><div style="font-size:11px;font-weight:600;margin-bottom:4px">Textes exacts</div><div class="card-text">Uniquement les éléments spécifiés. Pas d'ajout créatif non demandé. Les participants réagissent au système visuel.</div></div>
+          <div><div style="font-size:11px;font-weight:600;margin-bottom:4px">Photos libres de droits</div><div class="card-text">Unsplash, Pexels ou Adobe Stock uniquement. Haute résolution obligatoire. Aucune photo payante non licenciée.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PISTE A -->
+    <div style="margin-bottom:8px;display:flex;align-items:center;gap:10px">
+      <div style="width:8px;height:8px;border-radius:50%;background:#4A7558"></div>
+      <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#4A7558;font-weight:600">Piste A — Premium de Proximité</div>
+    </div>
+    <div class="grid-2" style="margin-bottom:24px">
+      <div class="stim-card"><div class="stim-num" style="color:#4A7558">A1</div><div class="stim-title">Panneau identité marque — façade</div><div class="stim-intent">Simulation de façade. Le participant ressent l'atmosphère avant d'entrer dans le bâtiment.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">Fond #1E3A28 plein + texture béton mat bruit 3% · COSMOS Cormorant Light 120pt Majuscules #F5F0E8 · ANGRÉ Inter SemiBold 32pt +0.3em #C9943A · Filet horizontal #C9943A 1px largeur 200px centré · Signature "Le quartier que vous méritez" Cormorant Italic 24pt rgba(245,240,232,0.45) · Halo warm white en haut à droite radial 6% opacity · Aucune photo, aucune illustration</div></div><div class="stim-tags"><span class="stim-tag">Identité</span><span class="stim-tag">Façade</span><span class="stim-tag">Première impression</span></div></div>
+      <div class="stim-card"><div class="stim-num" style="color:#4A7558">A2</div><div class="stim-title">Affiche campagne — lancement</div><div class="stim-intent">Affiche de rue grand format. Ce que les résidents d'Angré voient sur les panneaux 3 semaines avant l'ouverture.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">Fond #F5F0E8 · Titre "Enfin tout, enfin ici." Cormorant Regular occupant 60% de la hauteur #1E3A28 aligné gauche marge 8% · Logo "COSMOS ANGRÉ" Inter Medium 14pt +0.15em #1E3A28 bas gauche · Date "Octobre 2026" Cormorant Italic 20pt #C9943A sous le logo · Illustration déco : branches stylisées ton-sur-ton #2E5C3E 12% opacity bas droite · Aucune photo de personnes</div></div><div class="stim-tags"><span class="stim-tag">Campagne</span><span class="stim-tag">Lancement</span><span class="stim-tag">Typographique</span></div></div>
+      <div class="stim-card"><div class="stim-num" style="color:#4A7558">A3</div><div class="stim-title">Post réseaux sociaux — vie quotidienne</div><div class="stim-intent">Contenu Instagram/Facebook type, 3 premiers mois. Ton familier et chaleureux.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">Format carré 1080×1080px · Photo fond : intérieur mall moderne lumière naturelle dorée personnes en bokeh fort · Overlay #1E3A28 60% opacity · Texte central "Dimanche\nà Cosmos." Cormorant Italic 48pt #F5F0E8 centré · Sous-texte "Qu'est-ce que vous faites ?" Inter Regular 14pt rgba(245,240,232,0.5) · Logo bas "COSMOS ANGRÉ" Inter Light 10pt #C9943A</div></div><div class="stim-tags"><span class="stim-tag">Social media</span><span class="stim-tag">Quotidien</span><span class="stim-tag">Communauté</span></div></div>
+      <div class="stim-card"><div class="stim-num" style="color:#4A7558">A4</div><div class="stim-title">Carton d'invitation — inauguration</div><div class="stim-intent">L'invitation que les invités tiennent en main pour le 16 novembre 2026.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">A5 paysage simulé · Fond recto #F5F0E8 texture vergé · Logo COSMOS Cormorant Light 64pt #1E3A28 + ANGRÉ Inter SemiBold espacé #C9943A · Cadre filet #C9943A 0.5pt à 3mm · Texte bas "Inauguration · 16 Novembre 2026 · 18h00" Inter Regular 11pt · Verso fond #1E3A28 · "Vous êtes conviés à l'ouverture de votre nouveau centre de vie." Cormorant Italic 16pt #F5F0E8 centré · Filet bas #C9943A 1pt</div></div><div class="stim-tags"><span class="stim-tag">Invitation</span><span class="stim-tag">Inauguration</span><span class="stim-tag">Print premium</span></div></div>
+      <div class="stim-card" style="grid-column:1/-1"><div class="stim-num" style="color:#4A7558">A5</div><div class="stim-title">Moodboard atmosphère intérieure</div><div class="stim-intent">Planche d'ambiance. Les participants visualisent l'expérience spatiale à l'intérieur du centre Piste A.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">A3 paysage · Fond planche #F5F0E8 · Titre "COSMOS ANGRÉ · Atmosphère Piste A" Inter Light 12pt #1A1410 haut gauche · Grille 3×2 photos libres de droits gouttières 4mm : (1) Intérieur végétalisé lumière dorée (2) Famille en promenade mall contemporain (3) Épicerie fine couleurs vives (4) Restaurant terrasse déjeuner ensoleillé (5) Sol pierre calcaire reflets chauds (6) Enseigne laiton brossé fond vert · Filet #C9943A 0.5pt autour de chaque photo · Aucun texte sur les photos</div></div><div class="stim-tags"><span class="stim-tag">Moodboard</span><span class="stim-tag">Intérieur</span><span class="stim-tag">Atmosphère</span><span class="stim-tag">Format A3 paysage</span></div></div>
+    </div>
+
+    <!-- PISTE B -->
+    <div style="margin-bottom:8px;display:flex;align-items:center;gap:10px">
+      <div style="width:8px;height:8px;border-radius:50%;background:#0D1B4B"></div>
+      <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#0D1B4B;font-weight:600">Piste B — Destination Premium</div>
+    </div>
+    <div class="grid-2" style="margin-bottom:24px">
+      <div class="stim-card"><div class="stim-num" style="color:#C8A96E">B1</div><div class="stim-title">Panneau identité marque — façade</div><div class="stim-intent">Rupture totale. Premier stimulus B — doit créer une rupture immédiate avec A1.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">Fond #060E2A + texture verre dépoli bruit 2% · COSMOS Playfair Display Regular 120pt Majuscules #D4B06A · ANGRÉ Inter Light 24pt +0.4em rgba(255,255,255,0.5) · Filet horizontal #B8924A 0.5px largeur 160px centré · Signature "Un monde à part" Inter Light Italic 16pt espacé rgba(255,255,255,0.25) · Constellation de points #B8924A reliés lignes 0.5pt haut droite 20% opacity · Aucune couleur vive</div></div><div class="stim-tags"><span class="stim-tag">Identité</span><span class="stim-tag">Façade</span><span class="stim-tag">Rupture</span></div></div>
+      <div class="stim-card"><div class="stim-num" style="color:#C8A96E">B2</div><div class="stim-title">Affiche campagne — aspiration</div><div class="stim-intent">Minimalisme absolu. Antipode de A2 — aspiration, silence, distinction.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">Fond #060E2A · Titre "Vivez l'exception." Playfair Display Regular 72pt #D4B06A aligné gauche marge 8% positionné aux 2/5 supérieurs · Signature bas gauche "Cosmos Angré · Abidjan · 2026" Inter Light 12pt +0.15em rgba(255,255,255,0.35) · Constellation points or haut droite · Aucun autre élément · Règle : si tu hésites à enlever, enlève</div></div><div class="stim-tags"><span class="stim-tag">Campagne</span><span class="stim-tag">Aspiration</span><span class="stim-tag">Minimalisme absolu</span></div></div>
+      <div class="stim-card"><div class="stim-num" style="color:#C8A96E">B3</div><div class="stim-title">Post réseaux sociaux — curation</div><div class="stim-intent">Antipode émotionnel de A3 — curé, sobre, nocturne.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">1080×1080px · Photo fond : table restaurant gastronomique éclairage bougie très sombre touches lumineuses chaudes haute qualité · Overlay #060E2A 50% · "Ce soir." Playfair Display Italic 64pt #D4B06A centré · Logo bas "COSMOS ANGRÉ" Inter Light 9pt +0.25em rgba(255,255,255,0.3) · Aucun autre texte · Mood : discret, nocturne, exclusif</div></div><div class="stim-tags"><span class="stim-tag">Social media</span><span class="stim-tag">Curation</span><span class="stim-tag">Nocturne</span></div></div>
+      <div class="stim-card"><div class="stim-num" style="color:#C8A96E">B4</div><div class="stim-title">Carton d'invitation — inauguration</div><div class="stim-intent">Doit dire immédiatement "événement d'exception". Antipode de A4 — même info, univers totalement différent.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">A5 paysage simulé · Recto fond #060E2A · COSMOS Playfair 56pt #D4B06A + ANGRÉ Inter Light +0.4em rgba(255,255,255,0.5) · Cadre filet #B8924A 0.5pt · "Inauguration · 16 Novembre 2026" Inter Light 10pt rgba(255,255,255,0.4) · Verso fond #F2EDE3 · "Vous êtes conviés à une soirée d'exception." Playfair Italic 15pt #0D1B4B centré · Cadre filet #B8924A 0.5pt · Simule frappé à chaud or mat</div></div><div class="stim-tags"><span class="stim-tag">Invitation</span><span class="stim-tag">Exception</span><span class="stim-tag">Or mat</span></div></div>
+      <div class="stim-card" style="grid-column:1/-1"><div class="stim-num" style="color:#C8A96E">B5</div><div class="stim-title">Moodboard atmosphère intérieure</div><div class="stim-intent">Plonge le participant dans l'univers premium nocturne de la piste B.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">A3 paysage · Fond planche #060E2A · Titre "COSMOS ANGRÉ · Atmosphère Piste B" Inter Light 12pt #D4B06A haut gauche · Grille 3×2 gouttières 3mm : (1) Lobby hôtel 5 étoiles nuit marbres dorures (2) Restaurant gastronomique ambiance tamisée (3) Boutique mode internationale éclairage vitrine (4) Cinéma premium fauteuils velours (5) Rooftop bar nuit vue urbaine (6) Détail architectural marbre veiné + bronze · Photos couleurs riches non desaturées · Filet #B8924A 0.5pt autour de chaque photo</div></div><div class="stim-tags"><span class="stim-tag">Moodboard</span><span class="stim-tag">Nuit</span><span class="stim-tag">Aspiration</span><span class="stim-tag">Format A3 paysage</span></div></div>
+    </div>
+
+    <!-- PISTE C -->
+    <div style="margin-bottom:8px;display:flex;align-items:center;gap:10px">
+      <div style="width:8px;height:8px;border-radius:50%;background:#C9943A"></div>
+      <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#8a5a10;font-weight:600">Piste C — Exception de Proximité</div>
+    </div>
+    <div class="grid-2" style="margin-bottom:24px">
+      <div class="stim-card"><div class="stim-num" style="color:#C9943A">C1</div><div class="stim-title">Panneau identité marque — façade</div><div class="stim-intent">La palette africaine premium doit être immédiatement lisible et distincte de A (vert) et B (bleu nuit).</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">Fond #2C1A0A mat grainé bruit 4% · COSMOS Cormorant SemiBold 120pt Majuscules #E8C49A · ANGRÉ Inter Medium 28pt +0.3em #C9943A · Bande horizontale #8B4A1A 6px pleine largeur en bas du panneau à 15% hauteur · Signature "Vivez l'exception, ici chez vous" Cormorant Italic 18pt rgba(232,196,154,0.4) · Lumière warm 2800K ambiance · Aucun brillant métallisé</div></div><div class="stim-tags"><span class="stim-tag">Identité</span><span class="stim-tag">Africain premium</span><span class="stim-tag">Chaleur</span></div></div>
+      <div class="stim-card"><div class="stim-num" style="color:#C9943A">C2</div><div class="stim-title">Affiche campagne — exception inclusive</div><div class="stim-intent">Doit exprimer simultanément aspiration et chaleur — le paradoxe de la piste C en une image.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">Fond #F5EDE0 · Titre "L'exception\nde proximité." Cormorant SemiBold grande taille (65-70% hauteur) #2C1A0A aligné gauche marge 8% · Filet vertical #C9943A 2px pleine hauteur à gauche du titre · Logo "COSMOS ANGRÉ · OUVERTURE OCTOBRE 2026" Inter Medium 12pt #C9943A bas gauche · Motif géo africain abstrait (chevrons kente simplifié) #8B4A1A 8-10% opacity en fond · Aucune photo de personnes</div></div><div class="stim-tags"><span class="stim-tag">Campagne</span><span class="stim-tag">Hybride</span><span class="stim-tag">Africain</span></div></div>
+      <div class="stim-card"><div class="stim-num" style="color:#C9943A">C3</div><div class="stim-title">Post réseaux sociaux — lifestyle split</div><div class="stim-intent">Montrer la polyvalence C — premium ET quotidien dans une seule image. Concept "split".</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">1080×1080px · Split horizontal strict 50/50 · Moitié haute : restaurant gastro lumière dorée · Moitié basse : marché épicerie intérieure coloré lumière naturelle · Ligne séparation filet #C9943A 2px · Haut "Ce soir" Cormorant Italic 36pt #F5EDE0 aligné gauche · Bas "Cet après-midi" Cormorant Italic 36pt #2C1A0A aligné gauche · Sur la ligne centré : "COSMOS ANGRÉ" Inter Medium 9pt #C9943A fond crème</div></div><div class="stim-tags"><span class="stim-tag">Polyvalence</span><span class="stim-tag">Split concept</span><span class="stim-tag">Quotidien + Premium</span></div></div>
+      <div class="stim-card"><div class="stim-num" style="color:#C9943A">C4</div><div class="stim-title">Carton d'invitation — inauguration</div><div class="stim-intent">"Élégance africaine" — ni copie occidentale, ni folklore. Une invitation à identité propre.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">A5 paysage simulé · Recto fond #F5EDE0 vergé · Bordure motif géo africain simplifié (chevrons linéaires) #C9943A 1pt sur 4 bords largeur 6mm · Logo COSMOS Cormorant SemiBold 56pt #2C1A0A + ANGRÉ Inter Medium espacé #C9943A centré · Texte bas "Inauguration · 16 Novembre 2026 · 18h00" Inter Medium 10pt · Verso fond #2C1A0A · "Vous êtes conviés à vivre l'exception, ici chez vous." Cormorant Regular 15pt #E8C49A centré · Simule gaufrage bronze mat sur bordure</div></div><div class="stim-tags"><span class="stim-tag">Invitation</span><span class="stim-tag">Africain élégant</span><span class="stim-tag">Gaufrage bronze</span></div></div>
+      <div class="stim-card" style="grid-column:1/-1"><div class="stim-num" style="color:#C9943A">C5</div><div class="stim-title">Moodboard atmosphère intérieure</div><div class="stim-intent">Les deux pôles de C coexistent. Le participant voit premium ET chaleureux, africain ET international dans la même planche.</div><div class="stim-spec-box"><div class="stim-spec-label">Spec Fernand</div><div class="stim-spec-text">A3 paysage · Fond planche #F5EDE0 · Titre "COSMOS ANGRÉ · Atmosphère Piste C" Inter Medium 12pt #2C1A0A haut gauche · Grille 3×2 gouttières 4mm : (1) Restaurant africain contemp. bois wengé cuivre lumière chaude (2) Marché épicerie fine intérieure abondance couleurs (3) Lobby accueil sol grès bronze plantes (4) Terrasse familiale déjeuner ensoleillé plusieurs générations (5) Détail enseigne bois laiton brossé cuivré (6) Enfants espace jeux lumineux chaleureux · Filet #C9943A 0.5pt autour des photos · Intention : "premium accessible, africain assumé"</div></div><div class="stim-tags"><span class="stim-tag">Moodboard</span><span class="stim-tag">Africain premium</span><span class="stim-tag">Hybride</span><span class="stim-tag">Format A3 paysage</span></div></div>
+    </div>
+
+    <div class="note">
+      Brief Fernand · 15 stimuli · Cosmos Angré · Focus Group 20-25 Mars 2026 · Confidentiel New Heaven SA / CRMC<br>
+      Remise · PDF 300dpi + PNG 72dpi · Nommage : CosmosAngré_A1_print.pdf / CosmosAngré_A1_ecran.png · Deadline ferme 15 mars 2026
+    </div>
+  </div>
+</div>
+
+<button class="export-btn" onclick="window.print()">⬇ Imprimer / PDF</button>
+
+<script>
+function show(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const m={intro:0,scA:1,scB:2,scC:3,fg:4};
+  document.querySelectorAll('.nav-tab')[m[id]].classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

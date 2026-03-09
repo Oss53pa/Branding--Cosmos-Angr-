@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stimuli Focus Group — Cosmos Angré</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f5f2ec;color:#1a1410;min-height:100vh}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,242,236,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(26,20,16,.07);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:54px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.06em}
+.nav-tabs{display:flex;gap:4px}
+.nav-tab{padding:5px 16px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;color:rgba(26,20,16,.38);border:1px solid transparent}
+.nav-tab:hover{color:rgba(26,20,16,.7)}
+.nav-tab.active{color:#1a1410;background:#fff;border-color:rgba(26,20,16,.1);box-shadow:0 1px 4px rgba(26,20,16,.06)}
+.nav-meta{font-size:10px;color:rgba(26,20,16,.28);letter-spacing:.12em;text-transform:uppercase}
+
+.page{display:none;padding-top:54px;min-height:100vh}
+.page.active{display:block}
+
+.hero{padding:56px 56px 48px;border-bottom:1px solid rgba(26,20,16,.06)}
+.hero-eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(26,20,16,.35);margin-bottom:12px}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1.05;margin-bottom:10px}
+.hero-sub{font-size:13px;color:rgba(26,20,16,.45);line-height:1.75;max-width:600px;margin-bottom:28px}
+.hero-pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{padding:5px 14px;border-radius:20px;font-size:11px;font-weight:500;background:#fff;border:1px solid rgba(26,20,16,.1);color:rgba(26,20,16,.6)}
+
+.content{padding:40px 56px 56px}
+.section{margin-bottom:36px}
+.sec-hdr{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+.sec-ey{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:rgba(26,20,16,.32)}
+.sec-ti{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300}
+.sec-lead{font-size:12px;color:rgba(26,20,16,.5);line-height:1.75;max-width:700px;margin-bottom:20px}
+
+.card{background:#fff;border-radius:16px;border:1px solid rgba(26,20,16,.07);box-shadow:0 1px 4px rgba(26,20,16,.04);margin-bottom:12px}
+.card-body{padding:22px 24px}
+.card-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(26,20,16,.32);margin-bottom:6px}
+.card-title{font-size:14px;font-weight:600;margin-bottom:6px}
+.card-text{font-size:12px;color:rgba(26,20,16,.58);line-height:1.75}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
+
+.stat-box{background:#fff;border-radius:12px;border:1px solid rgba(26,20,16,.07);padding:18px 20px}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;line-height:1;margin-bottom:4px}
+.stat-label{font-size:11px;color:rgba(26,20,16,.45);line-height:1.5}
+
+.divider{height:1px;background:rgba(26,20,16,.05);margin:32px 0}
+.note{padding:14px 18px;border-radius:10px;background:rgba(26,20,16,.03);border:1px solid rgba(26,20,16,.05);font-size:11px;color:rgba(26,20,16,.4);line-height:1.8}
+.warn-box{background:rgba(230,81,0,.05);border:1px solid rgba(230,81,0,.15);border-radius:10px;padding:12px 14px}
+.warn-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#e65100;margin-bottom:4px}
+.warn-text{font-size:11px;color:rgba(26,20,16,.6);line-height:1.6}
+.ok-box{background:rgba(46,125,50,.05);border:1px solid rgba(46,125,50,.15);border-radius:10px;padding:12px 14px}
+.ok-label{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#2e7d32;margin-bottom:4px}
+.ok-text{font-size:11px;color:rgba(26,20,16,.6);line-height:1.6}
+
+/* STIMULUS CARD */
+.stim-wrap{margin-bottom:28px}
+.stim-piste-hdr{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(26,20,16,.06)}
+.stim-piste-dot{width:10px;height:10px;border-radius:50%}
+.stim-piste-label{font-size:9px;letter-spacing:.28em;text-transform:uppercase;font-weight:600}
+.stim-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.stim-card{background:#fff;border-radius:16px;border:1px solid rgba(26,20,16,.07);box-shadow:0 1px 4px rgba(26,20,16,.04);overflow:hidden}
+.stim-card.full{grid-column:1/-1}
+
+/* PREVIEW */
+.stim-preview{height:160px;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden}
+
+/* PISTE A previews */
+.prev-a1{background:#1E3A28}
+.prev-a2{background:#F5F0E8}
+.prev-a3{background:linear-gradient(135deg,#1E3A28,#2E5C3E)}
+.prev-a4-r{background:#F5F0E8}
+.prev-a5{background:#F5F0E8}
+
+/* PISTE B previews */
+.prev-b1{background:#060E2A}
+.prev-b2{background:#060E2A}
+.prev-b3{background:#060E2A}
+.prev-b4{background:#060E2A}
+.prev-b5{background:#060E2A}
+
+/* PISTE C previews */
+.prev-c1{background:#2C1A0A}
+.prev-c2{background:#F5EDE0}
+.prev-c3-top{background:linear-gradient(to bottom,#2a180a 50%,#F5EDE0 50%)}
+.prev-c4{background:#F5EDE0}
+.prev-c5{background:#F5EDE0}
+
+.stim-info{padding:16px 20px;border-top:1px solid rgba(26,20,16,.05)}
+.stim-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.stim-code{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;line-height:1}
+.stim-format{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(26,20,16,.3);background:#f5f2ec;padding:3px 8px;border-radius:6px}
+.stim-title{font-size:13px;font-weight:600;margin-bottom:5px}
+.stim-intent{font-size:11px;color:rgba(26,20,16,.5);line-height:1.65;margin-bottom:12px}
+.stim-spec-box{background:#f5f2ec;border-radius:10px;padding:12px 14px}
+.stim-spec-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(26,20,16,.32);margin-bottom:6px}
+.stim-spec-text{font-size:11px;color:rgba(26,20,16,.62);line-height:1.72}
+.stim-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.stim-tag{padding:3px 9px;border-radius:10px;font-size:10px;border:1px solid rgba(26,20,16,.1);color:rgba(26,20,16,.5)}
+
+/* RECAP TABLE */
+.recap-tbl{width:100%;border-collapse:collapse}
+.recap-tbl th{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,20,16,.38);padding:10px 14px;text-align:left;border-bottom:2px solid rgba(26,20,16,.07);background:#f5f2ec}
+.recap-tbl td{padding:10px 14px;border-bottom:1px solid rgba(26,20,16,.04);font-size:11px;color:rgba(26,20,16,.65);vertical-align:middle}
+.recap-tbl tr:hover td{background:#faf8f5}
+.recap-tbl td:first-child{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300}
+.code-a{color:#4A7558}
+.code-b{color:#0D1B4B}
+.code-c{color:#C9943A}
+
+.export-btn{position:fixed;bottom:20px;right:20px;z-index:200;padding:9px 18px;border-radius:8px;font-size:11px;font-weight:500;cursor:pointer;border:1px solid rgba(26,20,16,.12);background:#fff;color:#1a1410;box-shadow:0 2px 8px rgba(26,20,16,.08);font-family:'Inter',sans-serif}
+.export-btn:hover{background:#f0ede8}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Cosmos Angré — Stimuli Focus Group</div>
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="show('intro')">Vue d'ensemble</div>
+    <div class="nav-tab" onclick="show('pisteA')">Piste A</div>
+    <div class="nav-tab" onclick="show('pisteB')">Piste B</div>
+    <div class="nav-tab" onclick="show('pisteC')">Piste C</div>
+    <div class="nav-tab" onclick="show('recap')">Récapitulatif</div>
+  </div>
+  <div class="nav-meta">Brief Fernand · Mars 2026</div>
+</nav>
+
+<!-- ===== INTRO ===== -->
+<div class="page active" id="intro">
+  <div class="hero">
+    <div class="hero-eyebrow">Stimuli Focus Group · Cosmos Angré · Brief Fernand · Confidentiel</div>
+    <div class="hero-title">15 stimuli visuels.<br>Spécifiés au pixel.</div>
+    <div class="hero-sub">Ce document est le brief opérationnel remis à Fernand. Chaque stimulus est décrit avec une intention, des spécifications techniques complètes et une deadline ferme. Aucune interprétation n'est nécessaire — uniquement l'exécution.</div>
+    <div class="hero-pills">
+      <span class="pill">5 stimuli par piste</span>
+      <span class="pill">A3 portrait + 1920×1080px</span>
+      <span class="pill">PDF 300dpi + PNG 72dpi</span>
+      <span class="pill">Deadline 15 mars 2026</span>
+      <span class="pill">Validation Pamela Atokouna</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section">
+      <div class="sec-hdr"><div class="sec-ey">Architecture</div><div class="sec-ti">15 livrables · 30 fichiers</div></div>
+      <div class="grid-4">
+        <div class="stat-box"><div class="stat-num">15</div><div class="stat-label">Stimuli · 5 par piste · A, B, C</div></div>
+        <div class="stat-box"><div class="stat-num">30</div><div class="stat-label">Fichiers au total · PDF print + PNG projection par stimulus</div></div>
+        <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Types de stimuli · Identité façade · Campagne · Moodboard</div></div>
+        <div class="stat-box"><div class="stat-num">15/03</div><div class="stat-label">Deadline ferme · Impression J+2 · Sessions FG J+5</div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="sec-hdr"><div class="sec-ey">Règles générales</div><div class="sec-ti">Non négociables · à lire avant toute production</div></div>
+      <div class="grid-3">
+        <div class="card"><div class="card-body">
+          <div class="card-label">Format double obligatoire</div>
+          <div class="card-title">A3 portrait + 1920×1080px</div>
+          <div class="card-text">Chaque stimulus est produit en 2 formats : A3 portrait (42×29.7cm) pour impression et manipulation en salle · 1920×1080px pour projection écran. Les deux formats sont livrés pour chaque stimulus.</div>
+        </div></div>
+        <div class="card"><div class="card-body">
+          <div class="card-label">Textes exactement tels que spécifiés</div>
+          <div class="card-title">Zéro ajout créatif non demandé</div>
+          <div class="card-text">Les participants du Focus Group réagissent au système visuel. Tout texte ajouté ou modifié biaise les résultats. Si une spec semble étrange ou incomplète, contacter Pamela avant de modifier — jamais improviser.</div>
+        </div></div>
+        <div class="card"><div class="card-body">
+          <div class="card-label">Sources photos</div>
+          <div class="card-title">Unsplash · Pexels · Adobe Stock uniquement</div>
+          <div class="card-text">Photos libres de droits haute résolution obligatoires (min. 3000px large). Aucune photo payante non licenciée. Aucune photo avec visages reconnaissables. Aucune photo de marque concurrente visible.</div>
+        </div></div>
+        <div class="card"><div class="card-body">
+          <div class="card-label">Typographies</div>
+          <div class="card-title">Google Fonts · toutes gratuites</div>
+          <div class="card-text">Cormorant Garamond (Pistes A & C) · Playfair Display (Piste B) · Inter (toutes pistes pour le corps). Toutes disponibles sur fonts.google.com. Installation requise avant démarrage.</div>
+        </div></div>
+        <div class="card"><div class="card-body">
+          <div class="card-label">Nommage des fichiers</div>
+          <div class="card-title">Convention stricte</div>
+          <div class="card-text">CosmosAngré_A1_print.pdf / CosmosAngré_A1_ecran.png<br>CosmosAngré_B3_print.pdf / CosmosAngré_B3_ecran.png<br>etc. — 30 fichiers au total remis dans un dossier unique zippé.</div>
+        </div></div>
+        <div class="card"><div class="card-body">
+          <div class="card-label">Remise & validation</div>
+          <div class="card-title">15 mars 2026 · Pamela Atokouna</div>
+          <div class="card-text">Remise par email ou WeTransfer au plus tard le 15/03 à 18h00. Validation sous 24h. Aucune modification possible après validation — les stimuli sont envoyés en impression le 17/03. Prévoir 1 round de corrections dans le planning.</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="sec-hdr"><div class="sec-ey">Les 3 pistes</div><div class="sec-ti">Univers distincts · aucune confusion possible</div></div>
+      <div class="grid-3">
+        <div style="background:#fff;border-radius:14px;border:1px solid rgba(26,20,16,.07);padding:20px;cursor:pointer" onclick="show('pisteA')">
+          <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#4A7558;margin-bottom:10px;font-weight:600">Piste A · 5 stimuli</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:6px">Premium de Proximité</div>
+          <div style="font-size:11px;color:rgba(26,20,16,.45);line-height:1.6;margin-bottom:14px">Vert Forêt #1E3A28 · Or Cuivré #C9943A · Crème Chaude #F5F0E8 · Cormorant Garamond Light + Inter</div>
+          <div style="display:flex;gap:6px">
+            <div style="width:18px;height:18px;border-radius:50%;background:#1E3A28"></div>
+            <div style="width:18px;height:18px;border-radius:50%;background:#2E5C3E"></div>
+            <div style="width:18px;height:18px;border-radius:50%;background:#C9943A"></div>
+            <div style="width:18px;height:18px;border-radius:50%;background:#F5F0E8;border:1px solid rgba(26,20,16,.1)"></div>
+          </div>
+        </div>
+        <div style="background:#fff;border-radius:14px;border:1px solid rgba(26,20,16,.07);padding:20px;cursor:pointer" onclick="show('pisteB')">
+          <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#0D1B4B;margin-bottom:10px;font-weight:600">Piste B · 5 stimuli</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:6px">Destination Premium</div>
+          <div style="font-size:11px;color:rgba(26,20,16,.45);line-height:1.6;margin-bottom:14px">Nuit Abyssale #060E2A · Or Mat #B8924A · Or Clair #D4B06A · Ivoire #F2EDE3 · Playfair Display + Inter Light</div>
+          <div style="display:flex;gap:6px">
+            <div style="width:18px;height:18px;border-radius:50%;background:#060E2A"></div>
+            <div style="width:18px;height:18px;border-radius:50%;background:#0D1B4B"></div>
+            <div style="width:18px;height:18px;border-radius:50%;background:#B8924A"></div>
+            <div style="width:18px;height:18px;border-radius:50%;background:#F2EDE3;border:1px solid rgba(26,20,16,.1)"></div>
+          </div>
+        </div>
+        <div style="background:#fff;border-radius:14px;border:1px solid rgba(26,20,16,.07);padding:20px;cursor:pointer" onclick="show('pisteC')">
+          <div style="font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:#8a5a10;margin-bottom:10px;font-weight:600">Piste C · 5 stimuli</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:6px">Exception de Proximité</div>
+          <div style="font-size:11px;color:rgba(26,20,16,.45);line-height:1.6;margin-bottom:14px">Ébène Chaud #2C1A0A · Bronze Doré #C9943A · Terracotta #8B4A1A · Crème Sablée #F5EDE0 · Cormorant SemiBold + Inter Medium</div>
+          <div style="display:flex;gap:6px">
+            <div style="width:18px;height:18px;border-radius:50%;background:#2C1A0A"></div>
+            <div style="width:18px;height:18px;border-radius:50%;background:#8B4A1A"></div>
+            <div style="width:18px;height:18px;border-radius:50%;background:#C9943A"></div>
+            <div style="width:18px;height:18px;border-radius:50%;background:#F5EDE0;border:1px solid rgba(26,20,16,.1)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">Stimuli Focus Group · Cosmos Angré · Brief Fernand · Mars 2026 · Confidentiel EXCO — New Heaven SA / CRMC</div>
+  </div>
+</div>
+
+<!-- ===== PISTE A ===== -->
+<div class="page" id="pisteA">
+  <div class="hero">
+    <div class="hero-eyebrow">Stimuli Focus Group · Piste A · Premium de Proximité</div>
+    <div class="hero-title">5 stimuli · Vert Forêt<br>& Or Cuivré</div>
+    <div class="hero-sub">Signal visuel : ancrage naturel, modernité accessible, chaleur premium. Le participant doit ressentir "qualité qui ne cherche pas à impressionner".</div>
+    <div class="hero-pills">
+      <span class="pill">Cormorant Garamond Light</span>
+      <span class="pill">Inter Regular / Medium</span>
+      <span class="pill">#1E3A28 · #C9943A · #F5F0E8</span>
+    </div>
+  </div>
+  <div class="content">
+
+    <div class="stim-wrap">
+      <div class="stim-grid">
+
+        <!-- A1 -->
+        <div class="stim-card">
+          <div class="stim-preview prev-a1">
+            <div style="text-align:center">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#F5F0E8;letter-spacing:.08em">COSMOS</div>
+              <div style="font-size:11px;letter-spacing:.32em;color:#C9943A;margin-top:5px">ANGRÉ</div>
+              <div style="width:32px;height:1px;background:#C9943A;margin:8px auto"></div>
+              <div style="font-size:9px;color:rgba(245,240,232,.38);font-style:italic;letter-spacing:.07em;font-family:'Cormorant Garamond',serif">Le quartier que vous méritez</div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-a">A1</div>
+              <div class="stim-format">Façade · Identité</div>
+            </div>
+            <div class="stim-title">Panneau identité marque — façade</div>
+            <div class="stim-intent">Premier contact visuel. Le participant ressent l'atmosphère avant d'entrer dans le bâtiment. Doit être immédiatement distinct de B1 et C1.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Fond : <strong>#1E3A28</strong> plein + texture béton mat bruit 3%<br>
+                "COSMOS" : Cormorant Garamond Light 120pt Majuscules — <strong>#F5F0E8</strong><br>
+                "ANGRÉ" : Inter SemiBold 32pt espacement +0.3em — <strong>#C9943A</strong><br>
+                Filet horizontal : <strong>#C9943A</strong> 1px, largeur 200px, centré entre les deux<br>
+                Signature : "Le quartier que vous méritez" — Cormorant Italic 24pt — <strong>rgba(245,240,232,0.45)</strong><br>
+                Lumière : halo radial warm white rgba(255,248,220,0.06) haut droite<br>
+                Aucune photo · Aucune illustration
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Identité</span><span class="stim-tag">Façade</span><span class="stim-tag">Première impression</span></div>
+          </div>
+        </div>
+
+        <!-- A2 -->
+        <div class="stim-card">
+          <div class="stim-preview prev-a2">
+            <div style="text-align:left;padding:0 16px;width:100%">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:#1E3A28;line-height:1.1">Enfin tout,<br>enfin ici.</div>
+              <div style="margin-top:14px;font-size:9px;color:#C9943A;letter-spacing:.15em">COSMOS ANGRÉ · Octobre 2026</div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-a">A2</div>
+              <div class="stim-format">Campagne · Affiche</div>
+            </div>
+            <div class="stim-title">Affiche campagne — lancement</div>
+            <div class="stim-intent">Affiche de rue grand format. Ce que les résidents d'Angré voient sur les panneaux 3 semaines avant l'ouverture. Typographique pur — pas de photo.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Fond : <strong>#F5F0E8</strong><br>
+                Titre : "Enfin tout, enfin ici." — Cormorant Garamond Regular, taille occupant 60% de la hauteur — <strong>#1E3A28</strong> — aligné gauche marge 8%<br>
+                Logo bas gauche : "COSMOS ANGRÉ" Inter Medium 14pt +0.15em — <strong>#1E3A28</strong><br>
+                Date : "Octobre 2026" Cormorant Italic 20pt — <strong>#C9943A</strong> — sous le logo<br>
+                Illustration déco : branches stylisées ton-sur-ton <strong>#2E5C3E</strong> 12% opacity — bas droite<br>
+                Aucune photo de personnes
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Campagne</span><span class="stim-tag">Lancement</span><span class="stim-tag">Typographique pur</span></div>
+          </div>
+        </div>
+
+        <!-- A3 -->
+        <div class="stim-card">
+          <div class="stim-preview prev-a3">
+            <div style="text-align:center">
+              <div style="font-size:8px;letter-spacing:.2em;color:rgba(255,255,255,.35);margin-bottom:8px">COSMOS ANGRÉ</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;font-style:italic;color:#F5F0E8;line-height:1.2">Dimanche<br>à Cosmos.</div>
+              <div style="font-size:9px;color:rgba(245,240,232,.45);margin-top:8px">Qu'est-ce que vous faites ?</div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-a">A3</div>
+              <div class="stim-format">Social Media · 1080×1080</div>
+            </div>
+            <div class="stim-title">Post réseaux sociaux — vie quotidienne</div>
+            <div class="stim-intent">Contenu Instagram / Facebook type, 3 premiers mois. Ton familier et chaleureux. Antipode émotionnel de B3.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Format carré : <strong>1080×1080px</strong><br>
+                Photo fond : intérieur mall moderne, lumière naturelle dorée, personnes en bokeh fort (flou prononcé)<br>
+                Overlay : <strong>#1E3A28</strong> à 60% opacity sur toute la photo<br>
+                Texte central : "Dimanche\nà Cosmos." — Cormorant Italic 48pt — <strong>#F5F0E8</strong> — centré<br>
+                Sous-texte : "Qu'est-ce que vous faites ?" — Inter Regular 14pt — <strong>rgba(245,240,232,0.5)</strong><br>
+                Logo bas centré : "COSMOS ANGRÉ" Inter Light 10pt — <strong>#C9943A</strong>
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Social media</span><span class="stim-tag">Quotidien</span><span class="stim-tag">Communauté</span></div>
+          </div>
+        </div>
+
+        <!-- A4 -->
+        <div class="stim-card">
+          <div class="stim-preview prev-a4-r" style="gap:8px;flex-direction:row">
+            <!-- recto simulé -->
+            <div style="flex:1;background:#F5F0E8;border:1px solid rgba(26,20,16,.1);border-radius:6px;display:flex;align-items:center;justify-content:center;padding:10px">
+              <div style="text-align:center">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:#1E3A28">COSMOS</div>
+                <div style="font-size:7px;letter-spacing:.28em;color:#C9943A;margin-top:3px">ANGRÉ</div>
+                <div style="width:20px;height:1px;background:#C9943A;margin:5px auto"></div>
+                <div style="font-size:7px;color:rgba(26,20,16,.4);letter-spacing:.08em">16 Nov. 2026</div>
+              </div>
+            </div>
+            <!-- verso simulé -->
+            <div style="flex:1;background:#1E3A28;border-radius:6px;display:flex;align-items:center;justify-content:center;padding:10px">
+              <div style="text-align:center">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:9px;font-style:italic;color:rgba(245,240,232,.8);line-height:1.4">Vous êtes conviés à l'ouverture de votre nouveau centre de vie.</div>
+              </div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-a">A4</div>
+              <div class="stim-format">Print · A5 paysage</div>
+            </div>
+            <div class="stim-title">Carton d'invitation — inauguration 16 novembre</div>
+            <div class="stim-intent">L'invitation que les invités tiennent en main. Recto + verso simulés côte à côte sur la planche A3. Antipode de B4.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Format simulé : A5 paysage recto-verso, côte à côte sur A3<br>
+                <strong>Recto :</strong> fond <strong>#F5F0E8</strong> vergé — Logo COSMOS Cormorant Light 64pt <strong>#1E3A28</strong> + ANGRÉ Inter SemiBold espacé <strong>#C9943A</strong> — cadre filet <strong>#C9943A</strong> 0.5pt à 3mm — texte bas "Inauguration · 16 Novembre 2026 · 18h00" Inter Regular 11pt<br>
+                <strong>Verso :</strong> fond <strong>#1E3A28</strong> — "Vous êtes conviés à l'ouverture de votre nouveau centre de vie." Cormorant Italic 16pt <strong>#F5F0E8</strong> centré — filet bas <strong>#C9943A</strong> 1pt<br>
+                Simule impression laser or sur cadre recto
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Invitation</span><span class="stim-tag">Inauguration</span><span class="stim-tag">Recto-verso</span></div>
+          </div>
+        </div>
+
+        <!-- A5 FULL -->
+        <div class="stim-card full">
+          <div class="stim-preview prev-a5" style="height:120px">
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;width:100%;padding:0 10px">
+              <div style="background:#c8dcc0;border-radius:4px;height:80px"></div>
+              <div style="background:#d4ccc0;border-radius:4px;height:80px"></div>
+              <div style="background:#b8c8a8;border-radius:4px;height:80px"></div>
+              <div style="background:#e8d4a0;border-radius:4px;height:80px"></div>
+              <div style="background:#d8c8b0;border-radius:4px;height:80px"></div>
+              <div style="background:#b0a888;border-radius:4px;height:80px"></div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-a">A5</div>
+              <div class="stim-format">Moodboard · A3 paysage</div>
+            </div>
+            <div class="stim-title">Moodboard atmosphère intérieure</div>
+            <div class="stim-intent">Planche d'ambiance. Les participants visualisent l'expérience spatiale à l'intérieur du centre Piste A. Grille 3×2 photos libres de droits sur fond crème.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Format : <strong>A3 paysage</strong> · Fond planche : <strong>#F5F0E8</strong><br>
+                Titre haut gauche : "COSMOS ANGRÉ · Atmosphère Piste A" — Inter Light 12pt <strong>#1A1410</strong> espacé +0.1em<br>
+                Grille 3×2 · gouttières 4mm couleur <strong>#F5F0E8</strong> · filet <strong>#C9943A</strong> 0.5pt autour de chaque photo<br>
+                Photo 1 : intérieur végétalisé, lumière naturelle dorée, verdure dense<br>
+                Photo 2 : famille en promenade dans un mall contemporain et lumineux<br>
+                Photo 3 : épicerie fine ou marché intérieur haut de gamme, couleurs vives<br>
+                Photo 4 : restaurant terrasse, déjeuner ensoleillé, convivial<br>
+                Photo 5 : sol en pierre calcaire claire avec reflets chauds<br>
+                Photo 6 : enseigne en laiton brossé sur fond vert foncé<br>
+                Aucun texte sur les photos elles-mêmes
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Moodboard</span><span class="stim-tag">Atmosphère intérieure</span><span class="stim-tag">A3 paysage</span><span class="stim-tag">6 photos</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="note">Piste A · 5 stimuli · Brief Fernand · Cosmos Angré · Mars 2026 · Confidentiel — New Heaven SA / CRMC</div>
+  </div>
+</div>
+
+<!-- ===== PISTE B ===== -->
+<div class="page" id="pisteB">
+  <div class="hero">
+    <div class="hero-eyebrow">Stimuli Focus Group · Piste B · Destination Premium</div>
+    <div class="hero-title">5 stimuli · Bleu Nuit<br>& Or Mat</div>
+    <div class="hero-sub">Signal visuel : rupture totale, aspiration internationale, distinction silencieuse. Le participant doit ressentir "on est entré dans un autre univers".</div>
+    <div class="hero-pills">
+      <span class="pill">Playfair Display Regular</span>
+      <span class="pill">Inter Light très espacé</span>
+      <span class="pill">#060E2A · #B8924A · #D4B06A · #F2EDE3</span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="stim-wrap">
+      <div class="stim-grid">
+
+        <!-- B1 -->
+        <div class="stim-card">
+          <div class="stim-preview prev-b1">
+            <div style="text-align:center">
+              <div style="font-family:'Playfair Display',serif;font-size:30px;color:#D4B06A;letter-spacing:.04em">COSMOS</div>
+              <div style="font-size:9px;letter-spacing:.42em;color:rgba(255,255,255,.45);margin-top:5px">A N G R É</div>
+              <div style="width:24px;height:1px;background:#B8924A;margin:7px auto"></div>
+              <div style="font-size:8px;color:rgba(255,255,255,.2);letter-spacing:.14em;font-style:italic">Un monde à part</div>
+              <!-- constellation dots -->
+              <div style="position:absolute;top:14px;right:18px;opacity:.35">
+                <div style="width:3px;height:3px;background:#B8924A;border-radius:50%;margin-bottom:8px;margin-left:12px"></div>
+                <div style="width:2px;height:2px;background:#B8924A;border-radius:50%;margin-bottom:10px"></div>
+                <div style="width:3px;height:3px;background:#B8924A;border-radius:50%;margin-left:8px"></div>
+              </div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-b">B1</div>
+              <div class="stim-format">Façade · Identité</div>
+            </div>
+            <div class="stim-title">Panneau identité marque — façade</div>
+            <div class="stim-intent">Rupture totale. Premier stimulus B — doit créer une rupture immédiate avec A1 (vert) et C1 (brun). Le bleu nuit profond dit "autre univers".</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Fond : <strong>#060E2A</strong> + texture verre dépoli bruit 2%<br>
+                "COSMOS" : Playfair Display Regular 120pt Majuscules — <strong>#D4B06A</strong><br>
+                "A N G R É" : Inter Light 24pt espacement +0.4em — <strong>rgba(255,255,255,0.5)</strong><br>
+                Filet horizontal : <strong>#B8924A</strong> 0.5px, largeur 160px, centré<br>
+                Signature : "Un monde à part" Inter Light Italic 16pt espacé — <strong>rgba(255,255,255,0.25)</strong><br>
+                Constellation : points <strong>#B8924A</strong> reliés par lignes fines 0.5pt — haut droite — 20% opacity<br>
+                Aucune couleur vive · Aucun élément superflu
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Identité</span><span class="stim-tag">Rupture</span><span class="stim-tag">Constellation or</span></div>
+          </div>
+        </div>
+
+        <!-- B2 -->
+        <div class="stim-card">
+          <div class="stim-preview prev-b2">
+            <div style="text-align:left;padding:0 16px;width:100%">
+              <div style="font-family:'Playfair Display',serif;font-size:28px;color:#D4B06A;line-height:1.15">Vivez<br>l'exception.</div>
+              <div style="margin-top:12px;font-size:8px;letter-spacing:.18em;color:rgba(255,255,255,.3)">COSMOS ANGRÉ · ABIDJAN · 2026</div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-b">B2</div>
+              <div class="stim-format">Campagne · Affiche</div>
+            </div>
+            <div class="stim-title">Affiche campagne — aspiration</div>
+            <div class="stim-intent">Minimalisme absolu. Antipode de A2 — aspiration, silence, distinction. Règle : si tu hésites à enlever quelque chose, enlève-le.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Fond : <strong>#060E2A</strong><br>
+                Titre : "Vivez l'exception." — Playfair Display Regular 72pt — <strong>#D4B06A</strong> — aligné gauche marge 8%, aux 2/5 supérieurs de la hauteur<br>
+                Signature bas gauche : "Cosmos Angré · Abidjan · 2026" Inter Light 12pt +0.15em — <strong>rgba(255,255,255,0.35)</strong><br>
+                Constellation points or haut droite — même motif que B1, plus large<br>
+                <strong>Aucun autre élément. Minimalisme absolu.</strong>
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Campagne</span><span class="stim-tag">Aspiration</span><span class="stim-tag">Minimalisme absolu</span></div>
+          </div>
+        </div>
+
+        <!-- B3 -->
+        <div class="stim-card">
+          <div class="stim-preview prev-b3">
+            <div style="text-align:center">
+              <div style="font-size:8px;letter-spacing:.22em;color:rgba(255,255,255,.22);margin-bottom:12px">COSMOS ANGRÉ</div>
+              <div style="font-family:'Playfair Display',serif;font-size:26px;font-style:italic;color:#D4B06A">Ce soir.</div>
+              <div style="font-size:8px;letter-spacing:.1em;color:rgba(255,255,255,.2);margin-top:10px">cosmosangre.ci</div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-b">B3</div>
+              <div class="stim-format">Social Media · 1080×1080</div>
+            </div>
+            <div class="stim-title">Post réseaux sociaux — curation nocturne</div>
+            <div class="stim-intent">Antipode émotionnel de A3 — curé, sobre, nocturne, exclusif. Un seul mot suffit. La photo fait le travail.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Format carré : <strong>1080×1080px</strong><br>
+                Photo fond : table restaurant gastronomique, éclairage bougie très sombre, touches lumineuses chaudes — qualité photographique irréprochable<br>
+                Overlay : <strong>#060E2A</strong> à 50% opacity<br>
+                Texte : "Ce soir." — Playfair Display Italic 64pt — <strong>#D4B06A</strong> — centré<br>
+                Logo bas centré : "COSMOS ANGRÉ" Inter Light 9pt +0.25em — <strong>rgba(255,255,255,0.3)</strong><br>
+                <strong>Aucun autre texte. Mood : discret, nocturne, exclusif.</strong>
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Social media</span><span class="stim-tag">Nocturne</span><span class="stim-tag">Un mot</span></div>
+          </div>
+        </div>
+
+        <!-- B4 -->
+        <div class="stim-card">
+          <div class="stim-preview prev-b4" style="gap:8px;flex-direction:row">
+            <div style="flex:1;background:#060E2A;border-radius:6px;display:flex;align-items:center;justify-content:center;padding:10px">
+              <div style="text-align:center">
+                <div style="font-family:'Playfair Display',serif;font-size:14px;color:#D4B06A">COSMOS</div>
+                <div style="font-size:6px;letter-spacing:.38em;color:rgba(255,255,255,.4);margin-top:3px">A N G R É</div>
+                <div style="width:16px;height:1px;background:#B8924A;margin:5px auto"></div>
+                <div style="font-size:6px;color:rgba(255,255,255,.28);letter-spacing:.08em">16 Nov. 2026</div>
+              </div>
+            </div>
+            <div style="flex:1;background:#F2EDE3;border-radius:6px;display:flex;align-items:center;justify-content:center;padding:10px">
+              <div style="text-align:center">
+                <div style="font-family:'Playfair Display',serif;font-size:8px;font-style:italic;color:#0D1B4B;line-height:1.4">Vous êtes conviés à une soirée d'exception.</div>
+              </div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-b">B4</div>
+              <div class="stim-format">Print · A5 paysage</div>
+            </div>
+            <div class="stim-title">Carton d'invitation — inauguration 16 novembre</div>
+            <div class="stim-intent">Antipode de A4 — même information, univers totalement différent. Doit dire immédiatement "événement d'exception".</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Format simulé : A5 paysage recto-verso, côte à côte sur A3<br>
+                <strong>Recto :</strong> fond <strong>#060E2A</strong> — COSMOS Playfair 56pt <strong>#D4B06A</strong> + "A N G R É" Inter Light +0.4em rgba(255,255,255,0.5) — cadre filet <strong>#B8924A</strong> 0.5pt — "Inauguration · 16 Novembre 2026" Inter Light 10pt rgba(255,255,255,0.4)<br>
+                <strong>Verso :</strong> fond <strong>#F2EDE3</strong> — "Vous êtes conviés à une soirée d'exception." Playfair Italic 15pt <strong>#0D1B4B</strong> centré — cadre filet <strong>#B8924A</strong> 0.5pt<br>
+                Simule frappé à chaud or mat (différent du doré brillant)
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Invitation</span><span class="stim-tag">Exception</span><span class="stim-tag">Or mat frappé</span></div>
+          </div>
+        </div>
+
+        <!-- B5 FULL -->
+        <div class="stim-card full">
+          <div class="stim-preview prev-b5" style="height:120px">
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;width:100%;padding:0 10px">
+              <div style="background:#2a2030;border-radius:4px;height:80px"></div>
+              <div style="background:#1a2535;border-radius:4px;height:80px"></div>
+              <div style="background:#282030;border-radius:4px;height:80px"></div>
+              <div style="background:#201828;border-radius:4px;height:80px"></div>
+              <div style="background:#181525;border-radius:4px;height:80px"></div>
+              <div style="background:#2a2018;border-radius:4px;height:80px"></div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-b">B5</div>
+              <div class="stim-format">Moodboard · A3 paysage</div>
+            </div>
+            <div class="stim-title">Moodboard atmosphère intérieure — univers nocturne premium</div>
+            <div class="stim-intent">Plonge le participant dans l'univers premium de la piste B. Photos riches et sombres. Antipode du A5. Fond de planche noir nuit.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Format : <strong>A3 paysage</strong> · Fond planche : <strong>#060E2A</strong><br>
+                Titre haut gauche : "COSMOS ANGRÉ · Atmosphère Piste B" — Inter Light 12pt <strong>#D4B06A</strong> espacé<br>
+                Grille 3×2 · gouttières 3mm <strong>#060E2A</strong> · filet <strong>#B8924A</strong> 0.5pt autour de chaque photo<br>
+                Photo 1 : lobby hôtel 5 étoiles de nuit — marbres, dorures, lumière architecturale<br>
+                Photo 2 : restaurant gastronomique ambiance tamisée, assiette dressée avec soin<br>
+                Photo 3 : boutique mode internationale, éclairage vitrine architectural<br>
+                Photo 4 : cinéma premium, fauteuils velours, ambiance lounge feutrée<br>
+                Photo 5 : rooftop bar de nuit avec vue urbaine illuminée<br>
+                Photo 6 : détail architectural — marbre veiné + bronze ou acier doré<br>
+                <strong>Photos couleurs riches, non désaturées. Lumière chaude privilégiée.</strong>
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Moodboard</span><span class="stim-tag">Nocturne premium</span><span class="stim-tag">A3 paysage</span><span class="stim-tag">6 photos</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="note">Piste B · 5 stimuli · Brief Fernand · Cosmos Angré · Mars 2026 · Confidentiel — New Heaven SA / CRMC</div>
+  </div>
+</div>
+
+<!-- ===== PISTE C ===== -->
+<div class="page" id="pisteC">
+  <div class="hero">
+    <div class="hero-eyebrow">Stimuli Focus Group · Piste C · Exception de Proximité</div>
+    <div class="hero-title">5 stimuli · Bronze Africain<br>& Terracotta</div>
+    <div class="hero-sub">Signal visuel : premium chaud, identité africaine assumée, aspiration inclusive. Le participant doit ressentir "premium et chaleureux — les deux ensemble, sans contradiction".</div>
+    <div class="hero-pills">
+      <span class="pill">Cormorant Garamond SemiBold</span>
+      <span class="pill">Inter Medium</span>
+      <span class="pill">#2C1A0A · #C9943A · #8B4A1A · #F5EDE0</span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="stim-wrap">
+      <div class="stim-grid">
+
+        <!-- C1 -->
+        <div class="stim-card">
+          <div class="stim-preview prev-c1">
+            <div style="text-align:center">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:#E8C49A;letter-spacing:.07em">COSMOS</div>
+              <div style="font-size:10px;letter-spacing:.3em;color:#C9943A;margin-top:5px">ANGRÉ</div>
+              <div style="width:100%;height:4px;background:#8B4A1A;position:absolute;bottom:16px;left:0"></div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-c">C1</div>
+              <div class="stim-format">Façade · Identité</div>
+            </div>
+            <div class="stim-title">Panneau identité marque — façade</div>
+            <div class="stim-intent">La palette africaine premium doit être immédiatement distincte de A (vert) et B (bleu nuit). La bande terracotta en bas est la signature architecturale de C.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Fond : <strong>#2C1A0A</strong> mat grainé bruit 4%<br>
+                "COSMOS" : Cormorant Garamond SemiBold 120pt Majuscules — <strong>#E8C49A</strong><br>
+                "ANGRÉ" : Inter Medium 28pt espacement +0.3em — <strong>#C9943A</strong><br>
+                Signature : "Vivez l'exception, ici chez vous" — Cormorant Italic 18pt — <strong>rgba(232,196,154,0.4)</strong><br>
+                <strong>Bande architecturale :</strong> <strong>#8B4A1A</strong> 6px pleine largeur, positionnée en bas du panneau à 15% de la hauteur<br>
+                Lumière : warm 2800K ambiance — pas de halo électrique · Aucun brillant métallisé
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Identité</span><span class="stim-tag">Africain premium</span><span class="stim-tag">Bande terracotta</span></div>
+          </div>
+        </div>
+
+        <!-- C2 -->
+        <div class="stim-card">
+          <div class="stim-preview prev-c2">
+            <div style="text-align:left;padding:0 16px;width:100%;position:relative">
+              <div style="position:absolute;left:8px;top:0;bottom:0;width:2px;background:#C9943A"></div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#2C1A0A;line-height:1.1;padding-left:8px">L'exception<br>de proximité.</div>
+              <div style="margin-top:10px;font-size:9px;color:#C9943A;letter-spacing:.12em;padding-left:8px">COSMOS ANGRÉ · OUVERTURE OCT. 2026</div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-c">C2</div>
+              <div class="stim-format">Campagne · Affiche</div>
+            </div>
+            <div class="stim-title">Affiche campagne — exception inclusive</div>
+            <div class="stim-intent">Doit exprimer simultanément aspiration et chaleur — le paradoxe de la piste C en une affiche. Le filet vertical bronze est le marqueur distinctif.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Fond : <strong>#F5EDE0</strong><br>
+                Titre : "L'exception\nde proximité." — Cormorant SemiBold, taille occupant 65-70% de la hauteur — <strong>#2C1A0A</strong> — aligné gauche marge 8%<br>
+                <strong>Filet vertical :</strong> <strong>#C9943A</strong> 2px, pleine hauteur, à gauche du titre à 6% de la marge<br>
+                Logo bas gauche : "COSMOS ANGRÉ · OUVERTURE OCTOBRE 2026" Inter Medium 12pt — <strong>#C9943A</strong> espacé<br>
+                Motif de fond : géométrie africaine abstraite (chevrons kente simplifié) <strong>#8B4A1A</strong> opacity 8-10%<br>
+                Aucune photo de personnes
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Campagne</span><span class="stim-tag">Africain</span><span class="stim-tag">Filet vertical bronze</span></div>
+          </div>
+        </div>
+
+        <!-- C3 -->
+        <div class="stim-card">
+          <div class="stim-preview" style="padding:0;overflow:hidden;background:#F5EDE0">
+            <div style="height:50%;background:#2a180a;width:100%;display:flex;align-items:center;padding:0 20px">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:#F5EDE0">Ce soir</div>
+            </div>
+            <div style="height:2px;background:#C9943A;width:100%"></div>
+            <div style="height:calc(50% - 2px);background:#F5EDE0;width:100%;display:flex;align-items:center;padding:0 20px">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:#2C1A0A">Cet après-midi</div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-c">C3</div>
+              <div class="stim-format">Social Media · 1080×1080 · Split</div>
+            </div>
+            <div class="stim-title">Post réseaux sociaux — lifestyle split</div>
+            <div class="stim-intent">Montrer la polyvalence de C en une image : premium ET quotidien coexistent. Le concept "split" est la proposition la plus originale des 15 stimuli — exige une exécution maîtrisée.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Format carré : <strong>1080×1080px</strong> · <strong>Split horizontal strict 50/50</strong><br>
+                Moitié haute : photo restaurant gastronomique, lumière chaude dorée, dressage élégant<br>
+                Moitié basse : photo marché épicerie intérieure, coloré, vivant, lumière naturelle<br>
+                <strong>Ligne de séparation :</strong> filet <strong>#C9943A</strong> 2px exactement au centre<br>
+                Texte haut gauche : "Ce soir" Cormorant Italic 36pt — <strong>#F5EDE0</strong><br>
+                Texte bas gauche : "Cet après-midi" Cormorant Italic 36pt — <strong>#2C1A0A</strong><br>
+                Sur la ligne, centré : "COSMOS ANGRÉ" Inter Medium 9pt <strong>#C9943A</strong> sur fond crème <strong>#F5EDE0</strong> (boîte de 4px padding)
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Social media</span><span class="stim-tag">Split concept</span><span class="stim-tag">Polyvalence</span><span class="stim-tag">⚠ Exécution exigeante</span></div>
+          </div>
+        </div>
+
+        <!-- C4 -->
+        <div class="stim-card">
+          <div class="stim-preview prev-c4" style="gap:8px;flex-direction:row">
+            <div style="flex:1;background:#F5EDE0;border-radius:6px;display:flex;align-items:center;justify-content:center;padding:8px;position:relative;border:1px solid rgba(201,148,58,.25)">
+              <div style="position:absolute;inset:4px;border:0.5px solid rgba(201,148,58,.3);border-radius:4px"></div>
+              <div style="text-align:center">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:#2C1A0A">COSMOS</div>
+                <div style="font-size:6px;letter-spacing:.25em;color:#C9943A;margin-top:2px">ANGRÉ</div>
+                <div style="font-size:6px;color:rgba(44,26,10,.4);margin-top:4px;letter-spacing:.06em">16 Nov. 2026</div>
+              </div>
+            </div>
+            <div style="flex:1;background:#2C1A0A;border-radius:6px;display:flex;align-items:center;justify-content:center;padding:10px">
+              <div style="text-align:center">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:8px;color:rgba(232,196,154,.85);line-height:1.4">Vous êtes conviés à vivre l'exception, ici chez vous.</div>
+              </div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-c">C4</div>
+              <div class="stim-format">Print · A5 paysage</div>
+            </div>
+            <div class="stim-title">Carton d'invitation — inauguration 16 novembre</div>
+            <div class="stim-intent">"Élégance africaine" — ni copie du luxe occidental, ni folklore. La bordure géométrique kente simplifiée est la signature identitaire de ce stimulus.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Format simulé : A5 paysage recto-verso côte à côte sur A3<br>
+                <strong>Recto :</strong> fond <strong>#F5EDE0</strong> vergé — <strong>Bordure géométrique africaine</strong> (chevrons linéaires kente simplifié) <strong>#C9943A</strong> 1pt sur 4 bords, largeur 6mm — Logo COSMOS Cormorant SemiBold 56pt <strong>#2C1A0A</strong> + ANGRÉ Inter Medium espacé <strong>#C9943A</strong> — texte bas "Inauguration · 16 Novembre 2026 · 18h00" Inter Medium 10pt<br>
+                <strong>Verso :</strong> fond <strong>#2C1A0A</strong> — "Vous êtes conviés à vivre l'exception, ici chez vous." Cormorant Regular 15pt <strong>#E8C49A</strong> centré — bordure verso même motif opacity 30%<br>
+                Simule gaufrage bronze mat sur bordure recto
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Invitation</span><span class="stim-tag">Kente abstrait</span><span class="stim-tag">Africain élégant</span></div>
+          </div>
+        </div>
+
+        <!-- C5 FULL -->
+        <div class="stim-card full">
+          <div class="stim-preview prev-c5" style="height:120px">
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;width:100%;padding:0 10px">
+              <div style="background:#3a2818;border-radius:4px;height:80px"></div>
+              <div style="background:#c8a870;border-radius:4px;height:80px"></div>
+              <div style="background:#d4b880;border-radius:4px;height:80px"></div>
+              <div style="background:#e8c898;border-radius:4px;height:80px"></div>
+              <div style="background:#b87840;border-radius:4px;height:80px"></div>
+              <div style="background:#f0d8a8;border-radius:4px;height:80px"></div>
+            </div>
+          </div>
+          <div class="stim-info">
+            <div class="stim-meta">
+              <div class="stim-code code-c">C5</div>
+              <div class="stim-format">Moodboard · A3 paysage</div>
+            </div>
+            <div class="stim-title">Moodboard atmosphère intérieure — hybride africain premium</div>
+            <div class="stim-intent">Les deux pôles de C coexistent dans la même planche. Le participant doit voir premium ET chaleureux, africain ET international. La planche la plus complexe à composer des 3 moodboards.</div>
+            <div class="stim-spec-box">
+              <div class="stim-spec-label">Spécifications Fernand</div>
+              <div class="stim-spec-text">
+                Format : <strong>A3 paysage</strong> · Fond planche : <strong>#F5EDE0</strong><br>
+                Titre haut gauche : "COSMOS ANGRÉ · Atmosphère Piste C" — Inter Medium 12pt <strong>#2C1A0A</strong><br>
+                Grille 3×2 · gouttières 4mm <strong>#F5EDE0</strong> · filet <strong>#C9943A</strong> 0.5pt autour de chaque photo<br>
+                Photo 1 : restaurant africain contemporain — bois wengé, cuivre, lumière chaude<br>
+                Photo 2 : marché épicerie fine intérieure — abondance, couleurs, lumière naturelle<br>
+                Photo 3 : lobby accueil — sol grès chaud, détails bronze, plantes vertes<br>
+                Photo 4 : terrasse familiale déjeuner ensoleillé — plusieurs générations<br>
+                Photo 5 : détail artisanat — enseigne bois + laiton brossé cuivré<br>
+                Photo 6 : enfants en mouvement dans espace de jeux lumineux chaleureux<br>
+                <strong>Intention déclarée : "premium accessible, africain assumé"</strong>
+              </div>
+            </div>
+            <div class="stim-tags"><span class="stim-tag">Moodboard</span><span class="stim-tag">Africain premium</span><span class="stim-tag">Hybride</span><span class="stim-tag">A3 paysage</span><span class="stim-tag">6 photos</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="note">Piste C · 5 stimuli · Brief Fernand · Cosmos Angré · Mars 2026 · Confidentiel — New Heaven SA / CRMC</div>
+  </div>
+</div>
+
+<!-- ===== RÉCAPITULATIF ===== -->
+<div class="page" id="recap">
+  <div class="hero">
+    <div class="hero-eyebrow">Stimuli Focus Group · Récapitulatif de production</div>
+    <div class="hero-title">30 fichiers.<br>15 mars 2026.</div>
+    <div class="hero-sub">Tableau de suivi complet pour Fernand et pour la validation Pamela. Chaque stimulus, son format, son statut et sa deadline.</div>
+    <div class="hero-pills">
+      <span class="pill">15 stimuli</span>
+      <span class="pill">30 fichiers</span>
+      <span class="pill">Deadline ferme 15/03</span>
+    </div>
+  </div>
+  <div class="content">
+
+    <div class="section">
+      <div class="sec-hdr"><div class="sec-ey">Tableau de suivi</div><div class="sec-ti">Tous les livrables</div></div>
+      <div class="card">
+        <table class="recap-tbl">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Titre</th>
+              <th>Format print</th>
+              <th>Format écran</th>
+              <th>Nommage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="code-a">A1</td><td>Panneau identité façade — Piste A</td><td>A3 portrait · 300dpi</td><td>1920×1080px</td><td>CosmosAngré_A1_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-a">A2</td><td>Affiche campagne lancement — Piste A</td><td>A3 portrait · 300dpi</td><td>1920×1080px</td><td>CosmosAngré_A2_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-a">A3</td><td>Post réseaux sociaux quotidien — Piste A</td><td>1080×1080px · 300dpi</td><td>1080×1080px</td><td>CosmosAngré_A3_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-a">A4</td><td>Carton invitation inauguration — Piste A</td><td>A5 sur A3 · 300dpi</td><td>1920×1080px</td><td>CosmosAngré_A4_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-a">A5</td><td>Moodboard atmosphère intérieure — Piste A</td><td>A3 paysage · 300dpi</td><td>1920×1080px</td><td>CosmosAngré_A5_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-b">B1</td><td>Panneau identité façade — Piste B</td><td>A3 portrait · 300dpi</td><td>1920×1080px</td><td>CosmosAngré_B1_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-b">B2</td><td>Affiche campagne aspiration — Piste B</td><td>A3 portrait · 300dpi</td><td>1920×1080px</td><td>CosmosAngré_B2_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-b">B3</td><td>Post réseaux sociaux nocturne — Piste B</td><td>1080×1080px · 300dpi</td><td>1080×1080px</td><td>CosmosAngré_B3_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-b">B4</td><td>Carton invitation inauguration — Piste B</td><td>A5 sur A3 · 300dpi</td><td>1920×1080px</td><td>CosmosAngré_B4_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-b">B5</td><td>Moodboard atmosphère nocturne — Piste B</td><td>A3 paysage · 300dpi</td><td>1920×1080px</td><td>CosmosAngré_B5_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-c">C1</td><td>Panneau identité façade — Piste C</td><td>A3 portrait · 300dpi</td><td>1920×1080px</td><td>CosmosAngré_C1_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-c">C2</td><td>Affiche campagne inclusive — Piste C</td><td>A3 portrait · 300dpi</td><td>1920×1080px</td><td>CosmosAngré_C2_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-c">C3</td><td>Post réseaux sociaux split — Piste C</td><td>1080×1080px · 300dpi</td><td>1080×1080px</td><td>CosmosAngré_C3_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-c">C4</td><td>Carton invitation kente — Piste C</td><td>A5 sur A3 · 300dpi</td><td>1920×1080px</td><td>CosmosAngré_C4_print.pdf / _ecran.png</td></tr>
+            <tr><td class="code-c">C5</td><td>Moodboard atmosphère hybride — Piste C</td><td>A3 paysage · 300dpi</td><td>1920×1080px</td><td>CosmosAngré_C5_print.pdf / _ecran.png</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="sec-hdr"><div class="sec-ey">Points d'attention</div><div class="sec-ti">Ce qui peut bloquer la production</div></div>
+      <div class="grid-2">
+        <div class="warn-box">
+          <div class="warn-label">Stimulus C3 — Risque d'exécution</div>
+          <div class="warn-text">Le concept "split" de C3 est le plus exigeant photographiquement. Si les deux photos choisies n'ont pas le même niveau qualitatif (lumière, composition), l'une des deux moitiés "tire vers le bas" l'ensemble. Prévoir une version alternative C3b plus simple en cas de doute.</div>
+        </div>
+        <div class="warn-box">
+          <div class="warn-label">Cohérence or Piste B — B1, B2, B4</div>
+          <div class="warn-text">L'or de la bardade (#B8924A) et les accents or des stimuli B doivent être dans la même famille chromatique. Un décalage entre #B8924A et #D4B06A visibles côte à côte tue l'effet premium. Vérifier sur écran calibré et sur imprimé avant validation.</div>
+        </div>
+        <div class="ok-box">
+          <div class="ok-label">Règle de présentation en FG</div>
+          <div class="ok-text">Les stimuli seront présentés comme "Projet 1, 2, 3" — jamais "Piste A, B, C". L'ordre de présentation est fixe dans les 3 sessions pour la comparabilité. Les enveloppes de stimuli sont numérotées 1/2/3 — pas A/B/C.</div>
+        </div>
+        <div class="ok-box">
+          <div class="ok-label">Validation finale</div>
+          <div class="ok-text">Remise à Pamela Atokouna avant le 15/03 à 18h00. Un round de corrections est prévu dans le planning. Après validation, aucune modification — les stimuli partent en impression le 17/03 pour les sessions FG 20-22/03.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      Stimuli Focus Group · 15 stimuli · 30 fichiers · Cosmos Angré · Brief Fernand · Mars 2026 · Confidentiel EXCO — New Heaven SA / CRMC<br>
+      Deadline ferme : 15 mars 2026 · Validation : Pamela Atokouna · Sessions FG : 20-22 mars 2026
+    </div>
+  </div>
+</div>
+
+<button class="export-btn" onclick="window.print()">⬇ Imprimer / PDF</button>
+
+<script>
+function show(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const m={intro:0,pisteA:1,pisteB:2,pisteC:3,recap:4};
+  document.querySelectorAll('.nav-tab')[m[id]].classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

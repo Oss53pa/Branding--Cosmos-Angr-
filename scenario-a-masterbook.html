@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmos Angré — Brand & Tenant Master Book · Scénario A</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --foret:#2F5439; --foret-deep:#1a3020;
+  --kaki:#76764D; --or:#C9943A;
+  --or-doux:#E8C97A; --sable:#F2EBDD;
+  --pierre:#E4DDD0; --blanc-chaud:#FAF8F3;
+  --gris-chaud:#8A8278;
+  --noir-chaud:#1A1410;
+  --gris-nav:#F5F5F5; --gris-nav-border:#E0E0E0; --gris-nav-text:#555;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--blanc-chaud);color:var(--noir-chaud);}
+
+nav{position:fixed;top:0;left:0;width:240px;height:100vh;background:#fff;border-right:1px solid rgba(47,84,57,0.08);overflow-y:auto;z-index:200;display:flex;flex-direction:column;}
+nav::-webkit-scrollbar{width:2px;}
+nav::-webkit-scrollbar-thumb{background:rgba(201,148,58,0.3);}
+.nav-brand{padding:28px 24px 22px;border-bottom:1px solid rgba(47,84,57,0.07);}
+.nav-brand-name{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:3px;color:var(--foret);text-transform:uppercase;}
+.nav-brand-sub{font-size:8px;letter-spacing:2px;color:var(--or);margin-top:3px;text-transform:uppercase;}
+.nav-group{padding:0;border-bottom:1px solid var(--gris-nav-border);}
+.nav-group-header{display:flex;align-items:center;justify-content:space-between;padding:11px 20px 11px 24px;background:var(--gris-nav);cursor:pointer;user-select:none;}
+.nav-group-label{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gris-nav-text);}
+.nav-group-badge{font-size:7px;padding:2px 8px;border-radius:10px;letter-spacing:1px;font-weight:600;}
+.badge-brand{background:rgba(47,84,57,0.1);color:var(--foret);}
+.badge-bw{background:rgba(26,20,16,0.08);color:var(--noir-chaud);}
+.badge-tenant{background:rgba(118,118,77,0.12);color:var(--kaki);}
+.nav-group-arrow{font-size:9px;color:var(--gris-nav-text);transition:transform .2s;}
+.nav-group.open .nav-group-arrow{transform:rotate(90deg);}
+.nav-group-links{display:none;background:#fff;}
+.nav-group.open .nav-group-links{display:block;}
+nav a{display:flex;align-items:center;gap:10px;padding:7px 24px;font-size:10px;letter-spacing:0.2px;color:rgba(47,84,57,0.4);text-decoration:none;transition:all .2s;border-left:2px solid transparent;}
+nav a:hover{color:var(--foret);background:rgba(47,84,57,0.02);}
+nav a.active{color:var(--foret);border-left-color:var(--foret);background:rgba(47,84,57,0.04);}
+nav a.active.t{color:var(--kaki);border-left-color:var(--kaki);background:rgba(118,118,77,0.04);}
+nav a.active.bw{color:var(--noir-chaud);border-left-color:var(--noir-chaud);background:rgba(26,20,16,0.03);}
+nav a .n{font-size:8px;color:var(--or);margin-right:1px;font-family:'Cormorant Garamond',serif;font-weight:600;}
+.nav-footer{margin-top:auto;padding:18px 24px;border-top:1px solid rgba(47,84,57,0.07);}
+.nav-footer p{font-size:7.5px;color:rgba(47,84,57,0.2);letter-spacing:1px;line-height:1.9;}
+
+main{margin-left:240px;}
+.bg-white{background:#fff;}
+.bg-warm{background:var(--blanc-chaud);}
+.bg-pierre{background:var(--pierre);}
+.bg-foret{background:var(--foret-deep);color:var(--sable);}
+.bg-foret2{background:var(--foret);color:var(--sable);}
+.bg-kaki{background:var(--kaki);color:var(--sable);}
+.bg-gris{background:#EDEBE6;color:var(--noir-chaud);}
+section{padding:72px 64px;position:relative;overflow:hidden;}
+
+.eyebrow{font-size:8px;letter-spacing:3.5px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.eyebrow::after{content:'';flex:0 0 28px;height:1px;}
+.eyebrow.dark{color:var(--or);}
+.eyebrow.dark::after{background:rgba(201,148,58,0.4);}
+.eyebrow.light{color:var(--foret);}
+.eyebrow.light::after{background:rgba(47,84,57,0.3);}
+.eyebrow.green{color:var(--kaki);}
+.eyebrow.green::after{background:rgba(118,118,77,0.3);}
+.eyebrow.grey{color:var(--gris-chaud);}
+.eyebrow.grey::after{background:rgba(138,130,120,0.4);}
+
+h2{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:600;line-height:1.05;margin-bottom:6px;}
+h2.dark{color:var(--sable);}
+h2.light{color:var(--noir-chaud);}
+.sub{font-size:10.5px;letter-spacing:1.5px;color:var(--gris-chaud);text-transform:uppercase;margin-bottom:52px;}
+.divider{width:36px;height:1px;background:var(--or);margin-bottom:48px;}
+.divider.foret{background:var(--foret);}
+.divider.kaki{background:var(--kaki);}
+.divider.gris{background:var(--gris-chaud);}
+
+.ch-break{padding:36px 64px;display:flex;align-items:center;justify-content:space-between;}
+.ch-num{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:700;line-height:1;opacity:.12;}
+.ch-content .ch-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;opacity:.6;}
+.ch-content .ch-title{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;}
+.ch-badge{font-size:8px;padding:5px 14px;border:1px solid currentColor;letter-spacing:2px;text-transform:uppercase;opacity:.5;}
+
+.hero-wrap{min-height:100vh;display:grid;grid-template-columns:55% 45%;}
+.hero-l{background:var(--foret-deep);color:var(--sable);padding:80px 64px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;}
+.hero-l-glow{position:absolute;top:-10%;left:-10%;width:60%;height:60%;background:radial-gradient(ellipse,rgba(201,148,58,0.06),transparent 70%);pointer-events:none;}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:84px;font-weight:700;line-height:.95;letter-spacing:-2px;}
+.hero-h1 span{color:var(--or);}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:rgba(242,235,221,0.55);line-height:1.6;}
+.hero-r{background:var(--sable);padding:64px 48px;display:flex;flex-direction:column;justify-content:space-between;}
+.hero-r-top{border-bottom:1px solid rgba(47,84,57,0.1);padding-bottom:36px;margin-bottom:36px;}
+.hero-r-label{font-size:7.5px;letter-spacing:3px;color:var(--foret);text-transform:uppercase;margin-bottom:12px;}
+.hero-r-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--noir-chaud);margin-bottom:8px;}
+.hero-r-text{font-size:10px;color:var(--gris-chaud);line-height:1.8;}
+.hero-r-kpi{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.kpi{padding:20px;background:rgba(47,84,57,0.04);border:1px solid rgba(47,84,57,0.1);}
+.kpi-val{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:700;color:var(--foret);}
+.kpi-label{font-size:8.5px;color:var(--gris-chaud);margin-top:3px;line-height:1.5;}
+
+.toc-wrap{background:#EDEBE6;border:1px solid rgba(47,84,57,0.08);padding:40px;}
+.toc-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--noir-chaud);margin-bottom:28px;}
+.toc-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;}
+.toc-col-head{font-size:8px;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(47,84,57,0.1);}
+.toc-col-head.brand{color:var(--foret);}
+.toc-col-head.bw{color:var(--noir-chaud);}
+.toc-col-head.tenant{color:var(--kaki);}
+.toc-item{display:flex;align-items:baseline;gap:8px;margin-bottom:8px;}
+.toc-item-num{font-size:8px;color:var(--or);font-family:'Cormorant Garamond',serif;font-weight:600;flex-shrink:0;}
+.toc-item-label{font-size:9.5px;color:var(--noir-chaud);line-height:1.4;}
+
+.pal-correct-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(47,84,57,0.08);}
+.pcol{border-right:1px solid rgba(47,84,57,0.08);}
+.pcol:last-child{border-right:none;}
+.pcol-swatch{height:120px;position:relative;}
+.pcol-swatch-inner{position:absolute;inset:0;}
+.pcol-body{padding:20px 18px;background:#fff;}
+.pcol-role{font-size:7.5px;letter-spacing:2px;color:var(--foret);text-transform:uppercase;margin-bottom:4px;}
+.pcol-name{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;color:var(--noir-chaud);}
+.pcol-hex{font-size:8px;color:var(--gris-chaud);font-family:monospace;margin:3px 0 8px;}
+.pcol-where{font-size:8.5px;color:rgba(47,84,57,0.5);line-height:1.6;border-top:1px solid rgba(47,84,57,0.06);padding-top:8px;}
+
+.prop-master{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px;}
+.prop-card{border:1px solid rgba(47,84,57,0.08);overflow:hidden;}
+.prop-card-header{padding:20px 24px;border-bottom:1px solid rgba(47,84,57,0.07);}
+.prop-card-title{font-size:10px;font-weight:600;color:var(--noir-chaud);margin-bottom:2px;}
+.prop-card-sub{font-size:8.5px;color:var(--gris-chaud);}
+.prop-bar-wrap{padding:24px;}
+.prop-bar{display:flex;height:48px;border-radius:1px;overflow:hidden;margin-bottom:16px;}
+.prop-seg{display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;}
+.prop-legend{display:flex;flex-direction:column;gap:8px;}
+.prop-leg-row{display:flex;align-items:center;gap:10px;}
+.prop-leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+.prop-leg-label{font-size:9px;color:var(--noir-chaud);flex:1;}
+.prop-leg-pct{font-size:9px;color:var(--gris-chaud);font-weight:600;}
+
+.logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(47,84,57,0.08);margin-bottom:32px;}
+.logo-card{display:flex;flex-direction:column;}
+.logo-vis{height:160px;display:flex;align-items:center;justify-content:center;}
+.logo-body{padding:16px 18px;background:#fff;}
+.logo-tag{font-size:7.5px;letter-spacing:2px;color:var(--foret);text-transform:uppercase;margin-bottom:4px;}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;color:var(--noir-chaud);margin-bottom:3px;}
+.logo-spec{font-size:8px;color:var(--gris-chaud);line-height:1.5;}
+
+.sign-wf-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;}
+.swf-card{border:1px solid rgba(47,84,57,0.08);overflow:hidden;}
+.swf-vis{height:220px;display:flex;align-items:center;justify-content:center;position:relative;}
+.swf-body{padding:18px 20px;background:#fff;}
+.swf-title{font-size:11px;font-weight:600;color:var(--noir-chaud);margin-bottom:5px;}
+.swf-spec{font-size:9px;color:var(--gris-chaud);line-height:1.6;}
+
+.zone-badges{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;}
+.zone-badge{display:flex;flex-direction:column;align-items:center;justify-content:center;width:90px;height:90px;border-radius:50%;font-family:'Cormorant Garamond',serif;}
+.zone-badge-num{font-size:20px;font-weight:700;line-height:1;}
+.zone-badge-label{font-size:7px;letter-spacing:1.5px;text-transform:uppercase;margin-top:3px;text-align:center;line-height:1.3;}
+
+.coll-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px;}
+.coll-item{border:1px solid rgba(47,84,57,0.08);overflow:hidden;}
+.coll-vis{height:120px;display:flex;align-items:center;justify-content:center;position:relative;}
+.coll-body{padding:14px 16px;background:#fff;}
+.coll-name{font-size:10px;font-weight:600;color:var(--noir-chaud);margin-bottom:2px;}
+.coll-spec{font-size:8px;color:var(--gris-chaud);line-height:1.5;}
+
+.pc-card{background:#fff;border:1px solid rgba(47,84,57,0.08);padding:24px;}
+.pc-step{font-size:7.5px;letter-spacing:2px;color:var(--foret);text-transform:uppercase;margin-bottom:5px;}
+.pc-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--noir-chaud);margin-bottom:8px;}
+.pc-text{font-size:9px;color:var(--gris-chaud);line-height:1.7;}
+.pc-quote{font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:var(--foret);margin-top:8px;}
+
+.tenant-intro{background:rgba(118,118,77,0.06);border:1px solid rgba(118,118,77,0.2);padding:32px 36px;margin-bottom:40px;display:flex;align-items:flex-start;gap:20px;}
+.tenant-intro-icon{font-size:28px;flex-shrink:0;}
+.tenant-intro-text{font-size:11px;color:var(--noir-chaud);line-height:1.8;}
+.tenant-intro-text strong{color:var(--kaki);}
+
+.facade-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px;}
+.facade-card{overflow:hidden;border:1px solid rgba(47,84,57,0.08);}
+.facade-visual{height:240px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;}
+.facade-zone{position:absolute;border:2px dashed;display:flex;align-items:center;justify-content:center;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;}
+.facade-body{padding:20px 22px;background:#fff;}
+.facade-title{font-size:11px;font-weight:600;color:var(--noir-chaud);margin-bottom:6px;}
+.facade-rules{display:flex;flex-direction:column;gap:6px;}
+.facade-rule{display:flex;gap:8px;font-size:9px;color:var(--gris-chaud);line-height:1.5;}
+.facade-rule::before{content:'→';color:var(--foret);flex-shrink:0;}
+.facade-rule.ok::before{content:'✓';color:var(--kaki);}
+.facade-rule.no::before{content:'✗';color:#c0392b;}
+
+.plan-wrap{background:#fff;border:1px solid rgba(47,84,57,0.08);padding:32px;margin-bottom:32px;}
+.plan-svg-area{height:320px;background:var(--blanc-chaud);border:1px solid rgba(47,84,57,0.07);position:relative;display:grid;grid-template-columns:1fr 3fr 1fr;grid-template-rows:1fr 2fr 1fr;gap:4px;padding:16px;margin-bottom:20px;}
+.plan-cell{background:rgba(47,84,57,0.03);border:1px solid rgba(47,84,57,0.07);display:flex;align-items:center;justify-content:center;font-size:8px;text-align:center;color:var(--gris-chaud);letter-spacing:1px;text-transform:uppercase;padding:8px;}
+.plan-cell.anchor{background:rgba(47,84,57,0.08);border:1px solid rgba(47,84,57,0.2);font-weight:600;color:var(--foret);}
+.plan-cell.cosmos{background:rgba(201,148,58,0.08);border:1px solid rgba(201,148,58,0.25);font-weight:600;color:var(--or);}
+.plan-legend{display:flex;gap:20px;flex-wrap:wrap;}
+.plan-leg{display:flex;align-items:center;gap:8px;font-size:9px;color:var(--gris-chaud);}
+.plan-leg-sq{width:12px;height:12px;border-radius:1px;flex-shrink:0;}
+.gabarit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.gab-card{background:#fff;border:1px solid rgba(47,84,57,0.08);padding:20px;}
+.gab-type{font-size:8px;letter-spacing:2px;color:var(--foret);text-transform:uppercase;margin-bottom:8px;}
+.gab-dim{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--noir-chaud);margin-bottom:6px;}
+.gab-note{font-size:8.5px;color:var(--gris-chaud);line-height:1.6;}
+
+.commun-rule-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(47,84,57,0.08);margin-bottom:32px;}
+.cr-card{background:#fff;padding:32px;}
+.cr-zone{font-size:8px;letter-spacing:2px;color:var(--foret);text-transform:uppercase;margin-bottom:12px;}
+.cr-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--noir-chaud);margin-bottom:16px;}
+.cr-bar{display:flex;height:32px;border-radius:1px;overflow:hidden;margin-bottom:12px;}
+.cr-bar-seg{display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:600;}
+.cr-rules{display:flex;flex-direction:column;gap:6px;}
+.cr-rule{font-size:9px;color:var(--gris-chaud);display:flex;gap:8px;line-height:1.5;}
+.cr-rule::before{content:'—';color:rgba(47,84,57,0.2);flex-shrink:0;}
+
+.mat-allowed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:32px;}
+.mat-a-card{border:1px solid rgba(47,84,57,0.08);overflow:hidden;}
+.mat-a-swatch{height:140px;position:relative;overflow:hidden;}
+.mat-a-body{padding:18px 20px;background:#fff;}
+.mat-a-status{font-size:7px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.status-ok{color:var(--kaki);}
+.status-cond{color:var(--or);}
+.status-no{color:#c0392b;}
+.mat-a-name{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--noir-chaud);margin-bottom:5px;}
+.mat-a-rule{font-size:8.5px;color:var(--gris-chaud);line-height:1.6;}
+
+.sign-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.sign-card{border:1px solid rgba(47,84,57,0.08);overflow:hidden;}
+.sign-prev{height:160px;display:flex;align-items:center;justify-content:center;position:relative;}
+.sign-body{padding:16px 18px;background:#fff;}
+.sign-title{font-size:10px;font-weight:600;color:var(--noir-chaud);margin-bottom:4px;}
+.sign-spec{font-size:8.5px;color:var(--gris-chaud);line-height:1.6;}
+.sign-allowed{margin-top:8px;display:flex;flex-wrap:wrap;gap:4px;}
+.sign-tag{font-size:7.5px;padding:3px 8px;border-radius:10px;}
+.sign-yes{background:rgba(118,118,77,0.08);color:var(--kaki);border:1px solid rgba(118,118,77,0.2);}
+.sign-no{background:rgba(192,57,43,0.05);color:#c0392b;border:1px solid rgba(192,57,43,0.15);text-decoration:line-through;}
+
+.comms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.comm-card{overflow:hidden;border:1px solid rgba(201,148,58,0.15);}
+.comm-vis{height:220px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;}
+.comm-body{padding:18px 20px;}
+.comm-title{font-size:11px;font-weight:500;color:var(--sable);margin-bottom:3px;}
+.comm-spec{font-size:8.5px;color:rgba(242,235,221,0.35);}
+
+.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(47,84,57,0.08);}
+.risk-c{padding:36px;background:#fff;}
+.risk-head{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.risk-dot{width:10px;height:10px;border-radius:50%;}
+.risk-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;}
+.risk-items{display:flex;flex-direction:column;gap:10px;}
+.risk-item{display:flex;gap:10px;font-size:10px;color:rgba(47,84,57,0.55);line-height:1.6;}
+.risk-item::before{content:'—';flex-shrink:0;color:rgba(47,84,57,0.2);}
+
+.gallery-3d-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-bottom:24px;}
+.g3d-main{height:360px;position:relative;overflow:hidden;}
+.g3d-side{display:flex;flex-direction:column;gap:20px;}
+.g3d-small{flex:1;position:relative;overflow:hidden;}
+.g3d-label{position:absolute;bottom:16px;left:16px;z-index:2;}
+.g3d-label-tag{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;opacity:.7;}
+.g3d-label-name{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;}
+
+.finale{min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 64px;background:var(--foret-deep);position:relative;overflow:hidden;}
+.finale::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,148,58,0.07),transparent 65%);}
+
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:#fff;}
+::-webkit-scrollbar-thumb{background:rgba(47,84,57,0.15);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-brand-name">Cosmos Angré</div>
+    <div class="nav-brand-sub">Master Book · Scénario A · Mars 2026</div>
+  </div>
+  <div class="nav-group open" id="ng-a">
+    <div class="nav-group-header" onclick="toggleGroup('ng-a')">
+      <span class="nav-group-label">Stratégie</span>
+      <span style="display:flex;align-items:center;gap:6px;"><span class="nav-group-badge badge-brand">Brand Book</span><span class="nav-group-arrow">›</span></span>
+    </div>
+    <div class="nav-group-links">
+      <a href="#hero"><span class="n">—</span>Couverture</a>
+      <a href="#toc"><span class="n">—</span>Sommaire</a>
+      <a href="#usp"><span class="n">A1</span>USP & Positionnement</a>
+      <a href="#kapferer"><span class="n">A2</span>Prisme de Kapferer</a>
+      <a href="#valeurs"><span class="n">A3</span>Valeurs & Ton</a>
+      <a href="#signatures"><span class="n">A4</span>Signatures</a>
+      <a href="#palette"><span class="n">A5</span>Palette chromatique</a>
+      <a href="#proportions"><span class="n">A6</span>Proportions réelles</a>
+      <a href="#typo"><span class="n">A7</span>Typographie</a>
+      <a href="#matieres"><span class="n">A8</span>Matières fondatrices</a>
+      <a href="#comms"><span class="n">A9</span>Communication</a>
+    </div>
+  </div>
+  <div class="nav-group open" id="ng-b">
+    <div class="nav-group-header" onclick="toggleGroup('ng-b')">
+      <span class="nav-group-label">Brand World</span>
+      <span style="display:flex;align-items:center;gap:6px;"><span class="nav-group-badge badge-bw">Identité</span><span class="nav-group-arrow">›</span></span>
+    </div>
+    <div class="nav-group-links">
+      <a href="#bw-logo" class="bw"><span class="n">B1</span>Déclinaisons logo</a>
+      <a href="#bw-signa" class="bw"><span class="n">B2</span>Signalétique & Wayfinding</a>
+      <a href="#bw-collection" class="bw"><span class="n">B3</span>Collection de marque</a>
+      <a href="#bw-parcours" class="bw"><span class="n">B4</span>Parcours client</a>
+    </div>
+  </div>
+  <div class="nav-group open" id="ng-c">
+    <div class="nav-group-header" onclick="toggleGroup('ng-c')">
+      <span class="nav-group-label">Tenant Guidelines</span>
+      <span style="display:flex;align-items:center;gap:6px;"><span class="nav-group-badge badge-tenant">Enseignes</span><span class="nav-group-arrow">›</span></span>
+    </div>
+    <div class="nav-group-links">
+      <a href="#intro-tenant" class="t"><span class="n">C1</span>Introduction enseignes</a>
+      <a href="#charte-facade" class="t"><span class="n">C2</span>Charte façade boutique</a>
+      <a href="#zones" class="t"><span class="n">C3</span>Zones & Gabarits</a>
+      <a href="#espaces-communs" class="t"><span class="n">C4</span>Espaces communs</a>
+      <a href="#materiaux" class="t"><span class="n">C5</span>Matériaux autorisés</a>
+      <a href="#signaletique-tenant" class="t"><span class="n">C6</span>Signalétique enseigne</a>
+      <a href="#galeries-3d" class="t"><span class="n">C7</span>Visuels galeries</a>
+      <a href="#risques"><span class="n">D1</span>Risques & Avantage</a>
+    </div>
+  </div>
+  <div class="nav-footer"><p>Confidentiel EXCO<br>New Heaven SA / CRMC<br>© 2026</p></div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section style="padding:0;" id="hero">
+  <div class="hero-wrap">
+    <div class="hero-l">
+      <div class="hero-l-glow"></div>
+      <div style="position:relative;z-index:1;">
+        <div style="font-size:8px;letter-spacing:4px;color:rgba(201,148,58,0.6);text-transform:uppercase;margin-bottom:28px;">Brand & Tenant Master Book · Scénario A · Premium de Proximité</div>
+        <div class="hero-h1">Cosmos<br><span>Angré</span></div>
+        <div style="width:40px;height:1px;background:var(--or);margin:28px 0;"></div>
+        <div class="hero-tagline">"Enfin tout,<br>enfin ici."</div>
+      </div>
+      <div style="position:relative;z-index:1;font-size:7.5px;color:rgba(242,235,221,0.2);letter-spacing:2px;">DOCUMENT EXCO CONFIDENTIEL · NEW HEAVEN SA / CRMC · MARS 2026</div>
+    </div>
+    <div class="hero-r">
+      <div class="hero-r-top">
+        <div class="hero-r-label">Ce document</div>
+        <div class="hero-r-title">Trois parties intégrées</div>
+        <div class="hero-r-text">
+          <strong style="color:var(--foret);">Partie A — Stratégie & Brand Book :</strong> l'identité de marque ancrée dans le quartier — proportions chromatiques, système visuel, ton chaleureux.<br><br>
+          <strong style="color:var(--noir-chaud);">Partie B — Brand World :</strong> les déclinaisons logo, la signalétique naturelle, la collection de marque et le parcours client du quotidien.<br><br>
+          <strong style="color:var(--kaki);">Partie C — Tenant Guidelines :</strong> les règles d'aménagement pour les enseignes — façades, signalétique, matériaux, gabarits.<br><br>
+          Philosophie commune : un cadre naturel et ancré qui libère les enseignes tout en affirmant l'identité Cosmos sur les points de contact stratégiques.
+        </div>
+      </div>
+      <div class="hero-r-kpi">
+        <div class="kpi"><div class="kpi-val">Oct. 26</div><div class="kpi-label">Soft opening<br>Cosmos Angré</div></div>
+        <div class="kpi"><div class="kpi-val">Nov. 26</div><div class="kpi-label">Inauguration<br>officielle</div></div>
+        <div class="kpi"><div class="kpi-val">60%</div><div class="kpi-label">Sortirent de Cocody<br>pour consommer</div></div>
+        <div class="kpi"><div class="kpi-val">93%</div><div class="kpi-label">Favorables<br>à l'ouverture</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOC -->
+<section class="bg-gris" id="toc" style="padding:56px 64px;">
+  <div class="eyebrow grey">Sommaire</div>
+  <div class="toc-wrap">
+    <div class="toc-title">Table des matières</div>
+    <div class="toc-cols">
+      <div>
+        <div class="toc-col-head brand">Partie A · Stratégie & Brand Book</div>
+        <div class="toc-item"><span class="toc-item-num">A1</span><span class="toc-item-label">USP & Positionnement</span></div>
+        <div class="toc-item"><span class="toc-item-num">A2</span><span class="toc-item-label">Prisme de Kapferer</span></div>
+        <div class="toc-item"><span class="toc-item-num">A3</span><span class="toc-item-label">Valeurs & Ton éditorial</span></div>
+        <div class="toc-item"><span class="toc-item-num">A4</span><span class="toc-item-label">Signatures verbales</span></div>
+        <div class="toc-item"><span class="toc-item-num">A5</span><span class="toc-item-label">Palette chromatique</span></div>
+        <div class="toc-item"><span class="toc-item-num">A6</span><span class="toc-item-label">Proportions réelles</span></div>
+        <div class="toc-item"><span class="toc-item-num">A7</span><span class="toc-item-label">Typographie</span></div>
+        <div class="toc-item"><span class="toc-item-num">A8</span><span class="toc-item-label">Matières fondatrices</span></div>
+        <div class="toc-item"><span class="toc-item-num">A9</span><span class="toc-item-label">Supports de communication</span></div>
+      </div>
+      <div>
+        <div class="toc-col-head bw">Partie B · Brand World</div>
+        <div class="toc-item"><span class="toc-item-num">B1</span><span class="toc-item-label">Déclinaisons logo — 6 versions</span></div>
+        <div class="toc-item"><span class="toc-item-num">B2</span><span class="toc-item-label">Signalétique & Wayfinding</span></div>
+        <div class="toc-item"><span class="toc-item-num">B3</span><span class="toc-item-label">Collection de marque</span></div>
+        <div class="toc-item"><span class="toc-item-num">B4</span><span class="toc-item-label">Parcours client</span></div>
+      </div>
+      <div>
+        <div class="toc-col-head tenant">Partie C · Tenant Guidelines</div>
+        <div class="toc-item"><span class="toc-item-num">C1</span><span class="toc-item-label">Introduction enseignes</span></div>
+        <div class="toc-item"><span class="toc-item-num">C2</span><span class="toc-item-label">Charte façade boutique</span></div>
+        <div class="toc-item"><span class="toc-item-num">C3</span><span class="toc-item-label">Zones & Gabarits</span></div>
+        <div class="toc-item"><span class="toc-item-num">C4</span><span class="toc-item-label">Espaces communs</span></div>
+        <div class="toc-item"><span class="toc-item-num">C5</span><span class="toc-item-label">Matériaux autorisés</span></div>
+        <div class="toc-item"><span class="toc-item-num">C6</span><span class="toc-item-label">Signalétique enseigne</span></div>
+        <div class="toc-item"><span class="toc-item-num">C7</span><span class="toc-item-label">Visuels galeries</span></div>
+        <div class="toc-item"><span class="toc-item-num">D1</span><span class="toc-item-label">Risques & Avantage stratégique</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPITRE A -->
+<div class="ch-break bg-foret2" id="ch-a">
+  <div class="ch-num" style="color:rgba(242,235,221,0.12);">A</div>
+  <div class="ch-content" style="color:var(--sable);">
+    <div class="ch-label">Partie A</div>
+    <div class="ch-title">Stratégie & Brand Book</div>
+  </div>
+  <div class="ch-badge" style="color:var(--sable);">Identité · Positionnement</div>
+</div>
+
+<!-- A1 — USP -->
+<section class="bg-white" id="usp">
+  <div class="eyebrow light">A1 · USP</div>
+  <h2 class="light">Proposition de valeur unique</h2>
+  <div class="sub">Ce qui ancre Cosmos Angré dans le quotidien de la zone</div>
+  <div class="divider foret"></div>
+  <div style="background:rgba(47,84,57,0.04);border:1px solid rgba(47,84,57,0.15);padding:44px;margin-bottom:40px;">
+    <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--noir-chaud);line-height:1.5;">
+      Cosmos Angré est le centre commercial que la zone attendait depuis dix ans :<br>
+      <strong style="font-weight:700;color:var(--foret);">une qualité premium accessible au quotidien, enfin à 10 minutes de chez vous.</strong>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(47,84,57,0.08);">
+    <div style="background:#fff;padding:28px 22px;"><div style="width:20px;height:2px;background:var(--foret);margin-bottom:16px;"></div><div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--noir-chaud);margin-bottom:8px;">Complétude de l'offre</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.7;">Carrefour + mode + restauration + services + cinéma. Tout, enfin ici. En un seul déplacement.</div></div>
+    <div style="background:#fff;padding:28px 22px;"><div style="width:20px;height:2px;background:var(--or);margin-bottom:16px;"></div><div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--noir-chaud);margin-bottom:8px;">Proximité stratégique</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.7;">60% des résidents de la zone sortaient de Cocody pour consommer. Ce temps perdu est rendu.</div></div>
+    <div style="background:#fff;padding:28px 22px;"><div style="width:20px;height:2px;background:var(--kaki);margin-bottom:16px;"></div><div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--noir-chaud);margin-bottom:8px;">Fréquence & fidélité</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.7;">Un centre de vie, pas une destination. 3 à 5 visites par mois. La qualité au rythme du quotidien.</div></div>
+    <div style="background:#fff;padding:28px 22px;"><div style="width:20px;height:2px;background:var(--or-doux);margin-bottom:16px;"></div><div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--noir-chaud);margin-bottom:8px;">Ancrage de quartier</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.7;">93% favorables à l'ouverture. La zone attendait. Cosmos répond. Ce n'est pas une intrusion — c'est une réponse.</div></div>
+  </div>
+</section>
+
+<!-- A2 — KAPFERER -->
+<section class="bg-warm" id="kapferer">
+  <div class="eyebrow light">A2 · Identité</div>
+  <h2 class="light">Prisme de Kapferer</h2>
+  <div class="sub">6 facettes de l'identité de marque — Scénario A · Premium de Proximité</div>
+  <div class="divider foret"></div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+    <div style="background:#fff;border:1px solid rgba(47,84,57,0.07);padding:32px;position:relative;"><div style="position:absolute;top:16px;right:20px;font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:rgba(47,84,57,0.04);line-height:1;">01</div><div style="font-size:7.5px;letter-spacing:2.5px;color:var(--foret);text-transform:uppercase;margin-bottom:8px;">Physique</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--noir-chaud);margin-bottom:10px;">La forêt urbaine accueillante</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.7;margin-bottom:14px;">Façade Forêt Profond, accents Or Cuivré, intérieurs Sable Territorial. Nature domestiquée, qualité évidente, atmosphère apaisante.</div><div style="display:flex;flex-wrap:wrap;gap:5px;"><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Naturel</span><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Chaleureux</span><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.03);color:rgba(47,84,57,0.2);border:1px solid rgba(47,84,57,0.06);text-decoration:line-through;">Froid</span></div></div>
+    <div style="background:#fff;border:1px solid rgba(47,84,57,0.07);padding:32px;position:relative;"><div style="position:absolute;top:16px;right:20px;font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:rgba(47,84,57,0.04);line-height:1;">02</div><div style="font-size:7.5px;letter-spacing:2.5px;color:var(--foret);text-transform:uppercase;margin-bottom:8px;">Personnalité</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--noir-chaud);margin-bottom:10px;">Le voisin accompli de 35 ans</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.7;margin-bottom:14px;">Professionnel ivoirien, installé à Angré. Sait ce qui est bon. Ne fait pas de chichis. Qualité et accessibilité ne sont pas pour lui des opposés.</div><div style="display:flex;flex-wrap:wrap;gap:5px;"><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Ancré</span><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Fiable</span><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.03);color:rgba(47,84,57,0.2);border:1px solid rgba(47,84,57,0.06);text-decoration:line-through;">Inaccessible</span></div></div>
+    <div style="background:#fff;border:1px solid rgba(47,84,57,0.07);padding:32px;position:relative;"><div style="position:absolute;top:16px;right:20px;font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:rgba(47,84,57,0.04);line-height:1;">03</div><div style="font-size:7.5px;letter-spacing:2.5px;color:var(--foret);text-transform:uppercase;margin-bottom:8px;">Culture</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--noir-chaud);margin-bottom:10px;">La qualité pour tous, ici</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.7;margin-bottom:14px;">Le meilleur n'appartient pas à un autre quartier. La qualité Carrefour, les services premium, l'expérience agréable — à Angré, maintenant.</div><div style="display:flex;flex-wrap:wrap;gap:5px;"><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Proximité</span><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Accessibilité</span><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Légitimité</span></div></div>
+    <div style="background:#fff;border:1px solid rgba(47,84,57,0.07);padding:32px;position:relative;"><div style="position:absolute;top:16px;right:20px;font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:rgba(47,84,57,0.04);line-height:1;">04</div><div style="font-size:7.5px;letter-spacing:2.5px;color:var(--foret);text-transform:uppercase;margin-bottom:8px;">Relation</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--noir-chaud);margin-bottom:10px;">Le centre du quotidien</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.7;margin-bottom:14px;">Courses le mercredi, lunch le vendredi, courses du week-end avec les enfants. La relation se construit dans la répétition plaisante.</div><div style="display:flex;flex-wrap:wrap;gap:5px;"><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Fréquent</span><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Confiant</span></div></div>
+    <div style="background:#fff;border:1px solid rgba(47,84,57,0.07);padding:32px;position:relative;"><div style="position:absolute;top:16px;right:20px;font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:rgba(47,84,57,0.04);line-height:1;">05</div><div style="font-size:7.5px;letter-spacing:2.5px;color:var(--foret);text-transform:uppercase;margin-bottom:8px;">Reflet</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--noir-chaud);margin-bottom:10px;">La zone qui sait ce qu'elle vaut</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.7;margin-bottom:14px;">CSP+ cocody. Familles, cadres, jeunes actifs. Ils n'ont pas à traverser Abidjan pour avoir accès au meilleur. Ils l'ont, ici.</div><div style="display:flex;flex-wrap:wrap;gap:5px;"><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">CSP+ Cocody</span><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Familles</span></div></div>
+    <div style="background:#fff;border:1px solid rgba(47,84,57,0.07);padding:32px;position:relative;"><div style="position:absolute;top:16px;right:20px;font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:rgba(47,84,57,0.04);line-height:1;">06</div><div style="font-size:7.5px;letter-spacing:2.5px;color:var(--foret);text-transform:uppercase;margin-bottom:8px;">Mentalisation</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--noir-chaud);margin-bottom:10px;">C'est mon centre, dans mon quartier</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.7;margin-bottom:14px;">Appartenance sans exclusion. Fierté locale. "Mon Cosmos" dit le résident. L'ancrage géographique devient identitaire.</div><div style="display:flex;flex-wrap:wrap;gap:5px;"><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Appartenance</span><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Fierté</span><span style="font-size:8px;padding:3px 9px;background:rgba(47,84,57,0.07);color:var(--foret);border:1px solid rgba(47,84,57,0.18);">Local</span></div></div>
+  </div>
+</section>
+
+<!-- A3 — VALEURS & TON -->
+<section class="bg-white" id="valeurs">
+  <div class="eyebrow light">A3 · Fondations & Éditorial</div>
+  <h2 class="light">Valeurs & Ton de communication</h2>
+  <div class="sub">4 piliers fondateurs · Chaleureux et ancré</div>
+  <div class="divider foret"></div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:40px;">
+    <div style="padding:36px;border:1px solid rgba(47,84,57,0.08);border-top:2px solid var(--foret);">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style="margin-bottom:16px;display:block;"><path d="M12 2C8 2 4 5 4 9c0 5 8 13 8 13s8-8 8-13c0-4-4-7-8-7z" stroke="#2F5439" stroke-width="1.8"/><circle cx="12" cy="9" r="3" stroke="#2F5439" stroke-width="1.8"/></svg>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--foret);margin-bottom:8px;">Ancrage de quartier</div><div style="font-size:10px;color:var(--gris-chaud);line-height:1.8;">Cosmos Angré est d'abord un centre de la zone d'Angré. Il appartient à ses habitants avant d'appartenir à une marque.</div></div>
+    <div style="padding:36px;border:1px solid rgba(47,84,57,0.08);border-top:2px solid var(--or);">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style="margin-bottom:16px;display:block;"><path d="M12 22C6 22 2 17 2 12S6 2 12 2s10 5 10 10-4 10-10 10z" stroke="#C9943A" stroke-width="1.8"/><path d="M8 12l2.5 2.5L16 9" stroke="#C9943A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--or);margin-bottom:8px;">Complétude sans détour</div><div style="font-size:10px;color:var(--gris-chaud);line-height:1.8;">L'offre est totale. Tout ce dont on a besoin au quotidien — en qualité — dans un même lieu. Le déplacement inutile disparaît.</div></div>
+    <div style="padding:36px;border:1px solid rgba(47,84,57,0.08);border-top:2px solid var(--kaki);">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style="margin-bottom:16px;display:block;"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#76764D" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#76764D" stroke-width="1.8"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.74" stroke="#76764D" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--kaki);margin-bottom:8px;">Communauté locale</div><div style="font-size:10px;color:var(--gris-chaud);line-height:1.8;">On se retrouve à Cosmos. La fidélité n'est pas de la loyauté envers une marque — c'est de l'attachement à un endroit de vie.</div></div>
+    <div style="padding:36px;border:1px solid rgba(47,84,57,0.08);border-top:2px solid var(--or-doux);">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style="margin-bottom:16px;display:block;"><path d="M12 2l3 6.5L22 9.5l-5 4.9 1.2 6.9L12 18l-6.2 3.3L7 14.4 2 9.5l7-.7L12 2z" stroke="#E8C97A" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--or-doux);margin-bottom:8px;">Qualité sans intimidation</div><div style="font-size:10px;color:var(--gris-chaud);line-height:1.8;">Le meilleur, présenté simplement. L'excellence visible, pas ostentatoire. On est bien reçu. On revient.</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(47,84,57,0.08);">
+    <div style="background:var(--blanc-chaud);padding:28px;"><div style="font-size:7.5px;letter-spacing:2px;color:var(--foret);text-transform:uppercase;margin-bottom:10px;">Accueil</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--noir-chaud);margin-bottom:6px;">"Bienvenue chez vous. Enfin tout, enfin ici."</div><div style="font-size:9px;color:var(--gris-chaud);">Chaleureux + ancré</div></div>
+    <div style="background:var(--blanc-chaud);padding:28px;"><div style="font-size:7.5px;letter-spacing:2px;color:var(--foret);text-transform:uppercase;margin-bottom:10px;">Digital</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--noir-chaud);margin-bottom:6px;">"Courses, lunch, cinéma — tout votre samedi, sans quitter Angré."</div><div style="font-size:9px;color:var(--gris-chaud);">Vie de quartier + complétude</div></div>
+  </div>
+</section>
+
+<!-- A4 — SIGNATURES -->
+<section class="bg-foret2" id="signatures">
+  <div class="eyebrow dark">A4 · Identité verbale</div>
+  <h2 class="dark">Signatures</h2>
+  <div class="sub" style="color:rgba(242,235,221,0.3);">L'identité verbale de Cosmos Angré — Scénario A</div>
+  <div class="divider"></div>
+  <div style="border:1px solid rgba(201,148,58,0.2);padding:72px;text-align:center;margin-bottom:24px;position:relative;">
+    <div style="position:absolute;top:16px;left:16px;width:28px;height:28px;border-top:1px solid rgba(201,148,58,0.3);border-left:1px solid rgba(201,148,58,0.3);"></div>
+    <div style="position:absolute;bottom:16px;right:16px;width:28px;height:28px;border-bottom:1px solid rgba(201,148,58,0.3);border-right:1px solid rgba(201,148,58,0.3);"></div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--sable);line-height:1.3;">"Enfin tout, <em style="color:var(--or);font-weight:600;">enfin ici</em>"</div>
+    <div style="width:32px;height:1px;background:var(--or);margin:20px auto;"></div>
+    <div style="font-size:8px;letter-spacing:3px;color:var(--or);text-transform:uppercase;">Signature permanente · Ancrage Proximitaire · Promesse de complétude</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+    <div style="padding:28px;border:1px solid rgba(201,148,58,0.1);"><div style="font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--sable);font-style:italic;margin-bottom:8px;line-height:1.4;">"Le quartier que vous méritez"</div><div style="font-size:8px;letter-spacing:1.5px;color:rgba(201,148,58,0.4);text-transform:uppercase;">Institutionnel · Affiche façade · Fierté locale</div></div>
+    <div style="padding:28px;border:1px solid rgba(201,148,58,0.1);"><div style="font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--sable);font-style:italic;margin-bottom:8px;line-height:1.4;">"Votre temps vaut mieux que ça."</div><div style="font-size:8px;letter-spacing:1.5px;color:rgba(201,148,58,0.4);text-transform:uppercase;">Campagne acquisition · Adresse directe · Insight fort</div></div>
+    <div style="padding:28px;border:1px solid rgba(201,148,58,0.1);"><div style="font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--sable);font-style:italic;margin-bottom:8px;line-height:1.4;">"Cosmos, mon endroit."</div><div style="font-size:8px;letter-spacing:1.5px;color:rgba(201,148,58,0.4);text-transform:uppercase;">Fidélisation · Cosmos Club · Bouche à oreille</div></div>
+  </div>
+</section>
+
+<!-- A5 — PALETTE -->
+<section class="bg-white" id="palette">
+  <div class="eyebrow light">A5 · Couleurs</div>
+  <h2 class="light">Palette chromatique</h2>
+  <div class="sub">6 teintes · Règle absolue 35/30/15/10/5/5 · Nature & Prestige ancrés</div>
+  <div class="divider foret"></div>
+  <div style="display:flex;height:56px;border-radius:1px;overflow:hidden;margin-bottom:32px;border:1px solid rgba(47,84,57,0.06);">
+    <div style="width:35%;background:var(--sable);display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(47,84,57,0.5);">35%</div>
+    <div style="width:30%;background:var(--foret);display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(242,235,221,0.7);">30%</div>
+    <div style="width:15%;background:var(--or);display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(26,20,16,0.7);">15%</div>
+    <div style="width:10%;background:var(--kaki);display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(242,235,221,0.7);">10%</div>
+    <div style="width:5%;background:var(--or-doux);display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(26,20,16,0.6);">5%</div>
+    <div style="width:5%;background:var(--noir-chaud);display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(242,235,221,0.6);">5%</div>
+  </div>
+  <div class="pal-correct-grid" style="grid-template-columns:repeat(3,1fr);">
+    <div class="pcol"><div class="pcol-swatch"><div class="pcol-swatch-inner" style="background:var(--sable);"></div></div><div class="pcol-body"><div class="pcol-role">Dominant · 35%</div><div class="pcol-name">Sable Territorial</div><div class="pcol-hex">#F2EBDD · PMS 7527 C</div><div class="pcol-where">Murs intérieurs, halls, espaces lounge, sol galeries. Toutes les surfaces intérieures.</div></div></div>
+    <div class="pcol"><div class="pcol-swatch"><div class="pcol-swatch-inner" style="background:var(--foret);"></div></div><div class="pcol-body"><div class="pcol-role">Structure · 30%</div><div class="pcol-name">Forêt Profond</div><div class="pcol-hex">#2F5439 · PMS 5535 C</div><div class="pcol-where">Façade extérieure, panneaux directionnels, piliers, fond communication.</div></div></div>
+    <div class="pcol"><div class="pcol-swatch"><div class="pcol-swatch-inner" style="background:var(--or);"></div></div><div class="pcol-body"><div class="pcol-role">Prestige · 15%</div><div class="pcol-name">Or Cuivré</div><div class="pcol-hex">#C9943A · PMS 7557 C</div><div class="pcol-where">Logo, lettrage enseigne, signalétique, poignées, broderies, luminaires.</div></div></div>
+    <div class="pcol"><div class="pcol-swatch"><div class="pcol-swatch-inner" style="background:var(--kaki);"></div></div><div class="pcol-body"><div class="pcol-role">Végétal · 10%</div><div class="pcol-name">Kaki Minéral</div><div class="pcol-hex">#76764D · PMS 7531 C</div><div class="pcol-where">Jardinières, zones végétales, événements, maintenance, signalétique secondaire.</div></div></div>
+    <div class="pcol"><div class="pcol-swatch"><div class="pcol-swatch-inner" style="background:var(--or-doux);"></div></div><div class="pcol-body"><div class="pcol-role">Accent doux · 5%</div><div class="pcol-name">Or Doux</div><div class="pcol-hex">#E8C97A · PMS 7502 C</div><div class="pcol-where">Icônes digitales, filets décoratifs, étiquettes premium, textile second niveau.</div></div></div>
+    <div class="pcol"><div class="pcol-swatch"><div class="pcol-swatch-inner" style="background:var(--noir-chaud);"></div></div><div class="pcol-body"><div class="pcol-role">Institutionnel · 5%</div><div class="pcol-name">Noir Chaud</div><div class="pcol-hex">#1A1410 · PMS 446 C</div><div class="pcol-where">Façade extérieure uniquement. Documents officiels (BEFA, courriers EXCO). Jamais en intérieur.</div></div></div>
+  </div>
+  <div style="background:rgba(47,84,57,0.04);border:1px solid rgba(47,84,57,0.15);border-left:3px solid var(--foret);padding:24px 28px;margin-top:32px;">
+    <div style="font-size:7.5px;letter-spacing:2px;color:var(--foret);text-transform:uppercase;margin-bottom:8px;">Règle absolue — Sans exception</div>
+    <div style="font-size:10px;color:var(--noir-chaud);line-height:1.8;">Le <strong>Noir Chaud (5%)</strong> est exclusivement extérieur et institutionnel. Le <strong>Sable Territorial (35%)</strong> domine toutes les surfaces intérieures. Le <strong>Forêt Profond</strong> encadre et structure — il ne submerge jamais les espaces de vie. L'Or Cuivré ponctue : la marque se révèle, elle ne s'impose pas.</div>
+  </div>
+</section>
+
+<!-- A6 — PROPORTIONS -->
+<section class="bg-warm" id="proportions">
+  <div class="eyebrow light">A6 · Colorimétrie</div>
+  <h2 class="light">Proportions réelles par territoire</h2>
+  <div class="sub">La règle d'or : le Sable accueille, le Forêt structure, l'Or signe</div>
+  <div class="divider foret"></div>
+  <div class="prop-master">
+    <div class="prop-card"><div class="prop-card-header"><div class="prop-card-title">Espaces physiques intérieurs</div><div class="prop-card-sub">Allées, galeries, hall — ce que voit le visiteur en marchant</div></div><div class="prop-bar-wrap"><div class="prop-bar"><div class="prop-seg" style="width:60%;background:var(--sable);color:rgba(47,84,57,0.6);">60%</div><div class="prop-seg" style="width:25%;background:var(--foret);color:rgba(242,235,221,0.8);">25%</div><div class="prop-seg" style="width:15%;background:var(--or);color:rgba(26,20,16,0.7);">15%</div></div><div class="prop-legend"><div class="prop-leg-row"><div class="prop-leg-dot" style="background:var(--sable);border:1px solid rgba(47,84,57,0.1);"></div><div class="prop-leg-label">Sable Territorial — sols, murs, mobilier</div><div class="prop-leg-pct">60%</div></div><div class="prop-leg-row"><div class="prop-leg-dot" style="background:var(--foret);"></div><div class="prop-leg-label">Forêt — piliers, encadrements, accents</div><div class="prop-leg-pct">25%</div></div><div class="prop-leg-row"><div class="prop-leg-dot" style="background:var(--or);"></div><div class="prop-leg-label">Or Cuivré — signalétique, poignées, détails</div><div class="prop-leg-pct">15%</div></div></div></div></div>
+    <div class="prop-card"><div class="prop-card-header"><div class="prop-card-title">Communication & marketing</div><div class="prop-card-sub">Affiches, digital, brochures, réseaux sociaux</div></div><div class="prop-bar-wrap"><div class="prop-bar"><div class="prop-seg" style="width:50%;background:var(--foret);color:rgba(242,235,221,0.7);">50%</div><div class="prop-seg" style="width:30%;background:var(--sable);color:rgba(47,84,57,0.5);">30%</div><div class="prop-seg" style="width:20%;background:var(--or);color:rgba(26,20,16,0.7);">20%</div></div><div class="prop-legend"><div class="prop-leg-row"><div class="prop-leg-dot" style="background:var(--foret);"></div><div class="prop-leg-label">Forêt Profond — fond dominant</div><div class="prop-leg-pct">50%</div></div><div class="prop-leg-row"><div class="prop-leg-dot" style="background:var(--sable);border:1px solid rgba(47,84,57,0.1);"></div><div class="prop-leg-label">Sable — textes, zones d'air</div><div class="prop-leg-pct">30%</div></div><div class="prop-leg-row"><div class="prop-leg-dot" style="background:var(--or);"></div><div class="prop-leg-label">Or — logo, CTA, accents</div><div class="prop-leg-pct">20%</div></div></div></div></div>
+    <div class="prop-card"><div class="prop-card-header"><div class="prop-card-title">Façade extérieure</div><div class="prop-card-sub">La première impression — visible à 150m</div></div><div class="prop-bar-wrap"><div class="prop-bar"><div class="prop-seg" style="width:55%;background:var(--foret);color:rgba(242,235,221,0.7);">55%</div><div class="prop-seg" style="width:30%;background:var(--sable);color:rgba(47,84,57,0.5);">30%</div><div class="prop-seg" style="width:15%;background:var(--or);color:rgba(26,20,16,0.7);">15%</div></div><div class="prop-legend"><div class="prop-leg-row"><div class="prop-leg-dot" style="background:var(--foret);"></div><div class="prop-leg-label">Forêt — bardage, panneaux</div><div class="prop-leg-pct">55%</div></div><div class="prop-leg-row"><div class="prop-leg-dot" style="background:var(--sable);border:1px solid rgba(47,84,57,0.1);"></div><div class="prop-leg-label">Sable / béton clair — surfaces neutres</div><div class="prop-leg-pct">30%</div></div><div class="prop-leg-row"><div class="prop-leg-dot" style="background:var(--or);"></div><div class="prop-leg-label">Or — enseigne, lettrage façade</div><div class="prop-leg-pct">15%</div></div></div></div></div>
+    <div class="prop-card"><div class="prop-card-header"><div class="prop-card-title">Textile & collection de marque</div><div class="prop-card-sub">Uniformes staff, goodies, packaging</div></div><div class="prop-bar-wrap"><div class="prop-bar"><div class="prop-seg" style="width:70%;background:var(--foret);color:rgba(242,235,221,0.7);">70%</div><div class="prop-seg" style="width:15%;background:var(--sable);color:rgba(47,84,57,0.5);">15%</div><div class="prop-seg" style="width:15%;background:var(--or);color:rgba(26,20,16,0.7);">15%</div></div><div class="prop-legend"><div class="prop-leg-row"><div class="prop-leg-dot" style="background:var(--foret);"></div><div class="prop-leg-label">Forêt — fond textile dominant</div><div class="prop-leg-pct">70%</div></div><div class="prop-leg-row"><div class="prop-leg-dot" style="background:var(--sable);border:1px solid rgba(47,84,57,0.1);"></div><div class="prop-leg-label">Sable — col, lisérés</div><div class="prop-leg-pct">15%</div></div><div class="prop-leg-row"><div class="prop-leg-dot" style="background:var(--or);"></div><div class="prop-leg-label">Or — broderies logo</div><div class="prop-leg-pct">15%</div></div></div></div></div>
+  </div>
+</section>
+
+<!-- A7 — TYPO -->
+<section class="bg-white" id="typo">
+  <div class="eyebrow light">A7 · Typographie</div>
+  <h2 class="light">Système typographique</h2>
+  <div class="sub">Cormorant Garamond + Inter — Élégance naturelle & lisibilité</div>
+  <div class="divider foret"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(47,84,57,0.08);">
+    <div style="background:var(--blanc-chaud);padding:40px;"><div style="font-size:7.5px;letter-spacing:2.5px;color:var(--gris-chaud);text-transform:uppercase;margin-bottom:16px;">Cormorant Garamond SemiBold 600 · Titres</div><div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:600;color:var(--foret);line-height:1;">Enfin tout,<br>enfin ici</div><div style="font-size:9px;color:var(--gris-chaud);margin-top:14px;border-top:1px solid rgba(47,84,57,0.07);padding-top:12px;line-height:1.6;">Titres H1/H2, signatures, citations institutionnelles. Couleur Forêt Profond.</div></div>
+    <div style="background:#fff;padding:40px;"><div style="font-size:7.5px;letter-spacing:2.5px;color:var(--gris-chaud);text-transform:uppercase;margin-bottom:16px;">Cormorant Garamond Italic 400 · Accents</div><div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:400;font-style:italic;color:var(--or);line-height:1;">Votre<br>quartier</div><div style="font-size:9px;color:var(--gris-chaud);margin-top:14px;border-top:1px solid rgba(47,84,57,0.07);padding-top:12px;line-height:1.6;">Slogans, citations lifestyle, accroche événementielle. Couleur Or Cuivré.</div></div>
+    <div style="background:#fff;padding:40px;"><div style="font-size:7.5px;letter-spacing:2.5px;color:var(--gris-chaud);text-transform:uppercase;margin-bottom:16px;">Inter Medium 500 · Sous-titres & UI</div><div style="font-family:'Inter',sans-serif;font-size:32px;font-weight:500;color:var(--noir-chaud);line-height:1;">Cosmos Angré<br>Cocody</div><div style="font-size:9px;color:var(--gris-chaud);margin-top:14px;border-top:1px solid rgba(47,84,57,0.07);padding-top:12px;line-height:1.6;">Sous-titres, signalétique, navigation, labels UI digital.</div></div>
+    <div style="background:var(--blanc-chaud);padding:40px;"><div style="font-size:7.5px;letter-spacing:2.5px;color:var(--gris-chaud);text-transform:uppercase;margin-bottom:16px;">Inter Regular 400 · Corps</div><div style="font-family:'Inter',sans-serif;font-size:12px;color:rgba(47,84,57,0.6);line-height:1.9;">Premier centre de vie premium au service de la zone d'Angré. Une destination qui rend la qualité accessible au quotidien — sans détour, sans compromis, dans votre quartier.</div><div style="font-size:9px;color:var(--gris-chaud);margin-top:14px;border-top:1px solid rgba(47,84,57,0.07);padding-top:12px;line-height:1.6;">Corps de texte, descriptions. Taille min : 9px écran / 7pt impression.</div></div>
+  </div>
+</section>
+
+<!-- A8 — MATIERES -->
+<section class="bg-warm" id="matieres">
+  <div class="eyebrow light">A8 · Matériaux</div>
+  <h2 class="light">Matières fondatrices</h2>
+  <div class="sub">Les 4 matériaux de l'identité sensorielle Cosmos Angré · Scénario A</div>
+  <div class="divider foret"></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(47,84,57,0.08);">
+    <div style="border-right:1px solid rgba(47,84,57,0.08);overflow:hidden;"><div style="height:160px;background:linear-gradient(135deg,#2F5439,#1a3020);position:relative;"><div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,0.02) 0,rgba(255,255,255,0.02) 1px,transparent 0,transparent 10px);background-size:14px 14px;"></div></div><div style="padding:22px;background:#fff;"><div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--noir-chaud);margin-bottom:3px;">Bois de forêt</div><div style="font-size:7.5px;letter-spacing:1.5px;color:var(--foret);text-transform:uppercase;margin-bottom:8px;">Essence locale · Huilé mat</div><div style="font-size:8.5px;color:var(--gris-chaud);line-height:1.6;">Bardage façade, piliers intérieurs, mobilier d'accueil.</div></div></div>
+    <div style="border-right:1px solid rgba(47,84,57,0.08);overflow:hidden;"><div style="height:160px;background:linear-gradient(135deg,#C9943A,#a07828);position:relative;"><div style="position:absolute;inset:0;background-image:repeating-linear-gradient(30deg,rgba(255,255,255,0.04) 0,rgba(255,255,255,0.04) 1px,transparent 0,transparent 6px);background-size:8px 8px;"></div></div><div style="padding:22px;background:#fff;"><div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--noir-chaud);margin-bottom:3px;">Laiton cuivré</div><div style="font-size:7.5px;letter-spacing:1.5px;color:var(--foret);text-transform:uppercase;margin-bottom:8px;">Finition brossée</div><div style="font-size:8.5px;color:var(--gris-chaud);line-height:1.6;">Signalétique, luminaires, garde-corps, poignées.</div></div></div>
+    <div style="border-right:1px solid rgba(47,84,57,0.08);overflow:hidden;"><div style="height:160px;background:linear-gradient(135deg,#F2EBDD,#e4d9c4);"><div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(47,84,57,0.04) 0,rgba(47,84,57,0.04) 1px,transparent 0,transparent 16px);"></div></div><div style="padding:22px;background:#fff;"><div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--noir-chaud);margin-bottom:3px;">Pierre calcaire sablée</div><div style="font-size:7.5px;letter-spacing:1.5px;color:var(--foret);text-transform:uppercase;margin-bottom:8px;">Sol poncé · Mat</div><div style="font-size:8.5px;color:var(--gris-chaud);line-height:1.6;">Sols allées, comptoirs, habillages murs principaux.</div></div></div>
+    <div style="overflow:hidden;"><div style="height:160px;background:linear-gradient(135deg,#76764D,#545434);position:relative;"><div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:8px 8px;"></div></div><div style="padding:22px;background:#fff;"><div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--noir-chaud);margin-bottom:3px;">Raphia & fibres végétales</div><div style="font-size:7.5px;letter-spacing:1.5px;color:var(--foret);text-transform:uppercase;margin-bottom:8px;">Tissage naturel</div><div style="font-size:8.5px;color:var(--gris-chaud);line-height:1.6;">Suspensions, panneaux acoustiques, assises lounge.</div></div></div>
+  </div>
+</section>
+
+<!-- A9 — COMMUNICATION -->
+<section class="bg-foret2" id="comms">
+  <div class="eyebrow dark">A9 · Communication</div>
+  <h2 class="dark">Supports de communication</h2>
+  <div class="sub" style="color:rgba(242,235,221,0.3);">Forêt Profond en fond · Or Cuivré en signature · Sable en respiration</div>
+  <div class="divider"></div>
+  <div class="comms-grid">
+    <div class="comm-card"><div class="comm-vis" style="background:linear-gradient(160deg,#1a3020,#2F5439 60%,#4a7558);">
+      <div style="position:relative;z-index:1;"><div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;letter-spacing:5px;color:var(--or);">COSMOS ANGRÉ</div><div style="width:28px;height:1px;background:rgba(201,148,58,0.4);margin:8px 0;"></div><div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(242,235,221,0.5);margin-top:4px;">"Enfin tout, enfin ici"</div></div></div>
+      <div class="comm-body" style="background:rgba(26,48,32,0.03);"><div class="comm-title">Affiche institutionnelle</div><div class="comm-spec">Forêt 50 · Sable 30 · Or 20</div></div></div>
+    <div class="comm-card"><div class="comm-vis" style="background:linear-gradient(180deg,#2F5439 40%,#4a7558 100%);">
+      <div style="position:relative;z-index:1;"><div style="font-size:8px;letter-spacing:2px;color:rgba(201,148,58,0.6);margin-bottom:4px;">cosmos-angre.ci</div><div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(242,235,221,0.6);">Courses, lunch, cinéma —<br>tout votre samedi à Angré</div></div></div>
+      <div class="comm-body" style="background:rgba(26,48,32,0.03);"><div class="comm-title">Push digital / App</div><div class="comm-spec">Header Forêt · Gradient végétal · CTA or</div></div></div>
+    <div class="comm-card"><div class="comm-vis" style="background:var(--foret);">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(242,235,221,0.03) 1px,transparent 1px);background-size:20px 20px;"></div>
+      <div style="position:relative;z-index:1;text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;letter-spacing:5px;color:var(--or);">COSMOS ANGRÉ</div><div style="width:28px;height:1px;background:rgba(242,235,221,0.3);margin:8px auto;"></div><div style="font-size:8px;letter-spacing:2px;color:rgba(242,235,221,0.5);">STAFF</div></div></div>
+      <div class="comm-body" style="background:rgba(26,48,32,0.03);"><div class="comm-title">Textile staff</div><div class="comm-spec">Forêt 70 · Sable 15 · Or brodé 15</div></div></div>
+  </div>
+</section>
+
+<!-- CHAPITRE B -->
+<div class="ch-break bg-gris" id="ch-b" style="border-top:3px solid var(--foret);">
+  <div class="ch-num" style="color:rgba(47,84,57,0.08);">B</div>
+  <div class="ch-content" style="color:var(--noir-chaud);">
+    <div class="ch-label" style="color:rgba(47,84,57,0.4);">Partie B</div>
+    <div class="ch-title">Brand World</div>
+  </div>
+  <div class="ch-badge" style="color:var(--noir-chaud);">Déclinaisons & Expérience</div>
+</div>
+
+<!-- B1 — LOGO -->
+<section class="bg-white" id="bw-logo">
+  <div class="eyebrow grey">B1 · Logo</div>
+  <h2 class="light">Déclinaisons du logo</h2>
+  <div class="sub">6 versions · Forêt Profond & Or Cuivré · Supports physiques & digitaux</div>
+  <div class="divider gris"></div>
+  <div class="logo-grid">
+    <div class="logo-card">
+      <div class="logo-vis" style="background:var(--foret-deep);">
+        <svg viewBox="-2 -2 334 78" height="60" xmlns="http://www.w3.org/2000/svg">
+          <defs><style>.dot-s{fill:none;stroke:#F2EBDD;stroke-width:3.5;stroke-dasharray:0.1 5.8;stroke-linecap:round;stroke-linejoin:round;}</style></defs>
+          <path d="M 37,5 A 22,22 0 1,0 37,39" class="dot-s"/>
+          <circle cx="74" cy="22" r="20" fill="none" stroke="#C9943A" stroke-width="2"/>
+          <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(108,0)" class="dot-s"/>
+          <path d="M 0,44 L 0,0 L 20,26 L 40,0 L 40,44" transform="translate(162,0)" class="dot-s"/>
+          <circle cx="236" cy="22" r="20" fill="#C9943A"/>
+          <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(270,0)" class="dot-s"/>
+          <text x="308" y="72" text-anchor="end" font-family="'Inter','Helvetica Neue',sans-serif" font-size="16" font-weight="600" letter-spacing="4" fill="#C9943A">ANGRÉ</text>
+        </svg>
+      </div>
+      <div class="logo-body"><div class="logo-tag">Version principale</div><div class="logo-name">Fond Forêt — Référence</div><div class="logo-spec">Façade, en-tête, site web. Points sable, O plein or.</div></div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-vis" style="background:var(--sable);">
+        <svg viewBox="-2 -2 334 78" height="60" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 37,5 A 22,22 0 1,0 37,39" fill="none" stroke="#2F5439" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="74" cy="22" r="20" fill="none" stroke="#C9943A" stroke-width="2"/>
+          <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(108,0)" fill="none" stroke="#2F5439" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 0,44 L 0,0 L 20,26 L 40,0 L 40,44" transform="translate(162,0)" fill="none" stroke="#2F5439" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="236" cy="22" r="20" fill="#C9943A"/>
+          <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(270,0)" fill="none" stroke="#2F5439" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="308" y="72" text-anchor="end" font-family="'Inter','Helvetica Neue',sans-serif" font-size="16" font-weight="600" letter-spacing="4" fill="#C9943A">ANGRÉ</text>
+        </svg>
+      </div>
+      <div class="logo-body"><div class="logo-tag">Version fond sable</div><div class="logo-name">Papeterie & intérieur</div><div class="logo-spec">Points Forêt, O plein or. Brochures, en-tête, signalétique.</div></div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-vis" style="background:var(--foret);">
+        <svg viewBox="-2 -2 334 78" height="60" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 37,5 A 22,22 0 1,0 37,39" fill="none" stroke="rgba(242,235,221,0.9)" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="74" cy="22" r="20" fill="none" stroke="#C9943A" stroke-width="2"/>
+          <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(108,0)" fill="none" stroke="rgba(242,235,221,0.9)" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 0,44 L 0,0 L 20,26 L 40,0 L 40,44" transform="translate(162,0)" fill="none" stroke="rgba(242,235,221,0.9)" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="236" cy="22" r="20" fill="#C9943A"/>
+          <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(270,0)" fill="none" stroke="rgba(242,235,221,0.9)" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="308" y="72" text-anchor="end" font-family="'Inter','Helvetica Neue',sans-serif" font-size="16" font-weight="600" letter-spacing="4" fill="#C9943A">ANGRÉ</text>
+        </svg>
+      </div>
+      <div class="logo-body"><div class="logo-tag">Version textile staff</div><div class="logo-name">Broderie polo forêt</div><div class="logo-spec">Points sable sur fond forêt. O plein or.</div></div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-vis" style="background:var(--pierre);">
+        <svg viewBox="-2 -2 334 78" height="60" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 37,5 A 22,22 0 1,0 37,39" fill="none" stroke="rgba(47,84,57,0.3)" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="74" cy="22" r="20" fill="none" stroke="#C9943A" stroke-width="2"/>
+          <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(108,0)" fill="none" stroke="rgba(47,84,57,0.3)" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 0,44 L 0,0 L 20,26 L 40,0 L 40,44" transform="translate(162,0)" fill="none" stroke="rgba(47,84,57,0.3)" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="236" cy="22" r="20" fill="#C9943A"/>
+          <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(270,0)" fill="none" stroke="rgba(47,84,57,0.3)" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="308" y="72" text-anchor="end" font-family="'Inter','Helvetica Neue',sans-serif" font-size="16" font-weight="600" letter-spacing="4" fill="#C9943A">ANGRÉ</text>
+        </svg>
+      </div>
+      <div class="logo-body"><div class="logo-tag">Version pierre / neutre</div><div class="logo-name">Signalétique intérieure</div><div class="logo-spec">Points atténués sur fond pierre. Discret et organique.</div></div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-vis" style="background:linear-gradient(160deg,#1a3020,var(--foret));">
+        <svg viewBox="-2 -2 334 78" height="60" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 37,5 A 22,22 0 1,0 37,39" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="74" cy="22" r="20" fill="none" stroke="#C9943A" stroke-width="2"/>
+          <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(108,0)" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 0,44 L 0,0 L 20,26 L 40,0 L 40,44" transform="translate(162,0)" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="236" cy="22" r="20" fill="#C9943A"/>
+          <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(270,0)" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="308" y="72" text-anchor="end" font-family="'Inter','Helvetica Neue',sans-serif" font-size="16" font-weight="600" letter-spacing="4" fill="#C9943A">ANGRÉ</text>
+        </svg>
+      </div>
+      <div class="logo-body"><div class="logo-tag">Enseigne façade</div><div class="logo-name">Rétro-éclairée LED 3000K</div><div class="logo-spec">Inox brossé 80cm. Halo doré. Visible à 150m.</div></div>
+    </div>
+    <div class="logo-card">
+      <div class="logo-vis" style="background:var(--foret-deep);padding:20px;">
+        <div style="text-align:center;margin-bottom:10px;">
+          <svg viewBox="-2 -2 334 78" height="48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 37,5 A 22,22 0 1,0 37,39" fill="none" stroke="#F2EBDD" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="74" cy="22" r="20" fill="none" stroke="#C9943A" stroke-width="2"/>
+            <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(108,0)" fill="none" stroke="#F2EBDD" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 0,44 L 0,0 L 20,26 L 40,0 L 40,44" transform="translate(162,0)" fill="none" stroke="#F2EBDD" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="236" cy="22" r="20" fill="#C9943A"/>
+            <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(270,0)" fill="none" stroke="#F2EBDD" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="308" y="72" text-anchor="end" font-family="'Inter','Helvetica Neue',sans-serif" font-size="16" font-weight="600" letter-spacing="4" fill="#C9943A">ANGRÉ</text>
+          </svg>
+        </div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:10px;font-style:italic;color:rgba(242,235,221,0.3);text-align:center;letter-spacing:2px;">Enfin tout, enfin ici</div>
+      </div>
+      <div class="logo-body"><div class="logo-tag">Carte de visite</div><div class="logo-name">85×55mm · Coton 350g</div><div class="logo-spec">Dorure à chaud Or · Coins arrondis · Fond Forêt</div></div>
+    </div>
+  </div>
+  <div style="background:var(--pierre);border:1px solid rgba(47,84,57,0.08);padding:32px;margin-top:24px;">
+    <div style="font-size:8px;letter-spacing:2px;color:var(--gris-chaud);text-transform:uppercase;margin-bottom:20px;">Principe de construction du logo — Inchangé</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;">
+      <svg viewBox="-2 -2 334 78" height="72" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 37,5 A 22,22 0 1,0 37,39" fill="none" stroke="#2F5439" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="74" cy="22" r="20" fill="none" stroke="#C9943A" stroke-width="2"/>
+        <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(108,0)" fill="none" stroke="#2F5439" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 0,44 L 0,0 L 20,26 L 40,0 L 40,44" transform="translate(162,0)" fill="none" stroke="#2F5439" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="236" cy="22" r="20" fill="#C9943A"/>
+        <path d="M 34,8 C 32,2 26,0 19,0 C 10,0 1,4 1,12 C 1,19 9,22 19,22 C 29,22 37,25 37,33 C 37,40 30,44 21,44 C 15,44 5,42 2,36" transform="translate(270,0)" fill="none" stroke="#2F5439" stroke-width="3.5" stroke-dasharray="0.1 5.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="308" y="72" text-anchor="end" font-family="'Inter','Helvetica Neue',sans-serif" font-size="16" font-weight="600" letter-spacing="4" fill="#C9943A">ANGRÉ</text>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:10px;font-size:9px;color:var(--gris-chaud);"><div style="width:24px;height:3px;background:var(--foret);border-radius:2px;flex-shrink:0;"></div>C, S, M, S — chemins SVG, points ronds (strokeDasharray 0.1 / 5.8)</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:9px;color:var(--gris-chaud);"><div style="width:24px;height:3px;border:1px solid var(--or);border-radius:2px;flex-shrink:0;"></div>Premier O — cercle outline Or (#C9943A, stroke only)</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:9px;color:var(--gris-chaud);"><div style="width:24px;height:10px;background:var(--or);border-radius:50%;flex-shrink:0;"></div>Deuxième O — cercle plein Or (fill #C9943A)</div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:9px;color:var(--gris-chaud);"><div style="font-size:10px;font-weight:700;color:var(--or);flex-shrink:0;letter-spacing:2px;">Aa</div>ANGRÉ — Inter 600, letter-spacing 4px, aligné droite</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- B2 — SIGNALETIQUE -->
+<section class="bg-warm" id="bw-signa">
+  <div class="eyebrow grey">B2 · Signalétique</div>
+  <h2 class="light">Signalétique & Wayfinding</h2>
+  <div class="sub">Système de navigation Cosmos Angré — Bois & laiton cuivré</div>
+  <div class="divider gris"></div>
+  <div style="font-size:8px;letter-spacing:2px;color:var(--gris-chaud);text-transform:uppercase;margin-bottom:16px;">Badges de zone — Code couleur navigation</div>
+  <div class="zone-badges">
+    <div class="zone-badge" style="background:var(--foret);color:var(--sable);"><span class="zone-badge-num">N1</span><span class="zone-badge-label">Super-<br>marché</span></div>
+    <div class="zone-badge" style="background:var(--or);color:var(--noir-chaud);"><span class="zone-badge-num">N2</span><span class="zone-badge-label">Restau-<br>ration</span></div>
+    <div class="zone-badge" style="background:var(--noir-chaud);color:var(--sable);"><span class="zone-badge-num">N3</span><span class="zone-badge-label">Cinéma</span></div>
+    <div class="zone-badge" style="background:var(--kaki);color:var(--sable);"><span class="zone-badge-num">N4</span><span class="zone-badge-label">Mode &<br>Beauté</span></div>
+    <div class="zone-badge" style="background:var(--pierre);color:var(--noir-chaud);border:1px solid rgba(47,84,57,0.1);"><span class="zone-badge-num">N5</span><span class="zone-badge-label">Parking</span></div>
+    <div class="zone-badge" style="background:var(--sable);color:var(--noir-chaud);border:1px solid rgba(47,84,57,0.1);"><span class="zone-badge-num">N6</span><span class="zone-badge-label">Accueil</span></div>
+  </div>
+  <div class="sign-wf-grid">
+    <div class="swf-card">
+      <div class="swf-vis" style="background:var(--foret-deep);">
+        <div style="background:linear-gradient(180deg,var(--foret),#3a5f3f);border:1px solid rgba(201,148,58,0.2);padding:20px 28px;min-width:200px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;letter-spacing:4px;color:var(--or);margin-bottom:12px;">COSMOS ANGRÉ</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;align-items:center;gap:10px;font-size:9px;color:rgba(242,235,221,0.6);padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="width:20px;height:20px;background:var(--foret);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;flex-shrink:0;border:1px solid rgba(201,148,58,0.3);">N1</span>Supermarché</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:9px;color:rgba(242,235,221,0.6);padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="width:20px;height:20px;background:var(--or);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--noir-chaud);flex-shrink:0;">N2</span>Restauration</div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:9px;color:rgba(242,235,221,0.6);padding:4px 0;"><span style="width:20px;height:20px;background:var(--foret-deep);border:1px solid rgba(201,148,58,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;flex-shrink:0;">N3</span>Cinéma</div>
+          </div>
+          <div style="margin-top:12px;font-size:7.5px;color:rgba(201,148,58,0.3);letter-spacing:1px;">Touchez pour naviguer</div>
+        </div>
+      </div>
+      <div class="swf-body"><div class="swf-title">Totem digital interactif — 75"</div><div class="swf-spec">Écran tactile LED 4K · Cadre bois huilé & laiton · Socle pierre naturelle · Carte interactive</div></div>
+    </div>
+    <div class="swf-card">
+      <div class="swf-vis" style="background:var(--blanc-chaud);">
+        <div style="background:var(--sable);border:1px solid rgba(47,84,57,0.12);padding:16px 20px;text-align:left;min-width:220px;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:700;letter-spacing:3px;color:var(--or);margin-bottom:10px;">COSMOS ANGRÉ</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:8px;color:var(--gris-chaud);">
+            <span>→ Supermarché N1</span><span>→ Restauration N2</span>
+            <span>→ Cinéma N3</span><span>→ Mode N4</span>
+            <span>→ Parking P1/P2</span><span>→ Accueil</span>
+          </div>
+          <div style="margin-top:8px;font-size:7px;letter-spacing:1.5px;color:rgba(47,84,57,0.3);border-top:1px solid rgba(47,84,57,0.08);padding-top:6px;">Bienvenue · Welcome · Akwaba</div>
+        </div>
+      </div>
+      <div class="swf-body"><div class="swf-title">Panneau directionnel suspendu</div><div class="swf-spec">Bois huilé foncé · Gravure laser or · LED 3000K · Câbles laiton · Bilingue FR/EN</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- B3 — COLLECTION -->
+<section class="bg-white" id="bw-collection">
+  <div class="eyebrow grey">B3 · Collection</div>
+  <h2 class="light">Collection de marque</h2>
+  <div class="sub">Papeterie · Goodies · Textile · Supports digitaux</div>
+  <div class="divider gris"></div>
+  <div style="font-size:8px;letter-spacing:2px;color:var(--gris-chaud);text-transform:uppercase;margin-bottom:16px;">Uniformes & Textile staff</div>
+  <div class="coll-grid">
+    <div class="coll-item"><div class="coll-vis" style="background:var(--foret);"><div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:3px;color:var(--or);">C</div><div style="font-size:7px;letter-spacing:1.5px;color:rgba(242,235,221,0.5);">ACCUEIL</div></div></div><div class="coll-body"><div class="coll-name">Polo Staff Accueil</div><div class="coll-spec">Piqué coton bio 220g · Broderie or · Col sable</div></div></div>
+    <div class="coll-item"><div class="coll-vis" style="background:var(--noir-chaud);"><div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:3px;color:var(--or);">C</div><div style="font-size:7px;letter-spacing:1.5px;color:rgba(242,235,221,0.3);">MANAGEMENT</div></div></div><div class="coll-body"><div class="coll-name">Blazer Manager</div><div class="coll-spec">Laine mélangée · Pin's or · Pochette kaki</div></div></div>
+    <div class="coll-item"><div class="coll-vis" style="background:var(--sable);"><div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:3px;color:var(--foret);">C</div><div style="font-size:7px;letter-spacing:1.5px;color:var(--gris-chaud);">CAISSE</div></div></div><div class="coll-body"><div class="coll-name">Polo Caisse</div><div class="coll-spec">Piqué coton 220g · Version sable · Logo forêt</div></div></div>
+    <div class="coll-item"><div class="coll-vis" style="background:var(--kaki);"><div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:700;letter-spacing:3px;color:rgba(242,235,221,0.7);">C</div><div style="font-size:7px;letter-spacing:1.5px;color:rgba(242,235,221,0.5);">MAINTENANCE</div></div></div><div class="coll-body"><div class="coll-name">Bleu de travail</div><div class="coll-spec">Coton renforcé · Kaki minéral · Bandes réfléchissantes</div></div></div>
+  </div>
+  <div style="font-size:8px;letter-spacing:2px;color:var(--gris-chaud);text-transform:uppercase;margin-bottom:16px;">Goodies & Papeterie</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+    <div class="coll-item"><div class="coll-vis" style="background:var(--foret);height:140px;"><div style="width:44px;height:54px;border-radius:2px;background:var(--or);display:flex;align-items:center;justify-content:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:10px;font-weight:700;color:var(--foret);">C·A</div></div></div><div class="coll-body"><div class="coll-name">Sac shopping</div><div class="coll-spec">Kraft naturel · Poignées raphia · Logo or embossé</div></div></div>
+    <div class="coll-item"><div class="coll-vis" style="background:var(--sable);height:140px;"><div style="background:#fff;border:1px solid rgba(47,84,57,0.1);padding:10px 16px;text-align:left;"><div style="font-family:'Cormorant Garamond',serif;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--foret);">COSMOS ANGRÉ</div><div style="font-size:7px;color:var(--gris-chaud);margin-top:2px;">cosmos-angre.ci</div></div></div><div class="coll-body"><div class="coll-name">Carte de visite</div><div class="coll-spec">85×55mm · Coton 350g · Dorure or</div></div></div>
+    <div class="coll-item"><div class="coll-vis" style="background:var(--foret-deep);height:140px;"><div style="text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:700;letter-spacing:3px;color:var(--or);">COSMOS ANGRÉ</div><div style="width:20px;height:1px;background:rgba(201,148,58,0.4);margin:5px auto;"></div><div style="font-size:7px;letter-spacing:1.5px;color:rgba(242,235,221,0.3);">COSMOS CLUB · PLATINUM</div></div></div><div class="coll-body"><div class="coll-name">Carte Cosmos Club</div><div class="coll-spec">PVC mat · NFC · Fond Forêt · Dorure à chaud</div></div></div>
+  </div>
+</section>
+
+<!-- B4 — PARCOURS CLIENT -->
+<section class="bg-gris" id="bw-parcours">
+  <div class="eyebrow grey">B4 · Expérience</div>
+  <h2 class="light">Parcours client</h2>
+  <div class="sub">De l'arrivée au parking jusqu'à la fidélisation — 7 moments clés du quotidien</div>
+  <div class="divider gris"></div>
+  <div style="display:flex;align-items:center;margin-bottom:48px;overflow-x:auto;padding-bottom:8px;">
+    <div style="display:flex;flex-direction:column;align-items:center;min-width:88px;"><div style="width:56px;height:56px;border-radius:50%;background:var(--foret);display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-7h14l2 7" stroke="#C9943A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="11" width="20" height="7" rx="1" stroke="#C9943A" stroke-width="1.8"/><circle cx="7" cy="18" r="2" stroke="#C9943A" stroke-width="1.8"/><circle cx="17" cy="18" r="2" stroke="#C9943A" stroke-width="1.8"/><path d="M2 15h20" stroke="#C9943A" stroke-width="1.8"/></svg></div><div style="font-size:7.5px;color:var(--gris-chaud);margin-top:6px;letter-spacing:1px;text-align:center;">Arrivée</div><div style="font-size:7px;color:var(--foret);margin-top:2px;">01</div></div>
+    <div style="flex:1;height:2px;background:linear-gradient(90deg,var(--foret),var(--or));min-width:20px;margin-bottom:18px;"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;min-width:88px;"><div style="width:56px;height:56px;border-radius:50%;background:var(--foret);display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#C9943A" stroke-width="1.8"/><path d="M9 3v18" stroke="#C9943A" stroke-width="1.8"/><text x="14" y="15" font-size="8" font-weight="700" fill="#C9943A" text-anchor="middle">P</text></svg></div><div style="font-size:7.5px;color:var(--gris-chaud);margin-top:6px;letter-spacing:1px;text-align:center;">Parking</div><div style="font-size:7px;color:var(--foret);margin-top:2px;">02</div></div>
+    <div style="flex:1;height:2px;background:linear-gradient(90deg,var(--or),var(--kaki));min-width:20px;margin-bottom:18px;"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;min-width:88px;"><div style="width:56px;height:56px;border-radius:50%;background:var(--kaki);display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 9.5L12 3l9 6.5V21a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" stroke="#F2EBDD" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="#F2EBDD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div style="font-size:7.5px;color:var(--gris-chaud);margin-top:6px;letter-spacing:1px;text-align:center;">Entrée</div><div style="font-size:7px;color:var(--foret);margin-top:2px;">03</div></div>
+    <div style="flex:1;height:2px;background:linear-gradient(90deg,var(--kaki),var(--or));min-width:20px;margin-bottom:18px;"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;min-width:88px;"><div style="width:56px;height:56px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="#1A1410" stroke-width="1.8"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#1A1410" stroke-width="1.8" stroke-linecap="round"/></svg></div><div style="font-size:7.5px;color:var(--gris-chaud);margin-top:6px;letter-spacing:1px;text-align:center;">Hall central</div><div style="font-size:7px;color:var(--foret);margin-top:2px;">04</div></div>
+    <div style="flex:1;height:2px;background:linear-gradient(90deg,var(--or),var(--foret));min-width:20px;margin-bottom:18px;"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;min-width:88px;"><div style="width:56px;height:56px;border-radius:50%;background:var(--foret);display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6 2h12l1 5H5L6 2z" stroke="#C9943A" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 7v13a1 1 0 001 1h12a1 1 0 001-1V7" stroke="#C9943A" stroke-width="1.8"/><path d="M9 11v4M12 11v4M15 11v4" stroke="#C9943A" stroke-width="1.8" stroke-linecap="round"/></svg></div><div style="font-size:7.5px;color:var(--gris-chaud);margin-top:6px;letter-spacing:1px;text-align:center;">Shopping</div><div style="font-size:7px;color:var(--foret);margin-top:2px;">05</div></div>
+    <div style="flex:1;height:2px;background:linear-gradient(90deg,var(--foret),var(--kaki));min-width:20px;margin-bottom:18px;"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;min-width:88px;"><div style="width:56px;height:56px;border-radius:50%;background:var(--kaki);display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 6h18" stroke="#F2EBDD" stroke-width="1.8" stroke-linecap="round"/><path d="M8 6V4h8v2" stroke="#F2EBDD" stroke-width="1.8" stroke-linejoin="round"/><rect x="4" y="6" width="16" height="14" rx="1" stroke="#F2EBDD" stroke-width="1.8"/></svg></div><div style="font-size:7.5px;color:var(--gris-chaud);margin-top:6px;letter-spacing:1px;text-align:center;">Restauration</div><div style="font-size:7px;color:var(--foret);margin-top:2px;">06</div></div>
+    <div style="flex:1;height:2px;background:linear-gradient(90deg,var(--kaki),var(--foret));min-width:20px;margin-bottom:18px;"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;min-width:88px;"><div style="width:56px;height:56px;border-radius:50%;background:var(--foret);display:flex;align-items:center;justify-content:center;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 21a9 9 0 100-18 9 9 0 000 18z" stroke="#C9943A" stroke-width="1.8"/><path d="M8 12l3 3 5-5" stroke="#C9943A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div style="font-size:7.5px;color:var(--gris-chaud);margin-top:6px;letter-spacing:1px;text-align:center;">Fidélisation</div><div style="font-size:7px;color:var(--foret);margin-top:2px;">07</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;">
+    <div class="pc-card" style="border-top:2px solid var(--foret);"><div class="pc-step">Moment 01 · Arrivée</div><div class="pc-title">L'annonce du quartier</div><div class="pc-text">Enseigne Forêt & Or visible à 150m depuis la route. Bardage bois huilé. Signalétique parkings P1/P2/P3 claire. Végétation luxuriante en façade.</div><div class="pc-quote">"Ah, c'est là. Enfin !"</div></div>
+    <div class="pc-card" style="border-top:2px solid var(--foret);"><div class="pc-step">Moment 02 · Parking</div><div class="pc-title">Fluidité naturelle</div><div class="pc-text">Bandes de guidage kaki au sol. Éclairage 3000K chaleureux. Totem laiton status P1/P2/P3. Béton ciré clair. Accès piéton balisé Or.</div><div class="pc-quote">"C'est propre. Et bien pensé."</div></div>
+    <div class="pc-card" style="border-top:2px solid var(--kaki);"><div class="pc-step">Moment 03 · Entrée</div><div class="pc-title">L'effet forêt</div><div class="pc-text">Portique bois & laiton. Passage végétalisé — ficus, bananiers ornementaux. Air conditionné 22°C. Odeur signature Cosmos (bois & agrumes verts).</div><div class="pc-quote">"On est bien reçu. Comme des gens."</div></div>
+    <div class="pc-card" style="border-top:2px solid var(--or);"><div class="pc-step">Moment 04 · Hall</div><div class="pc-title">L'ancre du quartier</div><div class="pc-text">Suspensions raphia naturel. Sol calcaire sablé. Comptoir bois & laiton. Totem 75" interactif. Cosmos Club desk visible. Végétation dense.</div><div class="pc-quote">"C'est beau. Et ça me ressemble."</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+    <div class="pc-card" style="border-top:2px solid var(--foret);"><div class="pc-step">Moment 05 · Shopping</div><div class="pc-title">Le cadre qui libère</div><div class="pc-text">Galeries à 60% sable. Piliers bois à bandeau kaki en pied. Wayfinding laiton intuitif. Chaque enseigne respire. Musique afro-jazz à -14dB.</div><div class="pc-quote">"On revient. On se sent bien."</div></div>
+    <div class="pc-card" style="border-top:2px solid var(--kaki);"><div class="pc-step">Moment 06 · Restauration</div><div class="pc-title">Le repas du quartier</div><div class="pc-text">Food court N2 ouvert sur terrasse végétalisée. Mobilier bois, coussins kaki-sable. Suspensions raphia et spots laiton 2700K.</div><div class="pc-quote">"Courses, lunch, cinéma. Tout ici."</div></div>
+    <div class="pc-card" style="border-top:2px solid var(--foret);"><div class="pc-step">Moment 07 · Fidélisation</div><div class="pc-title">Mon Cosmos</div><div class="pc-text">Cosmos Club : carte Platinum NFC, points, avant-premières, offres quartier. Push app hyper-local. Sac kraft & raphia remis à chaque passage.</div><div class="pc-quote">"Cosmos, c'est mon endroit à Angré."</div></div>
+  </div>
+</section>
+
+<!-- CHAPITRE C -->
+<div class="ch-break bg-kaki" id="ch-c">
+  <div class="ch-num" style="color:rgba(242,235,221,0.15);">C</div>
+  <div class="ch-content" style="color:var(--sable);">
+    <div class="ch-label" style="color:rgba(242,235,221,0.5);">Partie C</div>
+    <div class="ch-title">Tenant Guidelines</div>
+  </div>
+  <div class="ch-badge" style="color:var(--sable);">Règles pour les enseignes</div>
+</div>
+
+<!-- C1 — INTRO TENANT -->
+<section class="bg-white" id="intro-tenant">
+  <div class="eyebrow green">C1 · Introduction</div>
+  <h2 class="light">À l'attention des enseignes</h2>
+  <div class="sub">Cosmos Angré · Charte d'aménagement locataire</div>
+  <div class="divider kaki"></div>
+  <div class="tenant-intro">
+    <div class="tenant-intro-icon">🏬</div>
+    <div class="tenant-intro-text">
+      Cosmos Angré est un <strong>écrin naturel et premium</strong> conçu pour valoriser ses enseignes. Notre identité s'exprime sur les parties communes, façades et communication. <strong>Dans votre espace, vous êtes chez vous.</strong><br><br>
+      Cette charte définit les règles d'harmonie qui permettent à votre enseigne de rayonner dans un environnement cohérent et ancré. Elle n'est pas contraignante — elle est protectrice.
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    <div style="background:rgba(118,118,77,0.06);border:1px solid rgba(118,118,77,0.2);padding:28px;"><div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--noir-chaud);margin-bottom:8px;">Libre chez vous</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.8;">Votre identité à l'intérieur. Vos couleurs, matériaux, mobilier, musique, merchandising.</div></div>
+    <div style="background:rgba(201,148,58,0.06);border:1px solid rgba(201,148,58,0.2);padding:28px;"><div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--noir-chaud);margin-bottom:8px;">Validation requise</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.8;">La façade boutique, l'enseigne lumineuse, la signalétique visible depuis les allées.</div></div>
+    <div style="background:rgba(192,57,43,0.05);border:1px solid rgba(192,57,43,0.15);padding:28px;"><div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--noir-chaud);margin-bottom:8px;">Interdit</div><div style="font-size:9.5px;color:var(--gris-chaud);line-height:1.8;">Modifier les parties communes. Apposer des visuels sur les piliers Cosmos. Éclairage perturbant les allées.</div></div>
+  </div>
+</section>
+
+<!-- C2 — CHARTE FACADE -->
+<section class="bg-warm" id="charte-facade">
+  <div class="eyebrow green">C2 · Charte façade</div>
+  <h2 class="light">Façade boutique</h2>
+  <div class="sub">Règles d'aménagement de la devanture enseigne</div>
+  <div class="divider kaki"></div>
+  <div class="facade-grid">
+    <div class="facade-card">
+      <div class="facade-visual" style="background:linear-gradient(180deg,var(--pierre) 0%,var(--pierre) 65%,#c8bfb0 65%);">
+        <div class="facade-zone" style="top:8%;left:5%;right:5%;height:55%;border-color:rgba(118,118,77,0.4);color:var(--kaki);">Zone enseigne libre</div>
+        <div class="facade-zone" style="bottom:36%;left:10%;right:10%;height:28%;border-color:rgba(201,148,58,0.4);color:var(--or);font-size:7px;">Vitrine — matériaux libres</div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:6px;background:var(--foret);"></div>
+      </div>
+      <div class="facade-body">
+        <div class="facade-title">Boutique standard — Gabarit type</div>
+        <div class="facade-rules">
+          <div class="facade-rule ok">Enseigne : vos couleurs de marque, hauteur max 80cm</div>
+          <div class="facade-rule ok">Vitrine : libre dans le gabarit alloué</div>
+          <div class="facade-rule no">Débordement sur les piliers Cosmos interdit</div>
+          <div class="facade-rule no">Affichage hors vitrine sur les allées interdit</div>
+        </div>
+      </div>
+    </div>
+    <div class="facade-card">
+      <div class="facade-visual" style="background:linear-gradient(180deg,var(--pierre) 0%,var(--pierre) 65%,#c8bfb0 65%);">
+        <div class="facade-zone" style="top:5%;left:3%;right:3%;height:60%;border-color:rgba(118,118,77,0.4);color:var(--kaki);">Zone enseigne élargie</div>
+        <div class="facade-zone" style="bottom:36%;left:5%;right:5%;height:26%;border-color:rgba(201,148,58,0.4);color:var(--or);font-size:7px;">Double vitrine</div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:6px;background:var(--foret);"></div>
+      </div>
+      <div class="facade-body">
+        <div class="facade-title">Enseigne anchor / restaurant — Gabarit large</div>
+        <div class="facade-rules">
+          <div class="facade-rule ok">Accroche lumineuse autorisée (LED blanc chaud 3000K)</div>
+          <div class="facade-rule ok">Double vitrine selon bail</div>
+          <div class="facade-rule no">Néon couleur vive, clignotant interdit</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- C3 — ZONES & GABARITS -->
+<section class="bg-white" id="zones">
+  <div class="eyebrow green">C3 · Implantation</div>
+  <h2 class="light">Zones & Gabarits</h2>
+  <div class="sub">Plan de zonage — Gabarits d'aménagement par type d'enseigne</div>
+  <div class="divider kaki"></div>
+  <div class="plan-wrap">
+    <div style="font-size:8px;letter-spacing:2px;color:var(--gris-chaud);text-transform:uppercase;margin-bottom:16px;">Plan schématique — Niveau RDC</div>
+    <div class="plan-svg-area">
+      <div class="plan-cell">Parking P1</div>
+      <div class="plan-cell cosmos">Entrée principale<br>Cosmos Angré</div>
+      <div class="plan-cell">Parking P2</div>
+      <div class="plan-cell anchor">Supermarché<br>Carrefour N1</div>
+      <div class="plan-cell" style="background:rgba(242,235,221,0.6);border-color:rgba(47,84,57,0.12);display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:3px;padding:8px;">
+        <div style="background:rgba(47,84,57,0.04);border:1px solid rgba(47,84,57,0.08);display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--gris-chaud);">Unit A</div>
+        <div style="background:rgba(47,84,57,0.04);border:1px solid rgba(47,84,57,0.08);display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--gris-chaud);">Unit B</div>
+        <div style="background:rgba(47,84,57,0.04);border:1px solid rgba(47,84,57,0.08);display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--gris-chaud);">Unit C</div>
+        <div style="background:rgba(47,84,57,0.04);border:1px solid rgba(47,84,57,0.08);display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--gris-chaud);">Unit D</div>
+        <div style="background:rgba(201,148,58,0.08);border:1px solid rgba(201,148,58,0.2);display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--or);">Hall</div>
+        <div style="background:rgba(47,84,57,0.04);border:1px solid rgba(47,84,57,0.08);display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--gris-chaud);">Unit E</div>
+      </div>
+      <div class="plan-cell anchor">Cinéma<br>N3</div>
+      <div class="plan-cell">Terrasse<br>végétalisée</div>
+      <div class="plan-cell cosmos">Restauration<br>Food court N2</div>
+      <div class="plan-cell">Accès service</div>
+    </div>
+    <div class="plan-legend">
+      <div class="plan-leg"><div class="plan-leg-sq" style="background:rgba(201,148,58,0.2);border:1px solid rgba(201,148,58,0.3);"></div>Cosmos — Parties communes</div>
+      <div class="plan-leg"><div class="plan-leg-sq" style="background:rgba(47,84,57,0.12);border:1px solid rgba(47,84,57,0.25);"></div>Anchor tenants</div>
+      <div class="plan-leg"><div class="plan-leg-sq" style="background:rgba(47,84,57,0.04);border:1px solid rgba(47,84,57,0.1);"></div>Unités locatives standard</div>
+    </div>
+  </div>
+  <div class="gabarit-grid">
+    <div class="gab-card"><div class="gab-type">Unité standard</div><div class="gab-dim">40–80 m²</div><div class="gab-note">Mode, beauté, accessoires. Façade 4–6m. Hauteur libre 3.5m.</div></div>
+    <div class="gab-card"><div class="gab-type">Unité moyenne</div><div class="gab-dim">80–200 m²</div><div class="gab-note">Restauration assise, sport, maison. Façade 6–10m. Terrasse possible.</div></div>
+    <div class="gab-card"><div class="gab-type">Grande unité</div><div class="gab-dim">200–500 m²</div><div class="gab-note">Anchor secondaire, lifestyle. Double façade. Signalétique élargie.</div></div>
+    <div class="gab-card"><div class="gab-type">Anchor</div><div class="gab-dim">500 m²+</div><div class="gab-note">Supermarché, cinéma, food court. Règles spécifiques. Négociation directe CRMC.</div></div>
+  </div>
+</section>
+
+<!-- C4 — ESPACES COMMUNS -->
+<section class="bg-warm" id="espaces-communs">
+  <div class="eyebrow green">C4 · Espaces communs</div>
+  <h2 class="light">Proportions chromatiques — espaces communs</h2>
+  <div class="sub">Ce que Cosmos contrôle · L'écrin naturel que vous intégrez</div>
+  <div class="divider kaki"></div>
+  <div style="background:rgba(118,118,77,0.06);border:1px solid rgba(118,118,77,0.15);padding:20px 24px;margin-bottom:32px;font-size:9.5px;color:var(--noir-chaud);line-height:1.7;"><strong>Principe fondamental :</strong> les espaces communs sont sablés, naturels et lumineux pour que chaque enseigne rayonne.</div>
+  <div class="commun-rule-grid">
+    <div class="cr-card"><div class="cr-zone">Allées principales</div><div class="cr-title">Galeries marchandes</div><div class="cr-bar"><div class="cr-bar-seg" style="width:60%;background:var(--sable);color:rgba(47,84,57,0.5);font-size:8px;">60% Sable</div><div class="cr-bar-seg" style="width:25%;background:var(--foret);color:rgba(242,235,221,0.7);font-size:8px;">25%</div><div class="cr-bar-seg" style="width:15%;background:var(--or);color:rgba(26,20,16,0.6);font-size:8px;">15%</div></div><div class="cr-rules"><div class="cr-rule">Sol : calcaire sablé ton naturel</div><div class="cr-rule">Murs : sable territorial — neutre et chaud</div><div class="cr-rule">Piliers : bois huilé, bandeau kaki en pied</div></div></div>
+    <div class="cr-card"><div class="cr-zone">Hall d'entrée</div><div class="cr-title">Accueil central</div><div class="cr-bar"><div class="cr-bar-seg" style="width:55%;background:var(--sable);color:rgba(47,84,57,0.5);font-size:8px;">55% Sable</div><div class="cr-bar-seg" style="width:25%;background:var(--foret);color:rgba(242,235,221,0.7);font-size:8px;">25%</div><div class="cr-bar-seg" style="width:20%;background:var(--or);color:rgba(26,20,16,0.6);font-size:8px;">20%</div></div><div class="cr-rules"><div class="cr-rule">Sol : calcaire crème ciré</div><div class="cr-rule">Comptoir : bois huilé + laiton cuivré</div><div class="cr-rule">Suspensions : raphia naturel dense</div></div></div>
+    <div class="cr-card"><div class="cr-zone">Terrasse & espaces verts</div><div class="cr-title">Zones végétales</div><div class="cr-bar"><div class="cr-bar-seg" style="width:50%;background:var(--kaki);color:rgba(242,235,221,0.8);font-size:8px;">50% Kaki</div><div class="cr-bar-seg" style="width:35%;background:var(--sable);color:rgba(47,84,57,0.5);font-size:8px;">35%</div><div class="cr-bar-seg" style="width:15%;background:var(--or);color:rgba(26,20,16,0.6);font-size:8px;">15%</div></div><div class="cr-rules"><div class="cr-rule">Jardinières : pierre naturelle ou bois huilé</div><div class="cr-rule">Mobilier : bois ébène, coussins kaki-sable</div><div class="cr-rule">Végétation tropicale foisonnante</div></div></div>
+    <div class="cr-card"><div class="cr-zone">Parking & accès</div><div class="cr-title">Infrastructure service</div><div class="cr-bar"><div class="cr-bar-seg" style="width:80%;background:#c8c0b4;color:rgba(47,84,57,0.5);font-size:8px;">80% Béton clair</div><div class="cr-bar-seg" style="width:12%;background:var(--foret);color:rgba(242,235,221,0.7);font-size:8px;">12%</div><div class="cr-bar-seg" style="width:8%;background:var(--or);color:rgba(26,20,16,0.6);font-size:8px;">8%</div></div><div class="cr-rules"><div class="cr-rule">Structure : béton clair poli</div><div class="cr-rule">Bandes guidage : kaki au sol</div><div class="cr-rule">Signalétique : blanc sur fond Forêt</div></div></div>
+  </div>
+</section>
+
+<!-- C5 — MATERIAUX -->
+<section class="bg-white" id="materiaux">
+  <div class="eyebrow green">C5 · Matériaux</div>
+  <h2 class="light">Matériaux autorisés</h2>
+  <div class="sub">Ce que vous pouvez utiliser pour votre façade et aménagement</div>
+  <div class="divider kaki"></div>
+  <div class="mat-allowed-grid">
+    <div class="mat-a-card"><div class="mat-a-swatch" style="background:linear-gradient(135deg,#F2EBDD,#E4DDD0);"></div><div class="mat-a-body"><div class="mat-a-status status-ok">✓ Autorisé sans restriction</div><div class="mat-a-name">Neutrals sablés & pierre</div><div class="mat-a-rule">Calcaire crème, marbre beige, béton ciré clair, bois naturel clair.</div></div></div>
+    <div class="mat-a-card"><div class="mat-a-swatch" style="background:linear-gradient(135deg,#2F5439,#1a3020);"></div><div class="mat-a-body"><div class="mat-a-status status-ok">✓ Autorisé sans restriction</div><div class="mat-a-name">Bois sombres & essences locales</div><div class="mat-a-rule">Iroko, teck, fraké huilé. Résonnance directe avec l'identité Cosmos.</div></div></div>
+    <div class="mat-a-card"><div class="mat-a-swatch" style="background:linear-gradient(135deg,#C9943A,#a07828);"></div><div class="mat-a-body"><div class="mat-a-status status-ok">✓ Autorisé sans restriction</div><div class="mat-a-name">Laiton & cuivre brossé</div><div class="mat-a-rule">Détails en laiton brossé, cuivre mat. Harmonie avec le registre Or Cuivré Cosmos.</div></div></div>
+    <div class="mat-a-card"><div class="mat-a-swatch" style="background:linear-gradient(135deg,#e8e8e8,#d0d0d0);"></div><div class="mat-a-body"><div class="mat-a-status status-cond">⚠ Autorisé avec validation</div><div class="mat-a-name">Inox & acier brossé</div><div class="mat-a-rule">Finitions mates uniquement. Miroir brillant soumis à validation CRMC.</div></div></div>
+    <div class="mat-a-card"><div class="mat-a-swatch" style="background:linear-gradient(135deg,rgba(242,235,221,0.6),rgba(200,200,200,0.3));border:1px solid rgba(47,84,57,0.08);"></div><div class="mat-a-body"><div class="mat-a-status status-cond">⚠ Autorisé avec validation</div><div class="mat-a-name">Verre & acrylique</div><div class="mat-a-rule">Transparent ou satiné autorisé. Verre teinté couleur vive soumis à validation CRMC.</div></div></div>
+    <div class="mat-a-card"><div class="mat-a-swatch" style="background:linear-gradient(135deg,#ff4444,#aa00aa);"></div><div class="mat-a-body"><div class="mat-a-status status-no">✗ Interdit en façade</div><div class="mat-a-name">Couleurs primaires vives</div><div class="mat-a-rule">Rouge vif, bleu électrique, jaune néon en façade. Autorisé à l'intérieur de l'espace enseigne.</div></div></div>
+  </div>
+</section>
+
+<!-- C6 — SIGNALETIQUE TENANT -->
+<section class="bg-warm" id="signaletique-tenant">
+  <div class="eyebrow green">C6 · Signalétique</div>
+  <h2 class="light">Signalétique propre à l'enseigne</h2>
+  <div class="sub">Ce que vous pouvez installer · Ce qui est proscrit</div>
+  <div class="divider kaki"></div>
+  <div class="sign-grid">
+    <div class="sign-card"><div class="sign-prev" style="background:var(--pierre);"><div style="background:rgba(255,255,255,0.9);padding:10px 20px;border-bottom:3px solid var(--foret);"><div style="font-size:12px;font-weight:600;color:var(--noir-chaud);letter-spacing:2px;">VOTRE ENSEIGNE</div></div></div><div class="sign-body"><div class="sign-title">Enseigne lumineuse façade</div><div class="sign-spec">Hauteur max 80cm · LED blanc chaud 3000K · Rétro-éclairée ou lettres découpées</div><div class="sign-allowed"><span class="sign-tag sign-yes">✓ Lettres découpées</span><span class="sign-tag sign-yes">✓ LED 3000K</span><span class="sign-tag sign-no">✗ Néon couleur</span><span class="sign-tag sign-no">✗ Clignotant</span></div></div></div>
+    <div class="sign-card"><div class="sign-prev" style="background:#fff;"><div style="background:var(--sable);border:1px solid rgba(47,84,57,0.1);padding:8px 16px;display:flex;align-items:center;gap:10px;"><div style="width:20px;height:20px;background:var(--foret);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;">V</div><div style="font-size:10px;color:var(--noir-chaud);">Votre marque</div><div style="margin-left:auto;font-size:9px;color:var(--gris-chaud);">→ N2</div></div></div><div class="sign-body"><div class="sign-title">Panneau directionnel complémentaire</div><div class="sign-spec">Format A4 max · Fond sable ou blanc · Logo enseigne + numéro zone · Validé CRMC</div><div class="sign-allowed"><span class="sign-tag sign-yes">✓ Logo + zone</span><span class="sign-tag sign-yes">✓ Fond neutre</span><span class="sign-tag sign-no">✗ Fond couleur vive</span></div></div></div>
+    <div class="sign-card"><div class="sign-prev" style="background:var(--pierre);"><div style="padding:12px;text-align:center;"><div style="font-size:9px;color:var(--gris-chaud);letter-spacing:1px;">VITRINE</div><div style="font-size:11px;font-weight:600;color:var(--noir-chaud);margin-top:4px;">Promotion –30%</div><div style="font-size:8px;color:var(--foret);margin-top:2px;">Du 1 au 15 nov.</div></div></div><div class="sign-body"><div class="sign-title">PLV & affichage vitrine</div><div class="sign-spec">Libre dans le gabarit · Vos couleurs · Pas de débordement allée</div><div class="sign-allowed"><span class="sign-tag sign-yes">✓ Promotions</span><span class="sign-tag sign-yes">✓ Vos couleurs</span><span class="sign-tag sign-no">✗ Hors gabarit vitrine</span></div></div></div>
+  </div>
+</section>
+
+<!-- C7 — GALERIES 3D -->
+<section class="bg-white" id="galeries-3d">
+  <div class="eyebrow green">C7 · Visuels</div>
+  <h2 class="light">Visuels galeries — L'écrin naturel</h2>
+  <div class="sub">Simulations des espaces communs tels qu'ils accueilleront vos enseignes</div>
+  <div class="divider kaki"></div>
+  <div class="gallery-3d-grid">
+    <div class="g3d-main" style="border:1px solid rgba(47,84,57,0.08);">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,#FAF8F3 0%,#F2EBDD 100%);overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:22%;background:linear-gradient(180deg,#FAF8F3,#F2EBDD);"></div>
+        <div style="position:absolute;top:22%;left:0;width:12%;height:42%;background:linear-gradient(90deg,#E4DDD0,#F2EBDD);"></div>
+        <div style="position:absolute;top:22%;right:0;width:12%;height:42%;background:linear-gradient(270deg,#E4DDD0,#F2EBDD);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:38%;background:linear-gradient(180deg,#E8DFD0,#d8ccba);"></div>
+        <div style="position:absolute;left:18%;top:20%;height:44%;width:18px;background:linear-gradient(90deg,#2F5439,#3a6644,#2F5439);border-radius:2px;"><div style="position:absolute;bottom:0;width:100%;height:12px;background:var(--kaki);border-radius:1px;"></div></div>
+        <div style="position:absolute;right:18%;top:20%;height:44%;width:18px;background:linear-gradient(90deg,#2F5439,#3a6644,#2F5439);border-radius:2px;"><div style="position:absolute;bottom:0;width:100%;height:12px;background:var(--kaki);border-radius:1px;"></div></div>
+        <div style="position:absolute;left:22%;right:22%;bottom:38%;height:42%;background:rgba(255,255,255,0.95);border:1px solid rgba(47,84,57,0.08);">
+          <div style="position:absolute;top:0;left:0;right:0;height:22%;background:rgba(47,84,57,0.04);display:flex;align-items:center;justify-content:center;"><div style="font-size:9px;letter-spacing:3px;color:rgba(47,84,57,0.3);">VOTRE ENSEIGNE</div></div>
+          <div style="position:absolute;inset:22% 10% 10%;background:rgba(47,84,57,0.02);display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(47,84,57,0.15);letter-spacing:1px;">Votre vitrine ici</div>
+        </div>
+        <div style="position:absolute;bottom:38%;left:22%;right:22%;height:3px;background:var(--foret);opacity:0.4;"></div>
+        <div style="position:absolute;top:28%;left:50%;transform:translateX(-50%);background:var(--sable);border:1px solid rgba(201,148,58,0.3);padding:5px 12px;white-space:nowrap;"><div style="font-size:7.5px;color:var(--or);letter-spacing:1.5px;">→ Restauration N2</div></div>
+      </div>
+      <div class="g3d-label" style="z-index:2;"><div class="g3d-label-tag" style="color:rgba(47,84,57,0.4);">Vue principale</div><div class="g3d-label-name" style="color:var(--noir-chaud);">Allée galerie — Enseigne en situation</div></div>
+    </div>
+    <div class="g3d-side">
+      <div class="g3d-small" style="border:1px solid rgba(47,84,57,0.08);">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,#FAF8F3,#F2EBDD);">
+          <div style="position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(180deg,#E8DFD0,#d8ccba);"></div>
+          <div style="position:absolute;top:18%;left:50%;transform:translateX(-50%);text-align:center;"><div style="font-family:'Cormorant Garamond',serif;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--or);">COSMOS CLUB</div><div style="width:20px;height:1px;background:rgba(201,148,58,0.4);margin:5px auto;"></div><div style="font-size:7px;color:rgba(47,84,57,0.3);letter-spacing:1px;">Hall accueil</div></div>
+        </div>
+        <div class="g3d-label"><div class="g3d-label-tag" style="color:rgba(47,84,57,0.4);">Hall central</div><div class="g3d-label-name" style="color:var(--noir-chaud);font-size:12px;">Accueil & Cosmos Club</div></div>
+      </div>
+      <div class="g3d-small" style="border:1px solid rgba(47,84,57,0.08);">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,#2F5439 0%,#4a7558 60%,#76764D 100%);">
+          <div style="position:absolute;bottom:18%;left:50%;transform:translateX(-50%);background:rgba(47,84,57,0.7);padding:4px 10px;white-space:nowrap;"><div style="font-size:7px;color:rgba(242,235,221,0.7);letter-spacing:1.5px;">TERRASSE VÉGÉTALISÉE</div></div>
+        </div>
+        <div class="g3d-label"><div class="g3d-label-tag" style="color:rgba(242,235,221,0.5);">Terrasse</div><div class="g3d-label-name" style="color:var(--sable);">Espace extérieur restauration</div></div>
+      </div>
+    </div>
+  </div>
+  <div style="background:rgba(118,118,77,0.05);border:1px solid rgba(118,118,77,0.15);padding:20px 24px;margin-top:20px;font-size:9.5px;color:var(--gris-chaud);line-height:1.7;">
+    <strong style="color:var(--kaki);">Ce que ces visuels démontrent :</strong> Les allées sont sablées et naturelles. Votre enseigne sera le premier élément coloré visible depuis l'allée. <strong style="color:var(--noir-chaud);">Votre marque respire dans un cadre de forêt urbaine.</strong>
+  </div>
+</section>
+
+<!-- D1 — RISQUES -->
+<section class="bg-warm" id="risques">
+  <div class="eyebrow light">D1 · Analyse</div>
+  <h2 class="light">Risques & Avantage stratégique</h2>
+  <div class="sub">Analyse critique du Scénario A — Document maître</div>
+  <div class="divider foret"></div>
+  <div class="risk-grid">
+    <div class="risk-c"><div class="risk-head"><div class="risk-dot" style="background:#c0392b;"></div><div class="risk-title" style="color:#c0392b;">Points de vigilance</div></div><div class="risk-items"><div class="risk-item">Risque principal : ressembler à un "Sococé premium" si l'exécution manque de rigueur. La qualité doit être Grade A, sans exception, dès le premier jour.</div><div class="risk-item">Le Forêt Profond en façade principale (55%) résiste bien au soleil ivoirien — mais la teinture bois doit être vérifiée avec le bureau de contrôle.</div><div class="risk-item">Formation du staff critique : le positionnement "quartier" peut dériver vers le familier.</div><div class="risk-item">Scalabilité de marque limitée : le Scénario A est optimisé pour Cocody.</div></div></div>
+    <div class="risk-c"><div class="risk-head"><div class="risk-dot" style="background:var(--kaki);"></div><div class="risk-title" style="color:var(--kaki);">Avantage stratégique</div></div><div class="risk-items"><div class="risk-item">Alignement OnPoint maximal : 60% des résidents sortaient de Cocody — la promesse "enfin ici" répond directement à une douleur documentée.</div><div class="risk-item">Carrefour comme locomotive de proximité : la fréquentation du supermarché garantit 3–5 visites/mois.</div><div class="risk-item">Le Forêt Profond + Or Cuivré = unique dans le retail abidjanais. Différenciation immédiate.</div><div class="risk-item">Fidélisation naturelle : l'ancrage de quartier crée un sentiment d'appartenance. "Mon Cosmos" est le meilleur indicateur de réussite.</div></div></div>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale">
+  <div style="position:relative;z-index:1;max-width:700px;">
+    <div style="font-size:7.5px;letter-spacing:4px;color:rgba(201,148,58,0.4);text-transform:uppercase;margin-bottom:28px;">Cosmos Angré · Scénario A · Mars 2026</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--sable);line-height:1.2;margin-bottom:24px;">"Enfin tout,<br><em style="color:var(--or);font-weight:600;">enfin ici.</em>"</div>
+    <div style="width:40px;height:1px;background:rgba(201,148,58,0.4);margin:0 auto 24px;"></div>
+    <div style="font-size:9.5px;color:rgba(242,235,221,0.35);letter-spacing:2px;line-height:2.2;">Brand & Tenant Master Book · Scénario A · Premium de Proximité<br>Le quartier que vous méritez · Cocody · Abidjan · Côte d'Ivoire</div>
+    <div style="margin-top:44px;font-size:7.5px;color:rgba(242,235,221,0.15);letter-spacing:2px;">DOCUMENT EXCO CONFIDENTIEL · NEW HEAVEN SA / CRMC · © 2026 · TOUS DROITS RÉSERVÉS</div>
+  </div>
+</section>
+
+</main>
+<script>
+function toggleGroup(id){const g=document.getElementById(id);g.classList.toggle('open');}
+const allSections=document.querySelectorAll('section[id],div[id]');
+const allLinks=document.querySelectorAll('nav a');
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){allLinks.forEach(l=>l.classList.remove('active'));const match=document.querySelector(`nav a[href="#${e.target.id}"]`);if(match)match.classList.add('active');}});},{threshold:0.2});
+allSections.forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>

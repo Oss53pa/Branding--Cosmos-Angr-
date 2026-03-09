@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prisme de Kapferer — Cosmos Angré</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f8f6f2;color:#1a1410;min-height:100vh}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,246,242,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(26,20,16,.08);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:52px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.1em}
+.nav-tabs{display:flex;gap:3px}
+.nav-tab{padding:4px 14px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;color:rgba(26,20,16,.4);border:1px solid transparent}
+.nav-tab:hover{color:rgba(26,20,16,.75)}
+.nav-tab.active{color:#1a1410;background:rgba(26,20,16,.07);border-color:rgba(26,20,16,.12)}
+.nav-meta{font-size:10px;color:rgba(26,20,16,.3);letter-spacing:.1em;text-transform:uppercase}
+
+.page{display:none;padding-top:52px;min-height:100vh}
+.page.active{display:block}
+
+/* COVER */
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 60px;color:#fff;position:relative;overflow:hidden}
+.cover-bg-a{background:linear-gradient(150deg,#1a2e20 0%,#2a4a35 60%,#3a5a42 100%)}
+.cover-bg-b{background:linear-gradient(150deg,#050d24 0%,#0D1B4B 60%,#1a3060 100%)}
+.cover-bg-c{background:linear-gradient(150deg,#2a1a0a 0%,#3d2510 60%,#4a3018 100%)}
+.cover::before{content:'';position:absolute;right:-60px;top:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%)}
+.cover-eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:24px}
+.cover-sc{font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:12px;opacity:.6}
+.cover-title{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;line-height:1;margin-bottom:12px}
+.cover-usp{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:rgba(255,255,255,.5);margin-bottom:48px;font-style:italic}
+.cover-div{width:40px;height:1px;background:rgba(255,255,255,.2);margin-bottom:32px}
+.cover-pillars{display:flex;gap:12px;flex-wrap:wrap}
+.pillar{padding:6px 16px;border-radius:20px;font-size:11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);letter-spacing:.06em}
+.cover-foot{margin-top:48px;font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.15em;text-transform:uppercase}
+
+.content{padding:48px 56px}
+.eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px}
+.h1{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;margin-bottom:6px;line-height:1.1}
+.desc{font-size:13px;color:rgba(26,20,16,.5);line-height:1.7;max-width:720px;margin-bottom:32px}
+
+/* DATA HEADER */
+.data-header{background:#fff;border-radius:10px;border:1px solid rgba(26,20,16,.07);padding:14px 18px;margin-bottom:24px;font-size:11px;color:rgba(26,20,16,.55);line-height:1.8}
+.data-header strong{color:#1a1410}
+
+/* USP BLOCK */
+.usp-block{border-radius:14px;padding:32px 36px;margin-bottom:28px}
+.usp-quote{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;line-height:1.35;margin-bottom:12px}
+.usp-sub{font-size:12px;opacity:.65;line-height:1.75}
+
+/* TABLEAU COMPACT */
+.k-table-wrap{overflow-x:auto;margin-bottom:32px}
+.k-table{width:100%;border-collapse:collapse;font-size:11px}
+.k-table thead tr th{padding:10px 14px;text-align:left;font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;border-bottom:2px solid rgba(26,20,16,.1);background:#f8f6f2;color:rgba(26,20,16,.45)}
+.k-table thead tr th:first-child{width:160px}
+.k-table thead tr th:nth-child(2){width:130px}
+.k-table thead tr th:nth-child(3){width:130px}
+.k-table tbody tr{border-bottom:1px solid rgba(26,20,16,.05)}
+.k-table tbody tr:hover td{background:#faf8f5}
+.k-table td{padding:11px 14px;vertical-align:top;line-height:1.65;color:rgba(26,20,16,.7)}
+.k-table td:first-child{font-weight:600;font-size:10px;color:#1a1410;white-space:nowrap}
+.k-table td.est-col{color:#1a1410}
+.k-table td.not-col{color:#c0392b;opacity:.6}
+.k-table td.not-col span{text-decoration:line-through}
+.k-table td.prop-col{color:rgba(26,20,16,.75)}
+.k-table td.data-col{color:rgba(26,20,16,.4);font-style:italic;font-size:10px}
+.k-facette-row td:first-child{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:400;white-space:normal}
+
+/* CARDS */
+.section-label{font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin-bottom:14px;padding:8px 14px;border-radius:6px;display:inline-block}
+.k-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px}
+.k-card{background:#fff;border-radius:12px;border:1px solid rgba(26,20,16,.07);padding:24px;box-shadow:0 1px 3px rgba(26,20,16,.04);position:relative;overflow:hidden}
+.k-num{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;position:absolute;right:16px;top:8px;line-height:1;pointer-events:none;opacity:.06}
+.k-facette{font-size:9px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
+.k-title{font-size:14px;font-weight:600;margin-bottom:14px;line-height:1.3;max-width:82%}
+.k-two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(26,20,16,.06)}
+.k-col-h{font-size:9px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.k-col-est .k-col-h{color:inherit}
+.k-col-not .k-col-h{color:#c0392b}
+.k-li{font-size:11px;line-height:1.85;display:flex;align-items:baseline;gap:5px}
+.k-li-est::before{content:'✓';font-size:9px;flex-shrink:0}
+.k-li-not::before{content:'✗';color:#c0392b;font-size:9px;flex-shrink:0}
+.k-li-not{color:rgba(26,20,16,.45);text-decoration:line-through}
+.k-body{font-size:12px;color:rgba(26,20,16,.65);line-height:1.8;margin-bottom:10px}
+.k-verbatim{font-size:11px;color:rgba(26,20,16,.45);font-style:italic;line-height:1.7;border-left:2px solid rgba(26,20,16,.08);padding-left:10px;margin-top:8px}
+.k-data-note{font-size:10px;margin-top:10px;padding:7px 10px;border-radius:6px;line-height:1.6}
+
+/* COMPARATIF */
+.comp-tbl{width:100%;border-collapse:collapse}
+.comp-tbl th{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(26,20,16,.4);padding:11px 14px;text-align:left;border-bottom:2px solid rgba(26,20,16,.08);background:#f8f6f2}
+.comp-tbl td{padding:11px 14px;border-bottom:1px solid rgba(26,20,16,.04);font-size:12px;color:rgba(26,20,16,.7);vertical-align:top}
+.comp-tbl tr:hover td{background:#faf8f5}
+.comp-tbl td:first-child{font-weight:600;font-size:11px;color:#1a1410;white-space:nowrap}
+.tag-ok{color:#2e7d32;font-size:11px}
+.tag-warn{color:#e65100;font-size:11px}
+.tag-risk{color:#c62828;font-size:11px}
+
+/* BADGE */
+.badge-add{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+
+.footer-note{margin-top:20px;padding:14px 18px;border-radius:8px;background:rgba(26,20,16,.03);border:1px solid rgba(26,20,16,.05);font-size:10px;color:rgba(26,20,16,.35);line-height:1.8}
+.export-bar{position:fixed;bottom:20px;right:20px;z-index:200}
+.btn{padding:9px 18px;border-radius:8px;font-size:11px;font-weight:500;cursor:pointer;border:1px solid rgba(26,20,16,.15);background:#fff;color:#1a1410;box-shadow:0 2px 8px rgba(26,20,16,.08);transition:all .2s}
+.btn:hover{background:#f0ede8}
+
+/* Accents */
+.acc-a{color:#4A7558} .bg-a{background:rgba(74,117,88,.07)} .bd-a{border-color:rgba(74,117,88,.2)} .bdt-a{border-top:3px solid #4A7558}
+.acc-b{color:#C8A96E} .bg-b{background:rgba(200,169,110,.07)} .bd-b{border-color:rgba(200,169,110,.2)} .bdt-b{border-top:3px solid #C8A96E}
+.acc-c{color:#C9943A} .bg-c{background:rgba(201,148,58,.07)} .bd-c{border-color:rgba(201,148,58,.2)} .bdt-c{border-top:3px solid #C9943A}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">COSMOS ANGRE · Prisme de Kapferer</div>
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="show('intro')">Vue d'ensemble</div>
+    <div class="nav-tab" onclick="show('scA')">Scenario A</div>
+    <div class="nav-tab" onclick="show('scB')">Scenario B</div>
+    <div class="nav-tab" onclick="show('scC')">Scenario C ✦</div>
+    <div class="nav-tab" onclick="show('comp')">Comparatif</div>
+  </div>
+  <div class="nav-meta">EXCO · Mars 2026</div>
+</nav>
+
+<!-- INTRO -->
+<div class="page active" id="intro">
+  <div class="cover cover-bg-a" style="min-height:auto;padding:60px">
+    <div class="cover-eyebrow">Prisme d'identite de marque · Cosmos Angre · Document EXCO confidentiel</div>
+    <div class="cover-title">Prisme de Kapferer.<br>Trois identites.</div>
+    <div style="margin-top:14px;font-size:14px;color:rgba(255,255,255,.5);max-width:640px;line-height:1.85">Le prisme de Kapferer decompose l'identite de marque en 6 facettes organisees sur deux axes — Emetteur (Physique, Personnalite, Culture) et Recepteur (Relation, Reflet, Mentalisation). Chaque onglet presente le tableau compact fidele au document source, suivi des cards detaillees.</div>
+    <div style="margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:720px">
+      <div style="padding:18px;background:rgba(255,255,255,.06);border-radius:10px;border:1px solid rgba(255,255,255,.08);cursor:pointer" onclick="show('scA')">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px">Scenario A · Source PDF</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:4px">Premium<br>de Proximite</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3)">"Le meilleur du quotidien, enfin ici"</div>
+      </div>
+      <div style="padding:18px;background:rgba(255,255,255,.06);border-radius:10px;border:1px solid rgba(255,255,255,.08);cursor:pointer" onclick="show('scB')">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px">Scenario B · Source PDF</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:4px">Destination<br>Premium</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3)">"Un monde a part"</div>
+      </div>
+      <div style="padding:18px;background:rgba(255,255,255,.06);border-radius:10px;border:1px solid rgba(255,255,255,.08);cursor:pointer;border:1px solid rgba(201,148,58,.3)" onclick="show('scC')">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,148,58,.7);margin-bottom:8px">Scenario C ✦ Additionnel</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:4px">L'Exception<br>de Proximite</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3)">"Vivez l'exception, ici chez vous"</div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="eyebrow" style="color:#C9943A">Donnees de reference — Etude OnPoint</div>
+    <div class="h1">Ce que le terrain nous dit</div>
+    <div class="desc">Zone de chalandise primaire (2-3 km) : <strong>24 324 menages · 104 594 habitants</strong> | Revenu total zone : <strong>19,7 Mds FCFA/mois</strong> | Revenu moyen individuel : <strong>810 kFCFA/mois</strong> | Consommation : 210 kFCFA/mois (336k haut standing, 247k aisee, 191k moy. sup.) | <strong>73%</strong> conso. tiree par classes aisees &amp; haut standing | <strong>0 centre commercial</strong> dans la zone primaire | Concurrents : Sococe (5 km, 79% frequentation), La Djibi (3 km) | <strong>60% vont hors Cocody</strong> (PlaYce 34%, Cap Sud 29%) | <strong>93% favorables</strong> au projet | Demandes : Carrefour (32%), FNAC (98%), cinema, livraison.</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+      <div style="background:#fff;border-radius:10px;border:1px solid rgba(26,20,16,.07);padding:16px"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:#C9943A">24 324</div><div style="font-size:11px;color:rgba(26,20,16,.5);margin-top:3px">Menages zone primaire</div></div>
+      <div style="background:#fff;border-radius:10px;border:1px solid rgba(26,20,16,.07);padding:16px"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:#C9943A">73%</div><div style="font-size:11px;color:rgba(26,20,16,.5);margin-top:3px">Conso. classes aisees & haut standing</div></div>
+      <div style="background:#fff;border-radius:10px;border:1px solid rgba(26,20,16,.07);padding:16px"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:#C9943A">60%</div><div style="font-size:11px;color:rgba(26,20,16,.5);margin-top:3px">Vont hors Cocody faute d'offre locale</div></div>
+      <div style="background:#fff;border-radius:10px;border:1px solid rgba(26,20,16,.07);padding:16px"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:#C9943A">93%</div><div style="font-size:11px;color:rgba(26,20,16,.5);margin-top:3px">Favorables avant ouverture</div></div>
+    </div>
+    <div class="footer-note" style="margin-top:20px">Prisme de Kapferer · Cosmos Angre · Mars 2026 · Document EXCO confidentiel — New Heaven SA / CRMC<br>Source donnees : Etude de marche OnPoint · Prepare par : Pamela Atokouna | Pour validation : EXCO (DG Cheick Sanankoua)<br>✦ Scenario C = scenario additionnel construit depuis la Plateforme de marque (Livrable 1) — non present dans le PDF Kapferer source</div>
+  </div>
+</div>
+
+<!-- SCENARIO A -->
+<div class="page" id="scA">
+  <div class="cover cover-bg-a">
+    <div class="cover-eyebrow">Prisme de Kapferer · Cosmos Angre · Source : PDF Kapferer EXCO</div>
+    <div class="cover-sc">Scenario A</div>
+    <div class="cover-title">Premium<br>de Proximite</div>
+    <div class="cover-usp">"Le meilleur du quotidien, enfin ici"</div>
+    <div class="cover-div"></div>
+    <div class="cover-pillars">
+      <span class="pillar">Completude</span><span class="pillar">Qualite accessible</span><span class="pillar">Ancrage territorial</span><span class="pillar">Modernite locale</span>
+    </div>
+    <div class="cover-foot">Analogie : Novotel — premium, fiable, pour tous les voyageurs exigeants · Signature : "Le centre de vos envies" / "Tout commence ici"</div>
+  </div>
+
+  <div class="content">
+    <div class="data-header">
+      <strong>📊 Donnees cles OnPoint ·</strong> Zone primaire : 24 324 menages · 104 594 hab. | Revenu total : 19,7 Mds FCFA/mois | Revenu moy. individuel : 810 kFCFA/mois | 73% conso. classes aisees & haut standing | <strong>0 CC dans la zone primaire</strong> | Concurrents : Sococe (5 km, 79%), La Djibi (3 km) | <strong>60% vont hors Cocody</strong> (PlaYce 34%, Cap Sud 29%) | <strong>93% favorables</strong> | Demandes : Carrefour (32%), FNAC (98%), cinema, livraison
+    </div>
+
+    <div class="usp-block" style="background:linear-gradient(135deg,#e8f2ec,#f0f7f2);border:1px solid rgba(74,117,88,.15)">
+      <div class="usp-quote" style="color:#2d5a3d">"Le meilleur du quotidien, enfin ici"</div>
+      <div class="usp-sub">Positionnement ancre dans les donnees terrain. Capitalise sur la frustration documentee (60% quittent Cocody) et la convertit en loyaute de proximite. Analogie Novotel : premium, fiable, chaleureux et accessible.</div>
+    </div>
+
+    <div class="eyebrow acc-a">Tableau synthetique — Prisme Kapferer Scenario A</div>
+    <div class="h1" style="margin-bottom:16px">Vue compacte · 6 facettes</div>
+    <div class="k-table-wrap">
+      <table class="k-table">
+        <thead>
+          <tr>
+            <th>Facette</th>
+            <th class="th-est" style="color:#4A7558">EST</th>
+            <th class="th-not" style="color:#c0392b">N'EST PAS</th>
+            <th>Proposition Scenario A</th>
+            <th>Justification data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#f0f7f2"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#4A7558;font-weight:600">1. PHYSIQUE — Attributs tangibles</td></tr>
+          <tr>
+            <td class="k-facette-row">Ce qu'on voit</td>
+            <td class="est-col">Moderne<br>Lumineux<br>Complet<br>Vegetalise</td>
+            <td class="not-col"><span>Clinquant</span><br><span>Froid</span><br><span>Intimidant</span><br><span>Vide</span></td>
+            <td class="prop-col">Architecture contemporaine, lumineuse et aeree. 8 batiments avec offre complete visible des l'arrivee : supermarche Carrefour, enseignes, restaurants, cinema, espaces enfants. Palette : bleu nuit + or mat + creme — elegant mais chaleureux. Signaletique claire, parking 523 places. Certification EDGE Advanced = vegetalisation, durabilite concrete. App mobile + livraison.</td>
+            <td class="data-col">0 CC dans zone primaire<br>Offre services tres limitee<br>93% favorables</td>
+          </tr>
+          <tr style="background:#f0f7f2"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#4A7558;font-weight:600">2. PERSONNALITE — Caractere de la marque</td></tr>
+          <tr>
+            <td class="k-facette-row">Si c'etait une personne</td>
+            <td class="est-col">Fiable<br>Genereux<br>Moderne<br>Attentionne</td>
+            <td class="not-col"><span>Snob</span><br><span>Distant</span><br><span>Elitiste</span><br><span>Austere</span></td>
+            <td class="prop-col">Un(e) voisin(e) accompli(e) de 35-40 ans. Bien installe(e) a Angre, revenus confortables, bien habille(e) sans ostentation. Connait tout le monde dans le quartier, recommande les bonnes adresses. Ton : Chaleureux, moderne, inclusif. "Venez comme vous etes, tout est a la hauteur."</td>
+            <td class="data-col">Population aisee locale<br>750k-1,5M FCFA/mois<br>Habitudes Sococe/PlaYce</td>
+          </tr>
+          <tr style="background:#f0f7f2"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#4A7558;font-weight:600">3. CULTURE — Valeurs profondes</td></tr>
+          <tr>
+            <td class="k-facette-row">Systeme de valeurs</td>
+            <td class="est-col">Complet<br>Accessible<br>Pionnier<br>Ancre</td>
+            <td class="not-col"><span>Exclusif</span><br><span>Cher</span><br><span>Copie</span><br><span>Deconnecte</span></td>
+            <td class="prop-col"><strong>Completude :</strong> Tout en un lieu — courses, loisirs, restaurants, services. Plus besoin d'aller a PlaYce Marcory ou Cap Sud.<br><strong>Qualite accessible :</strong> Grade A ne veut pas dire prix inaccessibles. Carrefour + FNAC + enseignes = qualite pour tous les budgets aises.<br><strong>Proximite retrouvee :</strong> Le centre que la zone meritait depuis longtemps — on arrete de traverser Abidjan.<br><strong>Modernite locale :</strong> EDGE Advanced, app digitale, livraison — les standards internationaux, mais ici.</td>
+            <td class="data-col">60% vont hors Cocody<br>32% veulent Carrefour<br>98% veulent FNAC<br>64% veulent app</td>
+          </tr>
+          <tr style="background:#f0f7f2"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#4A7558;font-weight:600">4. RELATION — Lien marque-visiteur</td></tr>
+          <tr>
+            <td class="k-facette-row">Type de relation</td>
+            <td class="est-col">Quotidien<br>Compagnon<br>Fiable<br>Complet</td>
+            <td class="not-col"><span>Occasionnel</span><br><span>Intimidant</span><br><span>Elitiste</span><br><span>Utilitaire</span></td>
+            <td class="prop-col">Le centre de gravite du quartier. On y vient 3-5 fois par mois — pour les courses chez Carrefour, un cine le week-end, un dejeuner en semaine. Pas un lieu de pelerinage occasionnel — un compagnon de vie quotidien qui eleve chaque moment : mes courses sont meilleures, mon week-end est plus simple.</td>
+            <td class="data-col">Sococe : 5 visites/mois<br>Objectif : 3,4→5 visites<br>50% substitueront leur CC</td>
+          </tr>
+          <tr style="background:#f0f7f2"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#4A7558;font-weight:600">5. REFLET — Image du client projetee</td></tr>
+          <tr>
+            <td class="k-facette-row">Client miroir</td>
+            <td class="est-col">Aise local<br>Famille<br>Actif<br>Exigeant</td>
+            <td class="not-col"><span>Ultra-riche</span><br><span>Expat only</span><br><span>Jet-set</span><br><span>Snob</span></td>
+            <td class="prop-col"><strong>Profil principal :</strong> Menage aise d'Angre/Cocody, 30-50 ans, revenus 750k-1,5M FCFA/mois. Deux enfants. Fait actuellement ses courses a Sococe ou PlaYce faute de mieux dans la zone.<br><strong>Profil secondaire :</strong> Jeune actif CSP+, 25-35 ans, connecte, qui frequente PlaYce et Cap Sud faute de mieux dans la zone.<br><strong>Profil tertiaire :</strong> Travailleurs de la zone en semaine (office park + hotel = flux captif).</td>
+            <td class="data-col">24 000 menages<br>73% conso classes aisees<br>Revenu moy. 810k/mois</td>
+          </tr>
+          <tr style="background:#f0f7f2"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#4A7558;font-weight:600">6. MENTALISATION — Auto-perception du visiteur</td></tr>
+          <tr>
+            <td class="k-facette-row">Miroir interieur</td>
+            <td class="est-col">Bien servi<br>Moderne<br>Fier<br>Malin</td>
+            <td class="not-col"><span>Privilegie</span><br><span>Superieur</span><br><span>Exclusif</span><br><span>Gaspilleur</span></td>
+            <td class="prop-col">
+              <em>"Enfin, je n'ai plus besoin de traverser Abidjan pour trouver ce que je cherche."</em><br>
+              <em>"Mon quartier a un vrai centre commercial, pas juste des supermarches et des superettes."</em><br>
+              <em>"Je fais mes courses chez Carrefour, j'emmene les enfants au cinema, et je dine — tout au meme endroit."</em><br>
+              <em>"C'est moderne, propre, bien fait — c'est ce qu'on meritait a Angre."</em>
+            </td>
+            <td class="data-col">60% sortent de Cocody<br>0 cinema dans la zone<br>3 restaurants seulement</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CARDS A -->
+    <div class="eyebrow acc-a">Cards detaillees — Prisme complet</div>
+    <div class="h1" style="margin-bottom:16px">Vue approfondie · 6 facettes</div>
+    <div class="k-grid">
+      <div class="k-card bdt-a">
+        <div class="k-num" style="color:#4A7558">01</div>
+        <div class="k-facette acc-a">01 · Physique — Attributs tangibles</div>
+        <div class="k-title">Le centre contemporain du quartier</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-a">Est</div><div class="k-li k-li-est">Moderne</div><div class="k-li k-li-est">Lumineux</div><div class="k-li k-li-est">Complet</div><div class="k-li k-li-est">Vegetalise</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Clinquant</div><div class="k-li k-li-not">Froid</div><div class="k-li k-li-not">Intimidant</div><div class="k-li k-li-not">Vide</div></div>
+        </div>
+        <div class="k-body">Architecture contemporaine, lumineuse et aeree. 8 batiments avec offre complete visible des l'arrivee : supermarche Carrefour, enseignes, restaurants, cinema, espaces enfants. Palette : bleu nuit + or mat + creme — elegant mais chaleureux. Signaletique claire, parking 523 places. EDGE Advanced = vegetalisation et durabilite. App mobile + livraison.</div>
+        <div class="k-data-note bg-a bd-a" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">📊 0 CC dans zone primaire · Offre services tres limitee · 93% favorables</div>
+      </div>
+      <div class="k-card bdt-a">
+        <div class="k-num" style="color:#4A7558">02</div>
+        <div class="k-facette acc-a">02 · Personnalite — Caractere</div>
+        <div class="k-title">Le voisin accompli qui accueille tout le monde</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-a">Est</div><div class="k-li k-li-est">Fiable</div><div class="k-li k-li-est">Genereux</div><div class="k-li k-li-est">Moderne</div><div class="k-li k-li-est">Attentionne</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Snob</div><div class="k-li k-li-not">Distant</div><div class="k-li k-li-not">Elitiste</div><div class="k-li k-li-not">Austere</div></div>
+        </div>
+        <div class="k-body">Un(e) voisin(e) accompli(e) de 35-40 ans. Bien installe(e) a Angre, revenus confortables, bien habille(e) sans ostentation. Connait tout le monde dans le quartier, recommande les bonnes adresses. Ton : Chaleureux, moderne, inclusif.</div>
+        <div class="k-verbatim">"Venez comme vous etes, tout est a la hauteur."</div>
+        <div class="k-data-note bg-a bd-a" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">📊 Population aisee locale · 750k-1,5M FCFA/mois · Habitudes Sococe/PlaYce</div>
+      </div>
+      <div class="k-card bdt-a">
+        <div class="k-num" style="color:#4A7558">03</div>
+        <div class="k-facette acc-a">03 · Culture — Valeurs profondes</div>
+        <div class="k-title">Completude · Qualite accessible · Ancrage · Modernite locale</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-a">Est</div><div class="k-li k-li-est">Complet</div><div class="k-li k-li-est">Accessible</div><div class="k-li k-li-est">Pionnier</div><div class="k-li k-li-est">Ancre</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Exclusif</div><div class="k-li k-li-not">Cher</div><div class="k-li k-li-not">Copie</div><div class="k-li k-li-not">Deconnecte</div></div>
+        </div>
+        <div class="k-body"><strong>Completude :</strong> Tout en un lieu — courses, loisirs, restaurants, services. Plus besoin d'aller a PlaYce Marcory ou Cap Sud.<br><strong>Qualite accessible :</strong> Grade A ne veut pas dire prix inaccessibles. Carrefour + FNAC + enseignes = qualite pour tous les budgets aises.<br><strong>Proximite retrouvee :</strong> Le centre que la zone meritait depuis longtemps.<br><strong>Modernite locale :</strong> EDGE Advanced, app digitale, livraison — les standards internationaux, mais ici.</div>
+        <div class="k-data-note bg-a bd-a" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">📊 60% vont hors Cocody · 32% veulent Carrefour · 98% veulent FNAC · 64% veulent app</div>
+      </div>
+      <div class="k-card bdt-a">
+        <div class="k-num" style="color:#4A7558">04</div>
+        <div class="k-facette acc-a">04 · Relation — Lien marque-visiteur</div>
+        <div class="k-title">Centre de gravite du quartier — compagnon de vie quotidien</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-a">Est</div><div class="k-li k-li-est">Quotidien</div><div class="k-li k-li-est">Compagnon</div><div class="k-li k-li-est">Fiable</div><div class="k-li k-li-est">Complet</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Occasionnel</div><div class="k-li k-li-not">Intimidant</div><div class="k-li k-li-not">Elitiste</div><div class="k-li k-li-not">Utilitaire</div></div>
+        </div>
+        <div class="k-body">On y vient 3-5 fois par mois — pour les courses chez Carrefour, un cine le week-end, un dejeuner en semaine. Pas un lieu de pelerinage occasionnel — un compagnon de vie quotidien qui eleve chaque moment.</div>
+        <div class="k-data-note bg-a bd-a" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">📊 Sococe : 5 visites/mois · Objectif : 3,4→5 visites · 50% substitueront leur CC actuel</div>
+      </div>
+      <div class="k-card bdt-a">
+        <div class="k-num" style="color:#4A7558">05</div>
+        <div class="k-facette acc-a">05 · Reflet — Image du client projetee</div>
+        <div class="k-title">Le resident aise d'Angre/Cocody — exigeant sans etre snob</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-a">Est</div><div class="k-li k-li-est">Aise local</div><div class="k-li k-li-est">Famille</div><div class="k-li k-li-est">Actif</div><div class="k-li k-li-est">Exigeant</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Ultra-riche</div><div class="k-li k-li-not">Expat only</div><div class="k-li k-li-not">Jet-set</div><div class="k-li k-li-not">Snob</div></div>
+        </div>
+        <div class="k-body"><strong>Profil principal :</strong> Menage aise d'Angre/Cocody, 30-50 ans, revenus 750k-1,5M FCFA/mois. Deux enfants. Fait ses courses a Sococe ou PlaYce faute de mieux.<br><strong>Profil secondaire :</strong> Jeune actif CSP+, 25-35 ans, connecte, frequente PlaYce et Cap Sud faute de mieux.<br><strong>Profil tertiaire :</strong> Travailleurs de la zone en semaine (office park + hotel = flux captif).</div>
+        <div class="k-data-note bg-a bd-a" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">📊 24 000 menages · 73% conso classes aisees · Revenu moy. 810k/mois</div>
+      </div>
+      <div class="k-card bdt-a">
+        <div class="k-num" style="color:#4A7558">06</div>
+        <div class="k-facette acc-a">06 · Mentalisation — Auto-perception</div>
+        <div class="k-title">"Je suis quelqu'un qui a acces au meilleur, ici"</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-a">Est</div><div class="k-li k-li-est">Bien servi</div><div class="k-li k-li-est">Moderne</div><div class="k-li k-li-est">Fier</div><div class="k-li k-li-est">Malin</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Privilegie</div><div class="k-li k-li-not">Superieur</div><div class="k-li k-li-not">Exclusif</div><div class="k-li k-li-not">Gaspilleur</div></div>
+        </div>
+        <div class="k-verbatim">"Enfin, je n'ai plus besoin de traverser Abidjan pour trouver ce que je cherche."<br>"Mon quartier a un vrai centre commercial, pas juste des supermarches et des superettes."<br>"Je fais mes courses chez Carrefour, j'emmene les enfants au cinema, et je dine — tout au meme endroit."<br>"C'est moderne, propre, bien fait — c'est ce qu'on meritait a Angre."</div>
+        <div class="k-data-note bg-a bd-a" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">📊 60% sortent de Cocody · 0 cinema dans la zone · 3 restaurants seulement</div>
+      </div>
+    </div>
+    <div class="footer-note">Scenario A · Source : PDF Kapferer EXCO · Prisme de Kapferer · Cosmos Angre · Mars 2026 · Document EXCO confidentiel — New Heaven SA / CRMC<br>Prepare par : Pamela Atokouna | Pour validation : EXCO (DG Cheick Sanankoua)</div>
+  </div>
+</div>
+
+<!-- SCENARIO B -->
+<div class="page" id="scB">
+  <div class="cover cover-bg-b">
+    <div class="cover-eyebrow">Prisme de Kapferer · Cosmos Angre · Source : PDF Kapferer EXCO</div>
+    <div class="cover-sc">Scenario B</div>
+    <div class="cover-title">Destination<br>Premium</div>
+    <div class="cover-usp">"Un monde a part"</div>
+    <div class="cover-div"></div>
+    <div class="cover-pillars">
+      <span class="pillar">Excellence</span><span class="pillar">Innovation</span><span class="pillar">Art de vivre africain</span><span class="pillar">Convergence</span><span class="pillar">Durabilite</span>
+    </div>
+    <div class="cover-foot">Analogie : Sofitel — premium, exclusif, experientiel · Signatures : "Un monde a part" / "Vivez l'exception"</div>
+  </div>
+
+  <div class="content">
+    <div class="data-header">
+      <strong>📊 Donnees cles OnPoint ·</strong> Zone primaire : 24 324 menages · 104 594 hab. | Revenu total : 19,7 Mds FCFA/mois | Revenu moy. individuel : 810 kFCFA/mois | 73% conso. classes aisees & haut standing | <strong>0 CC dans la zone primaire</strong> | Concurrents : Sococe (5 km, 79%), La Djibi (3 km) | <strong>60% vont hors Cocody</strong> (PlaYce 34%, Cap Sud 29%) | <strong>93% favorables</strong> | Demandes : Carrefour (32%), FNAC (98%), cinema, livraison
+    </div>
+
+    <div class="usp-block" style="background:linear-gradient(135deg,#e8ecf5,#f0f3fa);border:1px solid rgba(13,27,75,.12)">
+      <div class="usp-quote" style="color:#0D1B4B">"Un monde a part" — Positionnement aspirationnel, vision long terme</div>
+      <div class="usp-sub">Se positionner au-dessus de tout ce qui existe en Cote d'Ivoire — creer une nouvelle categorie. Installer Cosmos comme marque premium panafricaine extensible (Marcory, Plateau demain). Benchmarks : Westfield, Hudson Yards, Mall of Africa.</div>
+    </div>
+
+    <div class="eyebrow acc-b">Tableau synthetique — Prisme Kapferer Scenario B</div>
+    <div class="h1" style="margin-bottom:16px">Vue compacte · 6 facettes</div>
+    <div class="k-table-wrap">
+      <table class="k-table">
+        <thead>
+          <tr>
+            <th>Facette</th>
+            <th style="color:#C8A96E">EST</th>
+            <th style="color:#c0392b">N'EST PAS</th>
+            <th>Proposition Scenario B</th>
+            <th>Ambition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#f5f2e8"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C8A96E;font-weight:600">1. PHYSIQUE — Attributs tangibles</td></tr>
+          <tr>
+            <td class="k-facette-row">Ce qu'on voit</td>
+            <td class="est-col">Sophistique<br>Aere<br>Vegetalise<br>Signature</td>
+            <td class="not-col"><span>Bling</span><br><span>Charge</span><br><span>Betonne</span><br><span>Generique</span></td>
+            <td class="prop-col">Architecture premium, materiaux nobles (bois, pierre, verre). 8 batiments formant une destination urbaine complete. Palette : bleu nuit profond + or mat + creme — codes Sofitel. Typo : serif elegante + sans-serif fine. "O" dore = element signature. EDGE Advanced = premier en Afrique de l'Ouest. Signaletique bilingue FR/EN. Hotel integre, cinema, rooftop, bureaux.</td>
+            <td class="data-col">Benchmarks : Westfield, Hudson Yards, Mall of Africa — creer le standard Afrique de l'Ouest</td>
+          </tr>
+          <tr style="background:#f5f2e8"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C8A96E;font-weight:600">2. PERSONNALITE — Caractere de la marque</td></tr>
+          <tr>
+            <td class="k-facette-row">Si c'etait une personne</td>
+            <td class="est-col">Raffine<br>Confiant<br>Cosmopolite<br>Inspirant</td>
+            <td class="not-col"><span>Snob</span><br><span>Arrogant</span><br><span>Ferme</span><br><span>Intimidant</span></td>
+            <td class="prop-col">Un(e) professionnel(le) cosmopolite de 35 ans. Base(e) entre Abidjan et l'international. Elegant(e) sans effort — costume bien coupe, sans ostentation excessive. Cultive la discretion et l'excellence. Ton : Assure, inspirant. On murmure le premium, on ne le crie pas.</td>
+            <td class="data-col">Se positionner au-dessus de tout ce qui existe en CI — creer une nouvelle categorie</td>
+          </tr>
+          <tr style="background:#f5f2e8"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C8A96E;font-weight:600">3. CULTURE — Valeurs profondes</td></tr>
+          <tr>
+            <td class="k-facette-row">Systeme de valeurs</td>
+            <td class="est-col">Ambitieux<br>Exigeant<br>Pionnier<br>Durable</td>
+            <td class="not-col"><span>Elitiste</span><br><span>Exclusif</span><br><span>Copie</span><br><span>Deconnecte</span></td>
+            <td class="prop-col"><strong>Excellence :</strong> 100% Grade A — on ne transige pas sur la qualite.<br><strong>Innovation :</strong> EDGE Advanced, premier en Afrique de l'Ouest — on cree les standards.<br><strong>Art de vivre africain contemporain :</strong> Le meilleur de l'Afrique rencontre le meilleur du monde. Pas une copie de mall occidental.<br><strong>Convergence :</strong> Commerce + hotel + bureaux + loisirs + bien-etre + evenements — la vie complete.<br><strong>Durabilite :</strong> EDGE Advanced = engagement concret, pas du greenwashing.</td>
+            <td class="data-col">Installer Cosmos comme marque premium panafricaine extensible (Marcory, Plateau demain)</td>
+          </tr>
+          <tr style="background:#f5f2e8"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C8A96E;font-weight:600">4. RELATION — Lien marque-visiteur</td></tr>
+          <tr>
+            <td class="k-facette-row">Type de relation</td>
+            <td class="est-col">Inspirant<br>Complice<br>Memorable<br>Exclusif</td>
+            <td class="not-col"><span>Transactionnel</span><br><span>Impersonnel</span><br><span>Utilitaire</span><br><span>Routinier</span></td>
+            <td class="prop-col">Un club prive sans carte de membre — on se sent privilegie des l'entree, mais la porte est ouverte. Sentiment d'appartenance a une communaute de ceux qui ont le gout du beau. Pas un lieu de passage mais une destination. On ne "va faire les courses" — on "passe la journee" : shopping le matin, dejeuner gastronomique, cinema le soir.</td>
+            <td class="data-col">Transformer les habitudes : de "faire ses courses" a "vivre une experience"</td>
+          </tr>
+          <tr style="background:#f5f2e8"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C8A96E;font-weight:600">5. REFLET — Image du client projetee</td></tr>
+          <tr>
+            <td class="k-facette-row">Client miroir</td>
+            <td class="est-col">CSP+<br>Cosmopolite<br>Exigeant<br>Connecte</td>
+            <td class="not-col"><span>Mass market</span><br><span>Budget</span><br><span>Local only</span><br><span>Routinier</span></td>
+            <td class="prop-col"><strong>Profil principal :</strong> Cadre superieur / entrepreneur, 28-50 ans, Cocody/Riviera/Angre. Voyageur frequent — connait Dubai Mall, Westfield. Revenu > 1,5M FCFA/mois.<br><strong>Profil secondaire :</strong> Expat (francais, libanais, communaute internationale). Habitue des centres premium a l'etranger.<br><strong>Profil tertiaire :</strong> Visiteur business de passage (hotel + bureaux integres). Relation : Concierge haut de gamme — anticipe les besoins (programme Cosmos Club).</td>
+            <td class="data-col">Attirer la frange haute du marche + flux internationaux via hotel/bureaux</td>
+          </tr>
+          <tr style="background:#f5f2e8"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C8A96E;font-weight:600">6. MENTALISATION — Auto-perception du visiteur</td></tr>
+          <tr>
+            <td class="k-facette-row">Miroir interieur</td>
+            <td class="est-col">Accompli<br>Distingue<br>Connecte<br>Fier</td>
+            <td class="not-col"><span>Superieur</span><br><span>Snob</span><br><span>Gaspilleur</span><br><span>Suiveur</span></td>
+            <td class="prop-col">
+              <em>"J'ai acces au meilleur, ici chez moi — pas besoin d'aller a Dubai ou Paris."</em><br>
+              <em>"Mon quartier a enfin une destination a la hauteur de mes standards internationaux."</em><br>
+              <em>"Je fais partie des premiers a decouvrir un monde a part."</em><br>
+              <em>"Je soutiens un projet ambitieux et durable pour l'Afrique de l'Ouest."</em>
+            </td>
+            <td class="data-col">Creer la fierte d'un lieu qui n'existe nulle part ailleurs en Afrique de l'Ouest</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CARDS B -->
+    <div class="eyebrow acc-b">Cards detaillees — Prisme complet</div>
+    <div class="h1" style="margin-bottom:16px">Vue approfondie · 6 facettes</div>
+    <div class="k-grid">
+      <div class="k-card bdt-b">
+        <div class="k-num" style="color:#C8A96E">01</div>
+        <div class="k-facette acc-b">01 · Physique — Attributs tangibles</div>
+        <div class="k-title">L'architecture qui dit "destination"</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-b">Est</div><div class="k-li k-li-est">Sophistique</div><div class="k-li k-li-est">Aere</div><div class="k-li k-li-est">Vegetalise</div><div class="k-li k-li-est">Signature</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Bling</div><div class="k-li k-li-not">Charge</div><div class="k-li k-li-not">Betonne</div><div class="k-li k-li-not">Generique</div></div>
+        </div>
+        <div class="k-body">Architecture premium, materiaux nobles (bois, pierre, verre). 8 batiments formant une destination urbaine complete. Palette : bleu nuit profond + or mat + creme — codes Sofitel. Typo : serif elegante + sans-serif fine. "O" dore = element signature. EDGE Advanced = premier en Afrique de l'Ouest. Signaletique bilingue FR/EN.</div>
+        <div class="k-data-note bg-b bd-b" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">🎯 Benchmarks : Westfield, Hudson Yards, Mall of Africa — creer le standard Afrique de l'Ouest</div>
+      </div>
+      <div class="k-card bdt-b">
+        <div class="k-num" style="color:#C8A96E">02</div>
+        <div class="k-facette acc-b">02 · Personnalite — Caractere</div>
+        <div class="k-title">L'hote sophistique qui eleve ses invites</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-b">Est</div><div class="k-li k-li-est">Raffine</div><div class="k-li k-li-est">Confiant</div><div class="k-li k-li-est">Cosmopolite</div><div class="k-li k-li-est">Inspirant</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Snob</div><div class="k-li k-li-not">Arrogant</div><div class="k-li k-li-not">Ferme</div><div class="k-li k-li-not">Intimidant</div></div>
+        </div>
+        <div class="k-body">Un(e) professionnel(le) cosmopolite de 35 ans. Base(e) entre Abidjan et l'international. Elegant(e) sans effort — costume bien coupe, sans ostentation. Cultive la discretion et l'excellence. Parle de ses voyages avec naturel, pas pour impressionner.</div>
+        <div class="k-verbatim">Ton : "Assure, inspirant. On murmure le premium, on ne le crie pas."</div>
+        <div class="k-data-note bg-b bd-b" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">🎯 Se positionner au-dessus de tout ce qui existe en CI — creer une nouvelle categorie</div>
+      </div>
+      <div class="k-card bdt-b">
+        <div class="k-num" style="color:#C8A96E">03</div>
+        <div class="k-facette acc-b">03 · Culture — Valeurs profondes</div>
+        <div class="k-title">Excellence · Innovation · Art de vivre africain · Convergence · Durabilite</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-b">Est</div><div class="k-li k-li-est">Ambitieux</div><div class="k-li k-li-est">Exigeant</div><div class="k-li k-li-est">Pionnier</div><div class="k-li k-li-est">Durable</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Elitiste</div><div class="k-li k-li-not">Exclusif</div><div class="k-li k-li-not">Copie</div><div class="k-li k-li-not">Deconnecte</div></div>
+        </div>
+        <div class="k-body"><strong>Excellence :</strong> 100% Grade A — on ne transige pas sur la qualite.<br><strong>Innovation :</strong> EDGE Advanced, premier en Afrique de l'Ouest.<br><strong>Art de vivre africain contemporain :</strong> Le meilleur de l'Afrique rencontre le meilleur du monde — pas une copie de mall occidental.<br><strong>Convergence :</strong> Commerce + hotel + bureaux + loisirs + bien-etre + evenements.<br><strong>Durabilite :</strong> EDGE Advanced = engagement concret.</div>
+        <div class="k-data-note bg-b bd-b" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">🎯 Installer Cosmos comme marque premium panafricaine extensible (Marcory, Plateau demain)</div>
+      </div>
+      <div class="k-card bdt-b">
+        <div class="k-num" style="color:#C8A96E">04</div>
+        <div class="k-facette acc-b">04 · Relation — Lien marque-visiteur</div>
+        <div class="k-title">Club prive sans carte de membre — l'occasion speciale qui devient l'adresse</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-b">Est</div><div class="k-li k-li-est">Inspirant</div><div class="k-li k-li-est">Complice</div><div class="k-li k-li-est">Memorable</div><div class="k-li k-li-est">Exclusif</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Transactionnel</div><div class="k-li k-li-not">Impersonnel</div><div class="k-li k-li-not">Utilitaire</div><div class="k-li k-li-not">Routinier</div></div>
+        </div>
+        <div class="k-body">On se sent privilegie des l'entree, mais la porte est ouverte. Sentiment d'appartenance a une communaute de ceux qui ont le gout du beau. Pas un lieu de passage — une destination. On ne "va faire les courses", on "passe la journee".</div>
+        <div class="k-data-note bg-b bd-b" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">🎯 Transformer les habitudes : de "faire ses courses" a "vivre une experience"</div>
+      </div>
+      <div class="k-card bdt-b">
+        <div class="k-num" style="color:#C8A96E">05</div>
+        <div class="k-facette acc-b">05 · Reflet — Image du client projetee</div>
+        <div class="k-title">La clientele qui a le gout du beau — CSP++, cosmopolite, exigeant</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-b">Est</div><div class="k-li k-li-est">CSP+</div><div class="k-li k-li-est">Cosmopolite</div><div class="k-li k-li-est">Exigeant</div><div class="k-li k-li-est">Connecte</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Mass market</div><div class="k-li k-li-not">Budget</div><div class="k-li k-li-not">Local only</div><div class="k-li k-li-not">Routinier</div></div>
+        </div>
+        <div class="k-body"><strong>Profil principal :</strong> Cadre superieur / entrepreneur, 28-50 ans. Voyageur frequent — connait Dubai Mall, Westfield. Revenu > 1,5M FCFA/mois.<br><strong>Profil secondaire :</strong> Expat (francais, libanais, communaute internationale).<br><strong>Profil tertiaire :</strong> Visiteur business de passage. Relation : Concierge haut de gamme — anticipe les besoins (programme Cosmos Club).</div>
+        <div class="k-data-note bg-b bd-b" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">🎯 Attirer la frange haute du marche + flux internationaux via hotel/bureaux</div>
+      </div>
+      <div class="k-card bdt-b">
+        <div class="k-num" style="color:#C8A96E">06</div>
+        <div class="k-facette acc-b">06 · Mentalisation — Auto-perception</div>
+        <div class="k-title">"Je suis quelqu'un qui frequente ce qui se fait de mieux"</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-b">Est</div><div class="k-li k-li-est">Accompli</div><div class="k-li k-li-est">Distingue</div><div class="k-li k-li-est">Connecte</div><div class="k-li k-li-est">Fier</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Superieur</div><div class="k-li k-li-not">Snob</div><div class="k-li k-li-not">Gaspilleur</div><div class="k-li k-li-not">Suiveur</div></div>
+        </div>
+        <div class="k-verbatim">"J'ai acces au meilleur, ici chez moi — pas besoin d'aller a Dubai ou Paris."<br>"Mon quartier a enfin une destination a la hauteur de mes standards internationaux."<br>"Je fais partie des premiers a decouvrir un monde a part."<br>"Je soutiens un projet ambitieux et durable pour l'Afrique de l'Ouest."</div>
+        <div class="k-data-note bg-b bd-b" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">🎯 Creer la fierte d'un lieu qui n'existe nulle part ailleurs en Afrique de l'Ouest</div>
+      </div>
+    </div>
+    <div class="footer-note">Scenario B · Source : PDF Kapferer EXCO · Prisme de Kapferer · Cosmos Angre · Mars 2026 · Document EXCO confidentiel — New Heaven SA / CRMC<br>Prepare par : Pamela Atokouna | Pour validation : EXCO (DG Cheick Sanankoua)</div>
+  </div>
+</div>
+
+<!-- SCENARIO C -->
+<div class="page" id="scC">
+  <div class="cover cover-bg-c">
+    <div class="cover-eyebrow">Prisme de Kapferer · Cosmos Angre · ✦ Scenario additionnel — Source : Plateforme de marque Livrable 1</div>
+    <div class="cover-sc">Scenario C — Hybride ✦</div>
+    <div class="cover-title">L'Exception<br>de Proximite</div>
+    <div class="cover-usp">"Vivez l'exception, ici chez vous"</div>
+    <div class="cover-div"></div>
+    <div class="cover-pillars">
+      <span class="pillar">Premium ancre</span><span class="pillar">Destination & quotidien</span><span class="pillar">Aspiration inclusive</span><span class="pillar">Identite africaine forte</span>
+    </div>
+    <div class="cover-foot">Analogie : Grand Mercure / Novotel Premium · Signature courte : "L'exception de proximite" · Ce scenario est construit depuis la Plateforme de marque (Livrable 1) — non issu du PDF Kapferer source</div>
+  </div>
+
+  <div class="content">
+    <div class="badge-add" style="background:rgba(201,148,58,.1);border:1px solid rgba(201,148,58,.3);color:#C9943A">✦ Scenario additionnel — Source : Plateforme de marque Livrable 1 · Non present dans le PDF Kapferer EXCO</div>
+
+    <div class="data-header">
+      <strong>📊 Donnees cles OnPoint ·</strong> Zone primaire : 24 324 menages · 104 594 hab. | Revenu total : 19,7 Mds FCFA/mois | Revenu moy. individuel : 810 kFCFA/mois | 73% conso. classes aisees & haut standing | <strong>0 CC dans la zone primaire</strong> | Concurrents : Sococe (5 km, 79%), La Djibi (3 km) | <strong>60% vont hors Cocody</strong> (PlaYce 34%, Cap Sud 29%) | <strong>93% favorables</strong> | Demandes : Carrefour (32%), FNAC (98%), cinema, livraison
+    </div>
+
+    <div class="usp-block" style="background:linear-gradient(135deg,#fdf5e8,#fdf0e0);border:1px solid rgba(201,148,58,.15)">
+      <div class="usp-quote" style="color:#8a5a10">"Vivez l'exception, ici chez vous" — Synthese A + B, refus de choisir</div>
+      <div class="usp-sub">Le Scenario C refuse de choisir entre A et B. Identite visuelle premium (codes B : bardade bronze, terracotta, or africain), accueil chaleureux et inclusif (ADN A). Logique Grand Mercure : standards eleves, atmosphere accessible. Le risque est l'execution — l'hybride reussi demande plus de rigueur operationnelle.</div>
+    </div>
+
+    <div class="eyebrow acc-c">Tableau synthetique — Prisme Kapferer Scenario C</div>
+    <div class="h1" style="margin-bottom:16px">Vue compacte · 6 facettes</div>
+    <div class="k-table-wrap">
+      <table class="k-table">
+        <thead>
+          <tr>
+            <th>Facette</th>
+            <th style="color:#C9943A">EST</th>
+            <th style="color:#c0392b">N'EST PAS</th>
+            <th>Proposition Scenario C</th>
+            <th>Synthese A+B</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#fdf5e8"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C9943A;font-weight:600">1. PHYSIQUE — Attributs tangibles</td></tr>
+          <tr>
+            <td class="k-facette-row">Ce qu'on voit</td>
+            <td class="est-col">Premium<br>Chaleureux<br>Africain<br>Complet</td>
+            <td class="not-col"><span>Froid</span><br><span>Intimidant</span><br><span>Generique</span><br><span>Betonne</span></td>
+            <td class="prop-col">Bardade bronze valorisee comme signature chaude et noble. Terracotta en accent, sable en fond — palette africaine premium. Meme offre complete (Carrefour, Zino, cinema, hotel, clinique) presentee avec chaleur. Pas intimidant malgre la qualite. EDGE Advanced comme preuve d'engagement concret.</td>
+            <td class="data-col">Coherence optimale avec la bardade existante. Famille chaude bronze/terracotta/or africain = plus coherente des 3</td>
+          </tr>
+          <tr style="background:#fdf5e8"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C9943A;font-weight:600">2. PERSONNALITE — Caractere de la marque</td></tr>
+          <tr>
+            <td class="k-facette-row">Si c'etait une personne</td>
+            <td class="est-col">Accompli<br>Chaleureux<br>Elegant<br>Ouvert</td>
+            <td class="not-col"><span>Condescendant</span><br><span>Distant</span><br><span>Snob</span><br><span>Austere</span></td>
+            <td class="prop-col">Un entrepreneur ivoirien accompli de 40 ans. Il recoit bien — table bien mise, qualite irreprochable — mais tout le monde se sent chez soi. Le premium n'exclut pas ici. La distinction est dans les details, pas dans la distance. Ton : Chaleureux et elegant. "Nous avons prepare quelque chose d'exceptionnel — pour vous."</td>
+            <td class="data-col">ADN chaleureux du Scenario A + codes de distinction du Scenario B</td>
+          </tr>
+          <tr style="background:#fdf5e8"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C9943A;font-weight:600">3. CULTURE — Valeurs profondes</td></tr>
+          <tr>
+            <td class="k-facette-row">Systeme de valeurs</td>
+            <td class="est-col">Excellence<br>Hospitalite<br>Fierte africaine<br>Polyvalence</td>
+            <td class="not-col"><span>Elitiste</span><br><span>Exclusif</span><br><span>Copie</span><br><span>Deconnecte</span></td>
+            <td class="prop-col"><strong>Hospitalite africaine :</strong> L'Afrique n'a pas a choisir entre qualite et chaleur. Cosmos Angre prouve que les standards mondiaux et l'hospitalite africaine ne sont pas contradictoires.<br><strong>Elevation inclusive :</strong> La qualite eleve — elle n'exclut pas. Le meilleur, accessible a ceux qui le meritent.<br><strong>Fierte de proximite :</strong> Ce qui se fait de mieux. Ici.</td>
+            <td class="data-col">Prouver que premium et chaleur africaine sont compatibles — creer une nouvelle reference locale</td>
+          </tr>
+          <tr style="background:#fdf5e8"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C9943A;font-weight:600">4. RELATION — Lien marque-visiteur</td></tr>
+          <tr>
+            <td class="k-facette-row">Type de relation</td>
+            <td class="est-col">Polyvalent<br>Fidele<br>Evolutif<br>Quotidien</td>
+            <td class="not-col"><span>Occasionnel</span><br><span>Utilitaire</span><br><span>Elitiste</span><br><span>Impersonnel</span></td>
+            <td class="prop-col">On y vient pour les courses le matin et pour le cinema le soir. Pour l'anniversaire des enfants et pour un diner en amoureux. Pour une reunion d'affaires et pour une sortie en famille. La relation evolue selon les occasions — mais le centre est toujours a la hauteur.</td>
+            <td class="data-col">Cumule la frequence de A ET la valeur percue de B — si l'execution est rigoureuse</td>
+          </tr>
+          <tr style="background:#fdf5e8"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C9943A;font-weight:600">5. REFLET — Image du client projetee</td></tr>
+          <tr>
+            <td class="k-facette-row">Client miroir</td>
+            <td class="est-col">CSP+ elargi<br>Famille<br>Actif<br>Entrepreneur</td>
+            <td class="not-col"><span>Ultra-riche only</span><br><span>Mass market</span><br><span>Expat only</span><br><span>Budget</span></td>
+            <td class="prop-col">"Je n'ai pas besoin d'aller a PlaYce pour le quotidien et a un restaurant de Cocody pour une sortie — j'ai tout a Cosmos Angre." Cible la plus large des 3 scenarios. Profils : familles aisees + jeunes actifs + cadres + entrepreneurs locaux.</td>
+            <td class="data-col">Cible elargie : maximise la frequentation ET la valeur percue. 24 000 menages · 73% conso classes aisees</td>
+          </tr>
+          <tr style="background:#fdf5e8"><td colspan="5" style="padding:8px 14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C9943A;font-weight:600">6. MENTALISATION — Auto-perception du visiteur</td></tr>
+          <tr>
+            <td class="k-facette-row">Miroir interieur</td>
+            <td class="est-col">Fier<br>Moderne<br>Partageur<br>Ancre</td>
+            <td class="not-col"><span>Arrogant</span><br><span>Exclusif</span><br><span>Superieur</span><br><span>Snob</span></td>
+            <td class="prop-col">
+              <em>"J'ai du gout, je suis moderne, j'apprecie le beau — mais je ne suis pas snob. Je partage."</em><br>
+              <em>"Cosmos Angre, c'est mon endroit. Pas pour impressionner — parce que c'est vraiment bien."</em><br>
+              <em>"De la terrasse au cinema — votre samedi a Cosmos Angre."</em><br>
+              <em>"L'exception, ici chez moi."</em>
+            </td>
+            <td class="data-col">Fierte locale (A) + aspiration (B) — les deux en une seule identite. La fierte sans l'arrogance.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CARDS C -->
+    <div class="eyebrow acc-c">Cards detaillees — Prisme complet</div>
+    <div class="h1" style="margin-bottom:16px">Vue approfondie · 6 facettes</div>
+    <div class="k-grid">
+      <div class="k-card bdt-c">
+        <div class="k-num" style="color:#C9943A">01</div>
+        <div class="k-facette acc-c">01 · Physique — Attributs tangibles</div>
+        <div class="k-title">Le premium qui accueille tout le monde</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-c">Est</div><div class="k-li k-li-est">Premium</div><div class="k-li k-li-est">Chaleureux</div><div class="k-li k-li-est">Africain</div><div class="k-li k-li-est">Complet</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Froid</div><div class="k-li k-li-not">Intimidant</div><div class="k-li k-li-not">Generique</div><div class="k-li k-li-not">Betonne</div></div>
+        </div>
+        <div class="k-body">Bardade bronze valorisee comme signature chaude et noble. Terracotta en accent, sable en fond — palette africaine premium. Meme offre complete (Carrefour, Zino, cinema, hotel, clinique) presentee avec chaleur. Pas intimidant malgre la qualite. EDGE Advanced comme preuve d'engagement.</div>
+        <div class="k-data-note bg-c bd-c" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">✦ Coherence optimale avec la bardade bronze existante — palette la plus coherente des 3 scenarios</div>
+      </div>
+      <div class="k-card bdt-c">
+        <div class="k-num" style="color:#C9943A">02</div>
+        <div class="k-facette acc-c">02 · Personnalite — Caractere</div>
+        <div class="k-title">L'hote africain — grand standing, grande chaleur</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-c">Est</div><div class="k-li k-li-est">Accompli</div><div class="k-li k-li-est">Chaleureux</div><div class="k-li k-li-est">Elegant</div><div class="k-li k-li-est">Ouvert</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Condescendant</div><div class="k-li k-li-not">Distant</div><div class="k-li k-li-not">Snob</div><div class="k-li k-li-not">Austere</div></div>
+        </div>
+        <div class="k-body">Un entrepreneur ivoirien accompli de 40 ans. Il recoit bien — table bien mise, qualite irreprochable — mais tout le monde se sent chez soi. Le premium n'exclut pas ici. La distinction est dans les details, pas dans la distance.</div>
+        <div class="k-verbatim">"Nous avons prepare quelque chose d'exceptionnel — pour vous."</div>
+        <div class="k-data-note bg-c bd-c" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">✦ Synthese : ADN chaleureux de A + codes de distinction de B</div>
+      </div>
+      <div class="k-card bdt-c">
+        <div class="k-num" style="color:#C9943A">03</div>
+        <div class="k-facette acc-c">03 · Culture — Valeurs profondes</div>
+        <div class="k-title">L'excellence africaine · L'inclusion par la qualite</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-c">Est</div><div class="k-li k-li-est">Excellence</div><div class="k-li k-li-est">Hospitalite</div><div class="k-li k-li-est">Fierte africaine</div><div class="k-li k-li-est">Polyvalence</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Elitiste</div><div class="k-li k-li-not">Exclusif</div><div class="k-li k-li-not">Copie</div><div class="k-li k-li-not">Deconnecte</div></div>
+        </div>
+        <div class="k-body"><strong>Hospitalite africaine :</strong> L'Afrique n'a pas a choisir entre qualite et chaleur. Standards mondiaux et hospitalite africaine ne sont pas contradictoires.<br><strong>Elevation inclusive :</strong> La qualite eleve — elle n'exclut pas.<br><strong>Fierte de proximite :</strong> Ce qui se fait de mieux. Ici.</div>
+        <div class="k-data-note bg-c bd-c" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">✦ Prouver que premium et chaleur africaine sont compatibles — nouvelle reference locale</div>
+      </div>
+      <div class="k-card bdt-c">
+        <div class="k-num" style="color:#C9943A">04</div>
+        <div class="k-facette acc-c">04 · Relation — Lien marque-visiteur</div>
+        <div class="k-title">Le centre qui grandit avec vous — quotidien ET occasion speciale</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-c">Est</div><div class="k-li k-li-est">Polyvalent</div><div class="k-li k-li-est">Fidele</div><div class="k-li k-li-est">Evolutif</div><div class="k-li k-li-est">Quotidien</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Occasionnel</div><div class="k-li k-li-not">Utilitaire</div><div class="k-li k-li-not">Elitiste</div><div class="k-li k-li-not">Impersonnel</div></div>
+        </div>
+        <div class="k-body">On y vient pour les courses le matin et pour le cinema le soir. Pour l'anniversaire des enfants et pour un diner en amoureux. Pour une reunion d'affaires et pour une sortie en famille. La relation evolue selon les occasions — le centre est toujours a la hauteur.</div>
+        <div class="k-data-note bg-c bd-c" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">✦ Cumule la frequence de A ET la valeur percue de B — si l'execution est rigoureuse</div>
+      </div>
+      <div class="k-card bdt-c">
+        <div class="k-num" style="color:#C9943A">05</div>
+        <div class="k-facette acc-c">05 · Reflet — Image du client projetee</div>
+        <div class="k-title">La clientele qui n'a pas a choisir — CSP+ elargi</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-c">Est</div><div class="k-li k-li-est">CSP+ elargi</div><div class="k-li k-li-est">Famille</div><div class="k-li k-li-est">Actif</div><div class="k-li k-li-est">Entrepreneur</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Ultra-riche only</div><div class="k-li k-li-not">Mass market</div><div class="k-li k-li-not">Expat only</div><div class="k-li k-li-not">Budget</div></div>
+        </div>
+        <div class="k-verbatim">"Je n'ai pas besoin d'aller a PlaYce pour le quotidien et a un restaurant de Cocody pour une sortie — j'ai tout a Cosmos Angre."</div>
+        <div class="k-body">Cible la plus large des 3 scenarios. Profils : familles aisees + jeunes actifs + cadres + entrepreneurs locaux. Maximise frequentation ET valeur percue.</div>
+        <div class="k-data-note bg-c bd-c" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">📊 24 000 menages · 73% conso classes aisees · Revenu moy. 810k/mois</div>
+      </div>
+      <div class="k-card bdt-c">
+        <div class="k-num" style="color:#C9943A">06</div>
+        <div class="k-facette acc-c">06 · Mentalisation — Auto-perception</div>
+        <div class="k-title">"Je vis bien — et je le partage. La fierte sans l'arrogance."</div>
+        <div class="k-two">
+          <div class="k-col-est"><div class="k-col-h acc-c">Est</div><div class="k-li k-li-est">Fier</div><div class="k-li k-li-est">Moderne</div><div class="k-li k-li-est">Partageur</div><div class="k-li k-li-est">Ancre</div></div>
+          <div class="k-col-not"><div class="k-col-h">N'est pas</div><div class="k-li k-li-not">Arrogant</div><div class="k-li k-li-not">Exclusif</div><div class="k-li k-li-not">Superieur</div><div class="k-li k-li-not">Snob</div></div>
+        </div>
+        <div class="k-verbatim">"J'ai du gout, je suis moderne, j'apprecie le beau — mais je ne suis pas snob. Je partage."<br>"Cosmos Angre, c'est mon endroit. Pas pour impressionner — parce que c'est vraiment bien."<br>"De la terrasse au cinema — votre samedi a Cosmos Angre."<br>"L'exception, ici chez moi."</div>
+        <div class="k-data-note bg-c bd-c" style="border:1px solid;font-size:10px;color:rgba(26,20,16,.5)">✦ Fierte locale (A) + aspiration (B) — les deux en une seule identite</div>
+      </div>
+    </div>
+    <div class="footer-note">Scenario C ✦ · Source : Plateforme de marque Livrable 1 (non issu du PDF Kapferer EXCO) · Cosmos Angre · Mars 2026 · Document EXCO confidentiel — New Heaven SA / CRMC<br>Prepare par : Pamela Atokouna | Pour validation : EXCO (DG Cheick Sanankoua)</div>
+  </div>
+</div>
+
+<!-- COMPARATIF -->
+<div class="page" id="comp">
+  <div class="content">
+    <div class="eyebrow" style="color:#C9943A">Synthese decisionnelle</div>
+    <div class="h1">Comparatif strategique A vs B vs C</div>
+    <div class="desc">Tableau comparatif issu du PDF Kapferer (A vs B) complete du Scenario C additionnel. Ce tableau ne designe pas un gagnant — c'est le role du Focus Group. Il donne les arguments a presenter en EXCO.</div>
+    <div style="overflow-x:auto;margin-bottom:24px">
+    <table class="comp-tbl">
+      <thead>
+        <tr>
+          <th style="width:140px">Critere</th>
+          <th>A — Premium de Proximite</th>
+          <th>B — Destination Premium</th>
+          <th>C ✦ — Hybride</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Analogie</td><td>Novotel — premium, fiable, pour tous les voyageurs exigeants</td><td>Sofitel — premium, exclusif, experientiel</td><td>Grand Mercure / Novotel Premium — standards eleves, atmosphere accessible</td></tr>
+        <tr><td>Signature</td><td>"Le centre de vos envies" / "Tout commence ici"</td><td>"Un monde a part" / "Vivez l'exception"</td><td>"Vivez l'exception, ici chez vous" / "L'exception de proximite"</td></tr>
+        <tr><td>Cible primaire</td><td>Menages aises Angre/Cocody (24 000 menages, 750k-1,5M/mois)</td><td>CSP++ / cadres sup. / expats / business travelers</td><td>CSP+ elargi — familles, actifs, cadres, entrepreneurs locaux</td></tr>
+        <tr><td>Driver principal</td><td>Proximite + completude — "enfin tout ici"</td><td>Experience + prestige — "un monde a part"</td><td>Excellence africaine + inclusion — "le premium qui n'exclut pas"</td></tr>
+        <tr><td>Frequence visee</td><td>3-5 visites/mois (quotidien)</td><td>2-3 visites/mois (destination)</td><td>3-5 visites/mois + occasions speciales</td></tr>
+        <tr><td>Panier moyen</td><td>Modere-haut (volume x frequence)</td><td>Eleve (experience x valeur percue)</td><td>Moyen-haut (cumul frequence + valeur)</td></tr>
+        <tr><td>Alignement donnees OnPoint</td><td><span class="tag-ok">✅ Fort</span> — colle aux revenus, habitudes, demandes terrain</td><td><span class="tag-warn">⚠️ Partiel</span> — la cible existe mais pas majoritaire dans la zone</td><td><span class="tag-ok">✅ Fort</span> — repond aux deux besoins identifies</td></tr>
+        <tr><td>Risque principal</td><td>Manquer l'ambition — ressembler a un "Sococe ameliore"</td><td>Decalage terrain — promettre Sofitel, delivrer Novotel</td><td><span class="tag-risk">🔴 Eleve</span> — l'hybride exige plus de rigueur operationnelle</td></tr>
+        <tr><td>Potentiel long terme</td><td><span class="tag-warn">⚠️ Solide mais plafonne</span> — le centre du quartier</td><td><span class="tag-ok">✅ Fort</span> — marque extensible, destination regionale</td><td><span class="tag-ok">✅ Fort</span> — cible elargie + codes premium</td></tr>
+        <tr><td>Scalabilite marque</td><td>Limitee — positionnement local</td><td>Forte — Cosmos Marcory, Cosmos Plateau</td><td>Forte si execution premium convaincante</td></tr>
+        <tr><td>Coherence bardade bronze</td><td><span class="tag-warn">⚠️ Neutre</span> — cuivre en accent, bardade non exploitee</td><td><span class="tag-risk">🔴 Risque</span> — deux tons d'or proches a aligner precisement</td><td><span class="tag-ok">✅ Optimale</span> — famille chaude bronze/terracotta/or africain</td></tr>
+        <tr><td>Difficulte a communiquer</td><td><span class="tag-ok">✅ Faible</span> — message simple et direct</td><td><span class="tag-warn">⚠️ Moyenne</span> — aspiration sans arrogance = subtil</td><td><span class="tag-risk">🔴 Elevee</span> — l'hybride peut sembler flou si mal execute</td></tr>
+        <tr><td>Differenciation</td><td>vs Sococe/La Djibi : qualite + completude</td><td>vs TOUT le marche CI : nouvelle categorie</td><td>vs marche CI : premium accessible, identite africaine forte</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px">
+      <div style="padding:22px;border-radius:12px;border:1px solid rgba(74,117,88,.2);background:rgba(74,117,88,.04)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#4A7558;margin-bottom:10px">Choisir A si :</div>
+        <div style="font-size:12px;color:rgba(26,20,16,.65);line-height:1.8">→ Priorite frequentation immediate des l'ouverture<br>→ Minimiser le risque d'execution<br>→ Enseignes pas encore toutes premium<br>→ FG : public veut etre rassure, pas surpris</div>
+      </div>
+      <div style="padding:22px;border-radius:12px;border:1px solid rgba(200,169,110,.2);background:rgba(200,169,110,.04)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C8A96E;margin-bottom:10px">Choisir B si :</div>
+        <div style="font-size:12px;color:rgba(26,20,16,.65);line-height:1.8">→ Ambition long terme prime sur la frequentation immediate<br>→ Enseignes suffisamment premium<br>→ FNAC / restaurant gastronomique confirmes<br>→ FG : public veut etre aspire vers le haut</div>
+      </div>
+      <div style="padding:22px;border-radius:12px;border:1px solid rgba(201,148,58,.2);background:rgba(201,148,58,.04)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C9943A;margin-bottom:10px">Choisir C ✦ si :</div>
+        <div style="font-size:12px;color:rgba(26,20,16,.65);line-height:1.8">→ FG montre une attente hybride forte<br>→ Equipe prete pour execution rigoureuse<br>→ Maximiser la cible sans diluer le premium<br>→ Direction artistique terracotta/bronze validee</div>
+      </div>
+    </div>
+    <div class="footer-note">Comparatif · Prisme de Kapferer · Cosmos Angre · Mars 2026 · Document EXCO confidentiel — New Heaven SA / CRMC<br>Source A+B : PDF Kapferer EXCO · Source C ✦ : Plateforme de marque Livrable 1 · Prepare par : Pamela Atokouna | Pour validation : EXCO (DG Cheick Sanankoua)<br>Prochaine etape : Focus Group 20-25/03 → Arbitrage final EXCO</div>
+  </div>
+</div>
+
+<div class="export-bar">
+  <button class="btn" onclick="window.print()">⬇ Imprimer / PDF</button>
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const m={intro:0,scA:1,scB:2,scC:3,comp:4};
+  document.querySelectorAll('.nav-tab')[m[id]].classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Book — Cosmos Angré</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',sans-serif;background:#0e0e0e;color:#fff;min-height:100vh}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,14,14,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.15em;color:#fff;opacity:.9}
+  .nav-tabs{display:flex;gap:4px}
+  .nav-tab{padding:6px 18px;border-radius:20px;font-size:12px;font-weight:500;letter-spacing:.08em;cursor:pointer;transition:all .25s;border:1px solid transparent;color:rgba(255,255,255,.45)}
+  .nav-tab:hover{color:rgba(255,255,255,.8)}
+  .nav-tab.active{color:#fff;border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.08)}
+  .nav-tag{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase}
+
+  /* PAGES */
+  .page{display:none;padding-top:60px;min-height:100vh}
+  .page.active{display:block}
+
+  /* COVER */
+  .cover{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  .cover-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0e0e0e 0%,#1a1a1a 50%,#0e0e0e 100%)}
+  .cover-accent{position:absolute;width:600px;height:600px;border-radius:50%;opacity:.06;top:50%;left:50%;transform:translate(-50%,-50%)}
+  .cover-content{position:relative;text-align:center}
+  .cover-eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:24px}
+  .cover-title{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;letter-spacing:.05em;line-height:1;margin-bottom:8px}
+  .cover-sub{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:rgba(255,255,255,.4);letter-spacing:.1em;margin-bottom:48px}
+  .cover-divider{width:60px;height:1px;background:rgba(255,255,255,.2);margin:0 auto 48px}
+  .cover-dirs{display:flex;gap:32px;justify-content:center}
+  .cover-dir{text-align:center}
+  .cover-dir-swatch{width:48px;height:48px;border-radius:50%;margin:0 auto 8px;border:2px solid rgba(255,255,255,.1)}
+  .cover-dir-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+  .cover-version{position:absolute;bottom:32px;font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.15em;text-transform:uppercase}
+
+  /* SECTION HEADER */
+  .sec-header{padding:80px 60px 40px;border-bottom:1px solid rgba(255,255,255,.06)}
+  .sec-eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:12px}
+  .sec-title{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;line-height:1.1}
+  .sec-subtitle{margin-top:12px;font-size:14px;color:rgba(255,255,255,.4);max-width:600px;line-height:1.6}
+
+  /* DIRECTION LAYOUT */
+  .dir-section{padding:60px}
+  .dir-hero{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:16px;overflow:hidden;min-height:320px;margin-bottom:40px}
+  .dir-hero-bg{padding:48px;display:flex;flex-direction:column;justify-content:space-between}
+  .dir-hero-info{padding:48px;background:rgba(255,255,255,.03);border-left:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:space-between}
+  .dir-number{font-family:'Cormorant Garamond',serif;font-size:80px;font-weight:300;opacity:.15;line-height:1}
+  .dir-name{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;margin-bottom:8px}
+  .dir-concept{font-size:13px;opacity:.55;line-height:1.6;max-width:320px}
+  .dir-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .dir-tag{padding:4px 12px;border-radius:20px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6)}
+  .dir-best{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.4;margin-bottom:8px}
+  .dir-best-items{display:flex;flex-direction:column;gap:6px}
+  .dir-best-item{font-size:13px;opacity:.7;display:flex;align-items:center;gap:8px}
+  .dir-best-item::before{content:'→';opacity:.4}
+  .score-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-size:13px}
+  .score-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300}
+
+  /* PALETTE */
+  .palette-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:32px}
+  .swatch{border-radius:12px;overflow:hidden}
+  .swatch-color{height:80px}
+  .swatch-info{padding:10px 12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-top:none;border-radius:0 0 12px 12px}
+  .swatch-role{font-size:9px;letter-spacing:.15em;text-transform:uppercase;opacity:.4;margin-bottom:3px}
+  .swatch-name{font-size:12px;font-weight:500;margin-bottom:2px}
+  .swatch-hex{font-size:10px;opacity:.45;font-family:monospace}
+  .swatch-pantone{font-size:9px;opacity:.35;margin-top:2px}
+
+  /* AJUSTEMENTS */
+  .adj-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
+  .adj-card{padding:20px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
+  .adj-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
+  .adj-label.fixed{color:#f59e0b}
+  .adj-label.added{color:#6ee7b7}
+  .adj-text{font-size:12px;line-height:1.6;opacity:.7}
+
+  /* SUPPORT TABLE */
+  .support-section{padding:0 60px 60px}
+  .support-title{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-bottom:20px}
+  .support-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .support-card{padding:16px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05)}
+  .support-zone{font-size:9px;letter-spacing:.15em;text-transform:uppercase;opacity:.35;margin-bottom:4px}
+  .support-name{font-size:12px;margin-bottom:8px;opacity:.8}
+  .support-dirs{display:flex;gap:6px}
+  .sd{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600}
+  .sd.a{background:#4A7558;color:#fff}
+  .sd.b{background:#0D1B4B;color:#fff}
+  .sd.c{background:#C9943A;color:#fff}
+  .sd.dim{opacity:.2}
+  .sd.best{box-shadow:0 0 0 2px rgba(255,255,255,.3)}
+
+  /* COMPARISON */
+  .comp-section{padding:60px}
+  .comp-table{width:100%;border-collapse:collapse}
+  .comp-table th{font-size:10px;letter-spacing:.15em;text-transform:uppercase;opacity:.4;padding:12px 16px;text-align:left;border-bottom:1px solid rgba(255,255,255,.06)}
+  .comp-table td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;opacity:.75}
+  .comp-table tr:hover td{background:rgba(255,255,255,.02)}
+  .score-cell{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;text-align:center!important}
+  .score-cell.top{color:#f59e0b}
+  .pip{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+  .warn{color:#f59e0b;font-size:11px}
+  .ok{color:#6ee7b7;font-size:11px}
+  .great{color:#a78bfa;font-size:11px}
+
+  /* DIVIDER */
+  .dir-divider{height:1px;background:rgba(255,255,255,.06);margin:0 60px}
+
+  /* PRINT BTN */
+  .export-bar{position:fixed;bottom:24px;right:24px;display:flex;gap:8px;z-index:200}
+  .btn{padding:10px 20px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:none;transition:all .2s;letter-spacing:.05em}
+  .btn-primary{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
+  .btn-primary:hover{background:rgba(255,255,255,.18)}
+
+  @media print{nav,.export-bar{display:none!important}.page{display:block!important}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">COSMOS ANGRE</div>
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="showPage('cover')">Accueil</div>
+    <div class="nav-tab" onclick="showPage('dirA')">Direction A</div>
+    <div class="nav-tab" onclick="showPage('dirB')">Direction B</div>
+    <div class="nav-tab" onclick="showPage('dirC')">Direction C</div>
+    <div class="nav-tab" onclick="showPage('compare')">Comparatif</div>
+  </div>
+  <div class="nav-tag">Color Book v2.0 · Revise</div>
+</nav>
+
+<!-- ===== COVER ===== -->
+<div class="page active" id="cover">
+  <div class="cover">
+    <div class="cover-bg"></div>
+    <div class="cover-accent" style="background:radial-gradient(circle,rgba(74,117,88,.4),transparent 70%)"></div>
+    <div class="cover-content">
+      <div class="cover-eyebrow">Color Book · Version 2.0 · Mars 2026</div>
+      <div class="cover-title">COSMOS</div>
+      <div class="cover-sub">ANGRE</div>
+      <div class="cover-divider"></div>
+      <div style="font-size:13px;color:rgba(255,255,255,.35);margin-bottom:40px;letter-spacing:.05em">Trois directions d'identite visuelle revisees<br>selon l'audit des contraintes terrain</div>
+      <div class="cover-dirs">
+        <div class="cover-dir" onclick="showPage('dirA')" style="cursor:pointer">
+          <div class="cover-dir-swatch" style="background:linear-gradient(135deg,#4A7558,#A87448)"></div>
+          <div class="cover-dir-label">Direction A<br><span style="color:rgba(255,255,255,.6);font-size:11px">Vert Premium</span></div>
+        </div>
+        <div class="cover-dir" onclick="showPage('dirB')" style="cursor:pointer">
+          <div class="cover-dir-swatch" style="background:linear-gradient(135deg,#0D1B4B,#C8A96E)"></div>
+          <div class="cover-dir-label">Direction B<br><span style="color:rgba(255,255,255,.6);font-size:11px">Bleu Nuit & Or</span></div>
+        </div>
+        <div class="cover-dir" onclick="showPage('dirC')" style="cursor:pointer">
+          <div class="cover-dir-swatch" style="background:linear-gradient(135deg,#C97B4B,#C9943A)"></div>
+          <div class="cover-dir-label">Direction C<br><span style="color:rgba(255,255,255,.6);font-size:11px">Terracotta & Or Africain</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="cover-version">Audit touchpoints integre · Soft opening Oct 2026</div>
+  </div>
+</div>
+
+<!-- ===== DIRECTION A ===== -->
+<div class="page" id="dirA">
+  <div class="sec-header">
+    <div class="sec-eyebrow" style="color:#4A7558">Direction A · Vert Premium</div>
+    <div class="sec-title">Le Naturel Raffine</div>
+    <div class="sec-subtitle">Vert foret, cuivre chaud, creme. Une identite enracinee dans la vegetation interieure du centre — le premium qui respire. Meilleure performance en exterieur et uniforme.</div>
+  </div>
+
+  <div class="dir-section">
+    <div class="dir-hero">
+      <div class="dir-hero-bg" style="background:linear-gradient(135deg,#1a2e20 0%,#2a4a35 100%)">
+        <div class="dir-number" style="color:#4A7558">A</div>
+        <div>
+          <div class="dir-name">Vert Premium</div>
+          <div class="dir-concept">L'identite qui reconcilie la nature et le commerce premium. Le vert foret tient remarquablement bien sous le soleil ivoirien — la ou le bleu nuit lit noir et la terracotta se delave.</div>
+          <div class="dir-tags">
+            <span class="dir-tag">Exterieur ✅✅</span>
+            <span class="dir-tag">Uniforme ✅✅✅</span>
+            <span class="dir-tag">Print ✅✅</span>
+          </div>
+        </div>
+      </div>
+      <div class="dir-hero-info">
+        <div>
+          <div class="dir-best">Points forts</div>
+          <div class="dir-best-items">
+            <div class="dir-best-item">Meilleure direction facade exterieure</div>
+            <div class="dir-best-item">Uniforme creme + broderie vert foret = tres premium</div>
+            <div class="dir-best-item">Coherence avec vegetation interieure reelle</div>
+            <div class="dir-best-item">Cuivre en broderie col/boutons = excellent</div>
+          </div>
+        </div>
+        <div class="score-badge">
+          <span class="score-num" style="color:#4A7558">8.3</span>
+          <span style="font-size:11px;opacity:.5">/10 · Score global</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PALETTE A -->
+    <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-bottom:16px">Palette revisee</div>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#4A7558"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Principal facade</div>
+          <div class="swatch-name">Vert Foret Doux</div>
+          <div class="swatch-hex">#4A7558</div>
+          <div class="swatch-pantone">Pantone 7734 C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6B8F71"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Secondaire print/signa</div>
+          <div class="swatch-name">Vert Sauge</div>
+          <div class="swatch-hex">#6B8F71</div>
+          <div class="swatch-pantone">Pantone 7730 C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#5A8A65"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Digital uniquement</div>
+          <div class="swatch-name">Vert Digital Booste</div>
+          <div class="swatch-hex">#5A8A65</div>
+          <div class="swatch-pantone">Usage ecran seul</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#A87448"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Accent / details</div>
+          <div class="swatch-name">Cuivre Chaud</div>
+          <div class="swatch-hex">#A87448</div>
+          <div class="swatch-pantone">Pantone 7526 C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F5F0E8;border:1px solid rgba(0,0,0,.08)"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Fond / uniforme</div>
+          <div class="swatch-name">Creme Premium</div>
+          <div class="swatch-hex">#F5F0E8</div>
+          <div class="swatch-pantone">Pantone 7527 C</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AJUSTEMENTS A -->
+    <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-bottom:16px">Ajustements v2.0 — dont bardade bronze</div>
+    <div class="adj-grid">
+      <div class="adj-card">
+        <div class="adj-label fixed">⚠ Correction appliquee</div>
+        <div class="adj-text">Le bleu profond (#152A3A) supprime de la palette — lisait "noir sale" apres 2 ans d'exposition solaire CI + confusion avec Direction B a distance.</div>
+      </div>
+      <div class="adj-card">
+        <div class="adj-label fixed">⚠ Correction appliquee</div>
+        <div class="adj-text">Vert Foret Doux (#4A7558) devient la couleur principale facade. Tient remarquablement sous soleil ivoirien — aucun delavage sur 5 ans.</div>
+      </div>
+      <div class="adj-card">
+        <div class="adj-label added">+ Ajout digital</div>
+        <div class="adj-text">Vert Digital Booste (#5A8A65) cree exclusivement pour Instagram/TikTok/Social. Le vert sauge risquait de sembler terne dans un feed colore. Version desaturee conservee pour print et signaletique.</div>
+      </div>
+      <div class="adj-card">
+        <div class="adj-label added">+ Recommandation uniforme</div>
+        <div class="adj-text">Vert foret en broderie sur fond creme = combinaison tres premium validee. Cuivre en accent col/boutons = excellent. A valider sur prototype avant commande.</div>
+      </div>
+      <div class="adj-card" style="grid-column:span 2;border-left:3px solid #A87448">
+        <div class="adj-label" style="color:#A87448">🏗 Bardade facade — Contrainte fixe integree</div>
+        <div class="adj-text">La facade du centre commercial est habillee d'une bardade bronze/or mat sombre (materiau definitif). <strong>Impact Direction A :</strong> le cuivre de la palette (#A87448) est chromatiquement tres proche du bronze de la bardade. Risque de confusion entre materiau architectural et identite graphique. <strong>Decision :</strong> le cuivre est maintenu comme accent sur les uniformes et le print uniquement — il est retire de la signaletique facade et des totems exterieurs. La bardade bronze fait office d'accent naturel — ne pas le doubler en signaletique.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DIRECTION B ===== -->
+<div class="page" id="dirB">
+  <div class="sec-header">
+    <div class="sec-eyebrow" style="color:#C8A96E">Direction B · Bleu Nuit & Or</div>
+    <div class="sec-title">Le Classique Premium</div>
+    <div class="sec-subtitle">Bleu nuit profond, or lumineux, creme. L'identite de la destination premium par excellence. Domination absolue sur l'evenementiel, le cinema et l'inauguration — la plus haute score en print premium.</div>
+  </div>
+
+  <div class="dir-section">
+    <div class="dir-hero">
+      <div class="dir-hero-bg" style="background:linear-gradient(135deg,#050d24 0%,#0D1B4B 100%)">
+        <div class="dir-number" style="color:#C8A96E">B</div>
+        <div>
+          <div class="dir-name">Bleu Nuit & Or</div>
+          <div class="dir-concept">Le langage universel du luxe. Bleu nuit profond et or lumineux creent un contraste intemporel qui dit "destination premium" sans ambiguite. Palette de reference pour l'inauguration et la projection mapping.</div>
+          <div class="dir-tags">
+            <span class="dir-tag">Inauguration ✅✅✅</span>
+            <span class="dir-tag">Cinema ✅✅✅</span>
+            <span class="dir-tag">Print ✅✅✅</span>
+          </div>
+        </div>
+      </div>
+      <div class="dir-hero-info">
+        <div>
+          <div class="dir-best">Points forts</div>
+          <div class="dir-best-items">
+            <div class="dir-best-item">LA palette pour la scenographie inauguration</div>
+            <div class="dir-best-item">Or Pantone 871C metallique = classe mondiale</div>
+            <div class="dir-best-item">Coherence parfaite avec l'univers cinema</div>
+            <div class="dir-best-item">Projection mapping facade — fond ideal bleu nuit</div>
+          </div>
+        </div>
+        <div class="score-badge">
+          <span class="score-num" style="color:#C8A96E">8.7</span>
+          <span style="font-size:11px;opacity:.5">/10 · Score global</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PALETTE B -->
+    <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-bottom:16px">Palette revisee</div>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0D1B4B"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Principal (revise)</div>
+          <div class="swatch-name">Bleu Nuit Profond</div>
+          <div class="swatch-hex">#0D1B4B</div>
+          <div class="swatch-pantone">Pantone 2768 C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C8A96E"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Or digital (revise)</div>
+          <div class="swatch-name">Or Digital LCD</div>
+          <div class="swatch-hex">#C8A96E</div>
+          <div class="swatch-pantone">Usage ecran LCD</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#B9966E"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Or mat print</div>
+          <div class="swatch-name">Or Mat Premium</div>
+          <div class="swatch-hex">#B9966E</div>
+          <div class="swatch-pantone">Pantone 871 C (metal)</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1E3A5F"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Secondaire</div>
+          <div class="swatch-name">Bleu Horizon</div>
+          <div class="swatch-hex">#1E3A5F</div>
+          <div class="swatch-pantone">Pantone 2955 C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F5F0E8;border:1px solid rgba(0,0,0,.08)"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Fond / contraste</div>
+          <div class="swatch-name">Creme Premium</div>
+          <div class="swatch-hex">#F5F0E8</div>
+          <div class="swatch-pantone">Pantone 7527 C</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AJUSTEMENTS B -->
+    <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-bottom:16px">Ajustements v2.0 — dont bardade bronze</div>
+    <div class="adj-grid">
+      <div class="adj-card">
+        <div class="adj-label fixed">⚠ Correction appliquee</div>
+        <div class="adj-text">#0A1441 lisait "noir uniforme" sous soleil fort a distance. Remplace par #0D1B4B — bleu nuit perceptible meme en plein soleil ivoirien, differencie du noir.</div>
+      </div>
+      <div class="adj-card">
+        <div class="adj-label fixed">⚠ Correction appliquee</div>
+        <div class="adj-text">Or mat #B9966E creait un rendu beige/marron sur ecrans LCD bas de gamme (majorite Android CI). Version "Or Digital" #C8A96E creee pour tous les supports ecran.</div>
+      </div>
+      <div class="adj-card">
+        <div class="adj-label added">+ Regle WhatsApp/Email</div>
+        <div class="adj-text">Sur fond blanc (WhatsApp Business, clients mail) : utiliser logo version couleur sur fond blanc uniquement — jamais fond bleu nuit, il disparait dans certains clients mail.</div>
+      </div>
+      <div class="adj-card">
+        <div class="adj-label added">+ Avantage strategique</div>
+        <div class="adj-text">B est LA direction pour l'inauguration (16 nov. 2026) : scenographie, projection mapping facade, invitations VIP dorure a chaud. Si B retenu, l'inauguration sera visuellement spectaculaire.</div>
+      </div>
+      <div class="adj-card" style="grid-column:span 2;border-left:3px solid #C8A96E">
+        <div class="adj-label" style="color:#C8A96E">🏗 Bardade facade — Contrainte fixe integree</div>
+        <div class="adj-text">La bardade bronze/or mat sombre est <strong>le risque principal pour Direction B</strong>. L'or de la signaletique (Pantone 871C) et le bronze de la facade sont deux "or" proches mais differents — poses cote a cote, ils entrent en competition visuelle et l'un fait paraitre l'autre "faux". <strong>Decision obligatoire :</strong> si B est retenu, l'or signaletique doit etre aligne precisement sur la teinte exacte du bronze de la bardade (faire releve colorimetrique sur site) — ou au contraire s'en eloigner franchement vers un or plus clair/lumineux (#D4B877). Ne jamais laisser deux tons d'or proches coexister en facade. C'est le point de vigilance n°1 de cette direction.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DIRECTION C ===== -->
+<div class="page" id="dirC">
+  <div class="sec-header">
+    <div class="sec-eyebrow" style="color:#C9943A">Direction C · Terracotta & Or Africain</div>
+    <div class="sec-title">L'Ancrage Africain Premium</div>
+    <div class="sec-subtitle">Terracotta en accent, sable en fond, or africain, vert olive. Une identite qui celebre l'Afrique de facon premium et contemporaine. Meilleure performance sur Instagram/TikTok et numerique.</div>
+  </div>
+
+  <div class="dir-section">
+    <div class="dir-hero">
+      <div class="dir-hero-bg" style="background:linear-gradient(135deg,#2a1a0a 0%,#3d2510 100%)">
+        <div class="dir-number" style="color:#C9943A">C</div>
+        <div>
+          <div class="dir-name">Terracotta & Or Africain</div>
+          <div class="dir-concept">La terracotta dit l'Afrique sans le cliche. L'or africain ajoute la chaleur premium. L'identite la plus distinctive visuellement — et la plus performante dans les feeds sociaux grace aux warm tones algorithm-friendly.</div>
+          <div class="dir-tags">
+            <span class="dir-tag">Instagram ✅✅✅</span>
+            <span class="dir-tag">Digital ✅✅</span>
+            <span class="dir-tag">Affichage urbain ✅✅</span>
+          </div>
+        </div>
+      </div>
+      <div class="dir-hero-info">
+        <div>
+          <div class="dir-best">Points forts</div>
+          <div class="dir-best-items">
+            <div class="dir-best-item">Terracotta = top performer Instagram/TikTok CI</div>
+            <div class="dir-best-item">Or Africain #C9943A = different, memorable</div>
+            <div class="dir-best-item">Warm tones tres bien restitues sur ecran</div>
+            <div class="dir-best-item">Identite la plus distinctive vs concurrence</div>
+          </div>
+        </div>
+        <div class="score-badge">
+          <span class="score-num" style="color:#C9943A">8.5</span>
+          <span style="font-size:11px;opacity:.5">/10 · Score global</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PALETTE C -->
+    <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-bottom:16px">Palette revisee</div>
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#EDE0D0;border:1px solid rgba(0,0,0,.08)"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Fond principal (revise)</div>
+          <div class="swatch-name">Sable Chaud</div>
+          <div class="swatch-hex">#EDE0D0</div>
+          <div class="swatch-pantone">Pantone 9183 C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C97B4B"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Accent / details (revise)</div>
+          <div class="swatch-name">Terracotta Accent</div>
+          <div class="swatch-hex">#C97B4B</div>
+          <div class="swatch-pantone">Pantone 7527 C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C9943A"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Or (revise)</div>
+          <div class="swatch-name">Or Africain</div>
+          <div class="swatch-hex">#C9943A</div>
+          <div class="swatch-pantone">Pantone 7562 C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6D7447"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Complementaire</div>
+          <div class="swatch-name">Vert Olive</div>
+          <div class="swatch-hex">#6D7447</div>
+          <div class="swatch-pantone">Pantone 7748 C</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1A1410"></div>
+        <div class="swatch-info">
+          <div class="swatch-role">Typographie</div>
+          <div class="swatch-name">Brun Profond</div>
+          <div class="swatch-hex">#1A1410</div>
+          <div class="swatch-pantone">Pantone 412 C</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AJUSTEMENTS C -->
+    <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-bottom:16px">Ajustements v2.0 — dont bardade bronze</div>
+    <div class="adj-grid">
+      <div class="adj-card">
+        <div class="adj-label fixed">⚠ Correction appliquee</div>
+        <div class="adj-text">Terracotta retiree du fond principal facade — delavage en 18-24 mois sous soleil ivoirien. Remplacee par Sable Chaud (#EDE0D0) en fond, terracotta conservee en accent/filet uniquement.</div>
+      </div>
+      <div class="adj-card">
+        <div class="adj-label fixed">⚠ Correction appliquee</div>
+        <div class="adj-text">Laiton doux original trop proche du sable — les deux couleurs se confondaient. Remplace par Or Africain #C9943A, plus sature et plus distinct, lisible sur tous supports.</div>
+      </div>
+      <div class="adj-card">
+        <div class="adj-label added">+ Avantage digital confirme</div>
+        <div class="adj-text">La terracotta est une des couleurs les plus performantes sur Instagram/TikTok en 2025-2026 (warm tones algorithm-friendly). Avantage competitif fort sur les reseaux sociaux vs A et B.</div>
+      </div>
+      <div class="adj-card">
+        <div class="adj-label added">+ Note uniforme</div>
+        <div class="adj-text">Vert olive (#6D7447) excellent en broderie. A tester sous eclairage fluorescent (reserve/stock) — l'olive peut sembler sombre dans ces conditions. Valider sur prototype avant commande.</div>
+      </div>
+      <div class="adj-card" style="grid-column:span 2;border-left:3px solid #C9943A">
+        <div class="adj-label" style="color:#C9943A">🏗 Bardade facade — Avantage confirme pour Direction C</div>
+        <div class="adj-text">La bardade bronze/or mat sombre de la facade est un <strong>atout naturel pour Direction C</strong>. Le fond sable/creme (#EDE0D0) de la signaletique cree un contraste net et propre avec le bronze architectural — les deux elements se completent sans se confondre. La terracotta en accent et l'or africain (#C9943A) s'inscrivent dans la meme famille chaude que le bronze, creant une coherence matiere/couleur tres forte. <strong>C est la direction qui dialogue le mieux avec la bardade existante.</strong> Argument a valoriser dans le brief charte graphique.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COMPARATIF ===== -->
+<div class="page" id="compare">
+  <div class="sec-header">
+    <div class="sec-eyebrow" style="color:rgba(255,255,255,.4)">Vue d'ensemble · Comparatif</div>
+    <div class="sec-title">Performance par Support</div>
+    <div class="sec-subtitle">Synthese de l'audit touchpoints — 12 supports evalues selon les contraintes terrain reelles (soleil ivoirien, ecrans Android CI, reseaux sociaux, inauguration).</div>
+  </div>
+
+  <div class="comp-section">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Support</th>
+          <th>Zone</th>
+          <th style="text-align:center">A · Vert</th>
+          <th style="text-align:center">B · Bleu/Or</th>
+          <th style="text-align:center">C · Terracotta</th>
+          <th>Note terrain</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Facade exterieure</td><td style="opacity:.4;font-size:11px">Exterieur</td><td class="score-cell top">✅✅</td><td class="score-cell">✅</td><td class="score-cell">✅</td><td style="font-size:11px;opacity:.5">A domine — vert tient sous soleil CI</td></tr>
+        <tr><td>Affichage urbain</td><td style="opacity:.4;font-size:11px">Exterieur</td><td class="score-cell">✅</td><td class="score-cell">✅</td><td class="score-cell top">✅✅</td><td style="font-size:11px;opacity:.5">C — terracotta visible a 50-100m</td></tr>
+        <tr><td>Signaletique interieure</td><td style="opacity:.4;font-size:11px">Interieur</td><td class="score-cell">✅✅</td><td class="score-cell top">✅✅</td><td class="score-cell">✅</td><td style="font-size:11px;opacity:.5">B magnifie par LED chaud</td></tr>
+        <tr><td>Site internet</td><td style="opacity:.4;font-size:11px">Digital</td><td class="score-cell">✅</td><td class="score-cell top">✅✅</td><td class="score-cell top">✅✅</td><td style="font-size:11px;opacity:.5">B et C ex-aequo</td></tr>
+        <tr><td>Instagram / TikTok</td><td style="opacity:.4;font-size:11px">Social</td><td class="score-cell">✅</td><td class="score-cell">✅✅</td><td class="score-cell top">✅✅✅</td><td style="font-size:11px;opacity:.5">C — warm tones algorithm-friendly</td></tr>
+        <tr><td>Application mobile</td><td style="opacity:.4;font-size:11px">Digital</td><td class="score-cell">✅</td><td class="score-cell top">✅✅</td><td class="score-cell top">✅✅</td><td style="font-size:11px;opacity:.5">B excellent AMOLED. C excellent LCD</td></tr>
+        <tr><td>Parcours client interieur</td><td style="opacity:.4;font-size:11px">Interieur</td><td class="score-cell top">✅✅</td><td class="score-cell top">✅✅</td><td class="score-cell">✅</td><td style="font-size:11px;opacity:.5">A coherent vegetation. B LED chaud</td></tr>
+        <tr><td>Cinema</td><td style="opacity:.4;font-size:11px">Interieur</td><td class="score-cell">✅</td><td class="score-cell top">✅✅✅</td><td class="score-cell">✅</td><td style="font-size:11px;opacity:.5">B — coherence univers salle obscure</td></tr>
+        <tr><td>Inauguration / Evenementiel</td><td style="opacity:.4;font-size:11px">Evenementiel</td><td class="score-cell">✅</td><td class="score-cell top">✅✅✅</td><td class="score-cell">✅✅</td><td style="font-size:11px;opacity:.5">B — projection mapping + sceno</td></tr>
+        <tr><td>Print premium</td><td style="opacity:.4;font-size:11px">Print</td><td class="score-cell">✅✅</td><td class="score-cell top">✅✅✅</td><td class="score-cell">✅✅</td><td style="font-size:11px;opacity:.5">B — Pantone 871C metallique</td></tr>
+        <tr><td>Uniforme personnel</td><td style="opacity:.4;font-size:11px">Operationnel</td><td class="score-cell top">✅✅✅</td><td class="score-cell">✅</td><td class="score-cell">✅✅</td><td style="font-size:11px;opacity:.5">A — creme + broderie vert foret</td></tr>
+        <tr><td>WhatsApp / Email</td><td style="opacity:.4;font-size:11px">CRM</td><td class="score-cell">✅</td><td class="score-cell">✅*</td><td class="score-cell top">✅✅</td><td style="font-size:11px;opacity:.5">B : version fond blanc obligatoire</td></tr>
+      </tbody>
+      <tfoot>
+        <tr style="border-top:2px solid rgba(255,255,255,.15)">
+          <td colspan="2" style="font-weight:600;font-size:13px;padding:20px 16px">SCORE GLOBAL</td>
+          <td class="score-cell" style="font-size:28px;color:#4A7558;font-family:'Cormorant Garamond',serif;font-weight:300">8.3</td>
+          <td class="score-cell" style="font-size:36px;color:#C8A96E;font-family:'Cormorant Garamond',serif;font-weight:300">8.7 ★</td>
+          <td class="score-cell" style="font-size:32px;color:#C9943A;font-family:'Cormorant Garamond',serif;font-weight:300">8.5</td>
+          <td style="font-size:11px;opacity:.4">B meilleur score global</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div style="padding:24px;border-radius:12px;border:1px solid rgba(74,117,88,.3);background:rgba(74,117,88,.05)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#4A7558;margin-bottom:12px">Direction A — Meilleure sur</div>
+        <div style="font-size:12px;opacity:.7;line-height:2">Facade exterieure · Uniforme personnel<br>Parcours client interieur</div>
+      </div>
+      <div style="padding:24px;border-radius:12px;border:1px solid rgba(200,169,110,.3);background:rgba(200,169,110,.05)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C8A96E;margin-bottom:12px">Direction B — Meilleure sur</div>
+        <div style="font-size:12px;opacity:.7;line-height:2">Signaletique · Print premium<br>Cinema · Inauguration · Application mobile</div>
+      </div>
+      <div style="padding:24px;border-radius:12px;border:1px solid rgba(201,148,58,.3);background:rgba(201,148,58,.05)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#C9943A;margin-bottom:12px">Direction C — Meilleure sur</div>
+        <div style="font-size:12px;opacity:.7;line-height:2">Instagram/TikTok · Affichage urbain<br>WhatsApp/Email · Site internet</div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;padding:20px 24px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);font-size:12px;opacity:.5;line-height:1.8">
+      * B sur WhatsApp/Email : utiliser obligatoirement la version logo fond blanc — le fond bleu nuit disparait sur certains clients mail.<br>
+      Color Book v2.0 · Cosmos Angre · Audit touchpoints integre · Mars 2026 · Usage interne confidentiel
+    </div>
+  </div>
+</div>
+
+<div class="export-bar">
+  <button class="btn btn-primary" onclick="window.print()">⬇ Imprimer / PDF</button>
+</div>
+
+<script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map={cover:0,dirA:1,dirB:2,dirC:3,compare:4};
+  document.querySelectorAll('.nav-tab')[map[id]].classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

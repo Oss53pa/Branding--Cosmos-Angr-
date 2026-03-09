@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plan 3D — Cosmos Angré · Parcours Client</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#fff;overflow:hidden;height:100vh}
+canvas{display:block}
+
+.ui-top{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:linear-gradient(to bottom,rgba(10,10,15,.95),transparent);pointer-events:none}
+.ui-top>*{pointer-events:auto}
+.ui-logo{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:300;letter-spacing:.06em}
+.ui-logo span{color:#C9943A}
+.ui-badge{font-size:9px;padding:4px 10px;border-radius:10px;background:rgba(201,148,58,.12);color:#C9943A;border:1px solid rgba(201,148,58,.2);letter-spacing:.08em;text-transform:uppercase}
+
+.controls{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:6px;background:rgba(15,15,22,.88);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:6px 10px}
+.ctrl-btn{padding:5px 14px;border-radius:7px;font-size:10px;font-weight:500;cursor:pointer;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(255,255,255,.6);transition:all .2s;font-family:'Inter',sans-serif}
+.ctrl-btn:hover{background:rgba(255,255,255,.08);color:#fff}
+.ctrl-btn.active{background:rgba(201,148,58,.15);border-color:rgba(201,148,58,.35);color:#C9943A}
+
+.journey-panel{position:fixed;top:60px;left:16px;z-index:100;background:rgba(12,12,18,.92);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px;width:250px;max-height:calc(100vh - 140px);overflow-y:auto;display:none}
+.journey-panel.visible{display:block}
+.journey-panel::-webkit-scrollbar{width:3px}
+.journey-panel::-webkit-scrollbar-thumb{background:rgba(201,148,58,.3);border-radius:3px}
+.jp-title{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#C9943A;margin-bottom:10px}
+.jp-step{display:flex;gap:8px;margin-bottom:8px;cursor:pointer;padding:5px 7px;border-radius:7px;transition:background .2s}
+.jp-step:hover{background:rgba(255,255,255,.05)}
+.jp-step.active{background:rgba(201,148,58,.1)}
+.jp-num{width:20px;height:20px;border-radius:50%;background:rgba(201,148,58,.15);border:1px solid rgba(201,148,58,.35);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#C9943A;flex-shrink:0}
+.jp-name{font-size:11px;font-weight:500;color:rgba(255,255,255,.8)}
+.jp-desc{font-size:9px;color:rgba(255,255,255,.35);line-height:1.4;margin-top:2px}
+
+.info-panel{position:fixed;bottom:16px;right:16px;z-index:100;background:rgba(12,12,18,.92);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px;width:240px;display:none}
+.info-panel.visible{display:block}
+.info-cat{font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:4px}
+.info-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;margin-bottom:3px}
+.info-area{font-size:11px;color:#C9943A;margin-bottom:8px}
+.info-desc{font-size:10px;color:rgba(255,255,255,.45);line-height:1.55}
+
+.loading{position:fixed;inset:0;z-index:1000;background:#0a0a0f;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .6s}
+.loading.hidden{opacity:0;pointer-events:none}
+.loading-text{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:rgba(255,255,255,.8);margin-bottom:6px}
+.loading-sub{font-size:10px;color:rgba(255,255,255,.25);letter-spacing:.1em}
+</style>
+</head>
+<body>
+
+<div class="loading" id="loading">
+  <div class="loading-text">Cosmos Angré</div>
+  <div class="loading-sub">Chargement du plan 3D...</div>
+</div>
+
+<div class="ui-top">
+  <div class="ui-logo">Cosmos <span>Angré</span> — Plan 3D Parcours Client</div>
+  <div class="ui-badge">Plan commercial · Fév. 2026</div>
+</div>
+
+<div class="controls">
+  <div class="ctrl-btn" onclick="viewTop()">Vue dessus</div>
+  <div class="ctrl-btn" onclick="viewPersp()">Perspective</div>
+  <div class="ctrl-btn" onclick="viewFront()">Façade Nord</div>
+  <div class="ctrl-btn" onclick="viewSide()">Côté Est</div>
+  <div class="ctrl-btn active" id="btnJ" onclick="toggleJourney()">Parcours Client</div>
+</div>
+
+<div class="journey-panel" id="jpanel"></div>
+<div class="info-panel" id="ipanel">
+  <div class="info-cat" id="icat"></div>
+  <div class="info-name" id="iname"></div>
+  <div class="info-area" id="iarea"></div>
+  <div class="info-desc" id="idesc"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+// =============================================
+// COSMOS ANGRÉ — PLAN 3D FIDÈLE
+// Plan image: 2381 x 1684 px (exported from PDF)
+// World mapping: 120 x 84.86 units
+// Conversion: worldX = px * 0.0504, worldZ = py * 0.0504
+// =============================================
+
+const PW = 120, PH = 84.86;
+const S = 0.0504; // px to world scale
+
+let scene, camera, renderer, controls;
+let blocks = [], raycaster, mouse;
+let hovered = null;
+let journeyLine, journeyDots = [], journeyOn = false;
+
+// =============================================
+// STORES — pixel coords from plan image (2381x1684)
+// Format: [name, cat, color, px_left, py_top, px_right, py_bottom, area, desc]
+// =============================================
+const storeData = [
+  // SUPERMARCHÉ (jaune)
+  ["Carrefour Market","supermarche",0xD4A520, 155,175, 530,440, "2 211m²","Supermarché principal · Ancre alimentaire nord-ouest"],
+  ["552m²","supermarche",0xD4A520, 535,240, 630,410, "552m²","Surface alimentaire complémentaire"],
+
+  // KIABI (rose/mode)
+  ["Kiabi","mode",0xC2185B, 1060,130, 1430,310, "648m²","Mode à petits prix · Grande surface textile · Façade Boulevard"],
+
+  // BONUS
+  ["Bonus","market",0xFF7043, 870,340, 1010,410, "300m²","Magasin multiservice · Prix discount"],
+
+  // CRAFT MARKET
+  ["Craft Market","market",0xFF7043, 1270,260, 1440,435, "456m²","Marché artisanal · Produits locaux · Artisanat premium"],
+
+  // C18, C19
+  ["C18","boutique",0x78909C, 815,175, 880,240, "62m²","Boutique galerie"],
+  ["C19","boutique",0x78909C, 885,175, 950,240, "74m²","Boutique galerie"],
+
+  // C16
+  ["C16","boutique",0x78909C, 640,280, 720,350, "70m²","Boutique galerie"],
+
+  // C15
+  ["C15","boutique",0x78909C, 635,375, 750,445, "107m²","Boutique galerie"],
+
+  // B10
+  ["B10","boutique",0x78909C, 510,410, 565,445, "50m²","Boutique galerie"],
+
+  // FC1
+  ["FC1","boutique",0x78909C, 790,385, 830,420, "12m²","Petit commerce"],
+
+  // GALERIE CENTRALE — rangée du milieu
+  ["C8","boutique",0x78909C, 310,490, 440,540, "135m²","Boutique galerie centrale"],
+  ["C10","boutique",0x78909C, 445,490, 530,540, "95m²","Boutique galerie centrale"],
+  ["C11-C","boutique",0x78909C, 555,490, 625,540, "77m²","Boutique galerie centrale"],
+  ["Restaurant","restaurant",0xE53935, 650,490, 830,540, "116-118m²","Zone restauration · Galerie"],
+
+  // ALDO, City Sport
+  ["Aldo","mode",0xC2185B, 650,465, 700,490, "44m²","Chaussures & maroquinerie"],
+  ["City Sport","mode",0xC2185B, 960,460, 1100,540, "222m²","Sport · Multimarque"],
+
+  // T1, T2, T3 (terrasses restaurant)
+  ["T1","restaurant",0xE53935, 1110,475, 1170,540, "152m²","Terrasse restaurant 1"],
+  ["T2","restaurant",0xE53935, 1175,475, 1240,540, "174m²","Terrasse restaurant 2"],
+  ["T3","restaurant",0xE53935, 1245,475, 1310,540, "175m²","Terrasse restaurant 3"],
+
+  // OÏMO SHOES
+  ["Oïmo Shoes","mode",0xC2185B, 95,570, 260,650, "275m²","Chaussures · Grande surface spécialisée"],
+
+  // 113m²
+  ["113m²","mode",0xC2185B, 95,655, 200,710, "113m²","Boutique mode"],
+
+  // B11
+  ["B11","boutique",0x78909C, 260,590, 310,640, "46m²","Boutique galerie"],
+
+  // Petits 54m² / 42m²
+  ["42m²","boutique",0x78909C, 265,565, 325,590, "42m²","Boutique"],
+  ["54m²","boutique",0x78909C, 335,610, 395,660, "54m²","Boutique"],
+  ["54m²","boutique",0x78909C, 335,665, 395,710, "54m²","Boutique"],
+  ["54m²","boutique",0x78909C, 335,730, 395,775, "54m²","Boutique"],
+  ["54m²","boutique",0x78909C, 335,780, 395,825, "54m²","Boutique"],
+
+  // C5
+  ["C5","boutique",0x78909C, 95,740, 200,795, "143m²","Boutique galerie"],
+
+  // Jules
+  ["Jules","mode",0xC2185B, 95,795, 200,840, "133m²","Mode homme · Enseigne française"],
+
+  // Zino 70m²
+  ["Zino","mode",0xC2185B, 205,795, 290,840, "70m²","Mode & accessoires"],
+
+  // Lacoste
+  ["Lacoste","mode",0xC2185B, 95,840, 200,895, "140m²","Prêt-à-porter premium international"],
+
+  // FC6
+  ["FC6","boutique",0x78909C, 305,730, 380,795, "54m²","Boutique compacte"],
+
+  // ZONE D'EXPO
+  ["Zone d'Expo","loisirs",0x7B1FA2, 480,620, 625,735, "116m²","Espace d'expo polyvalent · Pop-up · Événements"],
+
+  // DREAMLAND
+  ["Dreamland","loisirs",0x7B1FA2, 720,590, 1010,740, "1 125m²","Parc de loisirs intérieur · Aire de jeux enfants"],
+
+  // BIG BOX 3
+  ["Big Box 3","services",0x42A5F5, 1040,670, 1210,760, "500m²","Grande surface · Box commercial modulable"],
+
+  // Zino 332m²
+  ["Zino","mode",0xC2185B, 95,920, 240,1020, "332m²","Mode · Flagship store"],
+
+  // Zino 193m²
+  ["Zino","mode",0xC2185B, 245,905, 380,975, "193m²","Mode · Extension"],
+
+  // C29
+  ["C29","boutique",0x78909C, 340,885, 460,950, "199m²","Boutique galerie"],
+
+  // C32
+  ["C32","boutique",0x78909C, 465,885, 540,950, "94m²","Boutique galerie"],
+
+  // C27
+  ["C27","boutique",0x78909C, 290,1000, 365,1050, "98m²","Boutique galerie"],
+
+  // Pharmacie
+  ["Pharmacie","beaute",0xF48FB1, 370,1000, 440,1055, "98m²","Pharmacie · Parapharmacie · Santé"],
+
+  // C30
+  ["C30","boutique",0x78909C, 445,1000, 510,1055, "70m²","Boutique galerie"],
+
+  // DAB
+  ["DAB","services",0x42A5F5, 515,1020, 545,1055, "29m²","Distributeurs automatiques de billets"],
+
+  // BB4-1 TERRASSE
+  ["BB4-1 Terrasse","restaurant",0xE53935, 615,825, 730,860, "24m²","Terrasse Sports Bar"],
+
+  // BB4-1 SPORTS BAR
+  ["BB4-1 Sports Bar","restaurant",0xE53935, 540,860, 730,940, "200m²","Sports Bar · Convivialité · Écrans"],
+
+  // IBIS STYLES / ADAGIO
+  ["ibis Styles / Adagio","hotel",0x2E7D32, 780,890, 1260,1105, "739m²","Hôtel ★★★ · ibis Styles & Adagio Aparthotel"],
+
+  // BB4-3
+  ["BB4-3","services",0x42A5F5, 545,1110, 680,1175, "270m²","Box commercial"],
+
+  // BB4-4
+  ["BB4-4","services",0x42A5F5, 685,1110, 780,1175, "110m²","Box commercial"],
+
+  // BUREAUX & CLINIQUE (haut droite)
+  ["Bureaux & Clinique","services",0x42A5F5, 1440,130, 1540,310, "—","Bureaux et commerces · Clinique"],
+];
+
+// =============================================
+// CUSTOMER JOURNEY — pixel coords
+// =============================================
+const journey = [
+  {n:"Arrivée Parking",d:"325 places surface + 100 souterrain · Dépose minute taxi", px:540,py:1280},
+  {n:"Entrée Sud",d:"Entrées 1-4 · Façade iconique · Première impression", px:350,py:1100},
+  {n:"Galerie Mode Ouest",d:"Zino 332m² · Lacoste · Jules · Oïmo Shoes · Shopping mode", px:170,py:850},
+  {n:"Galerie Centrale",d:"Boutiques C5-C11 · Services · Parcours découverte", px:400,py:510},
+  {n:"Carrefour Market",d:"2 211m² · Ancre alimentaire · Courses quotidiennes", px:340,py:300},
+  {n:"Kiabi & Mode Nord",d:"648m² mode famille · Prix accessibles · Fort trafic", px:1200,py:220},
+  {n:"Craft Market",d:"456m² artisanat · Produits locaux · Expérience culturelle", px:1350,py:350},
+  {n:"Bonus & Services",d:"300m² multiservice · C15-C16 · Transition vers food", px:920,py:380},
+  {n:"Food Court & Terrasses",d:"Restaurants · T1-T2-T3 · Destination food · Pause", px:1100,py:510},
+  {n:"City Sport & Aldo",d:"Sport · Chaussures premium · Shopping plaisir", px:1020,py:500},
+  {n:"Dreamland",d:"1 125m² loisirs enfants · Attraction famille · Fidélisation", px:860,py:670},
+  {n:"Zone d'Expo",d:"Espace polyvalent · Pop-up stores · Animations", px:550,py:680},
+  {n:"Sports Bar",d:"200m² · Terrasse · Convivialité · Soirées", px:635,py:890},
+  {n:"ibis / Adagio",d:"Hôtel ★★★ · Séjour & shopping · Business & tourisme", px:1020,py:1000},
+  {n:"Sortie & Fidélisation",d:"E-services · App Cosmos · Programme fidélité · À bientôt", px:540,py:1200},
+];
+
+// =============================================
+// INIT
+// =============================================
+function init(){
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0c0c14);
+
+  camera = new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.1, 500);
+  camera.position.set(60, 80, 110);
+
+  renderer = new THREE.WebGLRenderer({antialias:true});
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.1;
+  document.body.appendChild(renderer.domElement);
+
+  controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.07;
+  controls.maxPolarAngle = Math.PI/2.05;
+  controls.minDistance = 10;
+  controls.maxDistance = 180;
+  controls.target.set(PW/2, 0, PH/2);
+
+  raycaster = new THREE.Raycaster();
+  mouse = new THREE.Vector2(-9,-9);
+
+  addLights();
+  loadPlanTexture();
+  buildStores();
+  buildJourney();
+  setupJourneyUI();
+
+  addEventListener('resize', ()=>{
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
+  renderer.domElement.addEventListener('mousemove', onMove);
+  renderer.domElement.addEventListener('click', onClk);
+
+  animate();
+}
+
+// =============================================
+// LIGHTS
+// =============================================
+function addLights(){
+  scene.add(new THREE.AmbientLight(0x556688, 0.5));
+  scene.add(new THREE.HemisphereLight(0x8899bb, 0x334422, 0.4));
+
+  const sun = new THREE.DirectionalLight(0xfff4dd, 0.7);
+  sun.position.set(80, 100, -40);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(2048,2048);
+  const sc = sun.shadow.camera;
+  sc.left=-80; sc.right=80; sc.top=80; sc.bottom=-80;
+  scene.add(sun);
+
+  scene.add(new THREE.DirectionalLight(0xaabbee, 0.25).position.set(-40,50,80));
+}
+
+// =============================================
+// PLAN IMAGE AS FLOOR TEXTURE
+// =============================================
+function loadPlanTexture(){
+  const loader = new THREE.TextureLoader();
+  loader.load('plan-cosmos.png', tex => {
+    tex.encoding = THREE.sRGBEncoding;
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+    // Floor with plan texture
+    const geo = new THREE.PlaneGeometry(PW, PH);
+    const mat = new THREE.MeshStandardMaterial({
+      map: tex,
+      roughness: 0.85,
+      metalness: 0.05,
+    });
+    const floor = new THREE.Mesh(geo, mat);
+    floor.rotation.x = -Math.PI/2;
+    floor.position.set(PW/2, 0, PH/2);
+    floor.receiveShadow = true;
+    scene.add(floor);
+
+    // Surrounding dark ground
+    const gGeo = new THREE.PlaneGeometry(300, 300);
+    const gMat = new THREE.MeshStandardMaterial({color:0x111118, roughness:0.95});
+    const g = new THREE.Mesh(gGeo, gMat);
+    g.rotation.x = -Math.PI/2;
+    g.position.set(PW/2, -0.05, PH/2);
+    g.receiveShadow = true;
+    scene.add(g);
+
+    setTimeout(()=> document.getElementById('loading').classList.add('hidden'), 400);
+  }, undefined, ()=>{
+    // Fallback: grey floor if image fails
+    const geo = new THREE.PlaneGeometry(PW, PH);
+    const mat = new THREE.MeshStandardMaterial({color:0x2a2a30, roughness:0.8});
+    const floor = new THREE.Mesh(geo, mat);
+    floor.rotation.x = -Math.PI/2;
+    floor.position.set(PW/2, 0, PH/2);
+    scene.add(floor);
+    setTimeout(()=> document.getElementById('loading').classList.add('hidden'), 400);
+  });
+}
+
+// =============================================
+// 3D STORE BLOCKS
+// =============================================
+function buildStores(){
+  storeData.forEach(sd => {
+    const [name, cat, color, px1, py1, px2, py2, area, desc] = sd;
+
+    const x1 = px1 * S, z1 = py1 * S;
+    const x2 = px2 * S, z2 = py2 * S;
+    const w = x2 - x1, d = z2 - z1;
+    const h = getH(name, cat, area);
+
+    const geo = new THREE.BoxGeometry(w, h, d);
+    const mat = new THREE.MeshStandardMaterial({
+      color: color,
+      roughness: 0.55,
+      metalness: 0.15,
+      transparent: true,
+      opacity: 0.6,
+    });
+
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(x1 + w/2, h/2, z1 + d/2);
+    mesh.castShadow = true;
+    mesh.receiveShadow = true;
+    mesh.userData = {name, cat, area, desc, color};
+
+    // Edges
+    const edges = new THREE.EdgesGeometry(geo);
+    const eMat = new THREE.LineBasicMaterial({color:0xffffff, transparent:true, opacity:0.12});
+    mesh.add(new THREE.LineSegments(edges, eMat));
+
+    // Roof glow
+    const rGeo = new THREE.PlaneGeometry(w * 0.95, d * 0.95);
+    const rMat = new THREE.MeshBasicMaterial({color, transparent:true, opacity:0.15});
+    const roof = new THREE.Mesh(rGeo, rMat);
+    roof.rotation.x = -Math.PI/2;
+    roof.position.y = h/2 + 0.02;
+    mesh.add(roof);
+
+    scene.add(mesh);
+    blocks.push(mesh);
+  });
+}
+
+function getH(name, cat, area){
+  if(name.includes("ibis")) return 10;
+  if(name==="Carrefour Market") return 5.5;
+  if(name==="Kiabi") return 5;
+  if(name==="Dreamland") return 6;
+  if(name==="Craft Market") return 4.5;
+  if(name==="Big Box 3") return 5;
+  if(name==="City Sport") return 4;
+  if(name.includes("Sports Bar")) return 4;
+  if(name==="Oïmo Shoes") return 3.8;
+  if(name==="Zone d'Expo") return 3.5;
+  if(name==="Bonus") return 4;
+  if(cat==="restaurant") return 3;
+  if(name==="Lacoste"||name==="Jules") return 3.5;
+  if(name.includes("Zino") && area.includes("332")) return 4;
+  const a = parseInt(area) || 50;
+  if(a > 150) return 3.5;
+  if(a > 80) return 3;
+  return 2.5;
+}
+
+// =============================================
+// CUSTOMER JOURNEY PATH
+// =============================================
+function buildJourney(){
+  const pts = journey.map(j => new THREE.Vector3(j.px * S, 0.25, j.py * S));
+
+  // Smooth curve
+  const curve = new THREE.CatmullRomCurve3(pts, false, 'catmullrom', 0.25);
+  const tubeGeo = new THREE.TubeGeometry(curve, 300, 0.15, 8, false);
+  const tubeMat = new THREE.MeshBasicMaterial({color:0xC9943A, transparent:true, opacity:0.8});
+  journeyLine = new THREE.Mesh(tubeGeo, tubeMat);
+  journeyLine.visible = false;
+  scene.add(journeyLine);
+
+  // Numbered dots
+  journey.forEach((j, i) => {
+    const group = new THREE.Group();
+    group.position.set(j.px * S, 0.05, j.py * S);
+
+    // Outer ring
+    const rGeo = new THREE.RingGeometry(0.55, 0.75, 24);
+    const rMat = new THREE.MeshBasicMaterial({color:0xC9943A, transparent:true, opacity:0.5, side:THREE.DoubleSide});
+    const ring = new THREE.Mesh(rGeo, rMat);
+    ring.rotation.x = -Math.PI/2;
+    group.add(ring);
+
+    // Inner dot
+    const dGeo = new THREE.CircleGeometry(0.45, 24);
+    const dMat = new THREE.MeshBasicMaterial({color:0xC9943A, transparent:true, opacity:0.9, side:THREE.DoubleSide});
+    const dot = new THREE.Mesh(dGeo, dMat);
+    dot.rotation.x = -Math.PI/2;
+    dot.position.y = 0.01;
+    group.add(dot);
+
+    // Vertical beacon
+    const bGeo = new THREE.CylinderGeometry(0.06, 0.06, 4, 8);
+    const bMat = new THREE.MeshBasicMaterial({color:0xC9943A, transparent:true, opacity:0.25});
+    const beam = new THREE.Mesh(bGeo, bMat);
+    beam.position.y = 2;
+    group.add(beam);
+
+    // Number label
+    const sp = makeSprite(String(i+1), 0xC9943A, 512, 48);
+    sp.position.y = 4.5;
+    sp.scale.set(2, 0.5, 1);
+    group.add(sp);
+
+    // Name label
+    const nl = makeSprite(j.n, 0xffffff, 1024, 32);
+    nl.position.y = 5.5;
+    nl.scale.set(4, 0.5, 1);
+    group.add(nl);
+
+    group.visible = false;
+    scene.add(group);
+    journeyDots.push(group);
+  });
+}
+
+function makeSprite(text, color, canvasW, fontSize){
+  const c = document.createElement('canvas');
+  c.width = canvasW; c.height = 128;
+  const ctx = c.getContext('2d');
+  ctx.font = `600 ${fontSize}px Inter, sans-serif`;
+  ctx.fillStyle = '#' + color.toString(16).padStart(6,'0');
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, canvasW/2, 64);
+  const tex = new THREE.CanvasTexture(c);
+  const mat = new THREE.SpriteMaterial({map:tex, transparent:true, depthTest:false});
+  return new THREE.Sprite(mat);
+}
+
+// =============================================
+// INTERACTIONS
+// =============================================
+function onMove(e){
+  mouse.x = (e.clientX/innerWidth)*2-1;
+  mouse.y = -(e.clientY/innerHeight)*2+1;
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObjects(blocks);
+
+  if(hovered){
+    hovered.material.emissive.setHex(0x000000);
+    hovered.material.opacity = 0.6;
+    hovered = null;
+  }
+  if(hits.length > 0){
+    hovered = hits[0].object;
+    hovered.material.emissive.setHex(0x222222);
+    hovered.material.opacity = 0.85;
+    renderer.domElement.style.cursor = 'pointer';
+  } else {
+    renderer.domElement.style.cursor = 'default';
+  }
+}
+
+function onClk(){
+  if(hovered){
+    const u = hovered.userData;
+    document.getElementById('icat').textContent = u.cat.toUpperCase();
+    document.getElementById('iname').textContent = u.name;
+    document.getElementById('iarea').textContent = u.area;
+    document.getElementById('idesc').textContent = u.desc;
+    document.getElementById('ipanel').classList.add('visible');
+  } else {
+    document.getElementById('ipanel').classList.remove('visible');
+  }
+}
+
+// =============================================
+// CAMERA
+// =============================================
+function animCam(pos, tgt, dur=1000){
+  const s = {x:camera.position.x,y:camera.position.y,z:camera.position.z,
+             tx:controls.target.x,ty:controls.target.y,tz:controls.target.z};
+  const t0 = performance.now();
+  (function up(){
+    const t = Math.min((performance.now()-t0)/dur,1);
+    const e = t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+    camera.position.set(s.x+(pos.x-s.x)*e, s.y+(pos.y-s.y)*e, s.z+(pos.z-s.z)*e);
+    controls.target.set(s.tx+(tgt.x-s.tx)*e, s.ty+(tgt.y-s.ty)*e, s.tz+(tgt.z-s.tz)*e);
+    if(t<1) requestAnimationFrame(up);
+  })();
+}
+
+function viewTop(){ animCam({x:PW/2,y:90,z:PH/2+1},{x:PW/2,y:0,z:PH/2}); }
+function viewPersp(){ animCam({x:-10,y:50,z:95},{x:PW/2,y:0,z:PH/2-5}); }
+function viewFront(){ animCam({x:PW/2,y:25,z:-20},{x:PW/2,y:2,z:PH/2}); }
+function viewSide(){ animCam({x:PW+30,y:30,z:PH/2},{x:PW/2,y:0,z:PH/2}); }
+
+// =============================================
+// JOURNEY UI
+// =============================================
+function toggleJourney(){
+  journeyOn = !journeyOn;
+  journeyLine.visible = journeyOn;
+  journeyDots.forEach(d => d.visible = journeyOn);
+  document.getElementById('jpanel').classList.toggle('visible', journeyOn);
+  document.getElementById('btnJ').classList.toggle('active', journeyOn);
+}
+
+function setupJourneyUI(){
+  const p = document.getElementById('jpanel');
+  p.innerHTML = '<div class="jp-title">Parcours du consommateur</div>';
+  journey.forEach((j, i) => {
+    const el = document.createElement('div');
+    el.className = 'jp-step';
+    el.innerHTML = `<div class="jp-num">${i+1}</div><div><div class="jp-name">${j.n}</div><div class="jp-desc">${j.d}</div></div>`;
+    el.onclick = () => goStep(i);
+    p.appendChild(el);
+  });
+}
+
+function goStep(i){
+  document.querySelectorAll('.jp-step').forEach((el,idx)=> el.classList.toggle('active', idx===i));
+  const j = journey[i];
+  const cx = j.px * S, cz = j.py * S;
+  animCam({x:cx-12, y:22, z:cz+15}, {x:cx, y:1, z:cz}, 900);
+
+  // Highlight nearby blocks
+  blocks.forEach(b => {
+    const dx = b.position.x - cx, dz = b.position.z - cz;
+    const dist = Math.sqrt(dx*dx + dz*dz);
+    b.material.opacity = dist < 12 ? 0.85 : 0.35;
+    b.material.emissive.setHex(dist < 8 ? 0x1a1a1a : 0x000000);
+  });
+}
+
+// =============================================
+// ANIMATE
+// =============================================
+function animate(){
+  requestAnimationFrame(animate);
+  controls.update();
+
+  // Animate journey beacons
+  if(journeyOn){
+    const t = performance.now() * 0.003;
+    journeyDots.forEach((g, i) => {
+      g.children.forEach(c => {
+        if(c.geometry && c.geometry.type === 'RingGeometry'){
+          c.scale.setScalar(1 + Math.sin(t + i * 0.4) * 0.15);
+          c.material.opacity = 0.3 + Math.sin(t + i * 0.4) * 0.2;
+        }
+      });
+    });
+  }
+
+  renderer.render(scene, camera);
+}
+
+init();
+</script>
+</body>
+</html>

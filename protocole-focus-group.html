@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocole Focus Group — Cosmos Angré v2.1</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f8f6f2;color:#1a1410;min-height:100vh}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,246,242,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(26,20,16,.08);display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:52px}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:16px;letter-spacing:.1em}
+.nav-tabs{display:flex;gap:3px}
+.nav-tab{padding:4px 13px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;color:rgba(26,20,16,.4);border:1px solid transparent}
+.nav-tab:hover{color:rgba(26,20,16,.75)}
+.nav-tab.active{color:#1a1410;background:rgba(26,20,16,.07);border-color:rgba(26,20,16,.12)}
+.nav-meta{font-size:10px;color:rgba(26,20,16,.3);letter-spacing:.1em;text-transform:uppercase}
+
+.page{display:none;padding-top:52px;min-height:100vh}
+.page.active{display:block}
+
+/* COVER */
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 60px;background:linear-gradient(160deg,#1a1410 0%,#2d1f10 55%,#3d2510 100%);color:#fff;position:relative;overflow:hidden}
+.cover::before{content:'';position:absolute;right:-80px;top:-80px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(201,148,58,.1),transparent 70%)}
+.cover-eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:28px}
+.cover-title{font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:300;line-height:1;margin-bottom:6px}
+.cover-sub{font-family:'Cormorant Garamond',serif;font-size:22px;color:rgba(255,255,255,.4);margin-bottom:40px}
+.cover-div{width:40px;height:1px;background:rgba(255,255,255,.2);margin-bottom:40px}
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:760px}
+.kpi{padding:18px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07)}
+.kpi-n{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:#C9943A}
+.kpi-l{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:2px}
+.cover-footer{margin-top:40px;font-size:10px;color:rgba(255,255,255,.18);letter-spacing:.12em;text-transform:uppercase}
+
+.content{padding:52px 56px}
+.eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:#C9943A;margin-bottom:8px}
+.h1{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;margin-bottom:6px;line-height:1.1}
+.desc{font-size:13px;color:rgba(26,20,16,.5);line-height:1.7;max-width:680px;margin-bottom:36px}
+.divider{height:1px;background:rgba(26,20,16,.06);margin:32px 0}
+
+.card{background:#fff;border-radius:12px;border:1px solid rgba(26,20,16,.07);padding:24px;margin-bottom:14px;box-shadow:0 1px 3px rgba(26,20,16,.04)}
+.card-title{font-size:14px;font-weight:600;margin-bottom:4px}
+.card-sub{font-size:11px;color:rgba(26,20,16,.4);margin-bottom:14px}
+
+/* ENJEUX */
+.enjeu-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:32px}
+.enjeu{padding:18px;border-radius:10px;background:#f8f6f2;border-left:3px solid}
+.enjeu-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:6px}
+.enjeu-q{font-size:13px;font-weight:600;margin-bottom:4px}
+.enjeu-d{font-size:11px;color:rgba(26,20,16,.5);line-height:1.6}
+
+/* SESSIONS */
+.sess-block{border-radius:12px;overflow:hidden;margin-bottom:20px}
+.sess-hdr{padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+.s1-hdr{background:linear-gradient(135deg,#1a2e20,#2a4a35);color:#fff}
+.s2-hdr{background:linear-gradient(135deg,#0d1b3e,#1a3060);color:#fff}
+.sess-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300}
+.sess-meta{font-size:11px;opacity:.55;margin-top:3px}
+.sess-tag{padding:4px 12px;border-radius:20px;font-size:10px;background:rgba(255,255,255,.12);letter-spacing:.06em}
+.sess-body{background:#fff;border:1px solid rgba(26,20,16,.07);border-top:none;border-radius:0 0 12px 12px}
+
+/* TIMELINE */
+.tl{padding:20px 24px}
+.tl-row{display:grid;grid-template-columns:72px 1fr;gap:18px;margin-bottom:18px;position:relative}
+.tl-row:not(:last-child)::after{content:'';position:absolute;left:32px;top:38px;bottom:-6px;width:1px;background:rgba(26,20,16,.07)}
+.tl-t{text-align:right;padding-top:2px}
+.tl-tv{font-size:12px;font-weight:600;color:#C9943A}
+.tl-td{font-size:9px;color:rgba(26,20,16,.3);margin-top:2px}
+.tl-c{background:#f8f6f2;border-radius:10px;padding:14px 18px}
+.tl-phase{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(26,20,16,.3);margin-bottom:3px}
+.tl-ctitle{font-size:13px;font-weight:500;margin-bottom:5px}
+.tl-cdesc{font-size:12px;color:rgba(26,20,16,.55);line-height:1.6}
+.stim-chip{display:inline-flex;align-items:center;gap:5px;margin-top:8px;padding:3px 10px;border-radius:6px;background:#fff;border:1px solid rgba(26,20,16,.08);font-size:10px;color:rgba(26,20,16,.45)}
+
+/* STIMULI */
+.stim-card{border-radius:12px;overflow:hidden;border:1px solid rgba(26,20,16,.07)}
+.stim-hdr{height:80px;display:flex;align-items:center;padding:0 20px;gap:12px}
+.stim-label{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:#fff}
+.stim-sublabel{font-size:11px;color:rgba(255,255,255,.55)}
+.stim-body{background:#fff;padding:16px 20px}
+.stim-t{font-size:12px;font-weight:600;margin-bottom:8px}
+.stim-items{display:flex;flex-direction:column;gap:4px}
+.stim-i{font-size:11px;color:rgba(26,20,16,.55);display:flex;align-items:flex-start;gap:6px;line-height:1.5}
+.stim-i::before{content:'\2192';color:rgba(26,20,16,.2);flex-shrink:0;margin-top:1px}
+.sw-row{display:flex;gap:5px;margin-top:8px}
+.sw{width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5)}
+
+/* SCENARIOS */
+.sc-card{background:#fff;border-radius:12px;border:1px solid rgba(26,20,16,.07);padding:22px;margin-bottom:14px}
+.sc-hdr{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.sc-num{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;flex-shrink:0}
+.sc-t{font-size:14px;font-weight:600}
+.sc-s{font-size:11px;color:rgba(26,20,16,.4);margin-top:2px}
+.sc-qs{display:flex;flex-direction:column;gap:7px}
+.sc-q{font-size:12px;color:rgba(26,20,16,.65);line-height:1.6;padding:9px 14px;background:#f8f6f2;border-radius:8px;border-left:3px solid rgba(26,20,16,.1)}
+.sc-q strong{color:#1a1410;display:block;margin-bottom:2px;font-size:11px;letter-spacing:.05em}
+
+/* SCORING */
+.stbl{width:100%;border-collapse:collapse}
+.stbl th{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(26,20,16,.4);padding:9px 14px;text-align:left;border-bottom:1px solid rgba(26,20,16,.08);background:#f8f6f2}
+.stbl td{padding:9px 14px;border-bottom:1px solid rgba(26,20,16,.04);font-size:12px;color:rgba(26,20,16,.7)}
+
+.analyse-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ag-card{background:#fff;border-radius:12px;border:1px solid rgba(26,20,16,.07);padding:20px}
+.ag-title{font-size:12px;font-weight:600;margin-bottom:10px}
+.ag-items{display:flex;flex-direction:column;gap:6px}
+.ag-item{font-size:11px;color:rgba(26,20,16,.6);line-height:1.5;padding:7px 10px;background:#f8f6f2;border-radius:6px}
+
+.export-bar{position:fixed;bottom:20px;right:20px;z-index:200}
+.btn{padding:9px 18px;border-radius:8px;font-size:11px;font-weight:500;cursor:pointer;border:1px solid rgba(26,20,16,.15);background:#fff;color:#1a1410;box-shadow:0 2px 8px rgba(26,20,16,.08);transition:all .2s}
+.btn:hover{background:#f0ede8}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">COSMOS ANGRÉ · Focus Group v2.1</div>
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="show('cover')">Vue d'ensemble</div>
+    <div class="nav-tab" onclick="show('enjeux')">Enjeux & Panel</div>
+    <div class="nav-tab" onclick="show('stimuli')">Stimuli visuels</div>
+    <div class="nav-tab" onclick="show('sessions')">Sessions</div>
+    <div class="nav-tab" onclick="show('scenarios')">Scénarios</div>
+    <div class="nav-tab" onclick="show('scoring')">Scoring & Analyse</div>
+  </div>
+  <div class="nav-meta">v2.1 · Mars 2026</div>
+</nav>
+
+<!-- ===== COVER ===== -->
+<div class="page active" id="cover">
+  <div class="cover">
+    <div class="cover-eyebrow">Protocole Focus Group · Cosmos Angré · Version complète</div>
+    <div class="cover-title">FOCUS GROUP</div>
+    <div class="cover-sub">Positionnement · Identité · Couleurs</div>
+    <div class="cover-div"></div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-n">2</div><div class="kpi-l">Sessions</div></div>
+      <div class="kpi"><div class="kpi-n">24</div><div class="kpi-l">Participants</div></div>
+      <div class="kpi"><div class="kpi-n">4</div><div class="kpi-l">Scénarios</div></div>
+      <div class="kpi"><div class="kpi-n">3</div><div class="kpi-l">Directions couleurs</div></div>
+      <div class="kpi"><div class="kpi-n">3</div><div class="kpi-l">Positionnements</div></div>
+    </div>
+    <div class="cover-footer">Valider couleurs + positionnement + signatures · Avant brief charte graphique · Soft opening Oct 2026</div>
+  </div>
+
+  <div class="content">
+    <div class="eyebrow">Ce que ce focus group doit trancher</div>
+    <div class="h1">5 décisions stratégiques en 2 sessions</div>
+    <div class="desc">Le focus group n'est pas une étude de satisfaction. C'est un outil de décision. À l'issue des deux sessions, 5 arbitrages doivent être rendus possibles.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div style="padding:16px 20px;background:#fff;border-radius:10px;border:1px solid rgba(26,20,16,.07);border-left:3px solid #C9943A">
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#C9943A;margin-bottom:6px">Décision 1</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px">Positionnement — A, B ou C ?</div>
+        <div style="font-size:11px;color:rgba(26,20,16,.5)">Premium de proximité vs Destination premium vs Hybride</div>
+      </div>
+      <div style="padding:16px 20px;background:#fff;border-radius:10px;border:1px solid rgba(26,20,16,.07);border-left:3px solid #4A7558">
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#4A7558;margin-bottom:6px">Décision 2</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px">Direction couleur — A, B ou C ?</div>
+        <div style="font-size:11px;color:rgba(26,20,16,.5)">Vert Premium vs Bleu Nuit & Or vs Terracotta & Or Africain</div>
+      </div>
+      <div style="padding:16px 20px;background:#fff;border-radius:10px;border:1px solid rgba(26,20,16,.07);border-left:3px solid #0D1B4B">
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#0D1B4B;margin-bottom:6px">Décision 3</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px">Signature permanente</div>
+        <div style="font-size:11px;color:rgba(26,20,16,.5)">"Un monde à part" vs "Le quartier que vous méritez" vs autre</div>
+      </div>
+      <div style="padding:16px 20px;background:#fff;border-radius:10px;border:1px solid rgba(26,20,16,.07);border-left:3px solid #A87448">
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#A87448;margin-bottom:6px">Décision 4</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px">Signature campagne</div>
+        <div style="font-size:11px;color:rgba(26,20,16,.5)">"Vivez l'exception" vs "Enfin tout, enfin ici" vs "L'adresse qui change tout"</div>
+      </div>
+      <div style="padding:16px 20px;background:#fff;border-radius:10px;border:1px solid rgba(26,20,16,.07);border-left:3px solid #6D7447;grid-column:span 2">
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#6D7447;margin-bottom:6px">Décision 5</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:4px">Architecture de marque — rupture ou continuité avec Cosmos Yopougon ?</div>
+        <div style="font-size:11px;color:rgba(26,20,16,.5)">Mesurer si le grand public et les professionnels perçoivent et valorisent la distinction entre les deux sites.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ENJEUX & PANEL ===== -->
+<div class="page" id="enjeux">
+  <div class="content">
+    <div class="eyebrow">Enjeux stratégiques</div>
+    <div class="h1">Ce qu'on ne sait pas encore</div>
+    <div class="desc">6 questions que les données quantitatives ne peuvent pas trancher. Ces enjeux guident la construction des scénarios.</div>
+    <div class="enjeu-grid">
+      <div class="enjeu" style="border-color:#C9943A">
+        <div class="enjeu-num" style="color:#C9943A">01</div>
+        <div class="enjeu-q">Le public d'Angré veut-il être surpris ou rassuré ?</div>
+        <div class="enjeu-d">Proximité familière vs rupture aspirationnelle vs hybride — les data quantitatives ne tranchent pas.</div>
+      </div>
+      <div class="enjeu" style="border-color:#4A7558">
+        <div class="enjeu-num" style="color:#4A7558">02</div>
+        <div class="enjeu-q">Quelle identité visuelle dialogue le mieux avec la bardade bronze ?</div>
+        <div class="enjeu-d">Matériau fixe et définitif — on ne le soumet pas au vote. On mesure quelle direction couleur crée la meilleure cohérence perçue avec ce matériau architectural réel.</div>
+      </div>
+      <div class="enjeu" style="border-color:#0D1B4B">
+        <div class="enjeu-num" style="color:#0D1B4B">03</div>
+        <div class="enjeu-q">"Cosmos Angré" dit-il déjà quelque chose de premium ?</div>
+        <div class="enjeu-d">Ou faut-il que la signature fasse tout le travail de repositionnement ?</div>
+      </div>
+      <div class="enjeu" style="border-color:#A87448">
+        <div class="enjeu-num" style="color:#A87448">04</div>
+        <div class="enjeu-q">La différenciation Yopougon/Angré est-elle lisible spontanément ?</div>
+        <div class="enjeu-d">Sans explication. Si non, quelle direction couleur crée la rupture la plus immédiate ?</div>
+      </div>
+      <div class="enjeu" style="border-color:#C97B4B">
+        <div class="enjeu-num" style="color:#C97B4B">05</div>
+        <div class="enjeu-q">Quelle signature crée l'envie sans créer la distance ?</div>
+        <div class="enjeu-d">"Vivez l'exception" peut-il sembler élitiste ? "Enfin tout, enfin ici" trop populaire ?</div>
+      </div>
+      <div class="enjeu" style="border-color:#6D7447">
+        <div class="enjeu-num" style="color:#6D7447">06</div>
+        <div class="enjeu-q">Les enseignes premium s'installeraient-elles dans quel univers ?</div>
+        <div class="enjeu-d">La décision d'implantation est influencée par la qualité perçue du positionnement du centre.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="eyebrow">Composition du panel</div>
+    <div class="h1">24 Participants · 2 Sessions</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+      <div class="card">
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#4A7558;margin-bottom:8px">Session 1 · Grand public</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:#4A7558">16</div>
+        <div style="font-size:11px;color:rgba(26,20,16,.45);line-height:1.6;margin-top:4px">Résidents Angré, Cocody, Riviera. CSP+/CSP++.</div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+          <div style="font-size:11px;color:rgba(26,20,16,.6);display:flex;gap:6px"><span style="color:#C9943A">·</span>6 femmes 28-45 ans, CSP+ (cœur de cible)</div>
+          <div style="font-size:11px;color:rgba(26,20,16,.6);display:flex;gap:6px"><span style="color:#C9943A">·</span>4 hommes 30-50 ans, cadres/dirigeants</div>
+          <div style="font-size:11px;color:rgba(26,20,16,.6);display:flex;gap:6px"><span style="color:#C9943A">·</span>3 jeunes 22-28 ans, étudiants/actifs</div>
+          <div style="font-size:11px;color:rgba(26,20,16,.6);display:flex;gap:6px"><span style="color:#C9943A">·</span>3 prescripteurs locaux (médecins, avocats)</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#0D1B4B;margin-bottom:8px">Session 2 · Professionnels</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:#0D1B4B">8</div>
+        <div style="font-size:11px;color:rgba(26,20,16,.45);line-height:1.6;margin-top:4px">Enseignes potentielles, partenaires, décideurs retail CI.</div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+          <div style="font-size:11px;color:rgba(26,20,16,.6);display:flex;gap:6px"><span style="color:#C9943A">·</span>3 responsables enseignes nationales</div>
+          <div style="font-size:11px;color:rgba(26,20,16,.6);display:flex;gap:6px"><span style="color:#C9943A">·</span>2 représentants franchises internationales</div>
+          <div style="font-size:11px;color:rgba(26,20,16,.6);display:flex;gap:6px"><span style="color:#C9943A">·</span>2 acteurs immobilier commercial CI</div>
+          <div style="font-size:11px;color:rgba(26,20,16,.6);display:flex;gap:6px"><span style="color:#C9943A">·</span>1 agence communication/retail Abidjan</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8a5a10;margin-bottom:8px">Critères d'exclusion</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:rgba(26,20,16,.15)">—</div>
+        <div style="font-size:11px;color:rgba(26,20,16,.45);line-height:1.6;margin-top:4px">À exclure pour éviter les biais de familiarité.</div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+          <div style="font-size:11px;color:rgba(26,20,16,.6);display:flex;gap:6px"><span style="color:#C9943A">·</span>Employés New Heaven SA / CRMC</div>
+          <div style="font-size:11px;color:rgba(26,20,16,.6);display:flex;gap:6px"><span style="color:#C9943A">·</span>Proches de l'équipe projet</div>
+          <div style="font-size:11px;color:rgba(26,20,16,.6);display:flex;gap:6px"><span style="color:#C9943A">·</span>Professionnels du design/marketing</div>
+          <div style="font-size:11px;color:rgba(26,20,16,.6);display:flex;gap:6px"><span style="color:#C9943A">·</span>Ayant vu le Color Book ou Brand Book</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STIMULI ===== -->
+<div class="page" id="stimuli">
+  <div class="content">
+    <div class="eyebrow">Stimuli visuels</div>
+    <div class="h1">Ce que les participants voient</div>
+    <div class="desc">Deux familles de stimuli distinctes — positionnement (3 moodboards) et couleurs (3 directions). Le nom "Cosmos Angré" n'est révélé qu'au Scénario 4.</div>
+
+    <!-- FAMILLE 1 -->
+    <div style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(26,20,16,.4);margin-bottom:14px">Famille 1 — Stimuli de positionnement · 3 moodboards</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:40px">
+
+      <div class="stim-card">
+        <div class="stim-hdr" style="background:linear-gradient(135deg,#2d4a3e,#1a3028)">
+          <div><div class="stim-label">Positionnement A</div><div class="stim-sublabel">Premium de proximité</div></div>
+        </div>
+        <div class="stim-body">
+          <div class="stim-t">Moodboard A — "Le quartier retrouve ce qu'il méritait"</div>
+          <div class="stim-items">
+            <div class="stim-i">Terrasse animée, familles, jeunes actifs, lumière dorée fin d'après-midi</div>
+            <div class="stim-i">Boutiques à échelle humaine, vitrines accessibles, allées végétalisées</div>
+            <div class="stim-i">Marché gastronomique local, produits régionaux premium</div>
+            <div class="stim-i">Ambiance — "on s'y sent chez soi, mais en mieux"</div>
+            <div class="stim-i">Signatures associées : "Enfin tout, enfin ici" · "Le quartier que vous méritez"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stim-card">
+        <div class="stim-hdr" style="background:linear-gradient(135deg,#0d1b3e,#1a3060)">
+          <div><div class="stim-label">Positionnement B</div><div class="stim-sublabel">Destination premium</div></div>
+        </div>
+        <div class="stim-body">
+          <div class="stim-t">Moodboard B — "Un monde à part"</div>
+          <div class="stim-items">
+            <div class="stim-i">Architecture remarquable, matériaux nobles, perspective impressionnante</div>
+            <div class="stim-i">Hôtel, cinéma, rooftop, bureaux — destination mixte complète</div>
+            <div class="stim-i">Clientèle aspirationnelle, codes luxury discret, codes panafricains</div>
+            <div class="stim-i">Ambiance — "on entre dans un autre monde"</div>
+            <div class="stim-i">Signatures associées : "Un monde à part" · "Vivez l'exception" · "L'adresse qui change tout"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stim-card">
+        <div class="stim-hdr" style="background:linear-gradient(135deg,#2a1a0a,#3d2510)">
+          <div><div class="stim-label">Positionnement C</div><div class="stim-sublabel">Hybride — Sofitel/Novotel</div></div>
+        </div>
+        <div class="stim-body">
+          <div class="stim-t">Moodboard C — "Habiller en Sofitel, accueillir en Novotel"</div>
+          <div class="stim-items">
+            <div class="stim-i">Codes visuels premium forts (matériaux, lumière, finitions) — ambiance ouverte, fluide, sans intimidation</div>
+            <div class="stim-i">Destination complète (hôtel, cinéma, bureaux) ET ancrage quartier (familles, quotidien premium)</div>
+            <div class="stim-i">Clientèle mixte — aspirationnelle ET de proximité cohabitent naturellement</div>
+            <div class="stim-i">Ambiance — "on se sent privilégié sans se sentir exclu"</div>
+            <div class="stim-i">Signatures associées : "Vivez l'exception" · "Un monde à part" · "Le quartier que vous méritez"</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FAMILLE 2 -->
+    <div style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(26,20,16,.4);margin-bottom:14px">Famille 2 — Stimuli couleurs · 3 directions révisées</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px">
+
+      <div class="stim-card">
+        <div class="stim-hdr" style="background:linear-gradient(135deg,#1a2e20,#2a4a35)">
+          <div><div class="stim-label">Direction A</div><div class="stim-sublabel">Vert Premium</div></div>
+        </div>
+        <div class="stim-body">
+          <div class="sw-row"><div class="sw" style="background:#4A7558"></div><div class="sw" style="background:#6B8F71"></div><div class="sw" style="background:#A87448"></div><div class="sw" style="background:#F5F0E8;border-color:rgba(0,0,0,.2)"></div></div>
+          <div class="stim-items" style="margin-top:12px">
+            <div class="stim-i">Planche A3 palette + simulation façade</div>
+            <div class="stim-i">Mock-up sac shopping crème + broderie vert</div>
+            <div class="stim-i">Post Instagram — vert digital boosté #5A8A65</div>
+            <div class="stim-i">Uniforme personnel — prototype visuel</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stim-card">
+        <div class="stim-hdr" style="background:linear-gradient(135deg,#050d24,#0D1B4B)">
+          <div><div class="stim-label">Direction B</div><div class="stim-sublabel">Bleu Nuit & Or</div></div>
+        </div>
+        <div class="stim-body">
+          <div class="sw-row"><div class="sw" style="background:#0D1B4B"></div><div class="sw" style="background:#C8A96E"></div><div class="sw" style="background:#1E3A5F"></div><div class="sw" style="background:#F5F0E8;border-color:rgba(0,0,0,.2)"></div></div>
+          <div class="stim-items" style="margin-top:12px">
+            <div class="stim-i">Planche A3 palette + simulation façade</div>
+            <div class="stim-i">Mock-up sac shopping bleu nuit/or</div>
+            <div class="stim-i">Post Instagram — version écran LCD #C8A96E</div>
+            <div class="stim-i">Invitation VIP — dorure à chaud simulée</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stim-card">
+        <div class="stim-hdr" style="background:linear-gradient(135deg,#2a1a0a,#3d2510)">
+          <div><div class="stim-label">Direction C</div><div class="stim-sublabel">Terracotta & Or Africain</div></div>
+        </div>
+        <div class="stim-body">
+          <div class="sw-row"><div class="sw" style="background:#EDE0D0;border-color:rgba(0,0,0,.2)"></div><div class="sw" style="background:#C97B4B"></div><div class="sw" style="background:#C9943A"></div><div class="sw" style="background:#6D7447"></div></div>
+          <div class="stim-items" style="margin-top:12px">
+            <div class="stim-i">Planche A3 palette + simulation façade</div>
+            <div class="stim-i">Mock-up sac shopping sable/terracotta</div>
+            <div class="stim-i">Post Instagram — warm tones terracotta</div>
+            <div class="stim-i">Uniforme personnel — broderie olive</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STIMULI COMMUNS -->
+    <div style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(26,20,16,.4);margin-bottom:14px">Stimuli communs — Références de comparaison</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div class="card" style="border-left:3px solid #8a5a10">
+        <div class="card-title">Bardade bronze façade</div>
+        <div class="card-sub">Présenté dans le Scénario 2 · Contrainte architecturale fixe</div>
+        <div style="font-size:12px;color:rgba(26,20,16,.6);line-height:1.7">Photo de la bardade bronze/or mat sombre du bâtiment principal. Présentée comme fait architectural définitif. Question : quelle direction couleur crée la meilleure cohérence avec ce matériau réel ?</div>
+      </div>
+      <div class="card" style="border-left:3px solid #4A7558">
+        <div class="card-title">Cosmos Yopougon + Benchmark CI</div>
+        <div class="card-sub">Présenté dans le Scénario 2 · Référence de différenciation</div>
+        <div style="font-size:12px;color:rgba(26,20,16,.6);line-height:1.7">Images Cosmos Yopougon (façade + intérieur) + 2-3 centres CI (Playce, Cap Sud, Abidjan Mall). Présentés avant les directions Angré pour ancrer la référence sans influencer le choix.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SESSIONS ===== -->
+<div class="page" id="sessions">
+  <div class="content">
+    <div class="eyebrow">Déroulé</div>
+    <div class="h1">2 × 2h · Minute par minute</div>
+    <div class="desc">Durée stricte — 2h maximum. Au-delà, la fatigue cognitive dégrade la qualité des réponses. L'animateur tient le timing avec rigueur.</div>
+
+    <div class="sess-block">
+      <div class="sess-hdr s1-hdr">
+        <div><div class="sess-title">Session 1 — Grand Public</div><div class="sess-meta">16 participants · Consommateurs + Prescripteurs · 2h00</div></div>
+        <span class="sess-tag">Matin · J1</span>
+      </div>
+      <div class="sess-body"><div class="tl">
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">0:00</div><div class="tl-td">15 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Accueil</div><div class="tl-ctitle">Introduction & cadrage</div><div class="tl-cdesc">Présentation animateur. Règles : pas de bonne réponse, liberté totale, confidentialité. Tour de table (prénom + dernier centre commercial visité). NDA si besoin.</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">0:15</div><div class="tl-td">20 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Scénario 1</div><div class="tl-ctitle">Perception brute des couleurs — sans contexte marque</div><div class="tl-cdesc">3 planches couleurs (A, B, C) présentées simultanément. Ordre randomisé. Aucun logo, aucun nom. Réactions libres.</div><div class="stim-chip">📋 Planches A3 couleurs seules</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">0:35</div><div class="tl-td">25 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Scénario 2</div><div class="tl-ctitle">Différenciation — Yopougon vs Angré + bardade bronze</div><div class="tl-cdesc">Image Yopougon dévoilée. Les 3 directions façade Angré montrées en regard. Photo bardade présentée comme fait architectural fixe.</div><div class="stim-chip">📋 Yopougon + Mock-ups façade A/B/C + photo bardade</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">1:00</div><div class="tl-td">25 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Scénario 3</div><div class="tl-ctitle">Positionnement — A (Proximité) vs B (Destination) vs C (Hybride)</div><div class="tl-cdesc">Les 3 moodboards de positionnement présentés sans couleurs — univers pur. "Dans lequel avez-vous envie d'aller ? Lequel est fait pour vous ?"</div><div class="stim-chip">📋 3 Moodboards positionnement A, B, C</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">1:25</div><div class="tl-td">20 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Scénario 4</div><div class="tl-ctitle">Révélation marque + test signatures</div><div class="tl-cdesc">"Ce centre s'appelle Cosmos Angré, il ouvre en octobre 2026." 5 signatures testées sur cartes individuelles. Sacs + posts Instagram dévoilés.</div><div class="stim-chip">📋 Cartes signatures · Sacs · Posts Instagram</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">1:45</div><div class="tl-td">10 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Scoring individuel</div><div class="tl-ctitle">Fiche notation individuelle — en silence absolu</div><div class="tl-cdesc">Chaque participant note directions et signatures. En silence. Protège contre le biais de conformité sociale.</div><div class="stim-chip">📋 Fiche scoring individuelle</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">1:55</div><div class="tl-td">5 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Clôture</div><div class="tl-ctitle">Synthèse orale + remerciements</div><div class="tl-cdesc">Restitution grandes tendances. Commentaire libre de clôture. Cadeau de participation remis.</div></div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="sess-block">
+      <div class="sess-hdr s2-hdr">
+        <div><div class="sess-title">Session 2 — Professionnels</div><div class="sess-meta">8 participants · Enseignes + Partenaires · 2h00</div></div>
+        <span class="sess-tag">Après-midi · J1 ou J2</span>
+      </div>
+      <div class="sess-body"><div class="tl">
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">0:00</div><div class="tl-td">10 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Accueil</div><div class="tl-ctitle">Introduction professionnelle</div><div class="tl-cdesc">Cadrage adapté. Présentation Cosmos Angré en 3 min (positionnement, ouverture, offre mixed-use). Chaque participant positionné comme "expert du marché".</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">0:10</div><div class="tl-td">20 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Scénario 1</div><div class="tl-ctitle">Lecture marché — couleurs et destination premium</div><div class="tl-cdesc">"Quelle direction dit 'destination premium mixed-use' ? Laquelle attirerait les enseignes de votre réseau ?" Ordre randomisé.</div><div class="stim-chip">📋 Planches A3 couleurs seules</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">0:30</div><div class="tl-td">30 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Scénario 2</div><div class="tl-ctitle">Benchmark CI + différenciation + bardade bronze</div><div class="tl-cdesc">Images Playce / Cap Sud / Abidjan Mall en référence. "Quelle direction Angré se différencie le mieux ?" Bardade bronze présentée comme contrainte fixe.</div><div class="stim-chip">📋 Benchmark CI + Mock-ups façade + photo bardade</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">1:00</div><div class="tl-td">25 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Scénario 3</div><div class="tl-ctitle">Positionnement A / B / C + décision d'implantation</div><div class="tl-cdesc">Les 3 moodboards positionnement. "Si vous implantez votre enseigne, quel univers renforce votre décision ? Quel univers crée un doute sur la qualité de la clientèle ?"</div><div class="stim-chip">📋 3 Moodboards positionnement + dossier locataire mock-up</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">1:25</div><div class="tl-td">20 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Scénario 4</div><div class="tl-ctitle">Test signatures + cohérence positionnement</div><div class="tl-cdesc">Nom "Cosmos Angré" révélé. 5 signatures testées. "Laquelle renforce la confiance dans le projet ? Laquelle semble disproportionnée ou hors cible ?"</div><div class="stim-chip">📋 Cartes signatures · Posts Instagram · Dossier presse mock-up</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">1:45</div><div class="tl-td">10 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Scoring individuel</div><div class="tl-ctitle">Fiche notation professionnelle — en silence</div><div class="tl-cdesc">Fiche scoring adaptée aux professionnels.</div><div class="stim-chip">📋 Fiche scoring professionnelle</div></div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-t"><div class="tl-tv">1:55</div><div class="tl-td">5 min</div></div>
+          <div class="tl-c"><div class="tl-phase">Clôture</div><div class="tl-ctitle">Synthèse + suite du processus</div><div class="tl-cdesc">Restitution tendances. Information décision sous 4 semaines. Document synthèse Cosmos Angré remis si souhaité.</div></div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCENARIOS ===== -->
+<div class="page" id="scenarios">
+  <div class="content">
+    <div class="eyebrow">Guide animateur</div>
+    <div class="h1">4 Scénarios · Questions complètes</div>
+    <div class="desc">Script complet. Questions indicatives — l'animateur adapte selon la dynamique. Ordre des stimuli toujours randomisé entre les groupes. Ne jamais orienter les réponses.</div>
+
+    <div class="sc-card">
+      <div class="sc-hdr">
+        <div class="sc-num" style="background:#fdf0e0;color:#C9943A;border:2px solid #C9943A">1</div>
+        <div><div class="sc-t">Perception brute des couleurs — sans contexte marque</div><div class="sc-s">20 min · Planches A3 couleurs seules · Sans logo ni nom</div></div>
+      </div>
+      <div class="sc-qs">
+        <div class="sc-q"><strong>Ouverture spontanée</strong>En regardant ces trois univers de couleurs, lequel vous attire spontanément en premier ? Un mot, une émotion.</div>
+        <div class="sc-q"><strong>Évocation libre</strong>Pour chacun, dites-moi un lieu, une marque, une occasion. Pas de bonne réponse.</div>
+        <div class="sc-q"><strong>Hiérarchie premium</strong>Classez-les du "plus premium" au "moins premium" selon votre instinct.</div>
+        <div class="sc-q"><strong>Rejet</strong>Y en a-t-il un que vous ne voudriez pas voir habiller un lieu où vous allez régulièrement ?</div>
+        <div class="sc-q"><strong>Contexte Angré</strong>Pour un lieu à Angré/Cocody, lequel "sonne juste" ? Lequel semble venir d'ailleurs ?</div>
+      </div>
+    </div>
+
+    <div class="sc-card">
+      <div class="sc-hdr">
+        <div class="sc-num" style="background:#e8f2ec;color:#4A7558;border:2px solid #4A7558">2</div>
+        <div><div class="sc-t">Différenciation — Yopougon vs Angré + bardade bronze</div><div class="sc-s">25 min · Yopougon + Mock-ups façade + photo bardade</div></div>
+      </div>
+      <div class="sc-qs">
+        <div class="sc-q"><strong>Ancrage Yopougon</strong>[Montrer Yopougon] Vous connaissez ce centre ? Comment le décririez-vous en un mot ?</div>
+        <div class="sc-q"><strong>Rupture perçue</strong>Parmi les 3 directions Angré, laquelle dit immédiatement "c'est différent, c'est un autre niveau" ?</div>
+        <div class="sc-q"><strong>Risque de confusion</strong>Laquelle pourrait être confondue avec Yopougon — ou avec un autre centre d'Abidjan ?</div>
+        <div class="sc-q"><strong>Bardade — cohérence visuelle</strong>[Montrer photo bardade] Ce matériau habille la façade principale — il est définitif. Parmi les 3 directions, laquelle vous semble la plus cohérente avec lui ? Laquelle crée un contraste qui vous plaît ? Laquelle crée un contraste qui vous gêne ?</div>
+        <div class="sc-q"><strong>Projection temporelle</strong>Dans 5 ans, laquelle vous semblera toujours moderne ? Laquelle risque de vieillir ?</div>
+      </div>
+    </div>
+
+    <div class="sc-card">
+      <div class="sc-hdr">
+        <div class="sc-num" style="background:#e8ecf5;color:#0D1B4B;border:2px solid #0D1B4B">3</div>
+        <div><div class="sc-t">Positionnement — A (Proximité) vs B (Destination) vs C (Hybride)</div><div class="sc-s">25 min · 3 Moodboards positionnement · Sans couleurs</div></div>
+      </div>
+      <div class="sc-qs">
+        <div class="sc-q"><strong>Désirabilité brute</strong>[Présenter les 3 moodboards] Dans lequel avez-vous envie de passer une après-midi ? Lequel est fait pour vous ?</div>
+        <div class="sc-q"><strong>Appartenance</strong>Dans lequel vous sentez-vous le bienvenu — comme si c'était conçu pour des gens comme vous ?</div>
+        <div class="sc-q"><strong>Besoin du quartier</strong>Lequel répond le mieux à ce qui manque vraiment à Angré/Cocody aujourd'hui ?</div>
+        <div class="sc-q"><strong>Test hybride</strong>[Pointer moodboard C] Cet univers qui mélange les deux — cohérent ou contradictoire ? "Trop ambitieux" ou "exactement ce qu'il faut" ?</div>
+        <div class="sc-q"><strong>Tension aspirationnelle</strong>L'univers B — ça vous attire ou ça vous intimide ? (À poser directement après les premières réponses)</div>
+        <div class="sc-q"><strong>Fréquence anticipée</strong>Dans lequel iriez-vous une fois par semaine ? Dans lequel iriez-vous pour une occasion spéciale ?</div>
+      </div>
+    </div>
+
+    <div class="sc-card">
+      <div class="sc-hdr">
+        <div class="sc-num" style="background:#f0ede8;color:#A87448;border:2px solid #A87448">4</div>
+        <div><div class="sc-t">Révélation marque + Test des 5 signatures</div><div class="sc-s">20 min · Cartes signatures · Sacs · Posts Instagram · Nom révélé</div></div>
+      </div>
+      <div class="sc-qs">
+        <div class="sc-q"><strong>Révélation</strong>[Dévoiler "Cosmos Angré · ouverture octobre 2026"] Maintenant que vous savez que c'est Cosmos Angré — est-ce que ça change quelque chose dans votre perception des directions couleurs ?</div>
+        <div class="sc-q"><strong>Test signatures</strong>[Distribuer cartes] Laquelle vous donne envie d'y aller ? Laquelle semble fausse ou prétentieuse ?<br><span style="font-size:11px;color:rgba(26,20,16,.45);display:block;margin-top:4px">A · "Un monde à part" — B · "Vivez l'exception" — C · "Enfin tout, enfin ici" — D · "Le quartier que vous méritez" — E · "L'adresse qui change tout"</span></div>
+        <div class="sc-q"><strong>Désirabilité objet</strong>[Sacs A/B/C] Si vous sortez avec ce sac — qu'est-ce que vous dites à un ami qui vous le voit ?</div>
+        <div class="sc-q"><strong>Test Instagram</strong>Lequel likeriez-vous spontanément dans votre feed ? Lequel vous inciterait à visiter ?</div>
+        <div class="sc-q"><strong>Vote final individuel</strong>Quelle direction couleur, quel positionnement, quelle signature ? En une phrase, pourquoi.</div>
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid rgba(26,20,16,.15)">
+      <div class="card-title">Notes animateur — Règles non négociables</div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:rgba(26,20,16,.6);line-height:1.7;margin-top:8px">
+        <div>→ Ne jamais valider une réponse — reformuler sans orienter : "vous dites B semble plus luxueux — les autres partagent ?"</div>
+        <div>→ Si consensus trop rapide : "et qu'est-ce qui vous dérange dans cette direction ?"</div>
+        <div>→ Documenter les réactions non-verbales (grimaces, sourires, hésitations).</div>
+        <div>→ Si un participant monopolise : tour de table systématique.</div>
+        <div>→ Ne révéler les scores de l'audit touchpoints à aucun moment.</div>
+        <div>→ Bardade bronze : montrer la photo sans dire si c'est perçu positivement en interne.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCORING ===== -->
+<div class="page" id="scoring">
+  <div class="content">
+    <div class="eyebrow">Grille d'évaluation & Analyse</div>
+    <div class="h1">Scoring + Règles de décision</div>
+    <div class="desc">Deux fiches distinctes. La notation individuelle en silence est obligatoire — elle isole l'opinion personnelle du biais de groupe.</div>
+
+    <div class="card">
+      <div class="card-title" style="margin-bottom:14px">Fiche scoring — Grand public (Session 1)</div>
+      <table class="stbl">
+        <thead><tr><th>Critère</th><th>Question posée</th><th style="text-align:center">Coul. A</th><th style="text-align:center">Coul. B</th><th style="text-align:center">Coul. C</th><th style="text-align:center">Posit. A</th><th style="text-align:center">Posit. B</th><th style="text-align:center">Posit. C</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Perception premium</strong></td><td style="font-size:11px">Ce centre me dit "haut de gamme"</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td></tr>
+          <tr><td><strong>Désirabilité</strong></td><td style="font-size:11px">J'ai envie d'y aller régulièrement</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td></tr>
+          <tr><td><strong>Différenciation</strong></td><td style="font-size:11px">Clairement différent de ce que je connais</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td></tr>
+          <tr><td><strong>Appartenance</strong></td><td style="font-size:11px">Je me reconnais — c'est fait pour moi</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td></tr>
+          <tr><td colspan="2"><strong>Signature préférée</strong> — Entourer : A · B · C · D · E</td><td colspan="6" style="font-size:10px;color:rgba(26,20,16,.4)">A="Un monde à part" · B="Vivez l'exception" · C="Enfin tout, enfin ici" · D="Le quartier que vous méritez" · E="L'adresse qui change tout"</td></tr>
+          <tr style="background:#f8f6f2"><td colspan="2"><strong>TOTAL /20</strong></td><td style="text-align:center;font-weight:600">/20</td><td style="text-align:center;font-weight:600">/20</td><td style="text-align:center;font-weight:600">/20</td><td style="text-align:center;font-weight:600">/20</td><td style="text-align:center;font-weight:600">/20</td><td style="text-align:center;font-weight:600">/20</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title" style="margin-bottom:14px">Fiche scoring — Professionnels (Session 2)</div>
+      <table class="stbl">
+        <thead><tr><th>Critère</th><th>Question posée</th><th style="text-align:center">Coul. A</th><th style="text-align:center">Coul. B</th><th style="text-align:center">Coul. C</th><th style="text-align:center">Posit. A</th><th style="text-align:center">Posit. B</th><th style="text-align:center">Posit. C</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Attractivité enseigne</strong></td><td style="font-size:11px">Cette identité attirerait les enseignes premium</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td></tr>
+          <tr><td><strong>Cohérence positionnement</strong></td><td style="font-size:11px">Cohérente avec "destination premium mixed-use"</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td></tr>
+          <tr><td><strong>Différenciation CI</strong></td><td style="font-size:11px">Se distingue clairement des centres existants</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td></tr>
+          <tr><td><strong>Confiance projet</strong></td><td style="font-size:11px">Donne confiance dans la qualité du projet</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td><td style="text-align:center">/5</td></tr>
+          <tr><td colspan="2"><strong>Signature préférée</strong> — Entourer : A · B · C · D · E</td><td colspan="6" style="font-size:10px;color:rgba(26,20,16,.4)">A="Un monde à part" · B="Vivez l'exception" · C="Enfin tout, enfin ici" · D="Le quartier que vous méritez" · E="L'adresse qui change tout"</td></tr>
+          <tr style="background:#f8f6f2"><td colspan="2"><strong>TOTAL /20</strong></td><td style="text-align:center;font-weight:600">/20</td><td style="text-align:center;font-weight:600">/20</td><td style="text-align:center;font-weight:600">/20</td><td style="text-align:center;font-weight:600">/20</td><td style="text-align:center;font-weight:600">/20</td><td style="text-align:center;font-weight:600">/20</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="divider"></div>
+    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(26,20,16,.4);margin-bottom:14px">Règles de décision post-focus group</div>
+    <div class="analyse-grid">
+      <div class="ag-card">
+        <div class="ag-title" style="color:#C9943A">Direction couleur retenue si :</div>
+        <div class="ag-items">
+          <div class="ag-item">Score moyen le plus élevé sur les 2 sessions combinées</div>
+          <div class="ag-item">Écart d'au moins 0,5 pt sur "Désirabilité" grand public</div>
+          <div class="ag-item">En cas d'égalité : préférence Session 1 prépondérante</div>
+        </div>
+      </div>
+      <div class="ag-card">
+        <div class="ag-title" style="color:#4A7558">Positionnement retenu si :</div>
+        <div class="ag-items">
+          <div class="ag-item">Score "Appartenance" S1 + "Attractivité enseigne" S2 convergent</div>
+          <div class="ag-item">Si divergence S1/S2 : arbitrage Pame selon priorité court/long terme</div>
+          <div class="ag-item">Hybride retenu si C domine sur les deux sessions</div>
+        </div>
+      </div>
+      <div class="ag-card">
+        <div class="ag-title" style="color:#0D1B4B">Signature retenue si :</div>
+        <div class="ag-items">
+          <div class="ag-item">Choisie en majorité par S1 comme "donne envie"</div>
+          <div class="ag-item">Non rejetée comme "prétentieuse" par plus de 3 participants S1</div>
+          <div class="ag-item">Non rejetée comme "trop modeste" par plus de 2 participants S2</div>
+        </div>
+      </div>
+      <div class="ag-card">
+        <div class="ag-title" style="color:#8a5a10">Résultat inattendu — si aucune direction > 14/20 :</div>
+        <div class="ag-items">
+          <div class="ag-item">Envisager combinaison couleur/positionnement croisée</div>
+          <div class="ag-item">Brief Fernand à reconstruire sur base des verbatims</div>
+          <div class="ag-item">Décision collégiale Pame + Cheick avant charte graphique</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;padding:16px 20px;border-radius:10px;background:rgba(26,20,16,.03);border:1px solid rgba(26,20,16,.06);font-size:11px;color:rgba(26,20,16,.35);line-height:1.8">
+      Protocole Focus Group v2.1 · Cosmos Angré · Positionnement + Identité visuelle + Couleurs · Mars 2026 · Usage interne confidentiel — New Heaven SA / CRMC
+    </div>
+  </div>
+</div>
+
+<div class="export-bar">
+  <button class="btn" onclick="window.print()">⬇ Imprimer / PDF</button>
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const m={cover:0,enjeux:1,stimuli:2,sessions:3,scenarios:4,scoring:5};
+  document.querySelectorAll('.nav-tab')[m[id]].classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
