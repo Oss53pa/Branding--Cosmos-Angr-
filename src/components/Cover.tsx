@@ -69,7 +69,7 @@ const Cover: React.FC = () => (
         {[
           { n: '4', l: 'Etapes' },
           { n: '14', l: 'Livrables' },
-          { n: '3', l: 'Scenarios' },
+          { n: '4', l: 'Scenarios' },
           { n: 'Q4', l: 'Ouverture 2026' },
         ].map((s) => (
           <div key={s.l} className="text-center group">
