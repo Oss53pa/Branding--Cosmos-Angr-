@@ -83,7 +83,7 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
           <div className="smb-nav-group-links">
             <a onClick={() => scrollTo('smb-bw-logo')}><span className="n">B1</span>Déclinaisons logo</a>
             <a onClick={() => scrollTo('smb-bw-parcours')}><span className="n">B2</span>Parcours client</a>
-            <a onClick={() => scrollTo('bw-signaletique')}><span className="n">B3</span>Signalétique Mockups</a>
+            <a onClick={() => scrollTo('bw-signaletique')}><span className="n">B3</span>Signalétique & Totems</a>
             <a onClick={() => scrollTo('bw-textile')}><span className="n">B4</span>Uniformes & Textile</a>
             <a onClick={() => scrollTo('bw-goodies')}><span className="n">B5</span>Goodies & Objets</a>
             <a onClick={() => scrollTo('bw-digital')}><span className="n">B6</span>Digital Mockups</a>

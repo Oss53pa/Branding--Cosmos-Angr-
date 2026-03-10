@@ -1369,9 +1369,6 @@ const BrandWorld: React.FC<{ scenarioKey: ScenarioKey }> = ({ scenarioKey }) => 
   <>
     <AmbianceSection k={scenarioKey} />
     <LogoSection k={scenarioKey} />
-    <GalerieSection k={scenarioKey} />
-    <SignageSection k={scenarioKey} />
-    <CollectionSection k={scenarioKey} />
     <TimelineSection k={scenarioKey} />
     <SignaletiqueTotemSection k={scenarioKey} />
     <TextileMockupsSection k={scenarioKey} />
