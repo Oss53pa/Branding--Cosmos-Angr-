@@ -43,18 +43,31 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
     style.id = 'smb-print';
     style.textContent = `
       @media print {
+        *, *::before, *::after {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          color-adjust: exact !important;
+        }
         body * { visibility: hidden; }
-        .smb-main, .smb-main * { visibility: visible; }
+        .smb, .smb * { visibility: visible; }
         .smb-nav, #sidebar, nav, [data-export-hide], .fixed, .smb-nav-footer { display: none !important; }
-        .smb { display: block !important; }
-        .smb-main {
+        .smb {
+          display: block !important;
           position: absolute; left: 0; top: 0; width: 100%;
-          margin: 0; padding: 0;
+        }
+        .smb-main {
+          margin: 0 !important; padding: 0 !important;
+          width: 100% !important; max-width: 100% !important;
           height: auto !important; overflow: visible !important;
         }
         section { page-break-inside: avoid; break-inside: avoid; }
         .hero-wrap { page-break-after: always; }
-        @page { size: A4 portrait; margin: 12mm 10mm; }
+        svg { print-color-adjust: exact !important; }
+        [style*="background"], [style*="gradient"], [class*="bg-"] {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        @page { size: A4 portrait; margin: 10mm; }
       }
     `;
     document.head.appendChild(style);

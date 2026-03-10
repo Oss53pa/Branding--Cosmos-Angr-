@@ -43,8 +43,13 @@ body {
   animation: spin .7s linear infinite;
 }
 
-/* Print */
+/* Print — force all colors/backgrounds to render */
 @media print {
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
   #sidebar { display: none !important; }
   #main { height: auto !important; overflow: visible !important; }
   .section { page-break-inside: avoid; }
