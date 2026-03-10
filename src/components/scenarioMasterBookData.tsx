@@ -393,7 +393,7 @@ const contentA: SmbContent = {
     { grad: 'linear-gradient(135deg,#7A5C42,#3D2A1A)', name: 'Couronne Cosmos', sub: 'Kutu Baffle noyer fumé', desc: "Têtes de mur — détail architectural signature." },
     { grad: 'linear-gradient(135deg,#D4C9B0,#c4b89a)', name: 'Sol Cosmos', sub: 'Terrazo granito fond beige + éclats', desc: "Actif sensoriel signature — constellation au sol sous éclairage 2700-3000K." },
     { grad: 'linear-gradient(135deg,#C9943A,#a07828)', name: 'Laiton cuivré', sub: 'Finition brossée', desc: "Signalétique, luminaires, garde-corps, poignées." },
-    { grad: 'linear-gradient(135deg,#C75B3F,#A04030)', name: 'Terracotta bichrome', sub: 'RAL 040 30 40 / 040 50 50', desc: "Jardinières, claustra, accents food court. Deux tons pour éviter la monotonie." },
+    { grad: 'linear-gradient(135deg,#76764D,#545434)', name: 'Raphia & fibres végétales', sub: 'Tissage naturel', desc: "Suspensions, panneaux acoustiques, assises lounge." },
   ],
   comms: [
     { bg: 'linear-gradient(160deg,#1a3020,#2F5439 60%,#4a7558)', title: 'Affiche institutionnelle', spec: 'Forêt 50 · Sable 30 · Or 20', brandText: 'COSMOS ANGRÉ', brandSub: '"Enfin tout, enfin ici"', brandSize: 22, brandWeight: 700 },
@@ -548,7 +548,6 @@ const contentB: SmbContent = {
     { grad: 'linear-gradient(135deg,#D4B06A,#B8924A)', name: 'Laiton poli', sub: 'Finition miroir · Reflets dorés', desc: "Cadres, poignées, lettrages de façade." },
     { grad: 'linear-gradient(135deg,#0D1B4B,#060E2A)', name: 'Velours marine', sub: 'Toucher profond · Bleu nuit', desc: "Assises lounge, habillages muraux VIP." },
     { grad: 'linear-gradient(135deg,#8a7a68,#6a5a48)', name: 'Verre fumé', sub: 'Teinté bronze · Transparent', desc: "Cloisons, vitrines, garde-corps." },
-    { grad: 'linear-gradient(135deg,#C75B3F,#A04030)', name: 'Terracotta bichrome', sub: 'RAL 040 30 40 / 040 50 50', desc: "Jardinières, claustra, accents food court. Deux tons pour éviter la monotonie." },
   ],
   comms: [
     { bg: 'linear-gradient(160deg,#060E2A,#0D1B4B 50%,#1A3060)', title: 'Affiche institutionnelle', spec: 'Nuit 50 · Bleu profond 30 · Or 20', brandText: 'COSMOS ANGRE', brandSub: '"Un monde à part"', brandSize: 22, brandWeight: 700 },
