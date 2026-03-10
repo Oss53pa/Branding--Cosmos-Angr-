@@ -101,7 +101,7 @@ const kpiData = [
 const PlanSecuritaire: React.FC = () => (
   <div className="bg-cream min-h-screen">
     {/* Hero cover */}
-    <div className="relative bg-gradient-to-br from-[#0c1220] via-[#1a2744] to-[#0c1220] px-8 lg:px-[72px] py-20 overflow-hidden">
+    <div id="sec-cover" className="relative bg-gradient-to-br from-[#0c1220] via-[#1a2744] to-[#0c1220] px-8 lg:px-[72px] py-20 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(59,130,246,.1)_0%,transparent_60%)]" />
       <div className="absolute inset-0 opacity-[.03]" style={{
         backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
@@ -135,7 +135,7 @@ const PlanSecuritaire: React.FC = () => (
     <div className="h-[2px] bg-gradient-to-r from-blue-500/60 via-blue-400/20 to-transparent" />
 
     {/* KPI bar */}
-    <div className="px-8 lg:px-[72px] py-8 border-b border-black/[.06]">
+    <div id="sec-kpi" className="px-8 lg:px-[72px] py-8 border-b border-black/[.06]">
       <div className="flex gap-10 flex-wrap">
         {kpiData.map((kpi) => (
           <div key={kpi.label} className="flex items-center gap-3">
@@ -160,7 +160,7 @@ const PlanSecuritaire: React.FC = () => (
 
       <div className="space-y-6">
         {zones.map((zone, idx) => (
-          <div key={zone.id} className="bg-white rounded-2xl border border-black/[.06] overflow-hidden shadow-[0_2px_20px_rgba(0,0,0,.04)] hover:shadow-md transition-shadow">
+          <div id={zone.id} key={zone.id} className="bg-white rounded-2xl border border-black/[.06] overflow-hidden shadow-[0_2px_20px_rgba(0,0,0,.04)] hover:shadow-md transition-shadow">
             <div className="flex items-start gap-0">
               {/* Left accent */}
               <div className="w-1.5 self-stretch rounded-l-2xl" style={{ background: zone.color }} />
@@ -196,7 +196,7 @@ const PlanSecuritaire: React.FC = () => (
     </div>
 
     {/* Organigramme sécurité */}
-    <div className="px-8 lg:px-[72px] py-12 border-t border-black/[.06]">
+    <div id="sec-orga" className="px-8 lg:px-[72px] py-12 border-t border-black/[.06]">
       <div className="flex items-center gap-3 mb-8">
         <div className="text-[9px] font-bold tracking-[.25em] uppercase text-blue-600">Organisation</div>
         <div className="h-px flex-1 bg-blue-600/15" />
