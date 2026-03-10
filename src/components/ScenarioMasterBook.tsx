@@ -165,13 +165,31 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
           <button
             onClick={exportPDF}
             style={{
-              width: '100%', padding: '10px 0', marginBottom: 12,
+              width: '100%', padding: '10px 0', marginBottom: 8,
               background: 'var(--bronze)', color: '#fff', border: 'none',
               borderRadius: 8, fontSize: 11, fontWeight: 600, letterSpacing: 1,
               cursor: 'pointer', textTransform: 'uppercase',
             }}
           >
             Exporter en PDF
+          </button>
+          <button
+            onClick={() => {
+              const url = `${window.location.origin}${window.location.pathname}#scenario-${scenarioKey}`;
+              navigator.clipboard.writeText(url).then(() => {
+                const btn = document.getElementById('copy-link-btn');
+                if (btn) { btn.textContent = '✓ LIEN COPIÉ'; setTimeout(() => { btn.textContent = 'COPIER LE LIEN'; }, 2000); }
+              });
+            }}
+            id="copy-link-btn"
+            style={{
+              width: '100%', padding: '10px 0', marginBottom: 12,
+              background: 'transparent', color: 'var(--bronze)', border: '1.5px solid var(--bronze)',
+              borderRadius: 8, fontSize: 11, fontWeight: 600, letterSpacing: 1,
+              cursor: 'pointer', textTransform: 'uppercase',
+            }}
+          >
+            Copier le lien
           </button>
           <p>Confidentiel EXCO<br/>New Heaven SA / CRMC<br/>© 2026</p>
         </div>

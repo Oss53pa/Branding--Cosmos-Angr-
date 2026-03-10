@@ -40,11 +40,40 @@ const scenarioTabs: { key: ScenarioKey; pageView: PageView; shortLabel: string; 
 ];
 
 function App() {
+  const getInitialPage = (): PageView => {
+    const hash = window.location.hash.replace('#', '');
+    if (['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D'].includes(hash)) return hash as PageView;
+    return 'main';
+  };
+
   const [activeSection, setActiveSection] = useState('cover');
-  const [currentPage, setCurrentPage] = useState<PageView>('main');
+  const [currentPage, setCurrentPage] = useState<PageView>(getInitialPage);
   const [exportOpen, setExportOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const mainRef = useRef<HTMLDivElement>(null);
+
+  // Sync hash with current page
+  useEffect(() => {
+    if (currentPage === 'main') {
+      if (window.location.hash) window.history.replaceState(null, '', window.location.pathname);
+    } else {
+      window.location.hash = currentPage;
+    }
+  }, [currentPage]);
+
+  // Listen for hash changes (back/forward navigation)
+  useEffect(() => {
+    const onHash = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D'].includes(hash)) {
+        setCurrentPage(hash as PageView);
+      } else {
+        setCurrentPage('main');
+      }
+    };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
 
   const handleNavigate = useCallback((id: string) => {
     // If on a scenario page, return to main first
@@ -182,7 +211,7 @@ function App() {
               id="etape1"
               eyebrow="Étape 1"
               title="Stratégie & Plateforme de marque"
-              desc="3 scénarios de positionnement complets — chacun autonome, cohérent et testable au Focus Group."
+              desc="4 scénarios de positionnement complets — chacun autonome, cohérent et testable au Focus Group."
             />
             <PlateformeMarque />
             <PrismeKapferer />
@@ -193,7 +222,7 @@ function App() {
               id="etape2"
               eyebrow="Étape 2"
               title="Brand Book draft"
-              desc="3 pistes créatives visuelles et verbales — brief opérationnel pour Fernand (designer intégré)."
+              desc="4 pistes créatives visuelles et verbales — brief opérationnel pour Fernand (designer intégré)."
             />
             <DirectionsArtistiques />
 
