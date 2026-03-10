@@ -3,8 +3,9 @@ import { CheckCircle2, AlertCircle } from 'lucide-react';
 import EditableText from './EditableText';
 
 const decisions = [
-  { confirmed: true, text: '3 scenarios testes au Focus Group (A, B, C)' },
-  { confirmed: true, text: 'Scenario C = 3e option autonome (pas simple hybride)' },
+  { confirmed: true, text: '4 scenarios testes au Focus Group (A, B, C, D)' },
+  { confirmed: true, text: 'Scenario C = option hybride autonome (pas simple compromis)' },
+  { confirmed: true, text: 'Scenario D = Nature Contemporaine — identite vegetale unique, barriere naturelle 5 ans' },
   { confirmed: true, text: 'Analogies Sofitel/Novotel/Apple Store = usage interne uniquement' },
   { confirmed: true, text: 'Kiabi, Gemo, Tecno = enseignes aspirationnelles contexte ivoirien' },
   { confirmed: true, text: 'Zino = equivalent Sephora — ancre beaute/parfumerie premium' },

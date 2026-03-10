@@ -4,9 +4,9 @@ import EditableText from './EditableText';
 
 const objectives = [
   { title: 'Primaire', val: 'Identifier le scenario de positionnement le plus desirable et credible pour la cible CSP+ Cocody/Angre' },
-  { title: 'Secondaire 1', val: 'Mesurer la resonance emotionnelle des 3 directions artistiques (couleurs, signatures, atmospheres)' },
+  { title: 'Secondaire 1', val: 'Mesurer la resonance emotionnelle des 4 directions artistiques (couleurs, signatures, atmospheres)' },
   { title: 'Secondaire 2', val: 'Valider les ancres differenciantes (cinema, clinique, Zino) et leur poids dans la decision de frequentation' },
-  { title: 'Secondaire 3', val: 'Identifier les noms de positionnement les plus impactants pour les 3 scenarios' },
+  { title: 'Secondaire 3', val: 'Identifier les noms de positionnement les plus impactants pour les 4 scenarios' },
 ];
 
 const groups = [
@@ -37,13 +37,15 @@ const phases = [
     ],
   },
   {
-    title: 'Phase 3 — Test des 3 scenarios',
-    time: '40 min',
+    title: 'Phase 3 — Test des 4 scenarios',
+    time: '50 min',
     questions: [
       '[Presenter stimuli Scenario A] — Premiere impression : ce centre vous correspond-il ? Pourquoi ?',
       "[Presenter stimuli Scenario B] — Est-ce que ce lieu vous donne envie d'y passer la journee ? Qu'est-ce qui vous attire ou vous freine ?",
-      '[Presenter stimuli Scenario C] — Si vous deviez choisir entre ces 3 univers, lequel choisiriez-vous ? Pourquoi ?',
-      'Quelle est la difference que vous percevez entre les 3 ? Laquelle correspond le plus a "votre niveau" ?',
+      '[Presenter stimuli Scenario C] — Memes questions : premiere impression, envie, freins.',
+      '[Presenter stimuli Scenario D — Nature Contemporaine] — Ce centre mise sur la vegetation et la pierre naturelle. Qu\'en pensez-vous ? Est-ce que ca change votre perception du premium ?',
+      'Si vous deviez choisir entre ces 4 univers, lequel choisiriez-vous ? Pourquoi ?',
+      'Quelle est la difference que vous percevez entre les 4 ? Laquelle correspond le plus a "votre niveau" ?',
     ],
   },
   {
@@ -60,7 +62,7 @@ const phases = [
     time: '15 min',
     questions: [
       "Si vous deviez donner un nom a ce centre commercial ideal, ce serait quoi ?",
-      'A quelle frequence pensez-vous que vous iriez dans ce centre si c\'etait le Scenario C ?',
+      'A quelle frequence pensez-vous que vous iriez dans ce centre si c\'etait votre scenario prefere ?',
       "Qu'est-ce qui manque dans tout ce que vous avez vu pour que ce soit vraiment parfait ?",
     ],
   },

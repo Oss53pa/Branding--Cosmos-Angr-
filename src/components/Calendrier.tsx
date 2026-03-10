@@ -2,8 +2,8 @@ import React from 'react';
 import EditableText from './EditableText';
 
 const timeline = [
-  { date: 'CETTE SEMAINE — 07/03', title: 'Etape 1 — Strategie & plateforme de marque', desc: '3 scenarios complets, coherents, prets a etre testes. Document EXCO.', active: true },
-  { date: 'SEMAINE DU 09/03', title: 'Etape 2 — Brand Book draft 3 pistes', desc: 'Directions artistiques + brief operationnel pour Fernand.', active: false },
+  { date: 'CETTE SEMAINE — 07/03', title: 'Etape 1 — Strategie & plateforme de marque', desc: '4 scenarios complets (A, B, C, D), coherents, prets a etre testes. Document EXCO.', active: true },
+  { date: 'SEMAINE DU 09/03', title: 'Etape 2 — Brand Book draft 4 pistes', desc: 'Directions artistiques A, B, C, D + brief operationnel pour Fernand.', active: false },
   { date: 'SEMAINE DU 09/03', title: 'Etape 3 — Protocole FG v2.1 complet', desc: 'Finalisation protocole + lancement recrutement agence terrain immediatement.', active: false },
   { date: '20 — 25/03', title: 'Focus Group — Sessions terrain', desc: 'Recrutement a lancer des maintenant. 3 groupes — profils Cocody/Angre/2 Plateaux CSP+.', active: false },
   { date: 'SEMAINE DU 23/03', title: 'Etape 4 — Plan marketing complet', desc: 'Post-FG. Budget, business case, plan digital, calendrier editorial.', active: false },
