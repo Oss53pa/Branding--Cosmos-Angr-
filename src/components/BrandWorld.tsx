@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Crown, Gift, ShoppingBag, Shirt, Coffee, Key, BadgeCheck, Droplets, MapPin, ArrowUpRight, ArrowRight, ArrowDownRight, Star, Smartphone, CreditCard, Flag } from 'lucide-react';
+import { Crown, Gift, ShoppingBag, Shirt, Coffee, Key, BadgeCheck, Droplets, MapPin, ArrowUpRight, ArrowRight, ArrowDownRight, Star, Smartphone, CreditCard, Flag, Car, ParkingCircle, DoorOpen, Sparkles, Store, UtensilsCrossed, Heart, Route } from 'lucide-react';
 import type { ScenarioKey } from './Scenarios';
 import CosmosLogo from './CosmosLogo';
 import SignaletiqueTotemSection from './SignaletiqueTotems';
@@ -1128,104 +1128,144 @@ const CollectionSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
    06 — PARCOURS CLIENT
    ═══════════════════════════════════════════ */
 
+/* Titres enrichis par moment */
+const momentTitles: Record<ScenarioKey, string[]> = {
+  A: ['La première impression', 'Fluidité & sécurité', "L'effet seuil", "L'effet \"wow\" local", "L'écrin qui rassure", 'Du midi au soir', 'Le lien qui dure'],
+  B: ['La première impression', 'Fluidité & sécurité', "L'effet seuil", "L'effet \"wow\" premium", "L'écrin qui distingue", 'Du midi au soir', 'Le lien qui dure'],
+  C: ['La première impression', 'Fluidité & sécurité', "L'effet seuil", "L'effet \"wow\" africain", "L'écrin qui libère", 'Du midi au soir', 'Le lien qui dure'],
+  D: ['La première impression', 'Fluidité & sécurité', "L'effet seuil", "L'effet \"wow\" naturel", "L'écrin qui respire", 'Du midi au soir', 'Le lien qui dure'],
+};
+
+const momentDescs: Record<ScenarioKey, string[]> = {
+  A: [
+    "Totem vert visible à 150m. Bardage forêt reconnaissable depuis la route. Signalétique de guidage vers les parkings P1/P2/P3, status disponibilité en temps réel.",
+    "Bandes de guidage vertes au sol. Éclairage 3000K. Totem statut P1/P2/P3. Sol béton ciré clair. Bandes réservées PMR bien identifiées. Accès piéton depuis les 3 niveaux.",
+    "Portique vert forêt. Changement sensoriel immédiat : lumière chaude 2700K, odeur signature Cosmos. Premier contact avec le staff en polo vert.",
+    "Sol crème sablée. Comptoir bois et vert. Totem digital 75\" interactif. Cosmos Club desk à droite. Végétation tropicale dense. Vue dégagée vers les galeries.",
+    "Galeries à 70% neutral. Piliers forêt discrets. Wayfinding intuitif. Chaque enseigne respire. Végétation ponctue le parcours.",
+    "Food court N2 ouvert sur terrasse extérieure. Mobilier bois. Mix street-food premium et restauration assise. Vue jardin intérieur.",
+    "Programme Cosmos Club : carte Platinum NFC, accumulation de points, accès avant-premières. Push app personnalisé. Le client devient ambassadeur.",
+  ],
+  B: [
+    "Totem or mat visible à 150m. Façade bleu nuit élégante. Signalétique de guidage dorée vers les parkings P1/P2/P3, status disponibilité en temps réel.",
+    "Bandes de guidage bleu/or au sol. Éclairage 3000K. Totem statut P1/P2/P3. Sol granit poli. Parking premium, bien éclairé.",
+    "Façade lettrée bleu nuit. Changement sensoriel immédiat : lumière tamisée 2700K, musique jazz à -12dB. Premier contact avec le staff en polo bleu nuit.",
+    "Sol ivoire. Comptoir bleu nuit et or. Totem digital 75\" interactif. Cosmos Club desk premium. Matériaux nobles et élégants.",
+    "Galeries épurées. Panneaux suspendus bleu/or. Chaque boutique est une découverte. Éclairage scénographié.",
+    "Carte gastronomique sélectionnée. Mobilier premium bleu nuit. Restauration assise et terrasse. Vue panoramique.",
+    "Programme Cosmos Club Platinum : carte NFC exclusive, conciergerie, accès privés. Push app curated. Le client appartient à un cercle.",
+  ],
+  C: [
+    "Totem bronze visible à 150m. Bardage terracotta reconnaissable depuis la route. Signalétique de guidage vers les parkings P1/P2/P3, status disponibilité en temps réel.",
+    "Bandes de guidage terracotta au sol. Éclairage 3000K. Totem statut P1/P2/P3. Sol béton ciré clair. Bandes réservées PMR bien identifiées. Accès piéton depuis les 3 niveaux.",
+    "Portique terracotta. Changement sensoriel immédiat : lumière chaude 2700K, odeur signature Cosmos, musique afro-jazz à -12dB. Premier contact avec le staff en polo terracotta.",
+    "Suspensions raphia monumentales. Sol crème sablée. Comptoir ébène-bronze. Totem digital 75\" interactif. Cosmos Club desk à droite. Végétation tropicale dense. Vue dégagée vers les galeries.",
+    "Galeries à 70% neutral. Piliers ébène à bandeau terracotta. Wayfinding bronze intuitif. Chaque enseigne respire. Végétation de jardinières terracotta ponctue le parcours. Bancs ébène-raphia.",
+    "Food court N2 ouvert sur terrasse extérieure. Mobilier bois ébène, coussins kaki-crème. Suspensions raphia et projecteurs bronze 2700K. Mix street-food premium et restauration assise. Vue jardin intérieur.",
+    "Programme Cosmos Club : carte Platinum NFC, accumulation de points, accès avant-premières. Push app personnalisé. Sac terracotta remis à chaque passage en boutique partenaire. Le client devient ambassadeur.",
+  ],
+  D: [
+    "Totem végétalisé visible à 150m. Façade kaki et bois. Signalétique de guidage vers les parkings P1/P2/P3.",
+    "Bandes de guidage kaki au sol. Éclairage naturel 4000K. Totem statut P1/P2/P3. Sol béton clair. Du vert partout.",
+    "Façade végétale. Changement sensoriel : lumière naturelle, odeur de plantes. Premier contact avec le staff en polo kaki.",
+    "Mur végétal central. Sol ivoire. Comptoir bois naturel. Totem digital interactif. Nature immersive.",
+    "Galeries aérées. Panneaux bois/kaki. Wayfinding naturel. Végétation dense et omnipresente.",
+    "Terrasse jardin. Mobilier bois recyclé. Cuisine locale et bio. Vue sur jardin vertical.",
+    "Programme Cosmos Green : carte NFC, points éco-responsables. App personnalisée. Le client est acteur du changement.",
+  ],
+};
+
+const stepIconComponents = [Car, ParkingCircle, DoorOpen, Sparkles, Store, UtensilsCrossed, Heart];
+const stepLabels = ['Arrivée', 'Parking', 'Entrée', 'Hall central', 'Shopping', 'Restauration', 'Fidélisation'];
+
 const TimelineSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
   const c = sc[k];
   const steps = timeline[k];
-  const [step, setStep] = useState(0);
-  const stepIcons = ['🚗', '🅿️', '🚪', '✨', '🛍️', '🍽️', '👋'];
+  const titles = momentTitles[k];
+  const descs = momentDescs[k];
 
   return (
     <div id="bw-timeline" className="py-16 border-b border-black/[.08]">
-      <div className="bg-white rounded-[18px] border border-black/[.06] overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,.04)]">
-        <div className={`px-8 py-6 border-b border-black/[.06] bg-gradient-to-br ${grad(k)}`}>
-          <div className="text-[9px] font-bold tracking-[.25em] uppercase mb-1" style={{ color: c.accent }}>Brand World · 04b</div>
-          <div className="font-cormorant text-[24px] text-white font-light">Parcours Client</div>
-          <div className="text-[10px] text-white/30 mt-1">De l'arrivée au parking jusqu'à la fidélisation</div>
+      {/* Header */}
+      <div className="mb-2">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="text-[9px] font-bold tracking-[.25em] uppercase" style={{ color: c.accent }}>B4 · Expérience</div>
+          <div className="h-px flex-1" style={{ background: c.accent, opacity: 0.3 }} />
         </div>
-        <div className="p-8">
+        <div className="font-cormorant text-[36px] font-light leading-tight" style={{ color: c.primary }}>Parcours client</div>
+        <div className="text-[12px] text-black/40 mt-2 tracking-wide uppercase">De l'arrivée au parking jusqu'à la fidélisation — 7 moments clés</div>
+      </div>
 
-          {/* Timeline visuelle horizontale */}
-          <div className="relative mb-8">
-            {/* Ligne de progression */}
-            <div className="absolute top-5 left-0 right-0 h-[2px] bg-black/[.06] rounded-full" />
-            <div className="absolute top-5 left-0 h-[2px] rounded-full transition-all duration-500" style={{
-              width: `${(step / (steps.length - 1)) * 100}%`,
-              background: `linear-gradient(90deg, ${k === 'C' ? c.dark : c.primary}, ${c.accent})`,
-            }} />
+      {/* Timeline barre horizontale avec icônes */}
+      <div className="py-10 px-4">
+        <div className="relative flex items-center justify-between">
+          {/* Ligne de connexion */}
+          <div className="absolute top-6 left-[7%] right-[7%] h-[2px]" style={{ background: `${c.accent}30` }} />
 
-            {/* Points cliquables */}
-            <div className="relative flex justify-between">
-              {steps.map((s, i) => (
-                <button key={i} onClick={() => setStep(i)} className="flex flex-col items-center group transition-all" style={{ width: `${100 / steps.length}%` }}>
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-[16px] transition-all border-2 ${
-                    i <= step ? 'shadow-lg scale-110' : 'opacity-40 hover:opacity-70'
-                  }`} style={{
-                    background: i === step ? `linear-gradient(135deg, ${k === 'C' ? c.dark : c.primary}, ${c.accent})` : i < step ? (k === 'C' ? c.dark : c.primary) : 'white',
-                    borderColor: i <= step ? c.accent : 'transparent',
-                  }}>
-                    <span className={i <= step ? 'grayscale-0' : 'grayscale'}>{stepIcons[i]}</span>
-                  </div>
-                  <div className={`text-[8px] font-bold mt-2 tracking-wider uppercase transition-all ${i === step ? '' : 'opacity-30'}`} style={{ color: i === step ? c.primary : 'black' }}>
-                    {s.title}
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Détail de l'étape active — style carte premium */}
-          <div className="relative rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.08)]" style={{ background: c.secondary }}>
-            {/* Barre accent */}
-            <div className="h-[3px]" style={{ background: `linear-gradient(90deg, ${k === 'C' ? c.dark : c.primary}, ${c.accent})` }} />
-
-            <div className="p-8 flex items-start gap-6">
-              {/* Numéro */}
-              <div className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg" style={{ background: `linear-gradient(135deg, ${k === 'C' ? c.dark : c.primary}, ${c.light || c.primary})` }}>
-                <span className="font-cormorant text-[24px] font-bold" style={{ color: c.textOnDark }}>{String(step + 1).padStart(2, '0')}</span>
+          {steps.map((_s, i) => {
+            const Icon = stepIconComponents[i];
+            return (
+              <div key={i} className="relative flex flex-col items-center" style={{ width: `${100 / steps.length}%` }}>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center z-10" style={{ background: c.primary }}>
+                  <Icon size={18} style={{ color: c.textOnDark }} strokeWidth={1.8} />
+                </div>
+                <div className="text-[9px] font-medium mt-2.5 text-center" style={{ color: c.primary }}>{stepLabels[i]}</div>
+                <div className="text-[8px] font-bold mt-0.5" style={{ color: c.accent }}>{String(i + 1).padStart(2, '0')}</div>
               </div>
+            );
+          })}
+        </div>
+      </div>
 
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-1">
-                  <span className="text-[20px]">{stepIcons[step]}</span>
-                  <div className="text-[20px] font-bold" style={{ color: c.primary }}>{steps[step].title}</div>
-                </div>
-                <div className="text-[11px] text-black/35 mb-4 font-medium flex items-center gap-2">
-                  <MapPin size={11} className="opacity-50" />
-                  Touchpoint : {steps[step].touchpoint}
-                </div>
-
-                {/* Citation — style premium */}
-                <div className="relative pl-5 mb-5" style={{ borderLeft: `3px solid ${c.accent}40` }}>
-                  <div className="font-cormorant text-[20px] italic leading-snug" style={{ color: c.primary }}>
-                    "{steps[step].verbatim}"
-                  </div>
-                </div>
-
-                {/* Émotion badge */}
-                <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-[10px] font-bold text-white shadow-md" style={{ background: `linear-gradient(135deg, ${k === 'C' ? c.dark : c.primary}, ${c.accent})` }}>
-                  <Star size={10} />
-                  {steps[step].emotion}
-                </span>
+      {/* Grille de cartes : 4 + 3 */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-5">
+        {steps.slice(0, 4).map((s, i) => {
+          const Icon = stepIconComponents[i];
+          return (
+            <div key={i} className="bg-white rounded-2xl border border-black/[.06] p-6 shadow-[0_2px_12px_rgba(0,0,0,.04)] hover:shadow-md transition-shadow">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4" style={{ background: `${c.primary}10` }}>
+                <Icon size={18} style={{ color: c.primary }} strokeWidth={1.8} />
+              </div>
+              <div className="text-[9px] font-bold tracking-[.15em] uppercase mb-2" style={{ color: c.accent }}>
+                Moment {String(i + 1).padStart(2, '0')} · {s.title}
+              </div>
+              <div className="font-cormorant text-[20px] font-medium leading-tight mb-3" style={{ color: c.primary }}>
+                {titles[i]}
+              </div>
+              <div className="text-[11px] text-black/50 leading-relaxed mb-4">
+                {descs[i]}
+              </div>
+              <div className="font-cormorant text-[13px] italic leading-snug" style={{ color: c.accent }}>
+                "{s.verbatim}"
               </div>
             </div>
-          </div>
-
-          {/* Nav */}
-          <div className="flex justify-between mt-6">
-            <button onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0}
-              className="px-6 py-3 rounded-xl text-[11px] font-semibold border border-black/[.08] disabled:opacity-15 hover:bg-black/[.02] transition-all">
-              Précédent
-            </button>
-            <span className="text-[11px] font-bold self-center" style={{ color: `${c.primary}50` }}>
-              {step + 1} / {steps.length}
-            </span>
-            <button onClick={() => setStep(Math.min(steps.length - 1, step + 1))} disabled={step === steps.length - 1}
-              className="px-6 py-3 rounded-xl text-[11px] font-semibold text-white disabled:opacity-15 transition-all shadow-md"
-              style={{ background: `linear-gradient(135deg, ${k === 'C' ? c.dark : c.primary}, ${c.light || c.primary})` }}>
-              Suivant
-            </button>
-          </div>
-        </div>
+          );
+        })}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {steps.slice(4).map((s, i) => {
+          const idx = i + 4;
+          const Icon = stepIconComponents[idx];
+          return (
+            <div key={idx} className="bg-white rounded-2xl border border-black/[.06] p-6 shadow-[0_2px_12px_rgba(0,0,0,.04)] hover:shadow-md transition-shadow">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4" style={{ background: `${c.primary}10` }}>
+                <Icon size={18} style={{ color: c.primary }} strokeWidth={1.8} />
+              </div>
+              <div className="text-[9px] font-bold tracking-[.15em] uppercase mb-2" style={{ color: c.accent }}>
+                Moment {String(idx + 1).padStart(2, '0')} · {s.title}
+              </div>
+              <div className="font-cormorant text-[20px] font-medium leading-tight mb-3" style={{ color: c.primary }}>
+                {titles[idx]}
+              </div>
+              <div className="text-[11px] text-black/50 leading-relaxed mb-4">
+                {descs[idx]}
+              </div>
+              <div className="font-cormorant text-[13px] italic leading-snug" style={{ color: c.accent }}>
+                "{s.verbatim}"
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

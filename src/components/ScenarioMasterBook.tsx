@@ -38,6 +38,30 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
+  const exportPDF = () => {
+    const style = document.createElement('style');
+    style.id = 'smb-print';
+    style.textContent = `
+      @media print {
+        body * { visibility: hidden; }
+        .smb-main, .smb-main * { visibility: visible; }
+        .smb-nav, #sidebar, nav, [data-export-hide], .fixed, .smb-nav-footer { display: none !important; }
+        .smb { display: block !important; }
+        .smb-main {
+          position: absolute; left: 0; top: 0; width: 100%;
+          margin: 0; padding: 0;
+          height: auto !important; overflow: visible !important;
+        }
+        section { page-break-inside: avoid; break-inside: avoid; }
+        .hero-wrap { page-break-after: always; }
+        @page { size: A4 portrait; margin: 12mm 10mm; }
+      }
+    `;
+    document.head.appendChild(style);
+    window.print();
+    setTimeout(() => document.getElementById('smb-print')?.remove(), 1000);
+  };
+
   return (
     <div className="smb" style={theme as React.CSSProperties}>
       {/* ── NAV ── */}
@@ -113,6 +137,17 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
         </div>
 
         <div className="smb-nav-footer">
+          <button
+            onClick={exportPDF}
+            style={{
+              width: '100%', padding: '10px 0', marginBottom: 12,
+              background: 'var(--bronze)', color: '#fff', border: 'none',
+              borderRadius: 8, fontSize: 11, fontWeight: 600, letterSpacing: 1,
+              cursor: 'pointer', textTransform: 'uppercase',
+            }}
+          >
+            Exporter en PDF
+          </button>
           <p>Confidentiel EXCO<br/>New Heaven SA / CRMC<br/>© 2026</p>
         </div>
       </nav>
@@ -168,7 +203,7 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
               </div>
               <div>
                 <div className="toc-col-head bw">Partie B · Brand World</div>
-                {['B1 · Déclinaisons logo — 10 versions','B2 · Signalétique & Wayfinding','B3 · Collection de marque','B4 · Parcours client'].map((t,i) => (
+                {['B1 · Ambiance & Palette','B2 · Déclinaisons logo','B3 · Parcours client','B4 · Signalétique & Totems','B5 · Uniformes & Textile','B6 · Goodies & Objets','B7 · Mockups digitaux','B8 · Personas & Focus Group'].map((t,i) => (
                   <div className="toc-item" key={i}><span className="toc-item-num">B{i+1}</span><span className="toc-item-label">{t.split(' · ')[1]}</span></div>
                 ))}
               </div>
@@ -400,51 +435,7 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
           <div className="ch-badge" style={{ color: 'var(--ebene-deep)' }}>Déclinaisons & Expérience</div>
         </div>
 
-        {/* B1 — LOGO DÉCLINAISONS */}
-        <section className="bg-white" id="smb-bw-logo">
-          <div className="eyebrow grey">B1 · Logo</div>
-          <h2 className="light">Déclinaisons du logo</h2>
-          <div className="sub">6 versions · Supports physiques & digitaux</div>
-          <div className="divider gris" />
-          <div className="logo-grid">
-            {d.logoVariants.map((logo, i) => (
-              <div className="logo-card" key={i}>
-                <div className="logo-vis" style={{ background: logo.bg }}><CosmosLogoSVG dotStroke={logo.stroke} height={i === 5 ? 48 : 60} /></div>
-                <div className="logo-body"><div className="logo-tag">{logo.tag}</div><div className="logo-name">{logo.name}</div><div className="logo-spec">{logo.spec}</div></div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* B2 — PARCOURS CLIENT */}
-        <section className="bg-gris" id="smb-bw-parcours">
-          <div className="eyebrow grey">B2 · Expérience</div>
-          <h2 className="light">Parcours client</h2>
-          <div className="sub">De l'arrivée au parking jusqu'à la fidélisation — 7 moments clés</div>
-          <div className="divider gris" />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 20 }}>
-            {d.parcoursRow1.map((p, i) => (
-              <div className="pc-card" key={i} style={{ borderTop: `2px solid ${p.border}` }}>
-                <div className="pc-step">{p.step}</div>
-                <div className="pc-title">{p.title}</div>
-                <div className="pc-text">{p.text}</div>
-                <div className="pc-quote">{p.quote}</div>
-              </div>
-            ))}
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16 }}>
-            {d.parcoursRow2.map((p, i) => (
-              <div className="pc-card" key={i} style={{ borderTop: `2px solid ${p.border}` }}>
-                <div className="pc-step">{p.step}</div>
-                <div className="pc-title">{p.title}</div>
-                <div className="pc-text">{p.text}</div>
-                <div className="pc-quote">{p.quote}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── BRAND WORLD MOCKUPS (SVG) ── */}
+        {/* ── BRAND WORLD (Logo, Parcours, Signalétique, Textile, Goodies, Digital, Personas) ── */}
         <section className="bg-white" style={{ padding: '0 24px 48px' }}>
           <BrandWorld scenarioKey={scenarioKey} />
         </section>
