@@ -298,7 +298,7 @@ const LogoSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
         <div className={`px-8 py-6 border-b border-black/[.06] bg-gradient-to-br ${grad(k)}`}>
           <div className="text-[9px] font-bold tracking-[.25em] uppercase mb-1" style={{ color: c.accent }}>Brand World · 02</div>
           <div className="font-cormorant text-[24px] text-white font-light">Déclinaisons du Logo</div>
-          <div className="text-[10px] text-white/30 mt-1">10 déclinaisons · Supports physiques & digitaux</div>
+          <div className="text-[10px] text-white/30 mt-1">6 déclinaisons · Supports physiques & digitaux</div>
         </div>
 
         <div className="p-8 space-y-6">
@@ -415,136 +415,6 @@ const LogoSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
                 <span className="text-[8px] font-bold tracking-[.12em] uppercase px-3 py-1 rounded-full" style={{ background: `${c.accent}15`, color: c.accent }}>Extérieur</span>
               </div>
               <div className="text-[11px] text-black/45">Logo inox brossé 80cm. Halo LED 3000K, bardage scénario. Visible à 150m.</div>
-            </div>
-          </div>
-
-          {/* ── 07-08 : Carte de visite + Sac shopping ── */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Carte de visite — même principe que carte Club : rotation + hover */}
-            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.08)]">
-              <div className="flex items-center justify-center py-12 px-6" style={{ background: c.secondary }}>
-                <div className="relative w-56 h-36">
-                  <div className="absolute inset-0 rounded-xl overflow-hidden shadow-[0_12px_35px_rgba(0,0,0,.2)] transform -rotate-3 hover:rotate-0 transition-transform duration-500" style={{ background: `${darkBg(c, k, 135)}` }}>
-                    <div className="absolute inset-0 p-5 flex flex-col justify-between">
-                      <CosmosLogo height={20} dotColor={c.textOnDark} />
-                      <div>
-                        <div className="w-8 h-px opacity-40" style={{ background: c.accent }} />
-                        <div className="text-[7px] mt-2 tracking-[.15em]" style={{ color: `${c.textOnDark}40` }}>cosmos-angre.ci</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="px-6 py-5 bg-white border-t border-black/[.04]">
-                <div className="text-[13px] font-bold mb-2" style={{ color: c.primary }}>Carte de visite</div>
-                <div className="text-[11px] text-black/45">85×55mm · Coton 350g · Dorure à chaud · Coins arrondis</div>
-              </div>
-            </div>
-
-            {/* Sac shopping */}
-            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.08)]">
-              <div className="flex items-center justify-center py-10 px-6" style={{ background: c.secondary }}>
-                <div className="relative w-36">
-                  <div className="flex justify-center gap-8 h-5">
-                    <div className="w-10 h-5 rounded-t-full" style={{ border: `2px solid ${c.primary}30`, borderBottom: 'none' }} />
-                    <div className="w-10 h-5 rounded-t-full" style={{ border: `2px solid ${c.primary}30`, borderBottom: 'none' }} />
-                  </div>
-                  <div className="relative rounded-b-md overflow-hidden shadow-[0_12px_30px_rgba(0,0,0,.1)] h-44" style={{ background: c.secondary }}>
-                    <div className="h-2 opacity-5" style={{ background: c.primary }} />
-                    <div className="flex flex-col items-center justify-center h-40">
-                      <CosmosLogo height={28} dotColor={c.primary} />
-                      <div className="w-10 h-px mt-3 opacity-30" style={{ background: c.accent }} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="px-6 py-5 bg-white border-t border-black/[.04]">
-                <div className="flex items-center gap-2 mb-2">
-                  <ShoppingBag size={14} style={{ color: c.accent }} />
-                  <div className="text-[13px] font-bold" style={{ color: c.primary }}>Sac shopping</div>
-                </div>
-                <div className="text-[11px] text-black/45">Kraft 200g mat · Poignées coton · Logo embossé</div>
-              </div>
-            </div>
-          </div>
-
-          {/* ── 09-10 : Badge VIP + Totem parking ── */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Badge VIP */}
-            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.08)]">
-              <div className="flex justify-center items-center py-10 px-8" style={{ background: c.secondary }}>
-                <div className="flex flex-col items-center">
-                  {/* Lanyard */}
-                  <svg width={120} height={35} viewBox="0 0 120 35">
-                    <path d="M 25,35 Q 25,3 60,3 Q 95,3 95,35" fill="none" stroke={c.accent} strokeWidth={2.5} opacity={0.4} />
-                  </svg>
-                  <div className="w-2.5 h-3 rounded-sm bg-gradient-to-b from-gray-300 to-gray-500" />
-                  {/* Badge body */}
-                  <div className="relative overflow-hidden rounded-xl shadow-[0_12px_35px_rgba(0,0,0,.12)]" style={{ width: 160, height: 220, background: `linear-gradient(170deg, white, ${c.secondary})` }}>
-                    <div className="h-11 flex items-end justify-center pb-2" style={{ background: `${darkBg(c, k, 135)}` }}>
-                      <CosmosLogo height={14} dotColor={c.textOnDark} />
-                    </div>
-                    <div className="flex justify-center mt-3">
-                      <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: `${c.primary}08`, border: `2px solid ${c.accent}25` }}>
-                        <svg width={22} height={22} viewBox="0 0 24 24" fill="none" stroke={c.primary} strokeWidth={1.2} opacity={0.25}><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx={12} cy={7} r={4} /></svg>
-                      </div>
-                    </div>
-                    <div className="text-center mt-2 px-4">
-                      <div className="text-[12px] font-bold" style={{ color: c.primary }}>Nom Prénom</div>
-                      <div className="text-[7px] font-medium mt-0.5" style={{ color: `${c.primary}50` }}>INVITÉ VIP</div>
-                      <div className="w-8 h-px mx-auto mt-2 opacity-40" style={{ background: c.accent }} />
-                      <div className="font-cormorant text-[9px] italic mt-1.5" style={{ color: `${c.primary}55` }}>Inauguration 2026</div>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 py-1.5 text-center" style={{ background: `${c.primary}05` }}>
-                      <span className="text-[5px] tracking-[.15em] uppercase" style={{ color: `${c.primary}25` }}>NFC · Accès Zone Premium</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="px-6 py-5 bg-white border-t border-black/[.04]">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="text-[13px] font-bold" style={{ color: c.primary }}>Badge VIP — Inauguration</div>
-                  <span className="text-[8px] font-bold tracking-[.12em] uppercase px-3 py-1 rounded-full" style={{ background: `${c.accent}15`, color: c.accent }}>Événement</span>
-                </div>
-                <div className="text-[11px] text-black/45">PVC rigide 86×54mm · Lanyard satin · Puce NFC</div>
-              </div>
-            </div>
-
-            {/* Totem parking */}
-            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.12)]">
-              <div className="flex justify-center items-center py-10 px-8 bg-gradient-to-b from-gray-800 to-gray-900">
-                <div className="relative w-24">
-                  <div className="rounded-t-lg overflow-hidden shadow-[0_0_30px_rgba(0,0,0,.3)]" style={{ background: `${darkBg(c, k, 180)}` }}>
-                    <div className="h-[2px]" style={{ background: c.accent }} />
-                    <div className="flex justify-center pt-3 pb-1.5">
-                      <CosmosLogo height={12} dotColor={c.textOnDark} />
-                    </div>
-                    <div className="w-7 h-px mx-auto opacity-30" style={{ background: c.accent }} />
-                    {['P1', 'P2', 'P3'].map((p, i) => (
-                      <div key={p} className="mx-2.5 my-1.5 rounded-md py-2 px-2.5 flex items-center justify-between" style={{
-                        background: i === 0 ? `${c.accent}20` : `${c.textOnDark}06`,
-                        border: i === 0 ? `1px solid ${c.accent}30` : '1px solid transparent',
-                      }}>
-                        <span className="text-[12px] font-bold font-mono" style={{ color: i === 0 ? c.accent : `${c.textOnDark}50` }}>{p}</span>
-                        <div className="flex items-center gap-1">
-                          <div className="w-1.5 h-1.5 rounded-full" style={{ background: i === 0 ? '#4ade80' : i === 1 ? '#fbbf24' : '#ef4444' }} />
-                          <span className="text-[7px] font-bold" style={{ color: `${c.textOnDark}40` }}>{i === 0 ? 'LIBRE' : i === 1 ? '80%' : 'PLEIN'}</span>
-                        </div>
-                      </div>
-                    ))}
-                    <div className="pb-2" />
-                  </div>
-                  <div className="mx-5 h-28 rounded-b bg-gradient-to-b from-gray-700 to-gray-800 shadow-lg" />
-                  <div className="mx-3 h-3 bg-gradient-to-b from-gray-600 to-gray-500 rounded-b-md" />
-                </div>
-              </div>
-              <div className="px-6 py-5 bg-white border-t border-black/[.04]">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="text-[13px] font-bold" style={{ color: c.primary }}>Totem parking — P1/P2/P3</div>
-                  <span className="text-[8px] font-bold tracking-[.12em] uppercase px-3 py-1 rounded-full" style={{ background: `${c.accent}15`, color: c.accent }}>Extérieur</span>
-                </div>
-                <div className="text-[11px] text-black/45">Aluminium thermolaqué · LED status · Hauteur 3m</div>
-              </div>
             </div>
           </div>
 
