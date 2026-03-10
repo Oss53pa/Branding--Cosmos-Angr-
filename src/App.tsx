@@ -223,31 +223,18 @@ function App() {
 
             <div className="w-px h-5 bg-white/[.1] mx-1" />
 
-            {/* Volume tabs */}
-            {(['marketing', 'securite', 'parcours'] as const).map((vol) => {
-              const v = volumeLabels[vol];
-              const isActive = currentPage === vol || (vol === 'marketing' && isScenario);
+            {/* Current volume label (non-clickable) */}
+            {(() => {
+              const volKey = isScenario ? 'marketing' : currentPage;
+              const v = volumeLabels[volKey];
+              if (!v) return null;
               return (
-                <button
-                  key={vol}
-                  onClick={() => setCurrentPage(vol)}
-                  className={`flex items-center gap-2.5 px-4 h-full text-[11px] font-medium tracking-wide border-b-2 transition-all whitespace-nowrap ${
-                    isActive
-                      ? 'text-white'
-                      : 'border-transparent text-white/40 hover:text-white/70'
-                  }`}
-                  style={{ borderColor: isActive ? v.accent : 'transparent' }}
-                >
-                  <span
-                    className={`w-2 h-2 rounded-full flex-shrink-0 transition-opacity ${
-                      isActive ? 'opacity-100' : 'opacity-40'
-                    }`}
-                    style={{ background: v.accent }}
-                  />
+                <span className="flex items-center gap-2.5 px-4 h-full text-[11px] font-medium tracking-wide border-b-2 text-white whitespace-nowrap" style={{ borderColor: v.accent }}>
+                  <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: v.accent }} />
                   {v.label}
-                </button>
+                </span>
               );
-            })}
+            })()}
 
             {/* Scenario sub-tabs — only when in marketing or scenario view */}
             {(isMarketing || isScenario) && (
