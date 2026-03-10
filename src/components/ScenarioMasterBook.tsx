@@ -175,7 +175,7 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
           </button>
           <button
             onClick={() => {
-              const url = `${window.location.origin}${window.location.pathname}#scenario-${scenarioKey}`;
+              const url = `${window.location.origin}/scenario-${scenarioKey}.html`;
               navigator.clipboard.writeText(url).then(() => {
                 const btn = document.getElementById('copy-link-btn');
                 if (btn) { btn.textContent = '✓ LIEN COPIÉ'; setTimeout(() => { btn.textContent = 'COPIER LE LIEN'; }, 2000); }
