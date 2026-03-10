@@ -48,25 +48,37 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
           print-color-adjust: exact !important;
           color-adjust: exact !important;
         }
-        body * { visibility: hidden; }
-        .smb, .smb * { visibility: visible; }
-        .smb-nav, #sidebar, nav, [data-export-hide], .fixed, .smb-nav-footer { display: none !important; }
+
+        /* Unlock ALL scroll containers */
+        html, body,
+        .flex.h-screen, .flex-1.flex.flex-col,
+        #main, .smb, .smb-main {
+          height: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          position: static !important;
+        }
+
+        /* Hide sidebar + nav */
+        #sidebar, .smb-nav, [data-export-hide], .fixed {
+          display: none !important;
+        }
+
+        /* Full width for content */
         .smb {
           display: block !important;
-          position: absolute; left: 0; top: 0; width: 100%;
+          width: 100% !important;
         }
         .smb-main {
-          margin: 0 !important; padding: 0 !important;
-          width: 100% !important; max-width: 100% !important;
-          height: auto !important; overflow: visible !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          width: 100% !important;
         }
-        section { page-break-inside: avoid; break-inside: avoid; }
-        .hero-wrap { page-break-after: always; }
-        svg { print-color-adjust: exact !important; }
-        [style*="background"], [style*="gradient"], [class*="bg-"] {
-          -webkit-print-color-adjust: exact !important;
-          print-color-adjust: exact !important;
-        }
+
+        /* Page breaks */
+        section { break-inside: avoid; }
+        .hero-wrap { break-after: page; }
+
         @page { size: A4 portrait; margin: 10mm; }
       }
     `;
