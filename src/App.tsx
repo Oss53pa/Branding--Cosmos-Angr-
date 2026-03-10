@@ -24,6 +24,8 @@ import CatalogueHome from './components/CatalogueHome';
 import type { VolumeKey } from './components/CatalogueHome';
 import PlanSecuritaire from './components/PlanSecuritaire';
 import ParcoursClient from './components/ParcoursClient';
+import SidebarSecurite from './components/SidebarSecurite';
+import SidebarParcours from './components/SidebarParcours';
 
 type PageView = 'home' | 'marketing' | 'securite' | 'parcours' | 'scenario-A' | 'scenario-B' | 'scenario-C' | 'scenario-D';
 
@@ -126,6 +128,26 @@ function App() {
     }
   }, [currentPage]);
 
+  const handleNavigateGeneric = useCallback((id: string) => {
+    // Plan 3D links
+    if (id === 'sec-plan3d' || id === 'pc-plan3d') {
+      window.open('/plan-3d.html', '_blank');
+      return;
+    }
+    // Sidebar moment clicks → update activeMoment in ParcoursClient
+    if (id.startsWith('moment-')) {
+      const idx = parseInt(id.replace('moment-', ''), 10) - 1;
+      window.dispatchEvent(new CustomEvent('select-moment', { detail: idx }));
+      setActiveSection(id);
+      return;
+    }
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActiveSection(id);
+    }
+  }, []);
+
   // IntersectionObserver for marketing scroll tracking
   useEffect(() => {
     if (currentPage !== 'marketing') return;
@@ -165,28 +187,30 @@ function App() {
   return (
     <EditProvider>
     <div className="flex h-screen overflow-hidden">
-      {/* Sidebar — only for marketing volume */}
-      {isMarketing && (
-        <>
-          {sidebarOpen && (
-            <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={() => setSidebarOpen(false)} />
-          )}
-          <div className={`fixed inset-y-0 left-0 z-50 lg:relative lg:z-auto transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}>
-            <Sidebar activeSection={activeSection} onNavigate={(id) => { handleNavigate(id); setSidebarOpen(false); }} onExport={() => setExportOpen(true)} />
-          </div>
-        </>
+      {/* Sidebar — all volumes */}
+      {sidebarOpen && (
+        <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={() => setSidebarOpen(false)} />
       )}
+      <div className={`fixed inset-y-0 left-0 z-50 lg:relative lg:z-auto transition-transform duration-300 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}>
+        {(isMarketing || isScenario) && (
+          <Sidebar activeSection={activeSection} onNavigate={(id) => { handleNavigate(id); setSidebarOpen(false); }} onExport={() => setExportOpen(true)} />
+        )}
+        {currentPage === 'securite' && (
+          <SidebarSecurite activeSection={activeSection} onNavigate={(id) => { handleNavigateGeneric(id); setSidebarOpen(false); }} onExport={() => setExportOpen(true)} />
+        )}
+        {currentPage === 'parcours' && (
+          <SidebarParcours activeSection={activeSection} onNavigate={(id) => { handleNavigateGeneric(id); setSidebarOpen(false); }} onExport={() => setExportOpen(true)} />
+        )}
+      </div>
 
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
         {/* === TOP NAVBAR === */}
         <nav className="flex-shrink-0 bg-[#0f0f1a] border-b border-white/[.08] px-3 sm:px-6">
           <div className="flex items-center h-11 gap-1 overflow-x-auto scrollbar-hide">
-            {/* Mobile menu button — marketing only */}
-            {isMarketing && (
-              <button onClick={() => setSidebarOpen(!sidebarOpen)} className="lg:hidden p-1.5 mr-2 text-white/60 hover:text-white flex-shrink-0 transition-colors">
-                {sidebarOpen ? <X size={18} /> : <Menu size={18} />}
-              </button>
-            )}
+            {/* Mobile menu button */}
+            <button onClick={() => setSidebarOpen(!sidebarOpen)} className="lg:hidden p-1.5 mr-2 text-white/60 hover:text-white flex-shrink-0 transition-colors">
+              {sidebarOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
 
             {/* Home button */}
             <button

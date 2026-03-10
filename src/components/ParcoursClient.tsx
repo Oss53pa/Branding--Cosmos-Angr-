@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Route, Car, ParkingSquare, DoorOpen, Sparkles, Store, UtensilsCrossed,
   Heart, MapPin, Accessibility, Baby, ArrowRight, Box, ChevronRight, Award
@@ -122,10 +122,24 @@ const serviceData = [
 const ParcoursClient: React.FC = () => {
   const [activeMoment, setActiveMoment] = useState(0);
 
+  // Listen for sidebar moment selection
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const idx = (e as CustomEvent).detail;
+      if (typeof idx === 'number' && idx >= 0 && idx < moments.length) {
+        setActiveMoment(idx);
+        const el = document.getElementById('pc-moment-detail');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+    window.addEventListener('select-moment', handler);
+    return () => window.removeEventListener('select-moment', handler);
+  }, []);
+
   return (
     <div className="bg-cream min-h-screen">
       {/* Hero cover */}
-      <div className="relative bg-gradient-to-br from-[#0a1a14] via-[#153d2e] to-[#0a1a14] px-8 lg:px-[72px] py-20 overflow-hidden">
+      <div id="pc-cover" className="relative bg-gradient-to-br from-[#0a1a14] via-[#153d2e] to-[#0a1a14] px-8 lg:px-[72px] py-20 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,rgba(16,185,129,.1)_0%,transparent_60%)]" />
         <div className="absolute inset-0 opacity-[.03]" style={{
           backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
@@ -158,7 +172,7 @@ const ParcoursClient: React.FC = () => {
       <div className="h-[2px] bg-gradient-to-r from-emerald-500/60 via-emerald-400/20 to-transparent" />
 
       {/* Timeline barre horizontale */}
-      <div className="px-8 lg:px-[72px] py-10 border-b border-black/[.06]">
+      <div id="pc-timeline" className="px-8 lg:px-[72px] py-10 border-b border-black/[.06]">
         <div className="relative flex items-center justify-between max-w-[900px] mx-auto">
           {/* Ligne de connexion */}
           <div className="absolute top-6 left-[7%] right-[7%] h-[2px] bg-emerald-500/15" />
@@ -195,7 +209,7 @@ const ParcoursClient: React.FC = () => {
       </div>
 
       {/* Moment detail */}
-      <div className="px-8 lg:px-[72px] py-12">
+      <div id="pc-moment-detail" className="px-8 lg:px-[72px] py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-[1200px] mx-auto">
           {/* Left — description */}
           <div className="bg-white rounded-2xl border border-black/[.06] p-8 shadow-[0_2px_20px_rgba(0,0,0,.04)]">
@@ -293,7 +307,7 @@ const ParcoursClient: React.FC = () => {
       </div>
 
       {/* Services complémentaires */}
-      <div className="px-8 lg:px-[72px] py-12 border-t border-black/[.06]">
+      <div id="pc-services" className="px-8 lg:px-[72px] py-12 border-t border-black/[.06]">
         <div className="flex items-center gap-3 mb-8">
           <div className="text-[9px] font-bold tracking-[.25em] uppercase text-emerald-600">Services & confort</div>
           <div className="h-px flex-1 bg-emerald-600/15" />
