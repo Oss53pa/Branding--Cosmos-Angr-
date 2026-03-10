@@ -399,25 +399,37 @@ Contemporaine`,sub:'"Ici, on vit quelque chose"'}].map(r=>t.jsxs("div",{onClick:
           print-color-adjust: exact !important;
           color-adjust: exact !important;
         }
-        body * { visibility: hidden; }
-        .smb, .smb * { visibility: visible; }
-        .smb-nav, #sidebar, nav, [data-export-hide], .fixed, .smb-nav-footer { display: none !important; }
+
+        /* Unlock ALL scroll containers */
+        html, body,
+        .flex.h-screen, .flex-1.flex.flex-col,
+        #main, .smb, .smb-main {
+          height: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          position: static !important;
+        }
+
+        /* Hide sidebar + nav */
+        #sidebar, .smb-nav, [data-export-hide], .fixed {
+          display: none !important;
+        }
+
+        /* Full width for content */
         .smb {
           display: block !important;
-          position: absolute; left: 0; top: 0; width: 100%;
+          width: 100% !important;
         }
         .smb-main {
-          margin: 0 !important; padding: 0 !important;
-          width: 100% !important; max-width: 100% !important;
-          height: auto !important; overflow: visible !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          width: 100% !important;
         }
-        section { page-break-inside: avoid; break-inside: avoid; }
-        .hero-wrap { page-break-after: always; }
-        svg { print-color-adjust: exact !important; }
-        [style*="background"], [style*="gradient"], [class*="bg-"] {
-          -webkit-print-color-adjust: exact !important;
-          print-color-adjust: exact !important;
-        }
+
+        /* Page breaks */
+        section { break-inside: avoid; }
+        .hero-wrap { break-after: page; }
+
         @page { size: A4 portrait; margin: 10mm; }
       }
     `,document.head.appendChild(d),window.print(),setTimeout(()=>{var u;return(u=document.getElementById("smb-print"))==null?void 0:u.remove()},1e3)};return t.jsxs("div",{className:"smb",style:l,children:[t.jsxs("nav",{className:"smb-nav",children:[t.jsxs("div",{className:"smb-nav-brand",children:[t.jsx("div",{className:"smb-nav-brand-name",children:"Cosmos Angré"}),t.jsx("div",{className:"smb-nav-brand-sub",children:"Master Book · Mars 2026"})]}),t.jsxs("div",{className:`smb-nav-group ${n.a?"open":""}`,children:[t.jsxs("div",{className:"smb-nav-group-header",onClick:()=>o("a"),children:[t.jsx("span",{className:"smb-nav-group-label",children:"Stratégie"}),t.jsxs("span",{style:{display:"flex",alignItems:"center",gap:6},children:[t.jsx("span",{className:"smb-nav-group-badge smb-badge-brand",children:"Brand Book"}),t.jsx("span",{className:"smb-nav-group-arrow",children:"›"})]})]}),t.jsxs("div",{className:"smb-nav-group-links",children:[t.jsxs("a",{onClick:()=>c("smb-hero"),children:[t.jsx("span",{className:"n",children:"—"}),"Couverture"]}),t.jsxs("a",{onClick:()=>c("smb-toc"),children:[t.jsx("span",{className:"n",children:"—"}),"Sommaire"]}),t.jsxs("a",{onClick:()=>c("smb-usp"),children:[t.jsx("span",{className:"n",children:"A1"}),"USP & Positionnement"]}),t.jsxs("a",{onClick:()=>c("smb-kapferer"),children:[t.jsx("span",{className:"n",children:"A2"}),"Prisme de Kapferer"]}),t.jsxs("a",{onClick:()=>c("smb-valeurs"),children:[t.jsx("span",{className:"n",children:"A3"}),"Valeurs & Ton"]}),t.jsxs("a",{onClick:()=>c("smb-signatures"),children:[t.jsx("span",{className:"n",children:"A4"}),"Signatures"]}),t.jsxs("a",{onClick:()=>c("smb-palette"),children:[t.jsx("span",{className:"n",children:"A5"}),"Palette chromatique"]}),t.jsxs("a",{onClick:()=>c("smb-proportions"),children:[t.jsx("span",{className:"n",children:"A6"}),"Proportions réelles"]}),t.jsxs("a",{onClick:()=>c("smb-typo"),children:[t.jsx("span",{className:"n",children:"A7"}),"Typographie"]}),t.jsxs("a",{onClick:()=>c("smb-matieres"),children:[t.jsx("span",{className:"n",children:"A8"}),"Matières fondatrices"]}),t.jsxs("a",{onClick:()=>c("smb-comms"),children:[t.jsx("span",{className:"n",children:"A9"}),"Communication"]})]})]}),t.jsxs("div",{className:`smb-nav-group ${n.b?"open":""}`,children:[t.jsxs("div",{className:"smb-nav-group-header",onClick:()=>o("b"),children:[t.jsx("span",{className:"smb-nav-group-label",children:"Brand World"}),t.jsxs("span",{style:{display:"flex",alignItems:"center",gap:6},children:[t.jsx("span",{className:"smb-nav-group-badge smb-badge-bw",children:"Identité"}),t.jsx("span",{className:"smb-nav-group-arrow",children:"›"})]})]}),t.jsxs("div",{className:"smb-nav-group-links",children:[t.jsxs("a",{onClick:()=>c("smb-bw-logo"),children:[t.jsx("span",{className:"n",children:"B1"}),"Déclinaisons logo"]}),t.jsxs("a",{onClick:()=>c("smb-bw-parcours"),children:[t.jsx("span",{className:"n",children:"B2"}),"Parcours client"]}),t.jsxs("a",{onClick:()=>c("bw-signaletique"),children:[t.jsx("span",{className:"n",children:"B3"}),"Signalétique & Totems"]}),t.jsxs("a",{onClick:()=>c("bw-textile"),children:[t.jsx("span",{className:"n",children:"B4"}),"Uniformes & Textile"]}),t.jsxs("a",{onClick:()=>c("bw-goodies"),children:[t.jsx("span",{className:"n",children:"B5"}),"Goodies & Objets"]}),t.jsxs("a",{onClick:()=>c("bw-digital"),children:[t.jsx("span",{className:"n",children:"B6"}),"Digital Mockups"]}),t.jsxs("a",{onClick:()=>c("bw-personas"),children:[t.jsx("span",{className:"n",children:"B7"}),"Personas & Focus Group"]})]})]}),t.jsxs("div",{className:`smb-nav-group ${n.c?"open":""}`,children:[t.jsxs("div",{className:"smb-nav-group-header",onClick:()=>o("c"),children:[t.jsx("span",{className:"smb-nav-group-label",children:"Tenant Guidelines"}),t.jsxs("span",{style:{display:"flex",alignItems:"center",gap:6},children:[t.jsx("span",{className:"smb-nav-group-badge smb-badge-tenant",children:"Enseignes"}),t.jsx("span",{className:"smb-nav-group-arrow",children:"›"})]})]}),t.jsxs("div",{className:"smb-nav-group-links",children:[t.jsxs("a",{onClick:()=>c("smb-intro-tenant"),children:[t.jsx("span",{className:"n",children:"C1"}),"Introduction enseignes"]}),t.jsxs("a",{onClick:()=>c("smb-charte-facade"),children:[t.jsx("span",{className:"n",children:"C2"}),"Charte façade boutique"]}),t.jsxs("a",{onClick:()=>c("smb-zones"),children:[t.jsx("span",{className:"n",children:"C3"}),"Zones & Gabarits"]}),t.jsxs("a",{onClick:()=>c("smb-espaces-communs"),children:[t.jsx("span",{className:"n",children:"C4"}),"Espaces communs"]}),t.jsxs("a",{onClick:()=>c("smb-materiaux"),children:[t.jsx("span",{className:"n",children:"C5"}),"Matériaux autorisés"]}),t.jsxs("a",{onClick:()=>c("smb-signaletique-tenant"),children:[t.jsx("span",{className:"n",children:"C6"}),"Signalétique enseigne"]}),t.jsxs("a",{onClick:()=>c("smb-galeries-3d"),children:[t.jsx("span",{className:"n",children:"C7"}),"Visuels galeries"]}),t.jsxs("a",{onClick:()=>c("smb-risques"),children:[t.jsx("span",{className:"n",children:"D1"}),"Risques & Avantage"]})]})]}),t.jsxs("div",{className:"smb-nav-footer",children:[t.jsx("button",{onClick:p,style:{width:"100%",padding:"10px 0",marginBottom:12,background:"var(--bronze)",color:"#fff",border:"none",borderRadius:8,fontSize:11,fontWeight:600,letterSpacing:1,cursor:"pointer",textTransform:"uppercase"},children:"Exporter en PDF"}),t.jsxs("p",{children:["Confidentiel EXCO",t.jsx("br",{}),"New Heaven SA / CRMC",t.jsx("br",{}),"© 2026"]})]})]}),t.jsxs("div",{className:"smb-main",ref:i,children:[t.jsx("section",{style:{padding:0},id:"smb-hero",children:t.jsxs("div",{className:"hero-wrap",children:[t.jsxs("div",{className:"hero-l",children:[t.jsx("div",{className:"hero-l-glow"}),t.jsxs("div",{style:{position:"relative",zIndex:1},children:[t.jsx("div",{style:{fontSize:8,letterSpacing:4,color:"rgba(var(--bronze-rgb),0.6)",textTransform:"uppercase",marginBottom:28},children:a.finaleSub}),t.jsxs("div",{className:"hero-h1",children:["Cosmos",t.jsx("br",{}),t.jsx("span",{style:{color:"var(--bronze)"},children:"Angré"})]}),t.jsx("div",{style:{width:40,height:1,background:"var(--bronze)",margin:"28px 0"}}),t.jsxs("div",{style:{fontFamily:"'Cormorant Garamond',serif",fontSize:18,fontStyle:"italic",color:"rgba(var(--fond-rgb),0.55)",lineHeight:1.6},children:['"',a.heroQuote,`
