@@ -281,6 +281,22 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
               {d.uspStatement.split(d.uspHighlight)[0]}<strong style={{ fontWeight: 700, color: 'var(--terra)' }}>{d.uspHighlight}</strong>{d.uspStatement.split(d.uspHighlight)[1]}
             </div>
           </div>
+          {d.uspNote && (
+            <div style={{ background: 'rgba(var(--bronze-rgb),0.06)', border: '1px solid rgba(var(--bronze-rgb),0.2)', padding: '20px 28px', marginBottom: 24, fontSize: 10.5, color: 'var(--ebene-deep)', lineHeight: 1.7 }}>
+              <strong style={{ color: 'var(--bronze)', fontSize: 9, letterSpacing: 2, textTransform: 'uppercase' }}>Note stratégique</strong>
+              <div style={{ marginTop: 8 }}>{d.uspNote}</div>
+            </div>
+          )}
+          {d.uspPrerequisites && d.uspPrerequisites.length > 0 && (
+            <div style={{ background: 'rgba(var(--terra-rgb),0.04)', border: '1px solid rgba(var(--terra-rgb),0.12)', padding: '20px 28px', marginBottom: 24 }}>
+              <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--terra)', fontWeight: 600, marginBottom: 10 }}>Prérequis opérationnels J+1</div>
+              {d.uspPrerequisites.map((p, i) => (
+                <div key={i} style={{ fontSize: 10.5, color: 'var(--ebene-deep)', lineHeight: 1.7, paddingLeft: 16, position: 'relative', marginBottom: 4 }}>
+                  <span style={{ position: 'absolute', left: 0, color: 'var(--terra)' }}>{i + 1}.</span>{p.text}
+                </div>
+              ))}
+            </div>
+          )}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '1px', background: 'rgba(var(--terra-rgb),0.08)' }}>
             {d.uspPillars.map((p, i) => (
               <div key={i} style={{ background: '#fff', padding: '28px 22px' }}>
@@ -312,6 +328,20 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
               </div>
             ))}
           </div>
+          {d.persona && (
+            <div style={{ marginTop: 32, background: 'rgba(var(--bronze-rgb),0.04)', border: '1px solid rgba(var(--bronze-rgb),0.15)', padding: 32 }}>
+              <div style={{ fontSize: 9, letterSpacing: 2.5, textTransform: 'uppercase', color: 'var(--bronze)', fontWeight: 600, marginBottom: 16 }}>Persona consommateur cible</div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 32px', fontSize: 11, lineHeight: 1.7 }}>
+                <div><strong style={{ color: 'var(--ebene-deep)' }}>Prénom :</strong> <span style={{ color: 'var(--gris-chaud)' }}>{d.persona.prenom}</span></div>
+                <div><strong style={{ color: 'var(--ebene-deep)' }}>Âge :</strong> <span style={{ color: 'var(--gris-chaud)' }}>{d.persona.age}</span></div>
+                <div><strong style={{ color: 'var(--ebene-deep)' }}>Profession :</strong> <span style={{ color: 'var(--gris-chaud)' }}>{d.persona.profession}</span></div>
+                <div><strong style={{ color: 'var(--ebene-deep)' }}>Quartier :</strong> <span style={{ color: 'var(--gris-chaud)' }}>{d.persona.quartier}</span></div>
+                <div style={{ gridColumn: '1 / -1' }}><strong style={{ color: 'var(--terra)' }}>Frustration :</strong> <span style={{ color: 'var(--gris-chaud)' }}>"{d.persona.frustration}"</span></div>
+                <div style={{ gridColumn: '1 / -1' }}><strong style={{ color: 'var(--terra)' }}>Ligne rouge :</strong> <span style={{ color: 'var(--gris-chaud)' }}>{d.persona.ligneRouge}</span></div>
+                {d.persona.comportement && <div style={{ gridColumn: '1 / -1' }}><strong style={{ color: 'var(--ebene-deep)' }}>Comportement :</strong> <span style={{ color: 'var(--gris-chaud)' }}>{d.persona.comportement}</span></div>}
+              </div>
+            </div>
+          )}
         </section>
 
         {/* A3 — VALEURS & TON */}
@@ -673,6 +703,41 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
             </div>
           </div>
         </section>
+
+        {/* BRAND RULES */}
+        {d.brandRules && d.brandRules.length > 0 && (
+          <section className="bg-white" id="smb-brand-rules">
+            <div className="eyebrow light">Règles Brand Book</div>
+            <h2 className="light">Règles chromatiques & matières</h2>
+            <div className="sub">Interdictions et prescriptions à respecter impérativement</div>
+            <div className="divider foret" />
+            <div style={{ display: 'grid', gap: 12 }}>
+              {d.brandRules.map((r, i) => (
+                <div key={i} style={{ background: 'rgba(var(--terra-rgb),0.04)', border: '1px solid rgba(var(--terra-rgb),0.12)', padding: '16px 24px', fontSize: 11, color: 'var(--ebene-deep)', lineHeight: 1.7 }}>
+                  <span style={{ color: 'var(--terra)', fontWeight: 700, marginRight: 8 }}>R{i + 1}.</span>{r.rule}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* FOCUS GROUP QUESTIONS */}
+        {d.focusGroupQuestions && d.focusGroupQuestions.length > 0 && (
+          <section className="bg-warm" id="smb-focus-group">
+            <div className="eyebrow light">Focus Group</div>
+            <h2 className="light">Questions spécifiques à tester</h2>
+            <div className="sub">3 questions clés pour le {d.scenarioLabel} — Sessions mars 2026</div>
+            <div className="divider foret" />
+            <div style={{ display: 'grid', gap: 16 }}>
+              {d.focusGroupQuestions.map((q, i) => (
+                <div key={i} style={{ background: '#fff', border: '1px solid rgba(var(--bronze-rgb),0.15)', padding: '24px 28px', display: 'flex', gap: 20, alignItems: 'flex-start' }}>
+                  <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'var(--bronze)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 700, flexShrink: 0 }}>Q{i + 1}</div>
+                  <div style={{ fontSize: 12, color: 'var(--ebene-deep)', lineHeight: 1.7 }}>{q.question}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* FINALE */}
         <section className="finale">
