@@ -17,6 +17,7 @@ import Protocole from './components/Protocole';
 import Recrutement from './components/Recrutement';
 import Grille from './components/Grille';
 import Plan360 from './components/Plan360';
+import Plan360Axes from './components/Plan360Axes';
 import PlateformeMarque from './components/PlateformeMarque';
 import PrismeKapferer from './components/PrismeKapferer';
 import ScenarioMasterBook from './components/ScenarioMasterBook';
@@ -312,6 +313,7 @@ function App() {
               desc="Plan marketing opérationnel post-Focus Group — budget, actions 360°, digital, calendrier éditorial."
             />
             <Plan360 />
+            <Plan360Axes />
           </div>
         ) : isScenario ? (
           <ScenarioMasterBook

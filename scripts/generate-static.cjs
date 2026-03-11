@@ -810,6 +810,7 @@ body{font-family:'Inter',sans-serif;background:${CREAM};color:#1a1410;line-heigh
       <a href="#focusgroup">Focus Group</a>
       <a href="#grille">Grille d'analyse</a>
       <a href="#plan360">Plan 360°</a>
+      <a href="#plan360axes">Axes Stratégiques</a>
     </div>
   </div>
 </div>
@@ -999,6 +1000,124 @@ ${p.actions.map(a => `      <div class="plan-action">
     <div class="num">${totalBudget}</div>
     <div class="label">Hors coûts d'inauguration VIP & honoraires consultants</div>
   </div>
+</div>
+</div>
+
+<!-- PLAN 360 AXES STRATEGIQUES -->
+<div class="section" id="plan360axes">
+<div class="container">
+  <div class="eyebrow">Livrable 4.2</div>
+  <h2 class="serif">Plan Marketing 360° — Axes Stratégiques</h2>
+  <div class="desc">5 axes stratégiques · 25 actions clés · Ouverture octobre–novembre 2026</div>
+
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 28px">
+    <span style="padding:4px 14px;border-radius:20px;font-size:10px;background:rgba(13,27,75,.08);color:#0D1B4B;font-weight:600">Notoriété 35%</span>
+    <span style="padding:4px 14px;border-radius:20px;font-size:10px;background:rgba(74,117,88,.08);color:#4A7558;font-weight:600">Trafic 25%</span>
+    <span style="padding:4px 14px;border-radius:20px;font-size:10px;background:rgba(123,63,160,.08);color:#7B3FA0;font-weight:600">CRM 15%</span>
+    <span style="padding:4px 14px;border-radius:20px;font-size:10px;background:rgba(138,90,16,.08);color:#8a5a10;font-weight:600">RP 10%</span>
+    <span style="padding:4px 14px;border-radius:20px;font-size:10px;background:rgba(26,107,107,.08);color:#1a6b6b;font-weight:600">Enseignes 15%</span>
+  </div>
+
+  <!-- Axe 01 -->
+  <div style="border-radius:12px;border:1px solid rgba(13,27,75,.15);overflow:hidden;margin-bottom:16px">
+    <div style="background:#e8ecf5;padding:14px 18px;display:flex;align-items:center;gap:12px">
+      <div style="width:36px;height:36px;border-radius:50%;background:#0D1B4B;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px">📡</div>
+      <div style="flex:1"><div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#0D1B4B;font-weight:700">Axe 01</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#1a1410">Notoriété &amp; Image</div></div>
+      <div style="text-align:right"><div style="font-size:9px;color:rgba(26,20,16,.4)">Budget</div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#0D1B4B">35%</div></div>
+    </div>
+    <div style="padding:14px 18px;background:#fff">
+      <div style="background:#e8ecf5;border-radius:8px;padding:10px 14px;border-left:3px solid #0D1B4B;margin-bottom:12px;font-size:12px;color:rgba(26,20,16,.65);line-height:1.7">Installer Cosmos Angré comme référence premium à Abidjan avant l'ouverture. Créer une anticipation forte et un capital marque solide dès le soft opening.</div>
+      <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(26,20,16,.4);font-weight:700;margin-bottom:8px">5 actions</div>
+      <div style="font-size:12px;color:rgba(26,20,16,.55);line-height:1.8">
+        <div style="margin-bottom:4px"><strong style="color:#0D1B4B">01.</strong> Campagne affichage urbain grand format — 200 faces 4x3 axes Angré–Plateau–Cocody–Riviera, 3 vagues créatives</div>
+        <div style="margin-bottom:4px"><strong style="color:#0D1B4B">02.</strong> Campagne radio multi-stations — RTI, Nostalgie CI, Vibe Radio, 6 semaines soft + grand opening</div>
+        <div style="margin-bottom:4px"><strong style="color:#0D1B4B">03.</strong> Partenariats presse print et digital — Fraternité Matin, Jeune Afrique, supplément 8 pages inauguration</div>
+        <div style="margin-bottom:4px"><strong style="color:#0D1B4B">04.</strong> Campagne digitale Meta / Google / TikTok — awareness, consideration, conversion, ciblage géo 5km</div>
+        <div><strong style="color:#0D1B4B">05.</strong> Contenus audiovisuels de marque — film institutionnel 3 min, podcast 'Cosmos Conversations', shooting 200 visuels</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Axe 02 -->
+  <div style="border-radius:12px;border:1px solid rgba(74,117,88,.15);overflow:hidden;margin-bottom:16px">
+    <div style="background:#e8f2ec;padding:14px 18px;display:flex;align-items:center;gap:12px">
+      <div style="width:36px;height:36px;border-radius:50%;background:#4A7558;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px">🎯</div>
+      <div style="flex:1"><div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#4A7558;font-weight:700">Axe 02</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#1a1410">Trafic &amp; Conversion</div></div>
+      <div style="text-align:right"><div style="font-size:9px;color:rgba(26,20,16,.4)">Budget</div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#4A7558">25%</div></div>
+    </div>
+    <div style="padding:14px 18px;background:#fff">
+      <div style="background:#e8f2ec;border-radius:8px;padding:10px 14px;border-left:3px solid #4A7558;margin-bottom:12px;font-size:12px;color:rgba(26,20,16,.65);line-height:1.7">Générer un trafic qualifié dès l'ouverture. Transformer la notoriété construite en visites réelles et en chiffre d'affaires pour les enseignes.</div>
+      <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(26,20,16,.4);font-weight:700;margin-bottom:8px">5 actions</div>
+      <div style="font-size:12px;color:rgba(26,20,16,.55);line-height:1.8">
+        <div style="margin-bottom:4px"><strong style="color:#4A7558">01.</strong> Programme ambassadeurs Cocody/Angré — 20 micro-influenceurs, contrat 12 mois, QR codes personnalisés</div>
+        <div style="margin-bottom:4px"><strong style="color:#4A7558">02.</strong> Événement inauguration VIP — 500 invités, projection mapping façade, dîner de gala</div>
+        <div style="margin-bottom:4px"><strong style="color:#4A7558">03.</strong> Soft Opening résidents zone primaire — 2 000 invitations, portes ouvertes Angré 7ème/8ème</div>
+        <div style="margin-bottom:4px"><strong style="color:#4A7558">04.</strong> Géolocalisation et partenariats mobilité — Glovo, Yango, Bolt, Google Maps premium</div>
+        <div><strong style="color:#4A7558">05.</strong> Opérations commerciales saisonnières — 8 opérations majeures calendrier annuel</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Axe 03 -->
+  <div style="border-radius:12px;border:1px solid rgba(123,63,160,.15);overflow:hidden;margin-bottom:16px">
+    <div style="background:#f3ecfa;padding:14px 18px;display:flex;align-items:center;gap:12px">
+      <div style="width:36px;height:36px;border-radius:50%;background:#7B3FA0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px">💎</div>
+      <div style="flex:1"><div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#7B3FA0;font-weight:700">Axe 03</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#1a1410">Fidélisation &amp; CRM</div></div>
+      <div style="text-align:right"><div style="font-size:9px;color:rgba(26,20,16,.4)">Budget</div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#7B3FA0">15%</div></div>
+    </div>
+    <div style="padding:14px 18px;background:#fff">
+      <div style="background:#f3ecfa;border-radius:8px;padding:10px 14px;border-left:3px solid #7B3FA0;margin-bottom:12px;font-size:12px;color:rgba(26,20,16,.65);line-height:1.7">Construire une base de clients fidèles et récurrents. Transformer les visiteurs en membres actifs de la communauté Cosmos Angré.</div>
+      <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(26,20,16,.4);font-weight:700;margin-bottom:8px">5 actions</div>
+      <div style="font-size:12px;color:rgba(26,20,16,.55);line-height:1.8">
+        <div style="margin-bottom:4px"><strong style="color:#7B3FA0">01.</strong> Programme fidélité Cosmos Club — 3 niveaux (Silver/Gold/Platinum), carte NFC, app mobile</div>
+        <div style="margin-bottom:4px"><strong style="color:#7B3FA0">02.</strong> CRM et segmentation — HubSpot/Salesforce, automation, welcome journey, réactivation</div>
+        <div style="margin-bottom:4px"><strong style="color:#7B3FA0">03.</strong> Application mobile Cosmos Angré — fidélité, parking QR, GPS indoor, click &amp; collect</div>
+        <div style="margin-bottom:4px"><strong style="color:#7B3FA0">04.</strong> Newsletter 'Cosmos Magazine' — édito lifestyle mensuel, taux ouverture cible &gt;35%</div>
+        <div><strong style="color:#7B3FA0">05.</strong> Programmation culturelle récurrente — concerts, ateliers enfants, after-work, marché créateurs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Axe 04 -->
+  <div style="border-radius:12px;border:1px solid rgba(138,90,16,.15);overflow:hidden;margin-bottom:16px">
+    <div style="background:#fdf5e8;padding:14px 18px;display:flex;align-items:center;gap:12px">
+      <div style="width:36px;height:36px;border-radius:50%;background:#8a5a10;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px">🏛️</div>
+      <div style="flex:1"><div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#8a5a10;font-weight:700">Axe 04</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#1a1410">Relations Publiques &amp; Institutionnel</div></div>
+      <div style="text-align:right"><div style="font-size:9px;color:rgba(26,20,16,.4)">Budget</div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#8a5a10">10%</div></div>
+    </div>
+    <div style="padding:14px 18px;background:#fff">
+      <div style="background:#fdf5e8;border-radius:8px;padding:10px 14px;border-left:3px solid #8a5a10;margin-bottom:12px;font-size:12px;color:rgba(26,20,16,.65);line-height:1.7">Asseoir la légitimité institutionnelle de Cosmos Angré. Construire des relations stratégiques durables avec les acteurs publics, diplomatiques et économiques.</div>
+      <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(26,20,16,.4);font-weight:700;margin-bottom:8px">5 actions</div>
+      <div style="font-size:12px;color:rgba(26,20,16,.55);line-height:1.8">
+        <div style="margin-bottom:4px"><strong style="color:#8a5a10">01.</strong> Conférence de presse lancement — 80 journalistes, dossier presse bilingue FR/EN, live LinkedIn</div>
+        <div style="margin-bottom:4px"><strong style="color:#8a5a10">02.</strong> Relations diplomatiques et corporate — 15 ambassades, CCI, CGECI, Club Expatriés</div>
+        <div style="margin-bottom:4px"><strong style="color:#8a5a10">03.</strong> Programme RSE ancrage local — 60% emploi local, bourses étudiantes, jardins partagés</div>
+        <div style="margin-bottom:4px"><strong style="color:#8a5a10">04.</strong> Visibilité médias architecture — Prix Architecture Africaine, Architectural Digest Africa</div>
+        <div><strong style="color:#8a5a10">05.</strong> Lobbying et positionnement — labellisation Ministère, Conseil Économique et Social</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Axe 05 -->
+  <div style="border-radius:12px;border:1px solid rgba(26,107,107,.15);overflow:hidden;margin-bottom:16px">
+    <div style="background:#e8f5f5;padding:14px 18px;display:flex;align-items:center;gap:12px">
+      <div style="width:36px;height:36px;border-radius:50%;background:#1a6b6b;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px">🏪</div>
+      <div style="flex:1"><div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#1a6b6b;font-weight:700">Axe 05</div><div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#1a1410">Activation Enseignes</div></div>
+      <div style="text-align:right"><div style="font-size:9px;color:rgba(26,20,16,.4)">Budget</div><div style="font-family:'Cormorant Garamond',serif;font-size:20px;color:#1a6b6b">15%</div></div>
+    </div>
+    <div style="padding:14px 18px;background:#fff">
+      <div style="background:#e8f5f5;border-radius:8px;padding:10px 14px;border-left:3px solid #1a6b6b;margin-bottom:12px;font-size:12px;color:rgba(26,20,16,.65);line-height:1.7">Faire des enseignes de véritables ambassadeurs de la marque. Créer un écosystème commercial cohérent où chaque enseigne amplifie l'attractivité globale.</div>
+      <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(26,20,16,.4);font-weight:700;margin-bottom:8px">5 actions</div>
+      <div style="font-size:12px;color:rgba(26,20,16,.55);line-height:1.8">
+        <div style="margin-bottom:4px"><strong style="color:#1a6b6b">01.</strong> Kit marketing co-branding — charte, templates, guide communication, formation équipes</div>
+        <div style="margin-bottom:4px"><strong style="color:#1a6b6b">02.</strong> Semaine Cosmos — 7 jours post-inauguration, passport shopping gamifié, offres exclusives</div>
+        <div style="margin-bottom:4px"><strong style="color:#1a6b6b">03.</strong> Signalétique digitale partagée — 24 écrans 55'', CMS centralisé, 40/40/20 répartition</div>
+        <div style="margin-bottom:4px"><strong style="color:#1a6b6b">04.</strong> Comité Marketing Enseignes mensuel — données trafic/CA, coordination, WhatsApp opérationnel</div>
+        <div><strong style="color:#1a6b6b">05.</strong> Événements croisés et parcours thématiques — Gourmand, Famille, Business, Bien-être</div>
+      </div>
+    </div>
+  </div>
+
 </div>
 </div>
 

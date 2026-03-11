@@ -103,7 +103,7 @@ interface PropCard { title: string; sub: string; bars: PropBar[]; legend: PropLe
 interface TypoSection { label: string; fontFamily: string; fontSize: number; fontWeight: number; fontStyle?: string; color: string; example: [string, string]; desc: string }
 interface MaterialItem { grad: string; name: string; sub: string; desc: string }
 interface CommCard { bg: string; title: string; spec: string; brandText: string; brandSub?: string; brandSize?: number; brandWeight?: number }
-interface LogoVariant { bg: string; stroke: string; tag: string; name: string; spec: string }
+interface LogoVariant { bg: string; stroke: string; tag: string; name: string; spec: string; oColor?: string }
 interface ParcoursCard { border: string; step: string; title: string; text: string; quote: string }
 interface EspaceBar { w: string; bg: string; c: string; l: string }
 interface EspaceCommun { zone: string; title: string; bars: EspaceBar[]; rules: string[] }
@@ -262,7 +262,7 @@ const contentC: SmbContent = {
     { bg: '#2C1A0A', stroke: '#F2EBDD', tag: 'Ébène Chaud', name: 'Fond Ébène', spec: 'Prestige, signalétique, documents. Points crème.' },
     { bg: '#A85430', stroke: '#F2EBDD', tag: 'TEJA', name: 'Fond Terracotta Foncé', spec: 'Murs à fort impact, entrées de zones. Points crème.' },
     { bg: '#C47850', stroke: '#2C1A0A', tag: 'IGNERO', name: 'Fond Terracotta Doux', spec: 'Zones de transition, espaces larges. Points ébène.' },
-    { bg: '#C9943A', stroke: '#2C1A0A', tag: 'Bronze Doré', name: 'Fond Bronze', spec: 'Logo, lettrage, luminaires. Points ébène.' },
+    { bg: '#C9943A', stroke: '#2C1A0A', tag: 'Bronze Doré', name: 'Fond Bronze', spec: 'Logo, lettrage, luminaires. Points ébène.', oColor: '#2C1A0A' },
     { bg: '#6D7447', stroke: '#F2EBDD', tag: 'Kaki Végétal', name: 'Fond Kaki', spec: 'Jardinières, zones vertes, événements. Points crème.' },
     { bg: '#B8AA8C', stroke: '#2C1A0A', tag: 'Bardage Cosmos', name: 'Fond Grège Doré', spec: 'Façade extérieure, packaging. Points ébène.' },
     { bg: '#D4C9B0', stroke: '#2C1A0A', tag: 'Sol Cosmos', name: 'Fond Terrazo', spec: 'Sol signature, constellation scintillante. Points ébène.' },
@@ -426,9 +426,9 @@ const contentA: SmbContent = {
   logoVariants: [
     { bg: '#F2EBDD', stroke: '#2F5439', tag: 'Sable Territorial', name: 'Fond Sable', spec: 'Murs intérieurs, halls, lounge. Points Forêt, O or.' },
     { bg: '#2F5439', stroke: '#F2EBDD', tag: 'Forêt Profond', name: 'Fond Forêt', spec: 'Enseigne, signalétique, communication. Points sable, O or.' },
-    { bg: '#C9943A', stroke: '#1A1410', tag: 'Or Cuivré', name: 'Fond Or', spec: 'Logo, lettrage, luminaires. Points noir chaud.' },
+    { bg: '#C9943A', stroke: '#1A1410', tag: 'Or Cuivré', name: 'Fond Or', spec: 'Logo, lettrage, luminaires. Points noir chaud.', oColor: '#1A1410' },
     { bg: '#76764D', stroke: '#F2EBDD', tag: 'Kaki Minéral', name: 'Fond Kaki', spec: 'Jardinières, événements. Points sable.' },
-    { bg: '#E8C97A', stroke: '#2F5439', tag: 'Or Doux', name: 'Fond Or Doux', spec: 'Icônes digitales, filets décoratifs. Points Forêt.' },
+    { bg: '#E8C97A', stroke: '#2F5439', tag: 'Or Doux', name: 'Fond Or Doux', spec: 'Icônes digitales, filets décoratifs. Points Forêt.', oColor: '#2F5439' },
     { bg: '#1A1410', stroke: '#F2EBDD', tag: 'Noir Chaud', name: 'Fond Noir', spec: 'Documents officiels BEFA/EXCO. Points sable, O or.' },
     { bg: '#B8AA8C', stroke: '#2F5439', tag: 'Bardage Cosmos', name: 'Fond Grège Doré', spec: 'Façade extérieure, packaging. Points Forêt.' },
     { bg: '#D4C9B0', stroke: '#2F5439', tag: 'Sol Cosmos', name: 'Fond Terrazo', spec: 'Actif sensoriel, constellation au sol. Points Forêt.' },
@@ -598,7 +598,7 @@ const contentB: SmbContent = {
     { bg: '#D4C9B0', stroke: '#0D1B4B', tag: 'Sol Cosmos', name: 'Fond Terrazo', spec: 'Sol signature terrazo granito. Points bleu nuit.' },
     { bg: '#B8AA8C', stroke: '#0D1B4B', tag: 'Bardage Cosmos', name: 'Fond Grège Doré', spec: 'Façade extérieure, packaging. Points bleu nuit.' },
     { bg: '#7A5C42', stroke: '#FAF7F2', tag: 'Kutu Baffle', name: 'Fond Noyer Fumé', spec: 'Têtes de mur, architectural. Points blanc chaud.' },
-    { bg: '#B8924A', stroke: '#0D1B4B', tag: 'Or Mat', name: 'Fond Or', spec: 'Logo, lettrage, CTA. Points bleu nuit.' },
+    { bg: '#B8924A', stroke: '#0D1B4B', tag: 'Or Mat', name: 'Fond Or', spec: 'Logo, lettrage, CTA. Points bleu nuit.', oColor: '#0D1B4B' },
     { bg: '#1A3060', stroke: '#B8924A', tag: 'Bleu Profond', name: 'Fond Bleu Profond', spec: 'Sous-menus, hover, dégradés. Points or mat.' },
     { bg: '#0D1B4B', stroke: '#B8924A', tag: 'Bleu Nuit', name: 'Fond Bleu Nuit', spec: 'Digital, packaging, textile. Points or mat.' },
     { bg: '#060E2A', stroke: '#ffffff', tag: 'Nuit Abyssale', name: 'Fond Nuit Profonde', spec: 'Carte Cosmos Club Black, fond premium. Points blancs.' },
@@ -769,7 +769,7 @@ const contentD: SmbContent = {
     { bg: '#898D5D', stroke: '#F5F0E4', tag: 'Kaki Végétal', name: 'Fond Kaki', spec: 'Accents archi, textile staff, logo. Points ivoire.' },
     { bg: '#7A5C42', stroke: '#F5F0E4', tag: 'Kutu Baffle', name: 'Fond Noyer Fumé', spec: 'Têtes de mur, architectural. Points ivoire.' },
     { bg: '#F5F0E4', stroke: '#898D5D', tag: 'Ivoire Chaud', name: 'Fond Ivoire', spec: 'Contre-fonds, transitions. Points kaki.' },
-    { bg: '#D4A843', stroke: '#1C2215', tag: 'Or Soleil', name: 'Fond Or', spec: 'Signalétique, lettrage, CTA. Points forêt nuit.' },
+    { bg: '#D4A843', stroke: '#1C2215', tag: 'Or Soleil', name: 'Fond Or', spec: 'Signalétique, lettrage, CTA. Points forêt nuit.', oColor: '#1C2215' },
     { bg: '#6B7A4A', stroke: '#F5F0E4', tag: 'Mousse', name: 'Fond Mousse', spec: 'Jardinières, bandes, événements. Points ivoire.' },
     { bg: '#2C3E6B', stroke: '#D4A843', tag: 'Nuit Végétale', name: 'Fond Cosmique', spec: 'Carte Cosmos Club Gold, dark mode. Points or.' },
     { bg: '#FAFAF6', stroke: '#898D5D', tag: 'Blanc Pur', name: 'Fond Blanc', spec: 'Plafonds, zones calmes. Points kaki.' },

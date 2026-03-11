@@ -4,11 +4,13 @@ interface CosmosLogoProps {
   height?: number;
   className?: string;
   dotColor?: string;
+  oColor?: string;
 }
 
 const GOLD = '#C9943A';
 
-const CosmosLogo: React.FC<CosmosLogoProps> = ({ height = 90, className = '', dotColor = '#ffffff' }) => {
+const CosmosLogo: React.FC<CosmosLogoProps> = ({ height = 90, className = '', dotColor = '#ffffff', oColor }) => {
+  const oFill = oColor || GOLD;
   const dotStyle = {
     fill: 'none',
     stroke: dotColor,
@@ -40,8 +42,8 @@ const CosmosLogo: React.FC<CosmosLogoProps> = ({ height = 90, className = '', do
         {...dotStyle}
       />
 
-      {/* First O — circle outline in gold, same height */}
-      <circle cx={x(1) + 20} cy={cy} r={oR} fill="none" stroke={GOLD} strokeWidth={2} />
+      {/* First O — circle outline, same height */}
+      <circle cx={x(1) + 20} cy={cy} r={oR} fill="none" stroke={oFill} strokeWidth={2} />
 
       {/* S — 44 tall, ~38 wide */}
       <path
@@ -57,8 +59,8 @@ const CosmosLogo: React.FC<CosmosLogoProps> = ({ height = 90, className = '', do
         {...dotStyle}
       />
 
-      {/* Second O — filled gold circle, same height */}
-      <circle cx={x(4) + 20} cy={cy} r={oR} fill={GOLD} />
+      {/* Second O — filled circle, same height */}
+      <circle cx={x(4) + 20} cy={cy} r={oR} fill={oFill} />
 
       {/* S — same path */}
       <path
@@ -76,7 +78,7 @@ const CosmosLogo: React.FC<CosmosLogoProps> = ({ height = 90, className = '', do
         fontSize={22}
         fontWeight={600}
         letterSpacing={10}
-        fill={GOLD}
+        fill={oFill}
       >
         ANGR&#xC9;
       </text>

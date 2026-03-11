@@ -311,7 +311,7 @@ const LogoSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
             {variants.map((v, i) => (
               <div key={i} className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.08)] border border-black/[.04]">
                 <div className="flex justify-center items-center py-14 px-8" style={{ background: v.bg }}>
-                  <CosmosLogo height={65} dotColor={v.stroke} />
+                  <CosmosLogo height={65} dotColor={v.stroke} oColor={v.oColor} />
                 </div>
                 <div className="px-6 py-5 bg-white border-t border-black/[.04]">
                   <div className="flex items-center justify-between mb-2">
