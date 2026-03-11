@@ -136,7 +136,7 @@ const Cover: React.FC = () => (
         {/* Murs intérieurs — Terracotta */}
         <div className="rounded-2xl overflow-hidden border border-white/[.06] bg-navy/60 backdrop-blur-sm">
           <div className="h-20 relative overflow-hidden">
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #C2724A 0%, #D4885C 50%, #B8643E 100%)' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #D4C4A8 0%, #E0D2B8 50%, #C8B89C 100%)' }} />
             <div className="absolute bottom-2 right-2 text-[8px] font-mono font-bold px-1.5 py-0.5 rounded bg-black/30 text-white/80">RAL 040</div>
           </div>
           <div className="px-3 py-2.5">

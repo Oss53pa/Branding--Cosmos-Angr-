@@ -62,30 +62,68 @@ export default function CompetitiveLandscape({ scenarioKey }: { scenarioKey: Sce
         </table>
       </div>
 
-      {/* Matrice de positionnement */}
+      {/* Matrice de positionnement — Premium */}
       <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 16 }}>Matrice de positionnement</div>
-      <div style={{ position: 'relative', width: '100%', maxWidth: 500, height: 360, margin: '0 auto 40px', background: '#fff', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 14, padding: 20 }}>
-        {/* Axes */}
-        <div style={{ position: 'absolute', left: '50%', top: 20, bottom: 20, width: 1, background: 'rgba(0,0,0,0.1)' }} />
-        <div style={{ position: 'absolute', top: '50%', left: 20, right: 20, height: 1, background: 'rgba(0,0,0,0.1)' }} />
-        {/* Labels axes */}
-        <div style={{ position: 'absolute', top: 8, left: '50%', transform: 'translateX(-50%)', fontSize: 8, letterSpacing: 1, color: 'rgba(0,0,0,0.3)', textTransform: 'uppercase' }}>Premium</div>
-        <div style={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)', fontSize: 8, letterSpacing: 1, color: 'rgba(0,0,0,0.3)', textTransform: 'uppercase' }}>Accessible</div>
-        <div style={{ position: 'absolute', left: 8, top: '50%', transform: 'translateY(-50%) rotate(-90deg)', fontSize: 8, letterSpacing: 1, color: 'rgba(0,0,0,0.3)', textTransform: 'uppercase' }}>Fonctionnel</div>
-        <div style={{ position: 'absolute', right: 8, top: '50%', transform: 'translateY(-50%) rotate(90deg)', fontSize: 8, letterSpacing: 1, color: 'rgba(0,0,0,0.3)', textTransform: 'uppercase' }}>Expérientiel</div>
+      <div style={{ position: 'relative', width: '100%', maxWidth: 640, height: 480, margin: '0 auto 40px', background: '#1a1a2e', borderRadius: 20, padding: 0, overflow: 'hidden', boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }}>
+        {/* Background grid pattern */}
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.04, backgroundImage: 'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-        {/* Dots */}
+        {/* Quadrant backgrounds */}
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '50%', height: '50%', background: 'rgba(255,255,255,0.015)' }} />
+        <div style={{ position: 'absolute', top: 0, right: 0, width: '50%', height: '50%', background: `rgba(${ac.rgb},0.08)`, borderBottomLeftRadius: 0 }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, width: '50%', height: '50%', background: 'rgba(255,255,255,0.01)' }} />
+        <div style={{ position: 'absolute', bottom: 0, right: 0, width: '50%', height: '50%', background: 'rgba(255,255,255,0.02)' }} />
+
+        {/* Quadrant labels */}
+        <div style={{ position: 'absolute', top: 20, right: 20, fontSize: 8, letterSpacing: 2, color: `rgba(${ac.rgb},0.4)`, textTransform: 'uppercase', textAlign: 'right', lineHeight: 1.6 }}>Zone premium<br/>expérientielle</div>
+        <div style={{ position: 'absolute', top: 20, left: 20, fontSize: 8, letterSpacing: 2, color: 'rgba(255,255,255,0.12)', textTransform: 'uppercase', lineHeight: 1.6 }}>Premium<br/>fonctionnel</div>
+        <div style={{ position: 'absolute', bottom: 20, left: 20, fontSize: 8, letterSpacing: 2, color: 'rgba(255,255,255,0.12)', textTransform: 'uppercase', lineHeight: 1.6 }}>Accessible<br/>fonctionnel</div>
+        <div style={{ position: 'absolute', bottom: 20, right: 20, fontSize: 8, letterSpacing: 2, color: 'rgba(255,255,255,0.12)', textTransform: 'uppercase', textAlign: 'right', lineHeight: 1.6 }}>Accessible<br/>expérientiel</div>
+
+        {/* Axes */}
+        <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 1, background: 'linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.08) 100%)' }} />
+        <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.08) 100%)' }} />
+
+        {/* Axis labels with arrows */}
+        <div style={{ position: 'absolute', top: '50%', left: 12, transform: 'translateY(-50%) rotate(-90deg)', fontSize: 7, letterSpacing: 3, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', fontWeight: 600 }}>Fonctionnel</div>
+        <div style={{ position: 'absolute', top: '50%', right: 12, transform: 'translateY(-50%) rotate(90deg)', fontSize: 7, letterSpacing: 3, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', fontWeight: 600 }}>Expérientiel</div>
+        <div style={{ position: 'absolute', top: 6, left: '50%', transform: 'translateX(-50%)', fontSize: 7, letterSpacing: 3, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', fontWeight: 600 }}>Premium</div>
+        <div style={{ position: 'absolute', bottom: 6, left: '50%', transform: 'translateX(-50%)', fontSize: 7, letterSpacing: 3, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', fontWeight: 600 }}>Accessible</div>
+
+        {/* Competitor dots */}
         {[
-          { name: 'Cosmos Angré', x: 78, y: 18, color: ac.main, size: 14, bold: true },
-          { name: 'PlaYce', x: 25, y: 72, color: '#6b7280', size: 10, bold: false },
-          { name: 'Cap Sud', x: 30, y: 60, color: '#6b7280', size: 10, bold: false },
-          { name: 'Abidjan Mall', x: 55, y: 52, color: '#6b7280', size: 10, bold: false },
+          { name: 'PlaYce Marcory', sub: 'Grande distribution', x: 25, y: 68, color: 'rgba(255,255,255,0.35)', size: 10 },
+          { name: 'Cap Sud', sub: 'Proximité', x: 32, y: 58, color: 'rgba(255,255,255,0.35)', size: 10 },
+          { name: 'Abidjan Mall', sub: 'Généraliste', x: 55, y: 52, color: 'rgba(255,255,255,0.45)', size: 12 },
         ].map((dot, i) => (
           <div key={i} style={{ position: 'absolute', left: `${dot.x}%`, top: `${dot.y}%`, transform: 'translate(-50%,-50%)' }}>
-            <div style={{ width: dot.size, height: dot.size, borderRadius: '50%', background: dot.color, margin: '0 auto 4px', boxShadow: dot.bold ? `0 0 12px ${dot.color}40` : 'none' }} />
-            <div style={{ fontSize: 8, fontWeight: dot.bold ? 700 : 500, color: dot.color, textAlign: 'center', whiteSpace: 'nowrap' }}>{dot.name}</div>
+            <div style={{ width: dot.size, height: dot.size, borderRadius: '50%', background: dot.color, margin: '0 auto 6px', border: '1.5px solid rgba(255,255,255,0.15)' }} />
+            <div style={{ textAlign: 'center', whiteSpace: 'nowrap' }}>
+              <div style={{ fontSize: 8, fontWeight: 600, color: 'rgba(255,255,255,0.5)' }}>{dot.name}</div>
+              <div style={{ fontSize: 7, color: 'rgba(255,255,255,0.25)' }}>{dot.sub}</div>
+            </div>
           </div>
         ))}
+
+        {/* Cosmos Angré — Hero dot */}
+        <div style={{ position: 'absolute', left: '78%', top: '18%', transform: 'translate(-50%,-50%)' }}>
+          {/* Glow rings */}
+          <div style={{ position: 'absolute', inset: -20, borderRadius: '50%', background: `radial-gradient(circle, ${ac.main}20 0%, transparent 70%)` }} />
+          <div style={{ position: 'absolute', inset: -12, borderRadius: '50%', border: `1px solid ${ac.main}15` }} />
+          <div style={{ position: 'absolute', inset: -6, borderRadius: '50%', border: `1px solid ${ac.main}25` }} />
+          {/* Main dot */}
+          <div style={{ width: 18, height: 18, borderRadius: '50%', background: `linear-gradient(135deg, ${ac.main}, #C9943A)`, margin: '0 auto', boxShadow: `0 0 20px ${ac.main}50, 0 0 40px ${ac.main}20`, border: '2px solid rgba(255,255,255,0.3)' }} />
+          {/* Label card */}
+          <div style={{ marginTop: 10, background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '8px 14px', textAlign: 'center', whiteSpace: 'nowrap' }}>
+            <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 12, fontWeight: 600, color: '#C9943A' }}>Cosmos Angré</div>
+            <div style={{ fontSize: 7, color: 'rgba(255,255,255,0.4)', letterSpacing: 1, textTransform: 'uppercase', marginTop: 2 }}>Premium lifestyle</div>
+          </div>
+        </div>
+
+        {/* Connecting dashed line from competitors to Cosmos */}
+        <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+          <line x1="55%" y1="52%" x2="76%" y2="20%" stroke={`${ac.main}15`} strokeWidth="1" strokeDasharray="4 4" />
+        </svg>
       </div>
 
       {/* Avantages compétitifs */}

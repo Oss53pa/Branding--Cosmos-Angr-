@@ -545,7 +545,9 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
           <div className="sub">Cosmos Angré · Charte d'aménagement locataire</div>
           <div className="divider kaki" />
           <div className="tenant-intro">
-            <div className="tenant-intro-icon">🏬</div>
+            <div className="tenant-intro-icon" style={{ fontSize: 28, lineHeight: 1, color: 'var(--kaki)' }}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+            </div>
             <div className="tenant-intro-text">
               Cosmos Angré est un <strong>écrin premium</strong> conçu pour mettre en valeur ses enseignes. Notre identité visuelle s'exprime sur les parties communes, les façades du mall et la communication globale. <strong>Dans votre espace, vous êtes chez vous.</strong><br/><br/>
               Cette charte définit les règles d'harmonie qui permettent à votre enseigne de rayonner dans un environnement cohérent et premium. Elle n'est pas contraignante — elle est protectrice.

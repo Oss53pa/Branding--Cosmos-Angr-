@@ -1,5 +1,5 @@
 import React from 'react';
-import { Camera, Sun, Maximize, Palette, Sparkles } from 'lucide-react';
+import { Camera, Sun, Maximize, Palette, Sparkles, Image, Users, Search } from 'lucide-react';
 import type { ScenarioKey } from './Scenarios';
 
 const data: Record<ScenarioKey, {
@@ -104,12 +104,12 @@ export default function PhotographyGuidelines({ scenarioKey }: { scenarioKey: Sc
       <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 16 }}>Briefs moodboard</div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16 }}>
         {[
-          { type: 'Hero shot', emoji: '📸', desc: d.hero },
-          { type: 'Lifestyle', emoji: '👥', desc: d.lifestyle },
-          { type: 'Détail / Texture', emoji: '🔍', desc: d.detail },
+          { type: 'Hero shot', icon: Image, desc: d.hero },
+          { type: 'Lifestyle', icon: Users, desc: d.lifestyle },
+          { type: 'Détail / Texture', icon: Search, desc: d.detail },
         ].map((brief, i) => (
           <div key={i} style={{ background: `rgba(${ac.rgb},0.04)`, border: `1px solid rgba(${ac.rgb},0.12)`, borderRadius: 14, padding: 24 }}>
-            <div style={{ fontSize: 24, marginBottom: 12 }}>{brief.emoji}</div>
+            <brief.icon size={24} color={ac.main} style={{ marginBottom: 12 }} />
             <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 16, fontWeight: 600, color: '#1a1a2e', marginBottom: 10 }}>{brief.type}</div>
             <div style={{ fontSize: 10.5, color: 'rgba(0,0,0,0.55)', lineHeight: 1.7 }}>{brief.desc}</div>
           </div>

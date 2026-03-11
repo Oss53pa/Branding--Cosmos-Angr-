@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Eye, Users, Calendar, CheckCircle, ArrowRight } from 'lucide-react';
+import { Shield, Eye, Users, Calendar, CheckCircle, ArrowRight, Sun, CloudRain, BookOpen, Sparkles } from 'lucide-react';
 import type { ScenarioKey } from './Scenarios';
 
 const accents: Record<ScenarioKey, { main: string; rgb: string }> = {
@@ -30,15 +30,15 @@ export default function BrandGovernance({ scenarioKey }: { scenarioKey: Scenario
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16, marginBottom: 32 }}>
           {[
-            { period: 'Saison sèche', months: 'Nov – Mars', emoji: '☀️', guidelines: ['Intensifier les tons chauds dans la communication', 'Campagnes outdoor et terrasses mises en avant', 'Événements extérieurs, animations en plein air', 'Éclairage plus vif, ambiance solaire'] },
-            { period: 'Saison des pluies', months: 'Avr – Juil', emoji: '🌧️', guidelines: ['Tons plus frais et apaisants', 'Focus sur les espaces intérieurs et le cocooning', 'Éclairage chaleureux compensatoire', 'Campagnes digitales renforcées'] },
-            { period: 'Rentrée', months: 'Août – Oct', emoji: '📚', guidelines: ['Campagnes dynamiques et énergiques', 'Focus familles et back-to-school', 'Nouvelles collections mises en avant', 'Animations enfants et ados'] },
-            { period: 'Fêtes', months: 'Déc – Jan', emoji: '✨', guidelines: ['Décoration festive respectant la charte', 'Éditions limitées et coffrets cadeaux', 'Illuminations (blanc chaud + accents gold)', 'Programmation culturelle spéciale'] },
+            { period: 'Saison sèche', months: 'Nov – Mars', icon: Sun, guidelines: ['Intensifier les tons chauds dans la communication', 'Campagnes outdoor et terrasses mises en avant', 'Événements extérieurs, animations en plein air', 'Éclairage plus vif, ambiance solaire'] },
+            { period: 'Saison des pluies', months: 'Avr – Juil', icon: CloudRain, guidelines: ['Tons plus frais et apaisants', 'Focus sur les espaces intérieurs et le cocooning', 'Éclairage chaleureux compensatoire', 'Campagnes digitales renforcées'] },
+            { period: 'Rentrée', months: 'Août – Oct', icon: BookOpen, guidelines: ['Campagnes dynamiques et énergiques', 'Focus familles et back-to-school', 'Nouvelles collections mises en avant', 'Animations enfants et ados'] },
+            { period: 'Fêtes', months: 'Déc – Jan', icon: Sparkles, guidelines: ['Décoration festive respectant la charte', 'Éditions limitées et coffrets cadeaux', 'Illuminations (blanc chaud + accents gold)', 'Programmation culturelle spéciale'] },
           ].map((s, i) => (
             <div key={i} style={cardStyle}>
               <div style={{ background: `rgba(${ac.rgb},0.06)`, padding: '16px 20px', borderBottom: '1px solid rgba(0,0,0,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <span style={{ fontSize: 20 }}>{s.emoji}</span>
+                  <s.icon size={20} color={ac.main} />
                   <div>
                     <div style={{ fontSize: 12, fontWeight: 600, color: '#1a1a2e' }}>{s.period}</div>
                     <div style={{ fontSize: 9, color: 'rgba(0,0,0,0.4)' }}>{s.months}</div>
