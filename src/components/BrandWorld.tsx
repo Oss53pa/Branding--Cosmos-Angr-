@@ -298,7 +298,7 @@ const LogoSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
         <div className={`px-8 py-6 border-b border-black/[.06] bg-gradient-to-br ${grad(k)}`}>
           <div className="text-[9px] font-bold tracking-[.25em] uppercase mb-1" style={{ color: c.accent }}>Brand World · 02</div>
           <div className="font-cormorant text-[24px] text-white font-light">Déclinaisons du Logo</div>
-          <div className="text-[10px] text-white/30 mt-1">6 déclinaisons · Supports physiques & digitaux</div>
+          <div className="text-[10px] text-white/30 mt-1">10 déclinaisons · Supports physiques & digitaux</div>
         </div>
 
         <div className="p-8 space-y-6">
@@ -415,6 +415,132 @@ const LogoSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
                 <span className="text-[8px] font-bold tracking-[.12em] uppercase px-3 py-1 rounded-full" style={{ background: `${c.accent}15`, color: c.accent }}>Extérieur</span>
               </div>
               <div className="text-[11px] text-black/45">Logo inox brossé 80cm. Halo LED 3000K, bardage scénario. Visible à 150m.</div>
+            </div>
+          </div>
+
+          {/* ── 07-08 : Textile staff + Signalétique intérieure ── */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Textile staff */}
+            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.10)]">
+              <div className="flex justify-center items-center py-14 px-8" style={{ background: c.primary }}>
+                <div className="relative">
+                  {/* Polo shape */}
+                  <div className="w-52 h-40 rounded-xl relative overflow-hidden" style={{ background: c.primary }}>
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-5 rounded-b-full" style={{ background: `${c.secondary}30` }} />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <CosmosLogo height={28} dotColor={c.textOnDark} />
+                        <div className="mt-2 text-[7px] font-bold tracking-[.25em] uppercase" style={{ color: `${c.accent}80` }}>STAFF</div>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-3 left-3 right-3 h-px" style={{ background: `${c.accent}20` }} />
+                  </div>
+                </div>
+              </div>
+              <div className="px-6 py-5 bg-white border-t border-black/[.04]">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="text-[13px] font-bold" style={{ color: c.primary }}>Textile staff — Broderie</div>
+                  <span className="text-[8px] font-bold tracking-[.12em] uppercase px-3 py-1 rounded-full" style={{ background: `${c.accent}15`, color: c.accent }}>Uniforme</span>
+                </div>
+                <div className="text-[11px] text-black/45">Polo piqué coton bio 220g. Logo brodé poitrine gauche. Boutons laiton.</div>
+              </div>
+            </div>
+            {/* Signalétique intérieure */}
+            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.06)]">
+              <div className="flex justify-center items-center py-14 px-8" style={{ background: c.secondary }}>
+                <div className="w-52 rounded-lg overflow-hidden shadow-lg border" style={{ borderColor: `${c.primary}15` }}>
+                  <div className="h-1.5" style={{ background: c.accent }} />
+                  <div className="bg-white px-5 py-4">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: `${c.primary}12` }}>
+                        <MapPin size={12} style={{ color: c.primary }} />
+                      </div>
+                      <div className="text-[10px] font-bold tracking-[.15em] uppercase" style={{ color: c.primary }}>Niveau 1</div>
+                    </div>
+                    <CosmosLogo height={18} dotColor={c.primary} />
+                    <div className="mt-3 space-y-1.5">
+                      {['Mode & Beauté', 'Restauration', 'Cinéma'].map(z => (
+                        <div key={z} className="flex items-center gap-2 text-[9px]" style={{ color: `${c.primary}80` }}>
+                          <ArrowRight size={8} style={{ color: c.accent }} />
+                          {z}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="px-6 py-5 bg-white border-t border-black/[.04]">
+                <div className="text-[13px] font-bold mb-2" style={{ color: c.primary }}>Signalétique intérieure — Panneaux</div>
+                <div className="text-[11px] text-black/45">Panneaux allées, directions intérieures. Fond neutre, logo discret.</div>
+              </div>
+            </div>
+          </div>
+
+          {/* ── 09-10 : Sac shopping + Document BEFA ── */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Sac shopping */}
+            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.10)]">
+              <div className="flex justify-center items-center py-14 px-8" style={{ background: `${darkBg(c, k, 145)}` }}>
+                <div className="relative">
+                  {/* Bag mockup */}
+                  <div className="w-40 h-48 rounded-md relative overflow-hidden" style={{ background: '#B8AA8C' }}>
+                    {/* Handles */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 flex gap-8">
+                      <div className="w-px h-5" style={{ background: `${c.dark}40` }} />
+                      <div className="w-px h-5" style={{ background: `${c.dark}40` }} />
+                    </div>
+                    <div className="absolute top-3 left-1/2 -translate-x-1/2 w-14 h-3 rounded-t-full border-t-2 border-l-2 border-r-2" style={{ borderColor: `${c.dark}30` }} />
+                    {/* Logo centered */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <CosmosLogo height={24} dotColor={c.dark} />
+                      <div className="w-12 h-px mt-3" style={{ background: `${c.accent}50` }} />
+                    </div>
+                    {/* Bottom fold line */}
+                    <div className="absolute bottom-6 left-3 right-3 h-px" style={{ background: `${c.dark}10` }} />
+                  </div>
+                </div>
+              </div>
+              <div className="px-6 py-5 bg-white border-t border-black/[.04]">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="text-[13px] font-bold" style={{ color: c.primary }}>Sac shopping — Packaging</div>
+                  <span className="text-[8px] font-bold tracking-[.12em] uppercase px-3 py-1 rounded-full" style={{ background: `${c.accent}15`, color: c.accent }}>Retail</span>
+                </div>
+                <div className="text-[11px] text-black/45">Kraft recyclé grège doré. Logo scénario. Poignées coton tressé.</div>
+              </div>
+            </div>
+            {/* Document BEFA */}
+            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.06)]">
+              <div className="flex justify-center items-center py-14 px-8" style={{ background: c.secondary }}>
+                <div className="w-48 bg-white rounded-md shadow-lg overflow-hidden border border-black/[.06]">
+                  {/* Letterhead */}
+                  <div className="px-5 pt-5 pb-3">
+                    <div className="flex items-center justify-between mb-4">
+                      <CosmosLogo height={14} dotColor={c.primary} />
+                      <div className="text-[6px] font-medium tracking-wider" style={{ color: `${c.primary}50` }}>CONFIDENTIEL</div>
+                    </div>
+                    <div className="space-y-1.5">
+                      <div className="h-1.5 rounded-full w-full" style={{ background: `${c.primary}10` }} />
+                      <div className="h-1.5 rounded-full w-4/5" style={{ background: `${c.primary}08` }} />
+                      <div className="h-1.5 rounded-full w-full" style={{ background: `${c.primary}10` }} />
+                      <div className="h-1.5 rounded-full w-3/5" style={{ background: `${c.primary}08` }} />
+                      <div className="h-1.5 rounded-full w-full" style={{ background: `${c.primary}10` }} />
+                      <div className="h-1.5 rounded-full w-2/3" style={{ background: `${c.primary}08` }} />
+                    </div>
+                  </div>
+                  <div className="h-1" style={{ background: `linear-gradient(90deg, ${c.accent}, ${c.primary}40)` }} />
+                  <div className="px-5 py-2 flex items-center justify-between">
+                    <div className="text-[5px] tracking-wider" style={{ color: `${c.primary}40` }}>New Heaven SA / CRMC</div>
+                    <div className="text-[5px] tracking-wider" style={{ color: `${c.accent}60` }}>EXCO</div>
+                  </div>
+                </div>
+              </div>
+              <div className="px-6 py-5 bg-white border-t border-black/[.04]">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="text-[13px] font-bold" style={{ color: c.primary }}>Document BEFA — En-tête officiel</div>
+                  <span className="text-[8px] font-bold tracking-[.12em] uppercase px-3 py-1 rounded-full" style={{ background: `${c.accent}15`, color: c.accent }}>Institutionnel</span>
+                </div>
+                <div className="text-[11px] text-black/45">Papier coton 120g. Logo discret. Filet or en bas de page. Documents EXCO.</div>
+              </div>
             </div>
           </div>
 
