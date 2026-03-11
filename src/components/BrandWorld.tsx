@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Crown, Gift, ShoppingBag, Shirt, Coffee, Key, BadgeCheck, Droplets, MapPin, ArrowUpRight, ArrowRight, ArrowDownRight, Star, Smartphone, CreditCard, Flag, Car, ParkingCircle, DoorOpen, Sparkles, Store, UtensilsCrossed, Heart, Route } from 'lucide-react';
 import type { ScenarioKey } from './Scenarios';
 import CosmosLogo from './CosmosLogo';
+import { smbContent } from './scenarioMasterBookData';
 import SignaletiqueTotemSection from './SignaletiqueTotems';
 import GoodiesMockupsSection from './GoodiesMockups';
 import TextileMockupsSection from './TextileMockups';
@@ -291,6 +292,7 @@ const AmbianceSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
 
 const LogoSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
   const c = sc[k];
+  const variants = smbContent[k].logoVariants;
 
   return (
     <div id="bw-logo" className="py-16 border-b border-black/[.08]">
@@ -298,126 +300,26 @@ const LogoSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
         <div className={`px-8 py-6 border-b border-black/[.06] bg-gradient-to-br ${grad(k)}`}>
           <div className="text-[9px] font-bold tracking-[.25em] uppercase mb-1" style={{ color: c.accent }}>Brand World · 02</div>
           <div className="font-cormorant text-[24px] text-white font-light">Déclinaisons du Logo</div>
-          <div className="text-[10px] text-white/30 mt-1">6 déclinaisons · Supports physiques & digitaux</div>
+          <div className="text-[10px] text-white/30 mt-1">{variants.length} déclinaisons · Supports physiques & digitaux</div>
         </div>
 
-        <div className="p-8 space-y-6">
-
-          {/* ── 01-02 : Logo fond sombre + clair ── */}
+        <div className="p-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.10)]">
-              <div className="flex justify-center items-center py-16 px-8" style={{ background: `${darkBg(c, k, 145)}` }}>
-                <CosmosLogo height={75} dotColor={c.textOnDark} />
-              </div>
-              <div className="px-6 py-5 bg-white border-t border-black/[.04]">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="text-[13px] font-bold" style={{ color: c.primary }}>Version principale — Fond sombre</div>
-                  <span className="text-[8px] font-bold tracking-[.12em] uppercase px-3 py-1 rounded-full" style={{ background: `${c.accent}15`, color: c.accent }}>Référence</span>
+            {variants.map((v, i) => (
+              <div key={i} className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.08)] border border-black/[.04]">
+                <div className="flex justify-center items-center py-14 px-8" style={{ background: v.bg }}>
+                  <CosmosLogo height={65} dotColor={v.stroke} />
                 </div>
-                <div className="text-[11px] text-black/45">Façade, en-tête, site web. Lettres pointillées blanches, O or.</div>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.06)]">
-              <div className="flex justify-center items-center py-16 px-8" style={{ background: c.secondary }}>
-                <CosmosLogo height={75} dotColor={c.primary} />
-              </div>
-              <div className="px-6 py-5 bg-white border-t border-black/[.04]">
-                <div className="text-[13px] font-bold mb-2" style={{ color: c.primary }}>Version fond clair</div>
-                <div className="text-[11px] text-black/45">Brochures, papier en-tête, signalétique intérieure.</div>
-              </div>
-            </div>
-          </div>
-
-          {/* ── 03 : CARTE COSMOS CLUB — même style que HomePage ── */}
-          <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.12)]">
-            <div className="flex justify-center items-center py-14 px-8" style={{ background: `${darkBg(c, k, 145)}` }}>
-              {/* Card — identique au style de la carte Club */}
-              <div className="relative w-80 h-48 md:w-96 md:h-56">
-                <div className="absolute inset-0 rounded-xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,.35)] transform rotate-3 hover:rotate-0 transition-transform duration-500" style={{ background: `linear-gradient(135deg, ${c.accent}ee, ${c.accent}bb 40%, ${c.accent}dd 60%, ${c.accent}aa)` }}>
-                  {/* Reflet */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent" />
-                  <div className="absolute inset-0 p-6 flex flex-col justify-between">
-                    <div className="flex items-center justify-between">
-                      <span className="font-cormorant text-lg font-medium tracking-wide" style={{ color: c.dark }}>COSMOS CLUB</span>
-                      <Crown className="w-6 h-6 opacity-60" style={{ color: c.dark }} strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <div className="w-10 h-7 rounded-sm mb-4" style={{ background: `${c.dark}20` }} />
-                      <div className="text-xs font-inter tracking-[0.3em] uppercase" style={{ color: `${c.dark}60` }}>
-                        **** **** **** 2026
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-inter uppercase tracking-wider" style={{ color: `${c.dark}60` }}>Platinum</span>
-                      <Gift className="w-5 h-5 opacity-40" style={{ color: c.dark }} strokeWidth={1.5} />
-                    </div>
+                <div className="px-6 py-5 bg-white border-t border-black/[.04]">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="text-[13px] font-bold" style={{ color: c.primary }}>{v.name}</div>
+                    <span className="text-[8px] font-bold tracking-[.12em] uppercase px-3 py-1 rounded-full whitespace-nowrap" style={{ background: `${c.accent}15`, color: c.accent }}>{v.tag}</span>
                   </div>
+                  <div className="text-[11px] text-black/45 leading-relaxed">{v.spec}</div>
                 </div>
               </div>
-            </div>
-            <div className="px-6 py-5 bg-white border-t border-black/[.04]">
-              <div className="flex items-center justify-between mb-2">
-                <div className="text-[13px] font-bold" style={{ color: c.primary }}>Carte Cosmos Club — Platinum</div>
-                <span className="text-[8px] font-bold tracking-[.12em] uppercase px-3 py-1 rounded-full" style={{ background: `${c.accent}15`, color: c.accent }}>Flagship</span>
-              </div>
-              <div className="text-[11px] text-black/45">PVC métallisé, puce contact, dorure à chaud, numérotation individuelle.</div>
-            </div>
+            ))}
           </div>
-
-          {/* ── 04-05 : Monochrome + Favicon ── */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.10)]">
-              <div className="flex justify-center items-center py-14 px-8" style={{ background: `${darkBg(c, k, 135)}` }}>
-                <MonoLogo color="white" h={60} />
-              </div>
-              <div className="px-6 py-5 bg-white border-t border-black/[.04]">
-                <div className="text-[13px] font-bold mb-2" style={{ color: c.primary }}>Monochrome blanc</div>
-                <div className="text-[11px] text-black/45">Gravure, embossage cuir, filigrane, watermark.</div>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-black/[.06] shadow-[0_8px_30px_rgba(0,0,0,.06)]">
-              <div className="flex justify-center items-center gap-8 py-14 px-8" style={{ background: c.secondary }}>
-                {[80, 52, 32].map((s, i) => (
-                  <div key={i} className="flex items-center justify-center shadow-lg" style={{
-                    width: s, height: s, borderRadius: s * 0.22,
-                    background: `${darkBg(c, k, 145)}`,
-                  }}>
-                    <svg viewBox="0 0 40 40" width={s * 0.5} height={s * 0.5}><circle cx={20} cy={20} r={16} fill={c.accent} /></svg>
-                  </div>
-                ))}
-              </div>
-              <div className="px-6 py-5 bg-white border-t border-black/[.04]">
-                <div className="text-[13px] font-bold mb-2" style={{ color: c.primary }}>Favicon / Icône App</div>
-                <div className="text-[11px] text-black/45">O plein or sur fond scénario. 512×512, 180×180, 32×32px.</div>
-              </div>
-            </div>
-          </div>
-
-          {/* ── 06 : Enseigne façade ── */}
-          <div className="rounded-2xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,.12)]">
-            <div className="relative flex justify-center items-center py-12 px-8 bg-gray-900">
-              <div className="relative w-full max-w-[400px]">
-                <div className="h-3 rounded-t-lg opacity-50" style={{ background: c.primary }} />
-                <div className="relative px-10 py-12 text-center" style={{ background: `${darkBg(c, k, 180)}` }}>
-                  <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse at 50% 50%, ${c.accent}15, transparent 60%)` }} />
-                  <div className="relative z-10">
-                    <CosmosLogo height={55} dotColor={c.textOnDark} />
-                    <div className="w-20 h-px mx-auto mt-4 opacity-40" style={{ background: c.accent }} />
-                    <div className="font-cormorant text-[11px] tracking-[.3em] mt-3 italic" style={{ color: `${c.accent}70` }}>{c.tagline}</div>
-                  </div>
-                </div>
-                <div className="h-2" style={{ background: `${c.dark}40` }} />
-              </div>
-            </div>
-            <div className="px-6 py-5 bg-white border-t border-black/[.04]">
-              <div className="flex items-center justify-between mb-2">
-                <div className="text-[13px] font-bold" style={{ color: c.primary }}>Enseigne façade — Rétro-éclairée</div>
-                <span className="text-[8px] font-bold tracking-[.12em] uppercase px-3 py-1 rounded-full" style={{ background: `${c.accent}15`, color: c.accent }}>Extérieur</span>
-              </div>
-              <div className="text-[11px] text-black/45">Logo inox brossé 80cm. Halo LED 3000K, bardage scénario. Visible à 150m.</div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
