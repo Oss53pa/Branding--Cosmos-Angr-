@@ -1,6 +1,6 @@
 import React from 'react';
 import CosmosLogo from './CosmosLogo';
-import { Megaphone, ShieldCheck, Route, Box, ArrowRight, Layers } from 'lucide-react';
+import { Megaphone, ShieldCheck, Route, Box, ArrowRight } from 'lucide-react';
 
 export type VolumeKey = 'marketing' | 'securite' | 'parcours';
 
@@ -170,102 +170,6 @@ const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => (
             </div>
           </button>
         ))}
-      </div>
-
-      {/* Palette matières */}
-      <div className="mt-12 max-w-[1400px] mx-auto">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center text-gold">
-            <Layers size={16} strokeWidth={1.5} />
-          </div>
-          <div>
-            <div className="text-[9px] font-bold tracking-[.25em] uppercase text-gold/50">Identité architecturale</div>
-            <div className="font-cormorant text-[22px] font-light text-white/80 leading-tight">Palette matières définitive</div>
-          </div>
-          <div className="h-px flex-1 bg-gold/10" />
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {/* Façade extérieure */}
-          <div className="rounded-2xl overflow-hidden border border-white/[.06] bg-[#12121f] group hover:border-white/[.12] transition-all">
-            <div className="h-24 relative" style={{ background: '#B8AA8C' }}>
-              <div className="absolute inset-0 opacity-20" style={{
-                backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(0,0,0,.08) 8px, rgba(0,0,0,.08) 9px)',
-              }} />
-              <div className="absolute bottom-2 right-2 text-[8px] font-mono font-bold px-1.5 py-0.5 rounded bg-black/30 text-white/80">#B8AA8C</div>
-            </div>
-            <div className="px-4 py-3">
-              <div className="text-[11px] font-semibold text-white/70 mb-0.5">Façade extérieure</div>
-              <div className="text-[9px] text-white/30 leading-relaxed">Aluminium nervuré mat</div>
-              <div className="text-[9px] text-gold/50 mt-1 font-medium">Grège doré</div>
-            </div>
-          </div>
-
-          {/* Têtes de mur — Kutu Baffle */}
-          <div className="rounded-2xl overflow-hidden border border-white/[.06] bg-[#12121f] group hover:border-white/[.12] transition-all">
-            <div className="h-24 relative" style={{ background: '#7A5C42' }}>
-              <div className="absolute inset-0 opacity-15" style={{
-                backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.12) 3px, rgba(0,0,0,.12) 4px)',
-              }} />
-              <div className="absolute bottom-2 right-2 text-[8px] font-mono font-bold px-1.5 py-0.5 rounded bg-black/30 text-white/80">#7A5C42</div>
-            </div>
-            <div className="px-4 py-3">
-              <div className="text-[11px] font-semibold text-white/70 mb-0.5">Têtes de mur</div>
-              <div className="text-[9px] text-white/30 leading-relaxed">Kutu Baffle noyer fumé</div>
-              <div className="text-[9px] text-gold/50 mt-1 font-medium">Brun noyer</div>
-            </div>
-          </div>
-
-          {/* Murs intérieurs — Terracotta */}
-          <div className="rounded-2xl overflow-hidden border border-white/[.06] bg-[#12121f] group hover:border-white/[.12] transition-all">
-            <div className="h-24 relative overflow-hidden">
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #C2724A 0%, #D4885C 50%, #B8643E 100%)' }} />
-              <div className="absolute bottom-2 right-2 text-[8px] font-mono font-bold px-1.5 py-0.5 rounded bg-black/30 text-white/80">RAL 040</div>
-            </div>
-            <div className="px-4 py-3">
-              <div className="text-[11px] font-semibold text-white/70 mb-0.5">Murs intérieurs</div>
-              <div className="text-[9px] text-white/30 leading-relaxed">Teja + Ignero RAL 040</div>
-              <div className="text-[9px] text-gold/50 mt-1 font-medium">Terracotta</div>
-            </div>
-          </div>
-
-          {/* Sol — Terrazo */}
-          <div className="rounded-2xl overflow-hidden border border-white/[.06] bg-[#12121f] group hover:border-white/[.12] transition-all">
-            <div className="h-24 relative" style={{ background: '#D4C9B0' }}>
-              {/* Terrazzo texture */}
-              <div className="absolute inset-0 opacity-40" style={{
-                backgroundImage: 'radial-gradient(circle 2px, rgba(255,255,255,.6) 0%, transparent 100%), radial-gradient(circle 1.5px, rgba(200,190,170,.5) 0%, transparent 100%), radial-gradient(circle 3px, rgba(240,235,220,.4) 0%, transparent 100%)',
-                backgroundSize: '18px 18px, 12px 14px, 22px 20px',
-                backgroundPosition: '0 0, 6px 8px, 14px 4px',
-              }} />
-              <div className="absolute bottom-2 right-2 text-[8px] font-mono font-bold px-1.5 py-0.5 rounded bg-black/30 text-white/80">#D4C9B0</div>
-            </div>
-            <div className="px-4 py-3">
-              <div className="text-[11px] font-semibold text-white/70 mb-0.5">Sol</div>
-              <div className="text-[9px] text-white/30 leading-relaxed">Terrazo granito beige</div>
-              <div className="text-[9px] text-gold/50 mt-1 font-medium">Éclats lumineux</div>
-            </div>
-          </div>
-
-          {/* Végétation */}
-          <div className="rounded-2xl overflow-hidden border border-white/[.06] bg-[#12121f] group hover:border-white/[.12] transition-all">
-            <div className="h-24 relative overflow-hidden">
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, #2D5A3D 0%, #3A7A4E 40%, #4A8C5A 70%, #2D5A3D 100%)' }} />
-              {/* Leaf texture */}
-              <svg className="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 100 100">
-                <path d="M20,80 Q30,40 50,30 Q45,55 20,80Z" fill="white" />
-                <path d="M60,90 Q65,50 80,35 Q78,60 60,90Z" fill="white" />
-                <path d="M40,70 Q48,45 65,40 Q58,55 40,70Z" fill="white" />
-              </svg>
-              <div className="absolute bottom-2 right-2 text-[8px] font-mono font-bold px-1.5 py-0.5 rounded bg-black/30 text-white/80">Naturel</div>
-            </div>
-            <div className="px-4 py-3">
-              <div className="text-[11px] font-semibold text-white/70 mb-0.5">Végétation</div>
-              <div className="text-[9px] text-white/30 leading-relaxed">Arbres tropicaux intégrés</div>
-              <div className="text-[9px] text-gold/50 mt-1 font-medium">Verts naturels</div>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Plan 3D commun */}

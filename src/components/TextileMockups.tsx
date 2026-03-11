@@ -43,19 +43,26 @@ interface SvgProps {
 }
 
 
-/* ── Shared inline logo paths for the COSMOS ANGRÉ dotted logo ── */
-const LogoPaths: React.FC<{ dotColor: string; goldColor: string; sw: number; gap: number }> = ({ dotColor, goldColor, sw, gap }) => {
-  const dot = { fill: 'none' as const, stroke: dotColor, strokeWidth: sw, strokeDasharray: `0.6,${gap}`, strokeLinecap: 'round' as const };
+/* ── Shared inline logo paths for the COSMOS ANGRÉ brodé logo ── */
+const LogoPaths: React.FC<{ dotColor: string; goldColor: string; sw: number }> = ({ dotColor, goldColor, sw }) => {
+  const solid = { fill: 'none' as const, stroke: dotColor, strokeWidth: sw, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
   return (
     <>
-      <path d="M38,5 A28,28 0 1,0 38,55" {...dot} />
+      {/* C */}
+      <path d="M38,5 A28,28 0 1,0 38,55" {...solid} />
+      {/* O gold */}
       <circle cx={98} cy={30} r={26} fill={goldColor} />
-      <circle cx={98} cy={30} r={26} fill="none" stroke="rgba(255,255,255,.25)" strokeWidth={2} />
-      <path d="M36,12 C32,2 24,0 15,0 C6,0 0,5 0,14 C0,24 8,28 20,28 C32,28 38,33 38,44 C38,53 31,58 20,58 C12,58 2,55 0,46" {...dot} transform="translate(136,2)" />
-      <path d="M0,58 L0,0 L25,34 L50,0 L50,58" {...dot} transform="translate(196,2)" />
+      <circle cx={98} cy={30} r={26} fill="none" stroke="rgba(255,255,255,.3)" strokeWidth={2} />
+      {/* S */}
+      <path d="M36,12 C32,2 24,0 15,0 C6,0 0,5 0,14 C0,24 8,28 20,28 C32,28 38,33 38,44 C38,53 31,58 20,58 C12,58 2,55 0,46" {...solid} transform="translate(136,2)" />
+      {/* M */}
+      <path d="M0,58 L0,0 L25,34 L50,0 L50,58" {...solid} transform="translate(196,2)" />
+      {/* O gold */}
       <circle cx={284} cy={30} r={26} fill={goldColor} />
-      <circle cx={284} cy={30} r={26} fill="none" stroke="rgba(255,255,255,.2)" strokeWidth={1.5} />
-      <path d="M36,12 C32,2 24,0 15,0 C6,0 0,5 0,14 C0,24 8,28 20,28 C32,28 38,33 38,44 C38,53 31,58 20,58 C12,58 2,55 0,46" {...dot} transform="translate(322,2)" />
+      <circle cx={284} cy={30} r={26} fill="none" stroke="rgba(255,255,255,.25)" strokeWidth={1.5} />
+      {/* S */}
+      <path d="M36,12 C32,2 24,0 15,0 C6,0 0,5 0,14 C0,24 8,28 20,28 C32,28 38,33 38,44 C38,53 31,58 20,58 C12,58 2,55 0,46" {...solid} transform="translate(322,2)" />
+      {/* ANGRÉ */}
       <text x="2" y="86" fontFamily="'Inter',sans-serif" fontSize="15" fontWeight="700" letterSpacing="7.5" fill={goldColor}>ANGRÉ</text>
     </>
   );
@@ -101,8 +108,8 @@ const PoloStaffSvg: React.FC<SvgProps> = ({ c, p, tw }) => (
       <path d="M222,102 Q218,360 216,648" stroke="rgba(0,0,0,.05)" strokeWidth="10" fill="none" />
       <path d="M378,102 Q382,360 384,648" stroke="rgba(0,0,0,.05)" strokeWidth="10" fill="none" />
       {/* Logo – poitrine gauche */}
-      <g transform="translate(148,148) scale(0.360)">
-        <LogoPaths dotColor={tw(0.95)} goldColor={c.accent} sw={5.5} gap={8} />
+      <g transform="translate(148,138) scale(0.52)">
+        <LogoPaths dotColor={tw(0.95)} goldColor={c.accent} sw={5} />
       </g>
     </svg>
   </div>
@@ -205,8 +212,8 @@ const PoloAccueilSvg: React.FC<SvgProps> = ({ c, p, primaryRgba }) => (
       <path d="M222,102 Q218,360 216,648" stroke="rgba(0,0,0,.04)" strokeWidth="10" fill="none" />
       <path d="M378,102 Q382,360 384,648" stroke="rgba(0,0,0,.04)" strokeWidth="10" fill="none" />
       {/* Logo – poitrine gauche – dark dots on light surface */}
-      <g transform="translate(148,148) scale(0.360)">
-        <LogoPaths dotColor={primaryRgba(0.92)} goldColor={c.accent} sw={5.5} gap={8} />
+      <g transform="translate(148,138) scale(0.52)">
+        <LogoPaths dotColor={primaryRgba(0.95)} goldColor={c.accent} sw={5} />
       </g>
     </svg>
   </div>
@@ -256,8 +263,8 @@ const CombiTechSvg: React.FC<SvgProps> = ({ c, p, tw }) => (
       <path d="M222,102 Q218,360 216,648" stroke="rgba(0,0,0,.06)" strokeWidth="10" fill="none" />
       <path d="M378,102 Q382,360 384,648" stroke="rgba(0,0,0,.06)" strokeWidth="10" fill="none" />
       {/* Logo – poitrine gauche, au-dessus poche */}
-      <g transform="translate(148,148) scale(0.360)">
-        <LogoPaths dotColor={tw(0.90)} goldColor={c.accent} sw={5.5} gap={8} />
+      <g transform="translate(148,120) scale(0.52)">
+        <LogoPaths dotColor={tw(0.95)} goldColor={c.accent} sw={5} />
       </g>
     </svg>
   </div>

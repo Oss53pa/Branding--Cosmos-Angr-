@@ -812,10 +812,20 @@ const contentD: SmbContent = {
     { rule: 'Bardage façade = Peau Cosmos aluminium nervuré mat #B8AA8C (réalité chantier confirmée).' },
   ],
   focusGroupQuestions: [
-    { question: '"Ici, on vit quelque chose" — cette signature est-elle plus forte associée à la nature (D) ou à l\'hospitalité (C) ?' },
-    { question: '"Cosmos, mon jardin" — cette signature active-t-elle la dimension végétale ou paraît-elle trop intime ?' },
-    { question: 'Le concept de végétation structurante comme différenciateur premium est-il crédible dès l\'ouverture ou nécessite-t-il 2-3 ans de maturation ?' },
+    { question: 'Un centre commercial avec de la végétation structurante et des arbres intégrés à Angré — est-ce un critère important dans votre choix de le visiter ?' },
+    { question: '"Ici, on vit quelque chose" — est-ce que cette phrase vous fait penser à (a) une expérience nature unique, (b) n\'importe quel endroit agréable, (c) un cinéma ou parc d\'attractions, (d) autre ?' },
+    { question: '"Cosmos, mon jardin" comme signature de fidélisation — (a) poétique et mémorable, (b) bizarre pour un mall, (c) précisément ce que vous voulez ?' },
+    { question: '[Stimulus Façade] En voyant la végétation sur la façade et le totem kaki, est-ce que vous avez envie d\'entrer ?' },
+    { question: '[Stimulus Post] Ce visuel kaki/or sur un panneau d\'affichage — vous arrêteriez-vous pour le lire ?' },
   ],
+  focusGroupStimuli: {
+    stimuli: [
+      { title: 'Stimulus 1 — Planche Ambiance', content: 'Palette : Grège Doré #B8AA8C · Kaki Végétal #898D5D · Or Soleil #D4A843 · Beige Sol Cosmos #D4C9B0 · Vert végétation naturelle\nMatières : Bardage aluminium grège · Totem kaki (signalétique) · Sol terrazo beige · Arbres intégrés · Têtes de mur noyer\nSignature centrale : "Ici, on vit quelque chose."' },
+      { title: 'Stimulus 2 — Mockup Façade', content: 'Proportions visuelles : 70% grège doré (bardage) · 20–30% terracotta (murs extérieurs) · totem kaki Or Soleil · végétation en façade\nNote visible : "Kaki : enseigne et signalétique uniquement — pas sur le bardage"' },
+      { title: 'Stimulus 3 — Post Instagram / Affichage OOH', content: 'Format carré 1:1 et format 4×3 affichage\nFond : Kaki Végétal #898D5D\nSignature : "Ce samedi, venez vivre Cosmos."\nSous-titre : "Cosmos Angré — Soft Opening Oct 2026"\nAccent : Or Soleil #D4A843' },
+      { title: 'Stimulus 4 — Carte Cosmos Club Gold', content: 'Fond : Nuit Végétale #2C3E6B\nLettrage : Or Soleil #D4A843\nSignature carte : "Cosmos, mon jardin."\nNote brief animateur : Tester si "Cosmos, mon jardin" est perçu comme poétique ou bizarre pour un mall.' },
+    ],
+  },
   finaleQuote: ['Ici, on vit', 'quelque chose.'],
   finaleSub: 'Brand & Tenant Master Book · Nature Contemporaine · Mall Premium Végétal',
 };
