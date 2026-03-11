@@ -1,6 +1,7 @@
 import React from 'react';
 import { Check, X, AlertTriangle } from 'lucide-react';
 import type { ScenarioKey } from './Scenarios';
+import CosmosLogo from './CosmosLogo';
 
 const accents: Record<ScenarioKey, { main: string; bg: string; rgb: string }> = {
   A: { main: '#4A7558', bg: 'rgba(74,117,88,0.08)', rgb: '74,117,88' },
@@ -49,11 +50,8 @@ export default function LogoUsageRules({ scenarioKey }: { scenarioKey: ScenarioK
             <div style={{ position: 'absolute', bottom: 16, left: '50%', width: 1, height: 32, background: `rgba(${ac.rgb},0.3)` }} />
             <div style={{ position: 'absolute', left: 16, top: '50%', height: 1, width: 32, background: `rgba(${ac.rgb},0.3)` }} />
             <div style={{ position: 'absolute', right: 16, top: '50%', height: 1, width: 32, background: `rgba(${ac.rgb},0.3)` }} />
-            {/* Logo text mock */}
-            <div style={{ fontFamily: "'Inter',sans-serif", fontSize: 22, fontWeight: 700, letterSpacing: 6, color: '#1a1a2e', textAlign: 'center' }}>
-              C<span style={{ color: '#C9943A' }}>O</span>SM<span style={{ color: '#C9943A' }}>O</span>S
-            </div>
-            <div style={{ fontFamily: "'Inter',sans-serif", fontSize: 10, fontWeight: 600, letterSpacing: 4, color: '#C9943A', textAlign: 'right', marginTop: 2 }}>ANGRÉ</div>
+            {/* Real CosmosLogo */}
+            <CosmosLogo height={50} dotColor="#1a1a2e" />
           </div>
           <div style={{ marginTop: 20, fontSize: 10.5, color: 'rgba(0,0,0,0.5)', textAlign: 'center', lineHeight: 1.7 }}>
             <strong style={{ color: ac.main }}>x</strong> = hauteur du <strong>O</strong> de COSMOS · Aucun élément ne doit pénétrer cette zone
@@ -88,17 +86,14 @@ export default function LogoUsageRules({ scenarioKey }: { scenarioKey: ScenarioK
         <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 16 }}>Fonds autorisés</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16 }}>
           {[
-            { bg: '#ffffff', logoDark: true, label: 'Fond blanc', hex: '#FFFFFF' },
-            { bg: '#f8f6f2', logoDark: true, label: 'Fond crème', hex: '#F8F6F2' },
-            { bg: '#1a1a2e', logoDark: false, label: 'Fond navy', hex: '#1A1A2E' },
-            { bg: ac.main, logoDark: false, label: 'Fond scénario', hex: ac.main.toUpperCase() },
+            { bg: '#ffffff', dotColor: '#1a1a2e', label: 'Fond blanc', hex: '#FFFFFF', border: true },
+            { bg: '#f8f6f2', dotColor: '#1a1a2e', label: 'Fond crème', hex: '#F8F6F2', border: false },
+            { bg: '#1a1a2e', dotColor: '#f8f6f2', label: 'Fond navy', hex: '#1A1A2E', border: false },
+            { bg: ac.main, dotColor: '#f8f6f2', label: 'Fond scénario', hex: ac.main.toUpperCase(), border: false },
           ].map((item, i) => (
             <div key={i} style={cardStyle}>
-              <div style={{ background: item.bg, padding: '32px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 100, border: i === 0 ? '1px solid rgba(0,0,0,0.08)' : 'none', borderRadius: '14px 14px 0 0' }}>
-                <div style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, fontWeight: 700, letterSpacing: 4, color: item.logoDark ? '#1a1a2e' : '#f8f6f2' }}>
-                  C<span style={{ color: '#C9943A' }}>O</span>SM<span style={{ color: '#C9943A' }}>O</span>S
-                </div>
-                <div style={{ fontFamily: "'Inter',sans-serif", fontSize: 7, fontWeight: 600, letterSpacing: 3, color: '#C9943A', textAlign: 'right', width: '100%', marginTop: 2, paddingRight: 4 }}>ANGRÉ</div>
+              <div style={{ background: item.bg, padding: '24px 20px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 100, border: item.border ? '1px solid rgba(0,0,0,0.08)' : 'none', borderRadius: '14px 14px 0 0' }}>
+                <CosmosLogo height={32} dotColor={item.dotColor} />
               </div>
               <div style={{ padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 8 }}>
                 <Check size={14} color="#16a34a" strokeWidth={2.5} />
@@ -119,16 +114,16 @@ export default function LogoUsageRules({ scenarioKey }: { scenarioKey: ScenarioK
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16 }}>
           {[
-            { label: 'Ne pas déformer', transform: 'scaleX(1.4) scaleY(0.7)' },
-            { label: 'Ne pas pivoter', transform: 'rotate(15deg)' },
-            { label: 'Ne pas changer les couleurs du O', oColor: '#dc2626', transform: '' },
-            { label: 'Ne pas ajouter d\'effets', filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.5))', transform: '' },
-            { label: 'Ne pas utiliser sur fond complexe', bgComplex: true, transform: '' },
-            { label: 'Ne pas modifier l\'espacement', letterSpace: 14, transform: '' },
+            { label: 'Ne pas déformer', transform: 'scaleX(1.4) scaleY(0.7)', dotColor: '#1a1a2e' },
+            { label: 'Ne pas pivoter', transform: 'rotate(15deg)', dotColor: '#1a1a2e' },
+            { label: 'Ne pas changer les couleurs du O', transform: '', dotColor: '#dc2626', goldOverride: true },
+            { label: 'Ne pas ajouter d\'effets', filter: 'drop-shadow(0 0 8px rgba(0,0,0,0.5))', transform: '', dotColor: '#1a1a2e' },
+            { label: 'Ne pas utiliser sur fond complexe', transform: '', dotColor: '#fff', bgComplex: true },
+            { label: 'Ne pas modifier l\'espacement', transform: 'scaleX(1.3)', dotColor: '#1a1a2e' },
           ].map((item, i) => (
             <div key={i} style={{ ...cardStyle, border: '1px solid rgba(220,38,38,0.15)' }}>
               <div style={{
-                padding: '28px 20px',
+                padding: '24px 20px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -139,15 +134,10 @@ export default function LogoUsageRules({ scenarioKey }: { scenarioKey: ScenarioK
                 position: 'relative',
               }}>
                 <div style={{
-                  fontFamily: "'Inter',sans-serif",
-                  fontSize: 14,
-                  fontWeight: 700,
-                  letterSpacing: item.letterSpace || 4,
-                  color: item.bgComplex ? '#fff' : '#1a1a2e',
                   transform: item.transform || undefined,
                   filter: item.filter || undefined,
                 }}>
-                  C<span style={{ color: item.oColor || '#C9943A' }}>O</span>SM<span style={{ color: item.oColor || '#C9943A' }}>O</span>S
+                  <CosmosLogo height={30} dotColor={item.dotColor} />
                 </div>
                 {/* Red X badge */}
                 <div style={{ position: 'absolute', top: 8, right: 8, width: 22, height: 22, borderRadius: '50%', background: '#dc2626', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
