@@ -1,0 +1,192 @@
+import React from 'react';
+import { Shield, Eye, Users, Calendar, CheckCircle, ArrowRight } from 'lucide-react';
+import type { ScenarioKey } from './Scenarios';
+
+const accents: Record<ScenarioKey, { main: string; rgb: string }> = {
+  A: { main: '#4A7558', rgb: '74,117,88' },
+  B: { main: '#0D1B4B', rgb: '13,27,75' },
+  C: { main: '#C9943A', rgb: '201,148,58' },
+  D: { main: '#898D5D', rgb: '137,141,93' },
+};
+
+export default function BrandGovernance({ scenarioKey }: { scenarioKey: ScenarioKey }) {
+  const ac = accents[scenarioKey];
+
+  const cardStyle: React.CSSProperties = {
+    background: '#fff',
+    border: '1px solid rgba(0,0,0,0.06)',
+    borderRadius: 14,
+    overflow: 'hidden',
+  };
+
+  return (
+    <>
+      {/* ═══ C8 — ADAPTATION SAISONNIÈRE ═══ */}
+      <section className="bg-warm" id="smb-saisons">
+        <div className="eyebrow green">C8 · Saisonnalité</div>
+        <h2 className="light">Adaptation saisonnière</h2>
+        <div className="sub">Ajustements d'ambiance par période — sans jamais modifier l'identité</div>
+        <div className="divider kaki" />
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16, marginBottom: 32 }}>
+          {[
+            { period: 'Saison sèche', months: 'Nov – Mars', emoji: '☀️', guidelines: ['Intensifier les tons chauds dans la communication', 'Campagnes outdoor et terrasses mises en avant', 'Événements extérieurs, animations en plein air', 'Éclairage plus vif, ambiance solaire'] },
+            { period: 'Saison des pluies', months: 'Avr – Juil', emoji: '🌧️', guidelines: ['Tons plus frais et apaisants', 'Focus sur les espaces intérieurs et le cocooning', 'Éclairage chaleureux compensatoire', 'Campagnes digitales renforcées'] },
+            { period: 'Rentrée', months: 'Août – Oct', emoji: '📚', guidelines: ['Campagnes dynamiques et énergiques', 'Focus familles et back-to-school', 'Nouvelles collections mises en avant', 'Animations enfants et ados'] },
+            { period: 'Fêtes', months: 'Déc – Jan', emoji: '✨', guidelines: ['Décoration festive respectant la charte', 'Éditions limitées et coffrets cadeaux', 'Illuminations (blanc chaud + accents gold)', 'Programmation culturelle spéciale'] },
+          ].map((s, i) => (
+            <div key={i} style={cardStyle}>
+              <div style={{ background: `rgba(${ac.rgb},0.06)`, padding: '16px 20px', borderBottom: '1px solid rgba(0,0,0,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span style={{ fontSize: 20 }}>{s.emoji}</span>
+                  <div>
+                    <div style={{ fontSize: 12, fontWeight: 600, color: '#1a1a2e' }}>{s.period}</div>
+                    <div style={{ fontSize: 9, color: 'rgba(0,0,0,0.4)' }}>{s.months}</div>
+                  </div>
+                </div>
+              </div>
+              <div style={{ padding: '16px 20px' }}>
+                {s.guidelines.map((g, j) => (
+                  <div key={j} style={{ fontSize: 10.5, color: 'rgba(0,0,0,0.6)', lineHeight: 1.7, paddingLeft: 16, position: 'relative', marginBottom: 4 }}>
+                    <span style={{ position: 'absolute', left: 0, color: ac.main }}>•</span>{g}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Événements récurrents */}
+        <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 12 }}>Événements récurrents</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, marginBottom: 24 }}>
+          {[
+            { event: 'Fête des Mères', date: 'Mai', rule: 'Campagne émotion, tons doux, cadeaux mis en avant' },
+            { event: 'Noël & Jour de l\'An', date: 'Déc–Jan', rule: 'Déco premium, gold renforcé, éditions limitées' },
+            { event: 'Tabaski / Ramadan', date: 'Variable', rule: 'Respect culturel, offres famille, ambiance conviviale' },
+            { event: 'Indépendance', date: '7 Août', rule: 'Fierté nationale, couleurs CI intégrées subtilement' },
+          ].map((e, i) => (
+            <div key={i} style={{ background: '#fff', border: '1px solid rgba(0,0,0,0.06)', borderRadius: 10, padding: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+                <Calendar size={12} color={ac.main} />
+                <div style={{ fontSize: 11, fontWeight: 600, color: '#1a1a2e' }}>{e.event}</div>
+              </div>
+              <div style={{ fontSize: 9, color: ac.main, fontWeight: 600, marginBottom: 6 }}>{e.date}</div>
+              <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.5)', lineHeight: 1.6 }}>{e.rule}</div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ background: `rgba(${ac.rgb},0.06)`, border: `1px solid rgba(${ac.rgb},0.15)`, padding: '16px 24px', fontSize: 10.5, color: '#1a1a2e', lineHeight: 1.7 }}>
+          <strong style={{ color: ac.main, fontSize: 9, letterSpacing: 2, textTransform: 'uppercase' }}>Règle d'or</strong>
+          <div style={{ marginTop: 8 }}>Les adaptations saisonnières modifient <strong>l'ambiance</strong>, jamais <strong>l'identité</strong>. Le logo, la typographie et la palette de base restent strictement inchangés. Seules les proportions d'utilisation des couleurs secondaires peuvent varier.</div>
+        </div>
+      </section>
+
+      {/* ═══ C9 — ACCESSIBILITÉ ═══ */}
+      <section className="bg-white" id="smb-accessibilite">
+        <div className="eyebrow green">C9 · Accessibilité</div>
+        <h2 className="light">Design inclusif</h2>
+        <div className="sub">Normes d'accessibilité — communication, signalétique et espaces</div>
+        <div className="divider kaki" />
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 16 }}>
+          {[
+            { icon: Eye, title: 'Contraste texte', rules: ['Ratio minimum 4.5:1 (WCAG AA)', 'Grands titres : ratio 3:1 minimum', 'Jamais de texte sur fond complexe sans overlay', 'Tester avec un simulateur daltonisme'] },
+            { icon: Shield, title: 'Signalétique', rules: ['Pictogrammes universels ISO 7001', 'Braille sur les plaques directionnelles', 'Taille minimale 14pt pour texte directionnel', 'Contraste fond/texte renforcé (5:1)'] },
+            { icon: Users, title: 'Digital', rules: ['Alt-text obligatoire sur toutes les images', 'Navigation clavier complète', 'ARIA labels sur les éléments interactifs', 'Design responsive (mobile-first)'] },
+            { icon: CheckCircle, title: 'Espaces', rules: ['Allées PMR : 1,50m minimum', 'Rampes d\'accès : pente max 5%', 'Boucles magnétiques aux caisses', 'Places PMR en parking (2% minimum)'] },
+            { icon: ArrowRight, title: 'Communication', rules: ['Langage inclusif et non-discriminant', 'Éviter le jargon technique', 'Sous-titrage de toutes les vidéos', 'Versions audio des supports clés'] },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <div key={i} style={cardStyle}>
+                <div style={{ background: `rgba(${ac.rgb},0.06)`, padding: '16px', borderBottom: '1px solid rgba(0,0,0,0.04)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <Icon size={14} color={ac.main} />
+                  <div style={{ fontSize: 10, fontWeight: 600, color: '#1a1a2e' }}>{item.title}</div>
+                </div>
+                <div style={{ padding: '14px 16px' }}>
+                  {item.rules.map((r, j) => (
+                    <div key={j} style={{ fontSize: 9.5, color: 'rgba(0,0,0,0.55)', lineHeight: 1.6, paddingLeft: 12, position: 'relative', marginBottom: 4 }}>
+                      <span style={{ position: 'absolute', left: 0, color: ac.main, fontSize: 8 }}>●</span>{r}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ═══ D2 — GOUVERNANCE DE MARQUE ═══ */}
+      <section className="bg-warm" id="smb-gouvernance">
+        <div className="eyebrow green">D2 · Gouvernance</div>
+        <h2 className="light">Gouvernance de marque</h2>
+        <div className="sub">Organisation, circuit de validation et outils de contrôle</div>
+        <div className="divider kaki" />
+
+        {/* Comité de marque */}
+        <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 16 }}>Comité de marque</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 40 }}>
+          {[
+            { role: 'Directeur Marketing', scope: 'Vision stratégique, arbitrage final', freq: 'Permanent' },
+            { role: 'Directeur Artistique', scope: 'Cohérence visuelle, validation créative', freq: 'Permanent' },
+            { role: 'Responsable Retail', scope: 'Relations enseignes, conformité terrain', freq: 'Permanent' },
+            { role: 'Consultant Externe', scope: 'Audit indépendant, benchmarks marché', freq: 'Trimestriel' },
+          ].map((m, i) => (
+            <div key={i} style={cardStyle}>
+              <div style={{ background: `rgba(${ac.rgb},0.06)`, padding: '16px 20px', borderBottom: '1px solid rgba(0,0,0,0.04)' }}>
+                <div style={{ fontSize: 11, fontWeight: 600, color: '#1a1a2e' }}>{m.role}</div>
+              </div>
+              <div style={{ padding: '16px 20px' }}>
+                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.55)', lineHeight: 1.6, marginBottom: 8 }}>{m.scope}</div>
+                <div style={{ fontSize: 9, color: ac.main, fontWeight: 600 }}>{m.freq}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Circuit de validation */}
+        <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 16 }}>Circuit de validation</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 0, marginBottom: 40, border: '1px solid rgba(0,0,0,0.06)', borderRadius: 14, overflow: 'hidden' }}>
+          {[
+            { level: 'Niveau 1', who: 'Brand Manager', scope: 'Usage quotidien, posts réseaux sociaux, signalétique standard', color: '#16a34a' },
+            { level: 'Niveau 2', who: 'Directeur Marketing', scope: 'Campagnes publicitaires, événements, partenariats commerciaux', color: '#C9943A' },
+            { level: 'Niveau 3', who: 'Comité de marque', scope: 'Évolutions identitaires, partenariats stratégiques, refonte majeure', color: '#dc2626' },
+          ].map((l, i) => (
+            <div key={i} style={{ background: '#fff', padding: 24, borderRight: i < 2 ? '1px solid rgba(0,0,0,0.06)' : 'none', position: 'relative' }}>
+              {i < 2 && (
+                <div style={{ position: 'absolute', right: -10, top: '50%', transform: 'translateY(-50%)', zIndex: 1 }}>
+                  <ArrowRight size={16} color="rgba(0,0,0,0.15)" />
+                </div>
+              )}
+              <div style={{ width: 8, height: 8, borderRadius: '50%', background: l.color, marginBottom: 12 }} />
+              <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: l.color, fontWeight: 600, marginBottom: 4 }}>{l.level}</div>
+              <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 18, fontWeight: 600, color: '#1a1a2e', marginBottom: 8 }}>{l.who}</div>
+              <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.5)', lineHeight: 1.6 }}>{l.scope}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Outils de contrôle */}
+        <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 16 }}>Outils de contrôle</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16 }}>
+          {[
+            { tool: 'Brand Book digital', desc: 'Ce document — référence unique et centralisée pour toutes les décisions de marque. Mis à jour trimestriellement.', freq: 'Référence permanente' },
+            { tool: 'Kit média téléchargeable', desc: 'Logos (tous formats), templates (PPT, social, print), polices officielles. Accessible via un lien protégé par mot de passe.', freq: 'Mis à jour à chaque évolution' },
+            { tool: 'Checklist validation enseigne', desc: 'Formulaire standardisé que chaque nouveau locataire doit compléter avant installation. Vérification façade, signalétique, matériaux.', freq: 'À chaque nouvelle enseigne' },
+            { tool: 'Audit de cohérence', desc: 'Revue terrain trimestrielle de tous les points de contact : signalétique, propreté, conformité enseignes, état des supports.', freq: 'Trimestriel' },
+          ].map((t, i) => (
+            <div key={i} style={{ ...cardStyle, display: 'flex' }}>
+              <div style={{ width: 4, background: ac.main, flexShrink: 0 }} />
+              <div style={{ padding: '16px 20px', flex: 1 }}>
+                <div style={{ fontSize: 12, fontWeight: 600, color: '#1a1a2e', marginBottom: 6 }}>{t.tool}</div>
+                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.5)', lineHeight: 1.6, marginBottom: 8 }}>{t.desc}</div>
+                <div style={{ fontSize: 9, color: ac.main, fontWeight: 600 }}>{t.freq}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}

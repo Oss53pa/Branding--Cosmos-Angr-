@@ -2,6 +2,9 @@ import React, { useState, useRef } from 'react';
 import type { ScenarioKey } from './Scenarios';
 import { smbThemes, smbContent } from './scenarioMasterBookData';
 import BrandWorld from './BrandWorld';
+import BrandNarrative from './BrandNarrative';
+import BrandGovernance from './BrandGovernance';
+import CompetitiveLandscape from './CompetitiveLandscape';
 import './scenario-masterbook.css';
 
 /* ── Logo SVG réutilisable ── */
@@ -117,6 +120,8 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
             <a onClick={() => scrollTo('smb-typo')}><span className="n">A7</span>Typographie</a>
             <a onClick={() => scrollTo('smb-matieres')}><span className="n">A8</span>Matières fondatrices</a>
             <a onClick={() => scrollTo('smb-comms')}><span className="n">A9</span>Communication</a>
+            <a onClick={() => scrollTo('smb-brand-narrative')}><span className="n">A10</span>Brand Narrative</a>
+            <a onClick={() => scrollTo('smb-tone-negatif')}><span className="n">A11</span>Ton négatif</a>
           </div>
         </div>
 
@@ -137,6 +142,9 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
             <a onClick={() => scrollTo('bw-goodies')}><span className="n">B5</span>Goodies & Objets</a>
             <a onClick={() => scrollTo('bw-digital')}><span className="n">B6</span>Digital Mockups</a>
             <a onClick={() => scrollTo('bw-personas')}><span className="n">B7</span>Personas & Focus Group</a>
+            <a onClick={() => scrollTo('bw-logo-rules')}><span className="n">B9</span>Règles usage logo</a>
+            <a onClick={() => scrollTo('bw-photo')}><span className="n">B10</span>Direction photo</a>
+            <a onClick={() => scrollTo('bw-sensory')}><span className="n">B11</span>Brief sensoriel</a>
           </div>
         </div>
 
@@ -158,6 +166,10 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
             <a onClick={() => scrollTo('smb-signaletique-tenant')}><span className="n">C6</span>Signalétique enseigne</a>
             <a onClick={() => scrollTo('smb-galeries-3d')}><span className="n">C7</span>Visuels galeries</a>
             <a onClick={() => scrollTo('smb-risques')}><span className="n">D1</span>Risques & Avantage</a>
+            <a onClick={() => scrollTo('smb-saisons')}><span className="n">C8</span>Adaptation saisonnière</a>
+            <a onClick={() => scrollTo('smb-accessibilite')}><span className="n">C9</span>Accessibilité</a>
+            <a onClick={() => scrollTo('smb-gouvernance')}><span className="n">D2</span>Gouvernance</a>
+            <a onClick={() => scrollTo('smb-concurrence')}><span className="n">D3</span>Positionnement concurrentiel</a>
           </div>
         </div>
 
@@ -240,19 +252,19 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
             <div className="toc-cols">
               <div>
                 <div className="toc-col-head brand">Partie A · Stratégie & Brand Book</div>
-                {['A1 · USP & Positionnement','A2 · Prisme de Kapferer','A3 · Valeurs & Ton éditorial','A4 · Signatures verbales','A5 · Palette chromatique','A6 · Proportions réelles','A7 · Typographie','A8 · Matières fondatrices','A9 · Supports de communication'].map((t,i) => (
+                {['A1 · USP & Positionnement','A2 · Prisme de Kapferer','A3 · Valeurs & Ton éditorial','A4 · Signatures verbales','A5 · Palette chromatique','A6 · Proportions réelles','A7 · Typographie','A8 · Matières fondatrices','A9 · Supports de communication','A10 · Brand Narrative','A11 · Ton négatif'].map((t,i) => (
                   <div className="toc-item" key={i}><span className="toc-item-num">A{i+1}</span><span className="toc-item-label">{t.split(' · ')[1]}</span></div>
                 ))}
               </div>
               <div>
                 <div className="toc-col-head bw">Partie B · Brand World</div>
-                {['B1 · Ambiance & Palette','B2 · Déclinaisons logo','B3 · Parcours client','B4 · Signalétique & Totems','B5 · Uniformes & Textile','B6 · Goodies & Objets','B7 · Mockups digitaux','B8 · Personas & Focus Group'].map((t,i) => (
+                {['B1 · Ambiance & Palette','B2 · Déclinaisons logo','B3 · Parcours client','B4 · Signalétique & Totems','B5 · Uniformes & Textile','B6 · Goodies & Objets','B7 · Mockups digitaux','B8 · Personas & Focus Group','B9 · Règles usage logo','B10 · Direction photo','B11 · Brief sensoriel'].map((t,i) => (
                   <div className="toc-item" key={i}><span className="toc-item-num">B{i+1}</span><span className="toc-item-label">{t.split(' · ')[1]}</span></div>
                 ))}
               </div>
               <div>
                 <div className="toc-col-head tenant">Partie C · Tenant Guidelines</div>
-                {['C1 · Introduction enseignes','C2 · Charte façade boutique','C3 · Zones & Gabarits','C4 · Espaces communs','C5 · Matériaux autorisés','C6 · Signalétique enseigne','C7 · Visuels galeries','D1 · Risques & Avantage stratégique'].map((t,i) => (
+                {['C1 · Introduction enseignes','C2 · Charte façade boutique','C3 · Zones & Gabarits','C4 · Espaces communs','C5 · Matériaux autorisés','C6 · Signalétique enseigne','C7 · Visuels galeries','C8 · Adaptation saisonnière','C9 · Accessibilité','D1 · Risques & Avantage','D2 · Gouvernance de marque','D3 · Positionnement concurrentiel'].map((t,i) => (
                   <div className="toc-item" key={i}><span className="toc-item-num">{t.split(' · ')[0]}</span><span className="toc-item-label">{t.split(' · ')[1]}</span></div>
                 ))}
               </div>
@@ -498,6 +510,9 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
           </div>
         </section>
 
+        {/* A10–A11 — BRAND NARRATIVE & TON NÉGATIF */}
+        <BrandNarrative scenarioKey={scenarioKey} />
+
         {/* CHAPITRE B */}
         <div className="ch-break bg-gris" style={{ borderTop: '3px solid var(--terra)' }}>
           <div className="ch-num" style={{ color: 'rgba(var(--terra-rgb),0.08)' }}>B</div>
@@ -720,6 +735,12 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
             </div>
           </section>
         )}
+
+        {/* C8–C9, D2 — GOUVERNANCE */}
+        <BrandGovernance scenarioKey={scenarioKey} />
+
+        {/* D3 — CONCURRENCE */}
+        <CompetitiveLandscape scenarioKey={scenarioKey} />
 
         {/* FINALE */}
         <section className="finale">

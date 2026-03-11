@@ -8,6 +8,9 @@ import GoodiesMockupsSection from './GoodiesMockups';
 import TextileMockupsSection from './TextileMockups';
 import DigitalMockupsSection from './DigitalMockups';
 import PersonasFocusGroupSection from './PersonasFocusGroup';
+import LogoUsageRules from './LogoUsageRules';
+import PhotographyGuidelines from './PhotographyGuidelines';
+import SensoryBrief from './SensoryBrief';
 
 /* ═══════════════════════════════════════════
    DONNÉES PARTAGÉES
@@ -1187,6 +1190,9 @@ const BrandWorld: React.FC<{ scenarioKey: ScenarioKey }> = ({ scenarioKey }) => 
     <GoodiesMockupsSection k={scenarioKey} />
     <DigitalMockupsSection k={scenarioKey} />
     <PersonasFocusGroupSection k={scenarioKey} />
+    <LogoUsageRules scenarioKey={scenarioKey} />
+    <PhotographyGuidelines scenarioKey={scenarioKey} />
+    <SensoryBrief scenarioKey={scenarioKey} />
     <div className="py-10 text-center text-[8px] text-black/15">
       Brand World · Cosmos Angré · Mars 2026 · Document EXCO confidentiel — New Heaven SA / RCP
     </div>
