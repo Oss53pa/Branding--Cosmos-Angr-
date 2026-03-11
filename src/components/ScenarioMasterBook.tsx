@@ -721,42 +721,6 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
           </section>
         )}
 
-        {/* FOCUS GROUP QUESTIONS */}
-        {d.focusGroupQuestions && d.focusGroupQuestions.length > 0 && (
-          <section className="bg-warm" id="smb-focus-group">
-            <div className="eyebrow light">Focus Group</div>
-            <h2 className="light">Questions spécifiques à tester</h2>
-            <div className="sub">5 questions clés pour le {d.scenarioLabel} — Sessions mars 2026</div>
-            <div className="divider foret" />
-            <div style={{ display: 'grid', gap: 16 }}>
-              {d.focusGroupQuestions.map((q, i) => (
-                <div key={i} style={{ background: '#fff', border: '1px solid rgba(var(--bronze-rgb),0.15)', padding: '24px 28px', display: 'flex', gap: 20, alignItems: 'flex-start' }}>
-                  <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'var(--bronze)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 700, flexShrink: 0 }}>Q{i + 1}</div>
-                  <div style={{ fontSize: 12, color: 'var(--ebene-deep)', lineHeight: 1.7 }}>{q.question}</div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* STIMULI FOCUS GROUP */}
-        {d.focusGroupStimuli && d.focusGroupStimuli.stimuli.length > 0 && (
-          <section className="bg-white" id="smb-stimuli">
-            <div className="eyebrow light">Stimuli</div>
-            <h2 className="light">Stimuli Focus Group — {d.scenarioLabel}</h2>
-            <div className="sub">4 stimuli visuels à présenter en session — Mars 2026</div>
-            <div className="divider foret" />
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16 }}>
-              {d.focusGroupStimuli.stimuli.map((s, i) => (
-                <div key={i} style={{ background: 'rgba(var(--terra-rgb),0.03)', border: '1px solid rgba(var(--terra-rgb),0.12)', padding: 28 }}>
-                  <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: 'var(--terra)', fontWeight: 700, marginBottom: 12 }}>{s.title}</div>
-                  <div style={{ fontSize: 10.5, color: 'var(--ebene-deep)', lineHeight: 1.8, whiteSpace: 'pre-line' }}>{s.content}</div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
         {/* FINALE */}
         <section className="finale">
           <div style={{ position: 'relative', zIndex: 1, maxWidth: 700 }}>
