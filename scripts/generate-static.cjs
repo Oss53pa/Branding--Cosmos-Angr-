@@ -383,7 +383,7 @@ ${(d.espacesCommuns || []).map(e => `
 <div class="footer">
   <div class="quote">${escHtml(d.finaleQuote[0])} <span class="hl">${escHtml(d.finaleQuote[1])}</span></div>
   <div class="sub">${escHtml(d.finaleSub)}</div>
-  <div style="margin-top:24px; font-size:10px; color:${t.grisChaud}">Confidentiel EXCO · New Heaven SA / CRMC · Mars 2026</div>
+  <div style="margin-top:24px; font-size:10px; color:${t.grisChaud}">Confidentiel EXCO · New Heaven SA / RCP · Mars 2026</div>
 </div>
 
 </div>
@@ -792,7 +792,7 @@ body{font-family:'Inter',sans-serif;background:${CREAM};color:#1a1410;line-heigh
     <div class="sub">Stratégie de marque & positionnement — 4 scénarios de positionnement, comparatif stratégique, protocole Focus Group, plan opérationnel 360°.</div>
     <div class="meta">
       <span>Confidentiel EXCO</span>
-      <span>New Heaven SA / CRMC</span>
+      <span>New Heaven SA / RCP</span>
       <span>Mars 2026</span>
     </div>
   </div>
@@ -1007,7 +1007,7 @@ ${p.actions.map(a => `      <div class="plan-action">
   <div class="container">
     <div class="quote serif">Cosmos <span>Angré</span></div>
     <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;font-style:italic;color:rgba(255,255,255,.4);margin-top:16px;position:relative;">Un monde à part. Le vôtre.</div>
-    <div class="conf">Confidentiel EXCO · New Heaven SA / CRMC · Mars 2026</div>
+    <div class="conf">Confidentiel EXCO · New Heaven SA / RCP · Mars 2026</div>
   </div>
 </div>
 

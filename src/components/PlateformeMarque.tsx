@@ -439,7 +439,7 @@ function PageComp() {
         ))}
       </div>
       <div className="pm-footer-note">
-        Livrable 1 · Plateforme de marque Cosmos Angré · 4 scénarios · Mars 2026 · Document EXCO confidentiel — New Heaven SA / CRMC<br />
+        Livrable 1 · Plateforme de marque Cosmos Angré · 4 scénarios · Mars 2026 · Document EXCO confidentiel — New Heaven SA / RCP<br />
         Prochaine étape : Brand Book draft 4 pistes (Livrable 2) → Focus Group 20-25/03 → Arbitrage final
       </div>
     </div>

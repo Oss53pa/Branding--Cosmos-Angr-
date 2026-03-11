@@ -512,7 +512,7 @@ const Plan360: React.FC = () => {
       <div className="bg-white rounded-2xl border border-black/[.06] overflow-hidden shadow-[0_2px_20px_rgba(0,0,0,.04)]">
         {/* Header */}
         <div style={{ background: `linear-gradient(135deg,${NAVY},#1a3060)`, color: '#fff', padding: '28px 36px 22px' }}>
-          <div style={{ fontSize: 8, letterSpacing: '.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,.3)', marginBottom: 8 }}>NEW HEAVEN SA · CRMC · MARS 2026 · CONFIDENTIEL</div>
+          <div style={{ fontSize: 8, letterSpacing: '.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,.3)', marginBottom: 8 }}>NEW HEAVEN SA · RCP · MARS 2026 · CONFIDENTIEL</div>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
             <div>
               <div style={{ fontFamily: "'Cormorant Garamond',Georgia,serif", fontSize: 34, fontWeight: 300, lineHeight: 1, marginBottom: 4 }}>Plan Marketing Opérationnel</div>

@@ -213,7 +213,7 @@ const IntroTab: React.FC<{ onSwitch: (t: TabKey) => void }> = ({ onSwitch }) => 
             </div>
           </div>
         </div>
-        <Note>Livrable 2.2 · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / CRMC<br />Ajustements chromatiques intégrant les enseignements du concept "Tropical Urbain". Système et positionnements inchangés.</Note>
+        <Note>Livrable 2.2 · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / RCP<br />Ajustements chromatiques intégrant les enseignements du concept "Tropical Urbain". Système et positionnements inchangés.</Note>
       </div>
     </div>
   </div>
@@ -337,7 +337,7 @@ const PisteATab: React.FC = () => (
           </div>
         </div>
       </div>
-      <Note>Piste A v2.2 · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / CRMC</Note>
+      <Note>Piste A v2.2 · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / RCP</Note>
     </div>
   </div>
 );
@@ -440,7 +440,7 @@ const PisteBTab: React.FC = () => (
           </div>
         </div>
       </div>
-      <Note>Piste B v2.2 · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / CRMC</Note>
+      <Note>Piste B v2.2 · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / RCP</Note>
     </div>
   </div>
 );
@@ -543,7 +543,7 @@ const PisteCTab: React.FC = () => (
           </div>
         </div>
       </div>
-      <Note>Piste C v2.2 · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / CRMC</Note>
+      <Note>Piste C v2.2 · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / RCP</Note>
     </div>
   </div>
 );
@@ -663,7 +663,7 @@ const PisteDTab: React.FC = () => (
           </div>
         </div>
       </div>
-      <Note>Piste D v2.2 · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / CRMC</Note>
+      <Note>Piste D v2.2 · Brand Book Cosmos Angré · Mars 2026 · Confidentiel EXCO — New Heaven SA / RCP</Note>
     </div>
   </div>
 );
@@ -685,7 +685,7 @@ const FGTab: React.FC = () => (
         { bold: 'Piste D :', text: 'Nouvelle piste — Pierre Beige #E5DECC dominant (32%) · Kaki Soleil #898D5D · Or Soleil #D4A843 · Mousse #6B7A4A · Forêt Nuit #1C2215. Stimuli D1 à D5 à créer.' },
       ]} />
       <Note>
-        Brief Fernand v2.2 · 15 stimuli · Cosmos Angré · Focus Group 20-25 Mars 2026 · Confidentiel New Heaven SA / CRMC<br />
+        Brief Fernand v2.2 · 15 stimuli · Cosmos Angré · Focus Group 20-25 Mars 2026 · Confidentiel New Heaven SA / RCP<br />
         Toutes les specs de contenu, formats et règles générales restent identiques à la v1. Seules les valeurs HEX listées ci-dessus sont mises à jour.<br />
         Remise · PDF 300dpi + PNG 72dpi · Deadline ferme 15 mars 2026
       </Note>

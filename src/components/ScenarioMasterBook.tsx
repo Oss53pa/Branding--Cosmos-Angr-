@@ -191,7 +191,7 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
           >
             Copier le lien
           </button>
-          <p>Confidentiel EXCO<br/>New Heaven SA / CRMC<br/>© 2026</p>
+          <p>Confidentiel EXCO<br/>New Heaven SA / RCP<br/>© 2026</p>
         </div>
       </nav>
 
@@ -209,7 +209,7 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
                 <div style={{ width: 40, height: 1, background: 'var(--bronze)', margin: '28px 0' }} />
                 <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 18, fontStyle: 'italic', color: 'rgba(var(--fond-rgb),0.55)', lineHeight: 1.6 }}>"{d.heroQuote}{'\n'}{d.heroQuoteHighlight}"</div>
               </div>
-              <div style={{ position: 'relative', zIndex: 1, fontSize: 7.5, color: 'rgba(var(--fond-rgb),0.2)', letterSpacing: 2 }}>DOCUMENT EXCO CONFIDENTIEL · NEW HEAVEN SA / CRMC · MARS 2026</div>
+              <div style={{ position: 'relative', zIndex: 1, fontSize: 7.5, color: 'rgba(var(--fond-rgb),0.2)', letterSpacing: 2 }}>DOCUMENT EXCO CONFIDENTIEL · NEW HEAVEN SA / RCP · MARS 2026</div>
             </div>
             <div className="hero-r">
               <div className="hero-r-top">
@@ -585,7 +585,7 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
               { type: 'Unité standard', dim: '40–80 m²', note: 'Mode, beauté, accessoires. Façade 4–6m. Hauteur libre 3.5m.' },
               { type: 'Unité moyenne', dim: '80–200 m²', note: 'Restauration assise, sport, maison. Façade 6–10m. Terrasse possible.' },
               { type: 'Grande unité', dim: '200–500 m²', note: 'Anchor secondaire, lifestyle. Double façade. Signalétique élargie.' },
-              { type: 'Anchor', dim: '500 m²+', note: 'Supermarché, cinéma, food court. Règles spécifiques. Négociation directe CRMC.' },
+              { type: 'Anchor', dim: '500 m²+', note: 'Supermarché, cinéma, food court. Règles spécifiques. Négociation directe RCP.' },
             ].map((g, i) => (
               <div className="gab-card" key={i}><div className="gab-type">{g.type}</div><div className="gab-dim">{g.dim}</div><div className="gab-note">{g.note}</div></div>
             ))}
@@ -625,7 +625,7 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
               { bg: 'linear-gradient(135deg,var(--terra),var(--ebene-deep))', status: '✓ Autorisé sans restriction', cls: 'status-ok', name: "Bois sombres & forêt", rule: 'Chêne fumé, teck foncé, bois wengé. Recommandé pour les façades premium.' },
               { bg: 'linear-gradient(135deg,var(--bronze),#a07828)', status: '✓ Autorisé sans restriction', cls: 'status-ok', name: 'Laiton & or cuivré', rule: 'Détails en laiton brossé, or cuivré, cuivre. Harmonie directe.' },
               { bg: 'linear-gradient(135deg,#e8e8e8,#d0d0d0)', status: '⚠ Autorisé avec validation', cls: 'status-cond', name: 'Inox & acier brossé', rule: 'Finitions mates uniquement. Miroir brillant soumis à validation.' },
-              { bg: 'linear-gradient(135deg,rgba(255,255,255,0.3),rgba(200,200,200,0.2))', status: '⚠ Autorisé avec validation', cls: 'status-cond', name: 'Verre & acrylique', rule: 'Transparent ou satiné autorisé. Verre teinté couleur vive soumis à validation CRMC.' },
+              { bg: 'linear-gradient(135deg,rgba(255,255,255,0.3),rgba(200,200,200,0.2))', status: '⚠ Autorisé avec validation', cls: 'status-cond', name: 'Verre & acrylique', rule: 'Transparent ou satiné autorisé. Verre teinté couleur vive soumis à validation RCP.' },
               { bg: 'linear-gradient(135deg,#ff4444,#aa00aa)', status: '✗ Interdit en façade', cls: 'status-no', name: 'Couleurs primaires vives', rule: 'Rouge vif, bleu électrique, jaune néon en façade. Autorisé à l\'intérieur.' },
             ].map((m, i) => (
               <div className="mat-a-card" key={i}>
@@ -649,7 +649,7 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
           <div className="sign-grid">
             {[
               { title: 'Enseigne lumineuse façade', spec: 'Hauteur max 80cm · LED blanc chaud 3000K · Rétro-éclairée ou lettres découpées', yes: ['✓ Lettres découpées','✓ LED 3000K'], no: ['✗ Néon couleur','✗ Clignotant'] },
-              { title: 'Panneau directionnel complémentaire', spec: 'Format A4 max · Fond crème ou blanc · Logo enseigne + numéro zone · Validé CRMC', yes: ['✓ Logo + zone','✓ Fond neutre'], no: ['✗ Fond couleur vive'] },
+              { title: 'Panneau directionnel complémentaire', spec: 'Format A4 max · Fond crème ou blanc · Logo enseigne + numéro zone · Validé RCP', yes: ['✓ Logo + zone','✓ Fond neutre'], no: ['✗ Fond couleur vive'] },
               { title: 'PLV & affichage vitrine', spec: 'Libre dans le gabarit alloué · Vos couleurs · Pas de débordement allée', yes: ['✓ Promotions','✓ Vos couleurs'], no: ['✗ Hors gabarit vitrine'] },
             ].map((s, i) => (
               <div className="sign-card" key={i}>
@@ -728,7 +728,7 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
             <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 52, fontWeight: 300, color: 'var(--fond)', lineHeight: 1.2, marginBottom: 24 }}>"{d.finaleQuote[0]}<br/><em style={{ color: 'var(--bronze)', fontWeight: 600 }}>{d.finaleQuote[1]}</em>"</div>
             <div style={{ width: 40, height: 1, background: 'rgba(var(--bronze-rgb),0.4)', margin: '0 auto 24px' }} />
             <div style={{ fontSize: 9.5, color: 'rgba(var(--fond-rgb),0.35)', letterSpacing: 2, lineHeight: 2.2 }}>{d.finaleSub}<br/>Premier mixed-use premium · Cocody · Abidjan · Côte d'Ivoire</div>
-            <div style={{ marginTop: 44, fontSize: 7.5, color: 'rgba(var(--fond-rgb),0.15)', letterSpacing: 2 }}>DOCUMENT EXCO CONFIDENTIEL · NEW HEAVEN SA / CRMC · © 2026 · TOUS DROITS RÉSERVÉS</div>
+            <div style={{ marginTop: 44, fontSize: 7.5, color: 'rgba(var(--fond-rgb),0.15)', letterSpacing: 2 }}>DOCUMENT EXCO CONFIDENTIEL · NEW HEAVEN SA / RCP · © 2026 · TOUS DROITS RÉSERVÉS</div>
           </div>
         </section>
 

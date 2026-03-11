@@ -197,7 +197,7 @@ const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => (
       <div className="flex items-center gap-2.5 px-5 py-2 rounded-full border border-gold/15 bg-gold/[.04]">
         <div className="w-1.5 h-1.5 rounded-full bg-gold/50 animate-pulse" />
         <span className="text-[9px] text-gold/50 tracking-[.12em] uppercase font-medium">
-          Document confidentiel — EXCO / New Heaven SA / CRMC
+          Document confidentiel — EXCO / New Heaven SA / RCP
         </span>
       </div>
     </div>

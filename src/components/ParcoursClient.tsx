@@ -347,7 +347,7 @@ const ParcoursClient: React.FC = () => {
 
       {/* Footer */}
       <div className="py-8 text-center text-[8px] text-black/15">
-        Parcours Client · Cosmos Angré · Mars 2026 · Document EXCO confidentiel — New Heaven SA / CRMC
+        Parcours Client · Cosmos Angré · Mars 2026 · Document EXCO confidentiel — New Heaven SA / RCP
       </div>
     </div>
   );

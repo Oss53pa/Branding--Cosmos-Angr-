@@ -1188,7 +1188,7 @@ const BrandWorld: React.FC<{ scenarioKey: ScenarioKey }> = ({ scenarioKey }) => 
     <DigitalMockupsSection k={scenarioKey} />
     <PersonasFocusGroupSection k={scenarioKey} />
     <div className="py-10 text-center text-[8px] text-black/15">
-      Brand World · Cosmos Angré · Mars 2026 · Document EXCO confidentiel — New Heaven SA / CRMC
+      Brand World · Cosmos Angré · Mars 2026 · Document EXCO confidentiel — New Heaven SA / RCP
     </div>
   </>
 );
