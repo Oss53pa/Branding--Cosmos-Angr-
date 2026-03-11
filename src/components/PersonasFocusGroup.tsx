@@ -139,7 +139,7 @@ const PersonaCard: React.FC<{ p: Persona; c: ScColors; idx: number }> = ({ p, c,
         />
         <div>
           <div className="text-[10px] font-semibold uppercase tracking-wider mb-0.5" style={{ color: c.primary }}>{p.profession}</div>
-          <div className="text-[10px] text-black/40">{p.quartier}</div>
+          <div className="text-[10px] text-black/65">{p.quartier}</div>
         </div>
       </div>
 
@@ -177,7 +177,7 @@ const PersonaCard: React.FC<{ p: Persona; c: ScColors; idx: number }> = ({ p, c,
           <div className="text-[10px] font-semibold" style={{ color: c.dark }}>
             &laquo;&nbsp;{p.signaturePref}&nbsp;&raquo;
           </div>
-          <div className="text-[9px] text-black/40 mt-0.5 italic">{p.signatureReason}</div>
+          <div className="text-[9px] text-black/65 mt-0.5 italic">{p.signatureReason}</div>
         </div>
       </div>
 
@@ -216,7 +216,7 @@ const PersonasFocusGroupSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
               Brand World &middot; P1
             </div>
             <div className="font-cormorant text-[24px] text-white font-light">Personas {'&'} Focus Group</div>
-            <div className="text-[10px] text-white/30 mt-1">
+            <div className="text-[10px] text-white/60 mt-1">
               4 personas &middot; 3 signatures testées &middot; 10 questions protocole &middot; 2 sessions
             </div>
           </div>
@@ -247,7 +247,7 @@ const PersonasFocusGroupSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
               Brand World &middot; P1
             </div>
             <div className="font-cormorant text-[24px] text-white font-light">Préparation Focus Group</div>
-            <div className="text-[10px] text-white/30 mt-1">
+            <div className="text-[10px] text-white/60 mt-1">
               Mission 7 &middot; Protocole de test des signatures
             </div>
           </div>
@@ -339,7 +339,7 @@ const PersonasFocusGroupSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
                           className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                           style={{ background: hexRgba(c.primary, 0.4) }}
                         />
-                        <span className="text-[10px] text-black/45">{s.detail}</span>
+                        <span className="text-[10px] text-black/65">{s.detail}</span>
                       </div>
                     </div>
                   </div>
@@ -353,7 +353,7 @@ const PersonasFocusGroupSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
                 <div className="text-[9px] font-bold tracking-[.2em] uppercase mb-1" style={{ color: c.accent }}>
                   Questions spécifiques à tester
                 </div>
-                <div className="text-[10px] text-black/40 mb-4">
+                <div className="text-[10px] text-black/65 mb-4">
                   {smbContent[k].focusGroupQuestions!.length} questions clés pour le {smbContent[k].scenarioLabel} — Sessions mars 2026
                 </div>
                 <div
@@ -383,7 +383,7 @@ const PersonasFocusGroupSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
                 <div className="text-[9px] font-bold tracking-[.2em] uppercase mb-1" style={{ color: c.accent }}>
                   Stimuli Focus Group — {smbContent[k].scenarioLabel}
                 </div>
-                <div className="text-[10px] text-black/40 mb-4">
+                <div className="text-[10px] text-black/65 mb-4">
                   {smbContent[k].focusGroupStimuli!.stimuli.length} stimuli visuels à présenter en session — Mars 2026
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

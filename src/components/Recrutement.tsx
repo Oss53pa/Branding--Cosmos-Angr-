@@ -28,7 +28,7 @@ const Recrutement: React.FC = () => (
           <div className="font-cormorant text-[30px] text-white font-light">
             <EditableText storageKey="recrutement-title" defaultValue="Recrutement & Terrain" tag="span" />
           </div>
-          <div className="text-[11px] text-white/35 mt-1.5">
+          <div className="text-[11px] text-white/60 mt-1.5">
             <EditableText storageKey="recrutement-subtitle" defaultValue="Brief agence . Profils . Incentives . Timeline" tag="span" />
           </div>
         </div>
@@ -80,7 +80,7 @@ const Recrutement: React.FC = () => (
                 <div className="text-[12px] font-bold text-navy mb-2">
                   <EditableText storageKey={`recrutement-incentive-title-${index}`} defaultValue={inc.title} tag="span" />
                 </div>
-                <div className="text-[12px] text-black/45 leading-relaxed">
+                <div className="text-[12px] text-black/65 leading-relaxed">
                   <EditableText storageKey={`recrutement-incentive-desc-${index}`} defaultValue={inc.val} tag="span" multiline />
                 </div>
               </div>

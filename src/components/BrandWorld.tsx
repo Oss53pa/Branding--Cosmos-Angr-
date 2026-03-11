@@ -256,8 +256,8 @@ const AmbianceSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
                     <div className="text-[9px] font-bold" style={{ color: isLight ? c.primary : `${c.textOnDark}cc` }}>{s.role}</div>
                   </div>
                   <div className="text-[11px] font-bold text-black/75">{s.name}</div>
-                  <div className="text-[9px] font-mono text-black/30 mt-0.5">{s.color}</div>
-                  <div className="text-[9px] text-black/40 mt-0.5">{s.usage}</div>
+                  <div className="text-[9px] font-mono text-black/60 mt-0.5">{s.color}</div>
+                  <div className="text-[9px] text-black/65 mt-0.5">{s.usage}</div>
                 </div>
               );
             })}
@@ -279,7 +279,7 @@ const AmbianceSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
               </div>
               <div className="flex-1 px-6 py-5 border-l border-black/[.04]">
                 <div className="font-cormorant text-[18px] italic leading-snug mb-2" style={{ color: c.primary }}>"{r.formulation}"</div>
-                <div className="text-[9px] text-black/35 font-semibold tracking-[.12em] uppercase">{r.note}</div>
+                <div className="text-[9px] text-black/65 font-semibold tracking-[.12em] uppercase">{r.note}</div>
               </div>
             </div>
           ))}
@@ -303,7 +303,7 @@ const LogoSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
         <div className={`px-8 py-6 border-b border-black/[.06] bg-gradient-to-br ${grad(k)}`}>
           <div className="text-[9px] font-bold tracking-[.25em] uppercase mb-1" style={{ color: c.accent }}>Brand World · 02</div>
           <div className="font-cormorant text-[24px] text-white font-light">Déclinaisons du Logo</div>
-          <div className="text-[10px] text-white/30 mt-1">{variants.length} déclinaisons · Supports physiques & digitaux</div>
+          <div className="text-[10px] text-white/60 mt-1">{variants.length} déclinaisons · Supports physiques & digitaux</div>
         </div>
 
         <div className="p-8">
@@ -318,7 +318,7 @@ const LogoSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
                     <div className="text-[13px] font-bold" style={{ color: c.primary }}>{v.name}</div>
                     <span className="text-[8px] font-bold tracking-[.12em] uppercase px-3 py-1 rounded-full whitespace-nowrap" style={{ background: `${c.accent}15`, color: c.accent }}>{v.tag}</span>
                   </div>
-                  <div className="text-[11px] text-black/45 leading-relaxed">{v.spec}</div>
+                  <div className="text-[11px] text-black/65 leading-relaxed">{v.spec}</div>
                 </div>
               </div>
             ))}
@@ -426,7 +426,7 @@ const SignageSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
               </div>
               <div className="px-5 py-4 border-t border-black/[.04]">
                 <div className="text-[13px] font-bold" style={{ color: c.primary }}>Totem digital interactif — 75"</div>
-                <div className="text-[11px] text-black/45 mt-1">Écran tactile LED 4K · Cadre aluminium anodisé · Socle granit poli</div>
+                <div className="text-[11px] text-black/65 mt-1">Écran tactile LED 4K · Cadre aluminium anodisé · Socle granit poli</div>
               </div>
             </div>
 
@@ -470,7 +470,7 @@ const SignageSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
               </div>
               <div className="px-5 py-4 border-t border-black/[.04]">
                 <div className="text-[13px] font-bold" style={{ color: c.primary }}>Panneau directionnel suspendu</div>
-                <div className="text-[11px] text-black/45 mt-1">Aluminium anodisé · Gravure laser · LED rétro-éclairé · Câbles inox</div>
+                <div className="text-[11px] text-black/65 mt-1">Aluminium anodisé · Gravure laser · LED rétro-éclairé · Câbles inox</div>
               </div>
             </div>
           </div>
@@ -596,7 +596,7 @@ const MockupCard: React.FC<{
         {icon}
         <div className="text-[13px] font-bold" style={{ color: primary }}>{title}</div>
       </div>
-      <div className="text-[10px] text-black/40 mt-1">{desc}</div>
+      <div className="text-[10px] text-black/65 mt-1">{desc}</div>
     </div>
   </div>
 );
@@ -846,7 +846,7 @@ const CollectionSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
         <div className={`px-4 sm:px-8 py-6 border-b border-black/[.06] bg-gradient-to-br ${grad(k)}`}>
           <div className="text-[9px] font-bold tracking-[.25em] uppercase mb-1" style={{ color: c.accent }}>Brand World · 05</div>
           <div className="font-cormorant text-[24px] text-white font-light">Collection de Marque</div>
-          <div className="text-[10px] text-white/30 mt-1">Papeterie · Goodies · Textile · Supports digitaux</div>
+          <div className="text-[10px] text-white/60 mt-1">Papeterie · Goodies · Textile · Supports digitaux</div>
         </div>
         <div className="p-4 sm:p-8 space-y-10">
 
@@ -959,7 +959,7 @@ const CollectionSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
                 </div>
                 <div className="px-5 py-4 bg-white border-t border-black/[.04]">
                   <div className="text-[13px] font-bold" style={{ color: c.primary }}>Carte de visite</div>
-                  <div className="text-[10px] text-black/40 mt-1">85×55mm · Coton 350g · Dorure à chaud</div>
+                  <div className="text-[10px] text-black/65 mt-1">85×55mm · Coton 350g · Dorure à chaud</div>
                 </div>
               </div>
 
@@ -1098,7 +1098,7 @@ const TimelineSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
           <div className="h-px flex-1" style={{ background: c.accent, opacity: 0.3 }} />
         </div>
         <div className="font-cormorant text-[36px] font-light leading-tight" style={{ color: c.primary }}>Parcours client</div>
-        <div className="text-[12px] text-black/40 mt-2 tracking-wide uppercase">De l'arrivée au parking jusqu'à la fidélisation — 7 moments clés</div>
+        <div className="text-[12px] text-black/65 mt-2 tracking-wide uppercase">De l'arrivée au parking jusqu'à la fidélisation — 7 moments clés</div>
       </div>
 
       {/* Timeline barre horizontale avec icônes */}
@@ -1137,7 +1137,7 @@ const TimelineSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
               <div className="font-cormorant text-[20px] font-medium leading-tight mb-3" style={{ color: c.primary }}>
                 {titles[i]}
               </div>
-              <div className="text-[11px] text-black/50 leading-relaxed mb-4">
+              <div className="text-[11px] text-black/65 leading-relaxed mb-4">
                 {descs[i]}
               </div>
               <div className="font-cormorant text-[13px] italic leading-snug" style={{ color: c.accent }}>
@@ -1162,7 +1162,7 @@ const TimelineSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
               <div className="font-cormorant text-[20px] font-medium leading-tight mb-3" style={{ color: c.primary }}>
                 {titles[idx]}
               </div>
-              <div className="text-[11px] text-black/50 leading-relaxed mb-4">
+              <div className="text-[11px] text-black/65 leading-relaxed mb-4">
                 {descs[idx]}
               </div>
               <div className="font-cormorant text-[13px] italic leading-snug" style={{ color: c.accent }}>

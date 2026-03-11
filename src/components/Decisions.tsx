@@ -27,7 +27,7 @@ const Decisions: React.FC = () => (
     <div className="font-cormorant text-[42px] font-light text-navy mb-2 leading-tight">
       Décisions actées
     </div>
-    <div className="text-[14px] text-black/40 mb-10 leading-relaxed max-w-[640px]">
+    <div className="text-[14px] text-black/65 mb-10 leading-relaxed max-w-[640px]">
       Points non négociables — valeurs fixes à intégrer dans tous les livrables.
     </div>
 

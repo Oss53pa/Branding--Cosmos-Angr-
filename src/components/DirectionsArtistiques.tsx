@@ -718,7 +718,7 @@ const DirectionsArtistiques: React.FC = () => {
           <div className="relative z-10">
             <div className="text-[9px] font-bold tracking-[.2em] uppercase text-gold/70 mb-2">Livrable 2.2</div>
             <div className="font-cormorant text-[30px] text-white font-light">Brand Book v2.2</div>
-            <div className="text-[11px] text-white/35 mt-1.5">Palettes · Typographie · Applications · Signatures · Stimuli FG</div>
+            <div className="text-[11px] text-white/60 mt-1.5">Palettes · Typographie · Applications · Signatures · Stimuli FG</div>
           </div>
         </div>
 

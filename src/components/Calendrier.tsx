@@ -21,7 +21,7 @@ const Calendrier: React.FC = () => (
     <div className="font-cormorant text-[42px] font-light text-navy mb-2 leading-tight">
       <EditableText storageKey="calendrier-title" defaultValue="Calendrier cible" tag="span" />
     </div>
-    <div className="text-[14px] text-black/40 mb-10 leading-relaxed max-w-[640px]">
+    <div className="text-[14px] text-black/65 mb-10 leading-relaxed max-w-[640px]">
       <EditableText storageKey="calendrier-desc" defaultValue="Chemin critique vers l'inauguration du 16 novembre 2026." tag="span" multiline />
     </div>
 
@@ -71,7 +71,7 @@ const Calendrier: React.FC = () => (
                 <EditableText storageKey={`calendrier-event-title-${i}`} defaultValue={t.title} tag="span" />
               </div>
               <div className={`text-[12px] leading-relaxed ${
-                isMilestone ? 'text-white/50' : 'text-black/40'
+                isMilestone ? 'text-white/50' : 'text-black/65'
               }`}>
                 <EditableText storageKey={`calendrier-event-desc-${i}`} defaultValue={t.desc} tag="span" multiline />
               </div>

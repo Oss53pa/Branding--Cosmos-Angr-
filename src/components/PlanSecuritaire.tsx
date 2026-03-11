@@ -127,7 +127,7 @@ const PlanSecuritaire: React.FC = () => (
             Plan Sécuritaire
           </h1>
         </div>
-        <p className="text-[14px] text-white/35 leading-relaxed max-w-[560px]">
+        <p className="text-[14px] text-white/60 leading-relaxed max-w-[560px]">
           Dispositif de sûreté et sécurité incendie — contrôle d'accès, vidéoprotection, procédures d'urgence et formation.
         </p>
       </div>
@@ -144,7 +144,7 @@ const PlanSecuritaire: React.FC = () => (
             </div>
             <div>
               <div className="font-cormorant text-[28px] font-light text-navy leading-none">{kpi.n}</div>
-              <div className="text-[9px] text-black/35 tracking-[.12em] uppercase font-medium">{kpi.label}</div>
+              <div className="text-[9px] text-black/65 tracking-[.12em] uppercase font-medium">{kpi.label}</div>
             </div>
           </div>
         ))}
@@ -178,7 +178,7 @@ const PlanSecuritaire: React.FC = () => (
                   </div>
                 </div>
 
-                <p className="text-[13px] text-black/50 leading-relaxed mb-5">{zone.desc}</p>
+                <p className="text-[13px] text-black/65 leading-relaxed mb-5">{zone.desc}</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {zone.items.map((item, i) => (
@@ -216,7 +216,7 @@ const PlanSecuritaire: React.FC = () => (
               </div>
               <div className="text-[13px] font-semibold text-navy mb-1">{item.role}</div>
               <div className="text-[10px] font-medium text-blue-600/70 mb-2">{item.team}</div>
-              <div className="text-[11px] text-black/40 leading-relaxed">{item.scope}</div>
+              <div className="text-[11px] text-black/65 leading-relaxed">{item.scope}</div>
             </div>
           ))}
         </div>
@@ -235,7 +235,7 @@ const PlanSecuritaire: React.FC = () => (
           </div>
           <div className="text-left">
             <div className="text-[13px] font-medium text-navy">Plan 3D Interactif — Dispositif sécuritaire</div>
-            <div className="text-[10px] text-black/35 mt-0.5">Visualiser les emplacements caméras, accès et postes de contrôle</div>
+            <div className="text-[10px] text-black/65 mt-0.5">Visualiser les emplacements caméras, accès et postes de contrôle</div>
           </div>
         </div>
         <ArrowRight size={16} className="text-blue-400 group-hover:translate-x-1 transition-transform" />

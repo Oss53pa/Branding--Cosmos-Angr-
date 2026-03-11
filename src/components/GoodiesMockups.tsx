@@ -317,7 +317,7 @@ const GoodiesMockupsSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
         >
           <div className="text-[9px] font-bold tracking-[.25em] uppercase mb-1" style={{ color: c.accent }}>Brand World · B5</div>
           <div className="font-cormorant text-[24px] text-white font-light">Goodies {'&'} Objets</div>
-          <div className="text-[10px] text-white/30 mt-1">4 pièces · Tasse · Sac · Gobelet · Porte-clés</div>
+          <div className="text-[10px] text-white/60 mt-1">4 pièces · Tasse · Sac · Gobelet · Porte-clés</div>
         </div>
 
         {/* Tab navigation */}
@@ -355,7 +355,7 @@ const GoodiesMockupsSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
             <div>
               <div className="text-[9px] font-bold tracking-wider uppercase mb-1" style={{ color: c.accent }}>● Goodies · {activeInfo.role}</div>
               <div className="text-[18px] font-bold" style={{ color: c.dark }}>{activeInfo.name}</div>
-              <div className="text-[11px] text-black/40 mt-1 leading-relaxed">{activeInfo.spec}</div>
+              <div className="text-[11px] text-black/65 mt-1 leading-relaxed">{activeInfo.spec}</div>
             </div>
             <div
               className="px-4 py-2 rounded-full text-[10px] font-bold tracking-wider uppercase whitespace-nowrap"

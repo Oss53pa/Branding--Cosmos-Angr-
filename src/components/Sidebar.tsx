@@ -162,16 +162,16 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection, onNavigate, onExport }
                   {section.icon}
                 </span>
                 <span className={`text-[10px] font-semibold tracking-[.12em] uppercase flex-1 ${
-                  isActive ? 'text-white' : 'text-white/40 group-hover:text-white/60'
+                  isActive ? 'text-white' : 'text-white/65 group-hover:text-white/60'
                 }`}>
                   {section.group}
                 </span>
                 {progress && (
-                  <span className="text-[9px] text-white/25 font-medium mr-1">
+                  <span className="text-[9px] text-white/55 font-medium mr-1">
                     {progress.done}/{progress.total}
                   </span>
                 )}
-                <span className="text-white/20">
+                <span className="text-white/55">
                   {isOpen ? <ChevronDown size={10} /> : <ChevronRight size={10} />}
                 </span>
               </button>
@@ -217,7 +217,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection, onNavigate, onExport }
                                 <span
                                   className={`flex-shrink-0 transition-colors ${
                                     active || childActive
-                                      ? 'text-gold' : 'text-white/20 group-hover/item:text-white/35'
+                                      ? 'text-gold' : 'text-white/55 group-hover/item:text-white/60'
                                   }`}
                                 >
                                   {item.icon}
@@ -227,7 +227,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection, onNavigate, onExport }
                                   <span className="w-1.5 h-1.5 rounded-full bg-gold flex-shrink-0" />
                                 )}
                                 {hasChildren && (
-                                  <span className="text-white/20">
+                                  <span className="text-white/55">
                                     {isSubOpen ? <ChevronDown size={9} /> : <ChevronRight size={9} />}
                                   </span>
                                 )}
@@ -243,7 +243,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection, onNavigate, onExport }
                                         className={`w-full flex items-center gap-2 px-2.5 py-[5px] rounded-md text-left transition-all ${
                                           isChildActive
                                             ? 'bg-white/[.08] text-white'
-                                            : 'text-white/35 hover:text-white/65 hover:bg-white/[.03]'
+                                            : 'text-white/60 hover:text-white/65 hover:bg-white/[.03]'
                                         }`}
                                       >
                                         <span

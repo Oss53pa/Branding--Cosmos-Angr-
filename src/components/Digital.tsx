@@ -79,7 +79,7 @@ const Digital: React.FC = () => (
         <div className="relative z-10">
           <div className="text-[9px] font-bold tracking-[.2em] uppercase text-gold/70 mb-2">Livrable 4.3</div>
           <EditableText storageKey="digital-title" defaultValue="Plan Digital" className="font-cormorant text-[30px] text-white font-light" tag="div" />
-          <EditableText storageKey="digital-subtitle" defaultValue="5 canaux . Strategie de contenu . KPIs par plateforme" className="text-[11px] text-white/35 mt-1.5" tag="div" />
+          <EditableText storageKey="digital-subtitle" defaultValue="5 canaux . Strategie de contenu . KPIs par plateforme" className="text-[11px] text-white/60 mt-1.5" tag="div" />
         </div>
       </div>
 
@@ -101,7 +101,7 @@ const Digital: React.FC = () => (
                   className="text-[14px] font-bold text-navy"
                   tag="div"
                 />
-                <EditableText storageKey={`digital-channel-role-${chIndex}`} defaultValue={ch.role} className="text-[11px] text-black/40 mt-0.5" tag="div" />
+                <EditableText storageKey={`digital-channel-role-${chIndex}`} defaultValue={ch.role} className="text-[11px] text-black/65 mt-0.5" tag="div" />
               </div>
               <div className="text-right">
                 <EditableText storageKey={`digital-channel-kpis-${chIndex}`} defaultValue={ch.kpis} className="text-[10px] font-semibold text-gold bg-gold/10 px-3 py-1.5 rounded-full" tag="div" />

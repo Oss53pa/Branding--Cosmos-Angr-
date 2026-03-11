@@ -41,7 +41,7 @@ export default function BrandGovernance({ scenarioKey }: { scenarioKey: Scenario
                   <s.icon size={20} color={ac.main} />
                   <div>
                     <div style={{ fontSize: 12, fontWeight: 600, color: '#1a1a2e' }}>{s.period}</div>
-                    <div style={{ fontSize: 9, color: 'rgba(0,0,0,0.4)' }}>{s.months}</div>
+                    <div style={{ fontSize: 9, color: 'rgba(0,0,0,0.65)' }}>{s.months}</div>
                   </div>
                 </div>
               </div>
@@ -71,7 +71,7 @@ export default function BrandGovernance({ scenarioKey }: { scenarioKey: Scenario
                 <div style={{ fontSize: 11, fontWeight: 600, color: '#1a1a2e' }}>{e.event}</div>
               </div>
               <div style={{ fontSize: 9, color: ac.main, fontWeight: 600, marginBottom: 6 }}>{e.date}</div>
-              <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.5)', lineHeight: 1.6 }}>{e.rule}</div>
+              <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.65)', lineHeight: 1.6 }}>{e.rule}</div>
             </div>
           ))}
         </div>
@@ -106,7 +106,7 @@ export default function BrandGovernance({ scenarioKey }: { scenarioKey: Scenario
                 </div>
                 <div style={{ padding: '14px 16px' }}>
                   {item.rules.map((r, j) => (
-                    <div key={j} style={{ fontSize: 9.5, color: 'rgba(0,0,0,0.55)', lineHeight: 1.6, paddingLeft: 12, position: 'relative', marginBottom: 4 }}>
+                    <div key={j} style={{ fontSize: 9.5, color: 'rgba(0,0,0,0.65)', lineHeight: 1.6, paddingLeft: 12, position: 'relative', marginBottom: 4 }}>
                       <span style={{ position: 'absolute', left: 0, color: ac.main, fontSize: 8 }}>●</span>{r}
                     </div>
                   ))}
@@ -138,7 +138,7 @@ export default function BrandGovernance({ scenarioKey }: { scenarioKey: Scenario
                 <div style={{ fontSize: 11, fontWeight: 600, color: '#1a1a2e' }}>{m.role}</div>
               </div>
               <div style={{ padding: '16px 20px' }}>
-                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.55)', lineHeight: 1.6, marginBottom: 8 }}>{m.scope}</div>
+                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.65)', lineHeight: 1.6, marginBottom: 8 }}>{m.scope}</div>
                 <div style={{ fontSize: 9, color: ac.main, fontWeight: 600 }}>{m.freq}</div>
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function BrandGovernance({ scenarioKey }: { scenarioKey: Scenario
               <div style={{ width: 8, height: 8, borderRadius: '50%', background: l.color, marginBottom: 12 }} />
               <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: l.color, fontWeight: 600, marginBottom: 4 }}>{l.level}</div>
               <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 18, fontWeight: 600, color: '#1a1a2e', marginBottom: 8 }}>{l.who}</div>
-              <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.5)', lineHeight: 1.6 }}>{l.scope}</div>
+              <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.65)', lineHeight: 1.6 }}>{l.scope}</div>
             </div>
           ))}
         </div>
@@ -180,7 +180,7 @@ export default function BrandGovernance({ scenarioKey }: { scenarioKey: Scenario
               <div style={{ width: 4, background: ac.main, flexShrink: 0 }} />
               <div style={{ padding: '16px 20px', flex: 1 }}>
                 <div style={{ fontSize: 12, fontWeight: 600, color: '#1a1a2e', marginBottom: 6 }}>{t.tool}</div>
-                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.5)', lineHeight: 1.6, marginBottom: 8 }}>{t.desc}</div>
+                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.65)', lineHeight: 1.6, marginBottom: 8 }}>{t.desc}</div>
                 <div style={{ fontSize: 9, color: ac.main, fontWeight: 600 }}>{t.freq}</div>
               </div>
             </div>

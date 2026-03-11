@@ -36,7 +36,7 @@ const Moodboards: React.FC = () => (
           <div className="font-cormorant text-[30px] text-white font-light">
             Moodboards textuels
           </div>
-          <div className="text-[11px] text-white/35 mt-1.5">
+          <div className="text-[11px] text-white/60 mt-1.5">
             Brief operationnel pour Fernand — descriptions visuelles precises
           </div>
         </div>

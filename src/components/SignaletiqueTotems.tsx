@@ -601,7 +601,7 @@ const SignaletiqueTotemSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
         >
           <div className="text-[9px] font-bold tracking-[.25em] uppercase mb-1" style={{ color: c.accent }}>Brand World · B3</div>
           <div className="font-cormorant text-[24px] text-white font-light">Signalétique {'&'} Totems</div>
-          <div className="text-[10px] text-white/30 mt-1">5 pièces · Charte Cosmos Angré</div>
+          <div className="text-[10px] text-white/60 mt-1">5 pièces · Charte Cosmos Angré</div>
         </div>
 
         {/* Tab navigation */}
@@ -640,7 +640,7 @@ const SignaletiqueTotemSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
             <div>
               <div className="text-[9px] font-bold tracking-wider uppercase mb-1" style={{ color: c.accent }}>● Signalétique · {activeInfo.role}</div>
               <div className="text-[18px] font-bold" style={{ color: c.dark }}>{activeInfo.name}</div>
-              <div className="text-[11px] text-black/40 mt-1 leading-relaxed">{activeInfo.spec}</div>
+              <div className="text-[11px] text-black/65 mt-1 leading-relaxed">{activeInfo.spec}</div>
             </div>
             <div
               className="px-4 py-2 rounded-full text-[10px] font-bold tracking-wider uppercase whitespace-nowrap"

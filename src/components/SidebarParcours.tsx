@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import CosmosLogo from './CosmosLogo';
 import {
-  Route, Car, ParkingSquare, DoorOpen, Sparkles, Store, UtensilsCrossed,
-  Heart, MapPin, Accessibility, Award, Box, Printer,
-  ChevronDown, ChevronRight
+  Route, MapPin, Users, Eye, BarChart3, Calendar, Signpost,
+  Car, ParkingSquare, DoorOpen, Sparkles, Store, UtensilsCrossed,
+  Heart, Box, Printer, UserCircle, Briefcase, GraduationCap, Baby,
+  ChevronDown, ChevronRight,
 } from 'lucide-react';
 
 interface SidebarParcoursProps {
@@ -33,35 +34,65 @@ const tocData: TocSection[] = [
     icon: <Route size={11} />,
     items: [
       { id: 'pc-cover', num: '—', label: 'Introduction', icon: <Route size={11} /> },
-      { id: 'pc-timeline', num: '—', label: 'Timeline 7 moments', icon: <MapPin size={11} /> },
     ],
   },
   {
-    group: '7 Moments clés',
+    group: 'M1 — Journey Map',
     color: '#059669',
-    icon: <Sparkles size={11} />,
+    icon: <MapPin size={11} />,
     items: [
-      { id: 'moment-01', num: '01', label: 'Arrivée', icon: <Car size={11} /> },
-      { id: 'moment-02', num: '02', label: 'Parking', icon: <ParkingSquare size={11} /> },
-      { id: 'moment-03', num: '03', label: 'Entrée', icon: <DoorOpen size={11} /> },
-      { id: 'moment-04', num: '04', label: 'Hall central', icon: <Sparkles size={11} /> },
-      { id: 'moment-05', num: '05', label: 'Shopping', icon: <Store size={11} /> },
-      { id: 'moment-06', num: '06', label: 'Restauration', icon: <UtensilsCrossed size={11} /> },
-      { id: 'moment-07', num: '07', label: 'Fidélisation', icon: <Heart size={11} /> },
+      { id: 'pc-journeymap', num: '1.0', label: 'Journey Map', icon: <MapPin size={11} /> },
+      { id: 'pc-journeyflow', num: '1.1', label: 'Parcours visuel', icon: <Route size={11} /> },
+      { id: 'pc-swimlane', num: '1.2', label: 'Swimlane · 10 couches', icon: <MapPin size={11} /> },
     ],
   },
   {
-    group: 'Services & confort',
-    color: '#34D399',
-    icon: <Accessibility size={11} />,
+    group: 'M2 — Personas',
+    color: '#3B82F6',
+    icon: <Users size={11} />,
     items: [
-      { id: 'pc-services', num: '3.1', label: 'Services', icon: <Accessibility size={11} /> },
-      { id: 'pc-cosmos-club', num: '3.2', label: 'Cosmos Club', icon: <Award size={11} /> },
+      { id: 'pc-personas', num: '2.0', label: '4 Personas Cosmos', icon: <Users size={11} /> },
+      { id: 'persona-famille', num: '2.1', label: 'Awa & Moussa', icon: <Baby size={11} /> },
+      { id: 'persona-jeunePro', num: '2.2', label: 'Serge', icon: <Briefcase size={11} /> },
+      { id: 'persona-executive', num: '2.3', label: 'Pamela', icon: <UserCircle size={11} /> },
+      { id: 'persona-genZ', num: '2.4', label: 'Aminata', icon: <GraduationCap size={11} /> },
+    ],
+  },
+  {
+    group: 'M3 — Touchpoints',
+    color: '#8B5CF6',
+    icon: <Eye size={11} />,
+    items: [
+      { id: 'pc-touchpoints', num: '3.0', label: 'Matrice touchpoints', icon: <Eye size={11} /> },
+    ],
+  },
+  {
+    group: 'M4 — KPIs',
+    color: '#F43F5E',
+    icon: <BarChart3 size={11} />,
+    items: [
+      { id: 'pc-kpis', num: '4.0', label: 'Dashboard KPIs', icon: <BarChart3 size={11} /> },
+    ],
+  },
+  {
+    group: 'M5 — Plan d\'action',
+    color: '#F59E0B',
+    icon: <Calendar size={11} />,
+    items: [
+      { id: 'pc-actionplan', num: '5.0', label: 'Plan d\'action', icon: <Calendar size={11} /> },
+    ],
+  },
+  {
+    group: 'M6 — Signalétique',
+    color: '#10B981',
+    icon: <Signpost size={11} />,
+    items: [
+      { id: 'pc-signaletique', num: '6.0', label: 'Signalétique directionnelle', icon: <Signpost size={11} /> },
     ],
   },
   {
     group: 'Outils',
-    color: '#F59E0B',
+    color: '#C9943A',
     icon: <Box size={11} />,
     items: [
       { id: 'pc-plan3d', num: '—', label: 'Plan 3D Interactif', icon: <Box size={11} /> },
@@ -112,11 +143,11 @@ const SidebarParcours: React.FC<SidebarParcoursProps> = ({ activeSection, onNavi
                   {section.icon}
                 </span>
                 <span className={`text-[10px] font-semibold tracking-[.12em] uppercase flex-1 ${
-                  isActive ? 'text-white' : 'text-white/40 group-hover:text-white/60'
+                  isActive ? 'text-white' : 'text-white/65 group-hover:text-white/60'
                 }`}>
                   {section.group}
                 </span>
-                <span className="text-white/20">
+                <span className="text-white/55">
                   {isOpen ? <ChevronDown size={10} /> : <ChevronRight size={10} />}
                 </span>
               </button>
@@ -137,7 +168,7 @@ const SidebarParcours: React.FC<SidebarParcoursProps> = ({ activeSection, onNavi
                       >
                         <span
                           className={`flex-shrink-0 transition-colors ${
-                            active ? 'text-emerald-400' : 'text-white/20 group-hover/item:text-white/35'
+                            active ? 'text-emerald-400' : 'text-white/55 group-hover/item:text-white/60'
                           }`}
                         >
                           {item.icon}

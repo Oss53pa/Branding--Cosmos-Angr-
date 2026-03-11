@@ -107,7 +107,7 @@ const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => {
           <div className="w-12 h-px bg-gradient-to-l from-transparent to-gold/40" />
         </div>
         <CosmosLogo height={80} />
-        <div className="text-[13px] text-white/30 mt-4 tracking-[.15em] font-light">
+        <div className="text-[13px] text-white/60 mt-4 tracking-[.15em] font-light">
           Sélectionnez un volume pour commencer
         </div>
       </div>
@@ -158,7 +158,7 @@ const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => {
 
             {/* Card body */}
             <div className="bg-[#12121f] px-7 py-6">
-              <div className="text-[12px] text-white/35 leading-relaxed mb-6">
+              <div className="text-[12px] text-white/60 leading-relaxed mb-6">
                 {vol.desc}
               </div>
 
@@ -169,7 +169,7 @@ const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => {
                     <div className="font-cormorant text-[24px] font-light" style={{ color: vol.accent }}>
                       {s.n}
                     </div>
-                    <div className="text-[8px] text-white/25 tracking-[.12em] uppercase font-medium">
+                    <div className="text-[8px] text-white/55 tracking-[.12em] uppercase font-medium">
                       {s.l}
                     </div>
                   </div>
@@ -219,7 +219,7 @@ const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => {
             </div>
             <div className="text-left">
               <div className="text-[13px] font-medium text-white/80">Plan 3D Interactif</div>
-              <div className="text-[10px] text-white/30 mt-0.5">Disponible dans chaque volume — Vue immersive du centre commercial</div>
+              <div className="text-[10px] text-white/60 mt-0.5">Disponible dans chaque volume — Vue immersive du centre commercial</div>
             </div>
           </div>
           <ArrowRight size={16} className="text-gold/50 group-hover:text-gold group-hover:translate-x-1 transition-all" />

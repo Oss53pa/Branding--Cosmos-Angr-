@@ -82,7 +82,7 @@ const Editorial: React.FC = () => (
         <div className="relative z-10">
           <div className="text-[9px] font-bold tracking-[.2em] uppercase text-gold/70 mb-2">Livrable 4.4</div>
           <EditableText storageKey="editorial-title" defaultValue="Calendrier Editorial" className="font-cormorant text-[30px] text-white font-light" tag="div" />
-          <EditableText storageKey="editorial-subtitle" defaultValue="6 mois . 5 plateformes . Pre-ouverture -> Fidelisation" className="text-[11px] text-white/35 mt-1.5" tag="div" />
+          <EditableText storageKey="editorial-subtitle" defaultValue="6 mois . 5 plateformes . Pre-ouverture -> Fidelisation" className="text-[11px] text-white/60 mt-1.5" tag="div" />
         </div>
       </div>
 
@@ -102,7 +102,7 @@ const Editorial: React.FC = () => (
                     className="text-[13px] font-bold text-navy"
                     tag="div"
                   />
-                  <div className="text-[11px] text-black/35 italic mt-0.5">
+                  <div className="text-[11px] text-black/65 italic mt-0.5">
                     Theme : <EditableText storageKey={`editorial-month-theme-${mIndex}`} defaultValue={m.theme} tag="span" />
                   </div>
                 </div>
@@ -135,7 +135,7 @@ const Editorial: React.FC = () => (
                         <EditableText
                           storageKey={`editorial-post-type-${mIndex}-${i}`}
                           defaultValue={p.type}
-                          className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-black/[.04] text-black/40"
+                          className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-black/[.04] text-black/65"
                           tag="span"
                         />
                       </div>

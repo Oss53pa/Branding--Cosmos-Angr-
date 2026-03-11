@@ -21,7 +21,7 @@ const Grille: React.FC = () => (
         <div className="relative z-10">
           <div className="text-[9px] font-bold tracking-[.2em] uppercase text-gold/70 mb-2">Livrable 3.3</div>
           <div className="font-cormorant text-[30px] text-white font-light">Grille d'analyse & Scorecard</div>
-          <div className="text-[11px] text-white/35 mt-1.5">Indicateurs de decision post-FG</div>
+          <div className="text-[11px] text-white/60 mt-1.5">Indicateurs de decision post-FG</div>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 /* ─── SCENARIO MASTER BOOK ─── */
-.smb{--terra:#B25A38;--ebene-deep:#1a0d04;--bronze:#C9943A;--sable:#D4C4A8;--kaki:#6D7447;--fond:#F2EBDD;--pierre:#E8E0D5;--blanc-chaud:#FAF7F2;--gris-chaud:#736862;--ebene:#2C1A0A;--ebene-rgb:44,26,10;--terra-rgb:178,90,56;--kaki-rgb:109,116,71;--bronze-rgb:201,148,58;--fond-rgb:242,235,221;--gris-chaud-rgb:115,104,98;--gris-nav:#F5F5F5;--gris-nav-border:#E0E0E0;--gris-nav-text:#555;font-family:'Inter',sans-serif;background:var(--blanc-chaud);color:var(--ebene);display:flex;height:100%;overflow:hidden;}
+.smb{--terra:#B25A38;--ebene-deep:#1a0d04;--bronze:#C9943A;--sable:#D4C4A8;--kaki:#6D7447;--fond:#F2EBDD;--pierre:#E8E0D5;--blanc-chaud:#FAF7F2;--gris-chaud:#4a4340;--ebene:#2C1A0A;--ebene-rgb:44,26,10;--terra-rgb:178,90,56;--kaki-rgb:109,116,71;--bronze-rgb:201,148,58;--fond-rgb:242,235,221;--gris-chaud-rgb:74,67,64;--gris-nav:#F5F5F5;--gris-nav-border:#E0E0E0;--gris-nav-text:#333;font-family:'Inter',sans-serif;background:var(--blanc-chaud);color:var(--ebene);display:flex;height:100%;overflow:hidden;}
 
 /* NAV */
 .smb-nav{width:240px;height:100%;background:#fff;border-right:1px solid rgba(var(--terra-rgb),0.08);overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column;}

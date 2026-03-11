@@ -24,7 +24,7 @@ export default function LogoUsageRules({ scenarioKey }: { scenarioKey: ScenarioK
     <div id="bw-logo-rules" style={{ paddingTop: 48 }}>
       <div style={{ fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 8 }}>B9 · Règles d'usage</div>
       <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 28, fontWeight: 300, color: '#1a1a2e', marginBottom: 8 }}>Usage du logo</div>
-      <div style={{ fontSize: 11, color: 'rgba(0,0,0,0.45)', marginBottom: 32 }}>Zone de protection, tailles minimales, fonds autorisés et interdictions</div>
+      <div style={{ fontSize: 11, color: 'rgba(0,0,0,0.65)', marginBottom: 32 }}>Zone de protection, tailles minimales, fonds autorisés et interdictions</div>
       <div style={{ width: 40, height: 2, background: ac.main, marginBottom: 40, opacity: 0.4 }} />
 
       {/* ── Zone de protection ── */}
@@ -53,7 +53,7 @@ export default function LogoUsageRules({ scenarioKey }: { scenarioKey: ScenarioK
             {/* Real CosmosLogo */}
             <CosmosLogo height={50} dotColor="#1a1a2e" />
           </div>
-          <div style={{ marginTop: 20, fontSize: 10.5, color: 'rgba(0,0,0,0.5)', textAlign: 'center', lineHeight: 1.7 }}>
+          <div style={{ marginTop: 20, fontSize: 10.5, color: 'rgba(0,0,0,0.65)', textAlign: 'center', lineHeight: 1.7 }}>
             <strong style={{ color: ac.main }}>x</strong> = hauteur du <strong>O</strong> de COSMOS · Aucun élément ne doit pénétrer cette zone
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function LogoUsageRules({ scenarioKey }: { scenarioKey: ScenarioK
               </div>
               <div style={{ padding: '24px' }}>
                 <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 28, fontWeight: 600, color: '#1a1a2e', marginBottom: 8 }}>{item.value}</div>
-                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.45)', lineHeight: 1.6 }}>{item.note}</div>
+                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.65)', lineHeight: 1.6 }}>{item.note}</div>
               </div>
             </div>
           ))}
@@ -99,7 +99,7 @@ export default function LogoUsageRules({ scenarioKey }: { scenarioKey: ScenarioK
                 <Check size={14} color="#16a34a" strokeWidth={2.5} />
                 <div>
                   <div style={{ fontSize: 10, fontWeight: 600, color: '#1a1a2e' }}>{item.label}</div>
-                  <div style={{ fontSize: 9, color: 'rgba(0,0,0,0.35)' }}>{item.hex}</div>
+                  <div style={{ fontSize: 9, color: 'rgba(0,0,0,0.65)' }}>{item.hex}</div>
                 </div>
               </div>
             </div>

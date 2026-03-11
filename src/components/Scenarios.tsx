@@ -124,7 +124,7 @@ const ScenarioSection: React.FC<{ id: string; sc: ScenarioData; num: string }> =
           </div>
           <div className="flex items-center gap-2 mt-3">
             <div className="h-px flex-1 bg-white/10" />
-            <span className="text-[10px] text-white/30 tracking-wide">
+            <span className="text-[10px] text-white/60 tracking-wide">
               USP . Valeurs . Ton . Territoire . Promesse
             </span>
             <div className="h-px flex-1 bg-white/10" />
@@ -161,7 +161,7 @@ const ScenarioSection: React.FC<{ id: string; sc: ScenarioData; num: string }> =
                   </div>
                   <div className="text-[12px] font-bold text-navy">{v.title}</div>
                 </div>
-                <div className="text-[12px] text-black/45 leading-relaxed pl-8">{v.val}</div>
+                <div className="text-[12px] text-black/65 leading-relaxed pl-8">{v.val}</div>
               </div>
             ))}
           </div>

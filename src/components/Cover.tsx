@@ -53,7 +53,7 @@ const Cover: React.FC = () => (
       <EditableText
         storageKey="cover-subtitle"
         defaultValue="Stratégie . Brand Book . Focus Group . Plan Marketing . 2026"
-        className="text-[15px] text-white/40 mb-14 tracking-[.15em] font-light"
+        className="text-[15px] text-white/65 mb-14 tracking-[.15em] font-light"
       />
 
       {/* Decorative divider */}
@@ -77,7 +77,7 @@ const Cover: React.FC = () => (
             <div className="font-cormorant text-5xl text-gold font-light mb-1 transition-transform group-hover:scale-110">
               {s.n}
             </div>
-            <div className="text-[9px] text-white/30 tracking-[.15em] uppercase font-medium">
+            <div className="text-[9px] text-white/60 tracking-[.15em] uppercase font-medium">
               {s.l}
             </div>
           </div>
@@ -115,7 +115,7 @@ const Cover: React.FC = () => (
           </div>
           <div className="px-3 py-2.5">
             <div className="text-[10px] font-semibold text-white/70 mb-0.5">Façade extérieure</div>
-            <div className="text-[8px] text-white/30 leading-relaxed">Aluminium nervuré mat</div>
+            <div className="text-[8px] text-white/60 leading-relaxed">Aluminium nervuré mat</div>
             <div className="text-[8px] text-gold/50 mt-0.5 font-medium">Grège doré</div>
           </div>
         </div>
@@ -128,7 +128,7 @@ const Cover: React.FC = () => (
           </div>
           <div className="px-3 py-2.5">
             <div className="text-[10px] font-semibold text-white/70 mb-0.5">Têtes de mur</div>
-            <div className="text-[8px] text-white/30 leading-relaxed">Kutu Baffle noyer fumé</div>
+            <div className="text-[8px] text-white/60 leading-relaxed">Kutu Baffle noyer fumé</div>
             <div className="text-[8px] text-gold/50 mt-0.5 font-medium">Brun noyer</div>
           </div>
         </div>
@@ -141,7 +141,7 @@ const Cover: React.FC = () => (
           </div>
           <div className="px-3 py-2.5">
             <div className="text-[10px] font-semibold text-white/70 mb-0.5">Murs intérieurs</div>
-            <div className="text-[8px] text-white/30 leading-relaxed">Teja + Ignero RAL 040</div>
+            <div className="text-[8px] text-white/60 leading-relaxed">Teja + Ignero RAL 040</div>
             <div className="text-[8px] text-gold/50 mt-0.5 font-medium">Terracotta</div>
           </div>
         </div>
@@ -158,7 +158,7 @@ const Cover: React.FC = () => (
           </div>
           <div className="px-3 py-2.5">
             <div className="text-[10px] font-semibold text-white/70 mb-0.5">Sol</div>
-            <div className="text-[8px] text-white/30 leading-relaxed">Terrazo granito beige</div>
+            <div className="text-[8px] text-white/60 leading-relaxed">Terrazo granito beige</div>
             <div className="text-[8px] text-gold/50 mt-0.5 font-medium">Éclats lumineux</div>
           </div>
         </div>
@@ -176,7 +176,7 @@ const Cover: React.FC = () => (
           </div>
           <div className="px-3 py-2.5">
             <div className="text-[10px] font-semibold text-white/70 mb-0.5">Végétation</div>
-            <div className="text-[8px] text-white/30 leading-relaxed">Arbres tropicaux intégrés</div>
+            <div className="text-[8px] text-white/60 leading-relaxed">Arbres tropicaux intégrés</div>
             <div className="text-[8px] text-gold/50 mt-0.5 font-medium">Verts naturels</div>
           </div>
         </div>

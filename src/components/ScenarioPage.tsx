@@ -30,12 +30,12 @@ interface KCard { num: string; facette: string; title: string; content: string; 
 const KapfererCard: React.FC<KCard & { color: string }> = ({ num, color, facette, title, content, yes, no = [] }) => (
   <div className="bg-white rounded-xl border border-black/[.06] p-5 shadow-sm">
     <div className="font-cormorant text-[28px] font-light mb-1" style={{ color }}>{num}</div>
-    <div className="text-[9px] tracking-[.2em] uppercase text-black/40 mb-2">{facette}</div>
+    <div className="text-[9px] tracking-[.2em] uppercase text-black/65 mb-2">{facette}</div>
     <div className="text-[13px] font-bold text-black mb-1.5">{title}</div>
     <div className="text-[12px] text-black/60 leading-relaxed mb-3">{content}</div>
     <div className="flex gap-1.5 flex-wrap">
       {yes.map(t => <span key={t} className="px-2.5 py-1 rounded-full text-[9px] border border-black/[.1] text-black/60">{t}</span>)}
-      {no.map(t => <span key={t} className="px-2.5 py-1 rounded-full text-[9px] border border-black/[.06] text-black/25 line-through">{t}</span>)}
+      {no.map(t => <span key={t} className="px-2.5 py-1 rounded-full text-[9px] border border-black/[.06] text-black/60 line-through">{t}</span>)}
     </div>
   </div>
 );
@@ -43,9 +43,9 @@ const KapfererCard: React.FC<KCard & { color: string }> = ({ num, color, facette
 interface TonBlock { label: string; content: string; ex: string }
 const TonCard: React.FC<TonBlock> = ({ label, content, ex }) => (
   <div className="bg-white rounded-xl border border-black/[.06] p-5 shadow-sm">
-    <div className="text-[9px] tracking-[.15em] uppercase text-black/35 mb-2">{label}</div>
+    <div className="text-[9px] tracking-[.15em] uppercase text-black/65 mb-2">{label}</div>
     <div className="text-[13px] text-black/75 leading-relaxed">{content}</div>
-    <div className="text-[11px] text-black/40 mt-2 italic">{ex}</div>
+    <div className="text-[11px] text-black/65 mt-2 italic">{ex}</div>
   </div>
 );
 
@@ -560,7 +560,7 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
       <nav className="w-[220px] bg-[#0f0f1a] flex flex-col h-full flex-shrink-0 select-none">
         {/* Header */}
         <div className="px-4 pt-5 pb-4 border-b border-white/[.06]">
-          <button onClick={onBack} className="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors text-[10px] mb-3">
+          <button onClick={onBack} className="flex items-center gap-2 text-white/65 hover:text-white/70 transition-colors text-[10px] mb-3">
             <ArrowLeft size={12} /> Retour
           </button>
           <div className="flex items-center gap-2.5">
@@ -582,26 +582,26 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
         {/* Nav items */}
         <div className="flex-1 overflow-y-auto py-3 px-2">
           {/* Stratégie group */}
-          <div className="text-[8px] font-bold tracking-[.2em] uppercase text-white/20 px-2.5 mb-2 mt-1">Stratégie</div>
+          <div className="text-[8px] font-bold tracking-[.2em] uppercase text-white/55 px-2.5 mb-2 mt-1">Stratégie</div>
           {navSections.slice(0, 12).map(item => (
             <button key={item.id} onClick={() => scrollTo(item.id)}
               className={`w-full flex items-center gap-2 px-2.5 py-[5px] rounded-md text-left transition-all ${
-                activeNav === item.id ? 'bg-white/[.08] text-white' : 'text-white/35 hover:text-white/60 hover:bg-white/[.03]'
+                activeNav === item.id ? 'bg-white/[.08] text-white' : 'text-white/60 hover:text-white/60 hover:bg-white/[.03]'
               }`}>
-              <span className={activeNav === item.id ? 'text-gold' : 'text-white/20'}>{item.icon}</span>
+              <span className={activeNav === item.id ? 'text-gold' : 'text-white/55'}>{item.icon}</span>
               <span className="text-[10px] leading-tight">{item.label}</span>
               {activeNav === item.id && <span className="w-1 h-1 rounded-full bg-gold ml-auto flex-shrink-0" />}
             </button>
           ))}
 
           {/* Brand World group */}
-          <div className="text-[8px] font-bold tracking-[.2em] uppercase text-white/20 px-2.5 mb-2 mt-4">Brand World</div>
+          <div className="text-[8px] font-bold tracking-[.2em] uppercase text-white/55 px-2.5 mb-2 mt-4">Brand World</div>
           {navSections.slice(12).map(item => (
             <button key={item.id} onClick={() => scrollTo(item.id)}
               className={`w-full flex items-center gap-2 px-2.5 py-[5px] rounded-md text-left transition-all ${
-                activeNav === item.id ? 'bg-white/[.08] text-white' : 'text-white/35 hover:text-white/60 hover:bg-white/[.03]'
+                activeNav === item.id ? 'bg-white/[.08] text-white' : 'text-white/60 hover:text-white/60 hover:bg-white/[.03]'
               }`}>
-              <span className={activeNav === item.id ? 'text-gold' : 'text-white/20'}>{item.icon}</span>
+              <span className={activeNav === item.id ? 'text-gold' : 'text-white/55'}>{item.icon}</span>
               <span className="text-[10px] leading-tight">{item.label}</span>
               {activeNav === item.id && <span className="w-1 h-1 rounded-full bg-gold ml-auto flex-shrink-0" />}
             </button>
@@ -620,7 +620,7 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
         <div className={`bg-gradient-to-br ${sc.coverClass} px-4 sm:px-8 lg:px-[72px] pt-10 pb-14 relative overflow-hidden`}>
           <div className="absolute inset-0 opacity-[.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '32px 32px' }} />
           <div className="relative">
-            <div className="text-[10px] font-bold tracking-[.3em] uppercase text-white/30 mb-6">Plateforme de marque · Cosmos Angré</div>
+            <div className="text-[10px] font-bold tracking-[.3em] uppercase text-white/60 mb-6">Plateforme de marque · Cosmos Angré</div>
             <h1 className="font-cormorant text-[42px] text-white font-light leading-[1.05] mb-3 whitespace-pre-line">{sc.coverTitle}</h1>
             <div className="font-cormorant text-[18px] text-white/50 italic mb-6">{sc.promesse}</div>
             {isRecommended && (
@@ -632,7 +632,7 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
             <div className="flex gap-2.5 flex-wrap mb-4">
               {sc.pillars.map(p => <span key={p} className="px-4 py-1.5 rounded-full text-[11px] bg-white/[.08] border border-white/[.12] text-white">{p}</span>)}
             </div>
-            <div className="text-[10px] text-white/20 tracking-[.15em] uppercase">{sc.coverFoot}</div>
+            <div className="text-[10px] text-white/55 tracking-[.15em] uppercase">{sc.coverFoot}</div>
           </div>
         </div>
 
@@ -643,7 +643,7 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
           <div id="sc-usp" className="pb-16 border-b border-black/[.08]">
             <div className="bg-white rounded-[14px] border border-black/[.08] overflow-hidden">
               <div className={`px-7 py-6 border-b border-black/[.08] bg-gradient-to-br ${sc.gradient}`}>
-                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/40 mb-1.5">Livrable 1.2</div>
+                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/65 mb-1.5">Livrable 1.2</div>
                 <div className="font-cormorant text-[22px] text-white font-light">USP — Proposition de valeur unique</div>
               </div>
               <div className="p-7">
@@ -657,7 +657,7 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
           <div id="sc-kapferer" className="py-16 border-b border-black/[.08]">
             <div className="bg-white rounded-[14px] border border-black/[.08] overflow-hidden">
               <div className={`px-7 py-6 border-b border-black/[.08] bg-gradient-to-br ${sc.gradient}`}>
-                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/40 mb-1.5">Prisme de Kapferer</div>
+                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/65 mb-1.5">Prisme de Kapferer</div>
                 <div className="font-cormorant text-[22px] text-white font-light">Identité de marque — 6 facettes</div>
               </div>
               <div className="p-7 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -670,7 +670,7 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
           <div id="sc-valeurs" className="py-16 border-b border-black/[.08]">
             <div className="bg-white rounded-[14px] border border-black/[.08] overflow-hidden">
               <div className={`px-7 py-6 border-b border-black/[.08] bg-gradient-to-br ${sc.gradient}`}>
-                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/40 mb-1.5">Valeurs</div>
+                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/65 mb-1.5">Valeurs</div>
                 <div className="font-cormorant text-[22px] text-white font-light">4 valeurs de marque</div>
               </div>
               <div className="p-7 grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -678,7 +678,7 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
                   <div key={v.name} className="text-center p-4">
                     <div className="text-2xl mb-2">{v.icon}</div>
                     <div className="text-[12px] font-bold text-black mb-1">{v.name}</div>
-                    <div className="text-[10px] text-black/50 leading-relaxed">{v.desc}</div>
+                    <div className="text-[10px] text-black/65 leading-relaxed">{v.desc}</div>
                   </div>
                 ))}
               </div>
@@ -689,7 +689,7 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
           <div id="sc-ton" className="py-16 border-b border-black/[.08]">
             <div className="bg-white rounded-[14px] border border-black/[.08] overflow-hidden">
               <div className={`px-7 py-6 border-b border-black/[.08] bg-gradient-to-br ${sc.gradient}`}>
-                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/40 mb-1.5">Communication</div>
+                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/65 mb-1.5">Communication</div>
                 <div className="font-cormorant text-[22px] text-white font-light">Ton de communication</div>
               </div>
               <div className="p-7 grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -702,15 +702,15 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
           <div id="sc-signatures" className="py-16 border-b border-black/[.08]">
             <div className="bg-white rounded-[14px] border border-black/[.08] overflow-hidden">
               <div className={`px-7 py-6 border-b border-black/[.08] bg-gradient-to-br ${sc.gradient}`}>
-                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/40 mb-1.5">Naming</div>
+                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/65 mb-1.5">Naming</div>
                 <div className="font-cormorant text-[22px] text-white font-light">Signatures</div>
               </div>
               <div className="p-7 space-y-4">
                 {sc.signatures.map(s => (
                   <div key={s.text} className="border-b border-black/[.04] pb-4 last:border-0">
-                    <div className="text-[9px] tracking-[.2em] uppercase text-black/35 mb-1">{s.type}</div>
+                    <div className="text-[9px] tracking-[.2em] uppercase text-black/65 mb-1">{s.type}</div>
                     <div className="font-cormorant text-[24px] font-light mb-1" style={{ color: accentColor }}>{s.text}</div>
-                    <div className="text-[12px] text-black/50">{s.why}</div>
+                    <div className="text-[12px] text-black/65">{s.why}</div>
                   </div>
                 ))}
               </div>
@@ -735,20 +735,20 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
                 </div>
                 {sc.direction.proportions && (
                   <div className="bg-cream rounded-lg p-4">
-                    <div className="text-[9px] font-bold tracking-[.15em] uppercase text-black/35 mb-1.5">Proportions d'usage</div>
+                    <div className="text-[9px] font-bold tracking-[.15em] uppercase text-black/65 mb-1.5">Proportions d'usage</div>
                     <div className="text-[12px] text-black/60 leading-relaxed">{sc.direction.proportions}</div>
                   </div>
                 )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {sc.direction.paletteDit && (
                     <div className="bg-cream rounded-lg p-4" style={{ borderLeft: `3px solid ${accentColor}` }}>
-                      <div className="text-[9px] font-bold tracking-[.15em] uppercase text-black/35 mb-1.5">Ce que la palette dit</div>
+                      <div className="text-[9px] font-bold tracking-[.15em] uppercase text-black/65 mb-1.5">Ce que la palette dit</div>
                       <div className="text-[12px] text-black/60 leading-relaxed">{sc.direction.paletteDit}</div>
                     </div>
                   )}
                   {sc.direction.paletteEvite && (
                     <div className="bg-cream rounded-lg p-4 border-l-[3px] border-red-300/40">
-                      <div className="text-[9px] font-bold tracking-[.15em] uppercase text-black/35 mb-1.5">Ce qu'on évite</div>
+                      <div className="text-[9px] font-bold tracking-[.15em] uppercase text-black/65 mb-1.5">Ce qu'on évite</div>
                       <div className="text-[12px] text-black/60 leading-relaxed">{sc.direction.paletteEvite}</div>
                     </div>
                   )}
@@ -773,25 +773,25 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
           <div id="sc-colors" className="py-16 border-b border-black/[.08]">
             <div className="bg-white rounded-[14px] border border-black/[.08] overflow-hidden">
               <div className={`px-7 py-6 border-b border-black/[.08] bg-gradient-to-br ${sc.gradient}`}>
-                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/40 mb-1.5">Colorimétrie</div>
+                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/65 mb-1.5">Colorimétrie</div>
                 <div className="font-cormorant text-[22px] text-white font-light">{sc.colorStrategy.title}</div>
               </div>
               <div className="p-7">
                 {/* Intro / philosophie */}
                 <div className="bg-cream rounded-xl p-5 mb-6 border-l-[3px]" style={{ borderColor: accentColor }}>
-                  <div className="text-[9px] font-bold tracking-[.15em] uppercase text-black/35 mb-2">Philosophie colorimétrique</div>
+                  <div className="text-[9px] font-bold tracking-[.15em] uppercase text-black/65 mb-2">Philosophie colorimétrique</div>
                   <div className="text-[13px] text-black/65 leading-[1.8] italic">{sc.colorStrategy.intro}</div>
                 </div>
 
                 {/* Ratio visuel 60/30/10 */}
                 <div className="mb-6">
-                  <div className="text-[9px] font-bold tracking-[.15em] uppercase text-black/35 mb-3">Règle universelle — Ratio 60 / 30 / 10</div>
+                  <div className="text-[9px] font-bold tracking-[.15em] uppercase text-black/65 mb-3">Règle universelle — Ratio 60 / 30 / 10</div>
                   <div className="flex h-10 rounded-lg overflow-hidden" style={{ boxShadow: '0 2px 8px rgba(0,0,0,.08)' }}>
                     <div className="flex items-center justify-center text-white text-[10px] font-bold" style={{ width: '60%', background: sc.direction.palette[0]?.bg }}>60% Dominant</div>
                     <div className="flex items-center justify-center text-white text-[10px] font-bold" style={{ width: '30%', background: sc.direction.palette[1]?.bg }}>30% Structure</div>
                     <div className="flex items-center justify-center text-white text-[10px] font-bold" style={{ width: '10%', background: sc.direction.palette[2]?.bg }}>10%</div>
                   </div>
-                  <div className="text-[9px] text-black/30 mt-1.5 text-center">Ce ratio change selon le support — voir détails ci-dessous</div>
+                  <div className="text-[9px] text-black/60 mt-1.5 text-center">Ce ratio change selon le support — voir détails ci-dessous</div>
                 </div>
 
                 {/* Tableau par support */}
@@ -801,20 +801,20 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
                       <div className="flex items-stretch">
                         <div className="w-36 flex-shrink-0 flex flex-col items-center justify-center px-3 py-4 border-r border-black/[.04]" style={{ background: `${accentColor}08` }}>
                           <div className="text-[11px] font-bold text-center" style={{ color: accentColor }}>{r.support}</div>
-                          <div className="text-[8px] font-mono text-black/25 mt-1">{r.ratio}</div>
+                          <div className="text-[8px] font-mono text-black/60 mt-1">{r.ratio}</div>
                         </div>
                         <div className="flex-1 px-4 py-3">
                           <div className="grid grid-cols-3 gap-2 mb-2">
                             <div>
-                              <span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/30">Dominant</span>
+                              <span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/60">Dominant</span>
                               <div className="text-[10px] text-black/60 mt-0.5">{r.dominant}</div>
                             </div>
                             <div>
-                              <span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/30">Structure</span>
+                              <span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/60">Structure</span>
                               <div className="text-[10px] text-black/60 mt-0.5">{r.structure}</div>
                             </div>
                             <div>
-                              <span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/30">Accent</span>
+                              <span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/60">Accent</span>
                               <div className="text-[10px] text-black/60 mt-0.5">{r.accent}</div>
                             </div>
                           </div>
@@ -826,7 +826,7 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
                               return <div key={j} style={{ width: `${pct}%`, background: hex }} />;
                             })}
                           </div>
-                          <div className="text-[10px] text-black/40 italic">{r.why}</div>
+                          <div className="text-[10px] text-black/65 italic">{r.why}</div>
                         </div>
                       </div>
                     </div>
@@ -840,16 +840,16 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
           <div id="sc-matieres" className="py-16 border-b border-black/[.08]">
             <div className="bg-white rounded-[14px] border border-black/[.08] overflow-hidden">
               <div className={`px-7 py-6 border-b border-black/[.08] bg-gradient-to-br ${sc.gradient}`}>
-                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/40 mb-1.5">Livrable 2.2</div>
+                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/65 mb-1.5">Livrable 2.2</div>
                 <div className="font-cormorant text-[22px] text-white font-light">Matières & Textures</div>
               </div>
               <div className="p-7 grid grid-cols-1 md:grid-cols-2 gap-4">
                 {sc.matieres.map(m => (
                   <div key={m.name} className="bg-cream rounded-xl p-5 border border-black/[.04]" style={{ borderLeft: `3px solid ${accentColor}` }}>
                     <div className="text-[13px] font-bold text-black/80 mb-1">{m.name}</div>
-                    <div className="text-[11px] text-black/50 italic mb-2">{m.desc}</div>
-                    <div className="text-[10px] text-black/40">
-                      <span className="font-semibold text-black/50">Usage :</span> {m.usage}
+                    <div className="text-[11px] text-black/65 italic mb-2">{m.desc}</div>
+                    <div className="text-[10px] text-black/65">
+                      <span className="font-semibold text-black/65">Usage :</span> {m.usage}
                     </div>
                   </div>
                 ))}
@@ -861,7 +861,7 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
           <div id="sc-applications" className="py-16 border-b border-black/[.08]">
             <div className="bg-white rounded-[14px] border border-black/[.08] overflow-hidden">
               <div className={`px-7 py-6 border-b border-black/[.08] bg-gradient-to-br ${sc.gradient}`}>
-                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/40 mb-1.5">Livrable 2.3</div>
+                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/65 mb-1.5">Livrable 2.3</div>
                 <div className="font-cormorant text-[22px] text-white font-light">Règles d'application — 13 supports</div>
               </div>
               <div className="p-7">
@@ -874,11 +874,11 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
                         </div>
                         <div className="flex-1 px-4 py-3">
                           <div className="grid grid-cols-3 gap-2 mb-2">
-                            <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/30">Fond</span><div className="text-[10px] text-black/60 mt-0.5">{r.fond}</div></div>
-                            <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/30">Texte</span><div className="text-[10px] text-black/60 mt-0.5">{r.texte}</div></div>
-                            <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/30">Accent</span><div className="text-[10px] text-black/60 mt-0.5">{r.accent}</div></div>
+                            <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/60">Fond</span><div className="text-[10px] text-black/60 mt-0.5">{r.fond}</div></div>
+                            <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/60">Texte</span><div className="text-[10px] text-black/60 mt-0.5">{r.texte}</div></div>
+                            <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/60">Accent</span><div className="text-[10px] text-black/60 mt-0.5">{r.accent}</div></div>
                           </div>
-                          <div className="text-[10px] text-black/40 italic">{r.note}</div>
+                          <div className="text-[10px] text-black/65 italic">{r.note}</div>
                         </div>
                       </div>
                     </div>
@@ -906,7 +906,7 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
           <div id="sc-risques" className="py-16 border-b border-black/[.08]">
             <div className={`bg-white rounded-[14px] border overflow-hidden ${isRecommended ? 'border-[#C9943A]/20' : 'border-black/[.08]'}`}>
               <div className={`px-7 py-6 border-b border-black/[.08] bg-gradient-to-br ${sc.gradient}`}>
-                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/40 mb-1.5">{isRecommended ? 'Avantage' : 'Risques'}</div>
+                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/65 mb-1.5">{isRecommended ? 'Avantage' : 'Risques'}</div>
                 <div className="font-cormorant text-[22px] text-white font-light">{sc.risk.label}</div>
               </div>
               <div className="p-7">
@@ -919,7 +919,7 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
           <div id="sc-stimuli" className="py-16 border-b border-black/[.08]">
             <div className="bg-white rounded-[14px] border border-black/[.08] overflow-hidden">
               <div className={`px-7 py-6 border-b border-black/[.08] bg-gradient-to-br ${sc.gradient}`}>
-                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/40 mb-1.5">Focus Group · Stimuli visuels</div>
+                <div className="text-[9px] font-bold tracking-[.2em] uppercase text-white/65 mb-1.5">Focus Group · Stimuli visuels</div>
                 <div className="font-cormorant text-[22px] text-white font-light">Spécifications pour Fernand — {sc.fgStimuli.length} planches</div>
               </div>
               <div className="p-7 space-y-4">
@@ -932,10 +932,10 @@ const ScenarioPage: React.FC<ScenarioPageProps> = ({ scenarioKey, onBack }) => {
                       <div className="flex-1">
                         <div className="text-[13px] font-bold text-black/80 mb-1">{stim.titre}</div>
                         <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 mt-2">
-                          <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/30">Format</span><div className="text-[10px] text-black/60 mt-0.5">{stim.format}</div></div>
-                          <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/30">Palette</span><div className="text-[10px] text-black/60 mt-0.5">{stim.palette}</div></div>
-                          <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/30">Typographie</span><div className="text-[10px] text-black/60 mt-0.5">{stim.typo}</div></div>
-                          <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/30">Contenu</span><div className="text-[10px] text-black/60 mt-0.5">{stim.contenu}</div></div>
+                          <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/60">Format</span><div className="text-[10px] text-black/60 mt-0.5">{stim.format}</div></div>
+                          <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/60">Palette</span><div className="text-[10px] text-black/60 mt-0.5">{stim.palette}</div></div>
+                          <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/60">Typographie</span><div className="text-[10px] text-black/60 mt-0.5">{stim.typo}</div></div>
+                          <div><span className="text-[8px] font-bold tracking-[.1em] uppercase text-black/60">Contenu</span><div className="text-[10px] text-black/60 mt-0.5">{stim.contenu}</div></div>
                         </div>
                       </div>
                     </div>

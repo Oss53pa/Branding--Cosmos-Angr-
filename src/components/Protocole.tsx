@@ -81,7 +81,7 @@ const Protocole: React.FC = () => (
           <div className="font-cormorant text-[30px] text-white font-light">
             <EditableText storageKey="protocole-title" defaultValue="Protocole Focus Group v2.1" tag="span" />
           </div>
-          <div className="text-[11px] text-white/35 mt-1.5">
+          <div className="text-[11px] text-white/60 mt-1.5">
             <EditableText storageKey="protocole-subtitle" defaultValue="Guide de moderation complet — 3 groupes — 110 minutes" tag="span" />
           </div>
         </div>
@@ -98,7 +98,7 @@ const Protocole: React.FC = () => (
             {objectives.map((o, index) => (
               <div key={o.title} className="bg-cream/50 rounded-xl p-4 border border-black/[.04] hover:shadow-sm transition-shadow" style={{ borderLeft: '3px solid #C8A96E' }}>
                 <div className="text-[11px] font-bold text-navy mb-1.5">{o.title}</div>
-                <div className="text-[12px] text-black/45 leading-relaxed">
+                <div className="text-[12px] text-black/65 leading-relaxed">
                   <EditableText storageKey={`protocole-objective-${index}`} defaultValue={o.val} tag="span" multiline />
                 </div>
               </div>

@@ -46,7 +46,7 @@ const STAGE_ICONS = [
 const SwimLabel: React.FC<{ label: string; sub?: string; color?: string }> = ({ label, sub, color }) => (
   <div className="flex flex-col justify-center pr-3 py-3 min-w-[140px] w-[140px] flex-shrink-0 border-r border-black/[.06]">
     <div className="text-[9px] font-bold tracking-[.15em] uppercase" style={{ color: color || '#1a1a2e' }}>{label}</div>
-    {sub && <div className="text-[8px] text-black/25 mt-0.5">{sub}</div>}
+    {sub && <div className="text-[8px] text-black/60 mt-0.5">{sub}</div>}
   </div>
 );
 
@@ -231,7 +231,7 @@ const VerticalJourneyFlow: React.FC = () => {
             </div>
             <div>
               <h3 className="font-cormorant text-[28px] font-light text-white leading-tight">The Customer Journey</h3>
-              <p className="text-[10px] text-white/35 mt-0.5">Cosmos Angré · Centre commercial · Angré 8ème tranche, Abidjan</p>
+              <p className="text-[10px] text-white/60 mt-0.5">Cosmos Angré · Centre commercial · Angré 8ème tranche, Abidjan</p>
             </div>
           </div>
         </div>
@@ -342,7 +342,7 @@ const VerticalJourneyFlow: React.FC = () => {
                 <div className="mt-3 font-cormorant text-[14px] font-bold text-navy text-center leading-tight px-1">
                   {stage.label}
                 </div>
-                <div className="mt-1 text-[8px] text-black/20 font-mono">{FLOW_DURATIONS[i]}</div>
+                <div className="mt-1 text-[8px] text-black/60 font-mono">{FLOW_DURATIONS[i]}</div>
               </div>
 
               {/* ── Content area: 2 columns ── */}
@@ -362,11 +362,11 @@ const VerticalJourneyFlow: React.FC = () => {
                           style={{ background: `${color}10`, color }}>
                           <Icon size={12} strokeWidth={1.5} />
                         </div>
-                        <span className="text-[9px] text-black/50 leading-relaxed pt-1">{tp}</span>
+                        <span className="text-[9px] text-black/65 leading-relaxed pt-1">{tp}</span>
                       </div>
                     ))}
                     {physTP.length > 4 && (
-                      <div className={`text-[8px] text-black/25 ${isEven ? 'ml-9' : 'mr-9 text-right'}`}>
+                      <div className={`text-[8px] text-black/60 ${isEven ? 'ml-9' : 'mr-9 text-right'}`}>
                         +{physTP.length - 4} points de contact
                       </div>
                     )}
@@ -375,7 +375,7 @@ const VerticalJourneyFlow: React.FC = () => {
                   {emotions[0] && (
                     <div className={`mt-3 flex items-start gap-2 ${isEven ? '' : 'flex-row-reverse text-right'}`}>
                       <span className="text-[14px] leading-none mt-0.5">💬</span>
-                      <span className="text-[9px] text-black/30 italic leading-relaxed">{emotions[0]}</span>
+                      <span className="text-[9px] text-black/60 italic leading-relaxed">{emotions[0]}</span>
                     </div>
                   )}
                 </div>
@@ -389,11 +389,11 @@ const VerticalJourneyFlow: React.FC = () => {
                         <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 bg-sky-50 text-sky-500">
                           <Smartphone size={12} strokeWidth={1.5} />
                         </div>
-                        <span className="text-[9px] text-black/50 leading-relaxed pt-1">{tp}</span>
+                        <span className="text-[9px] text-black/65 leading-relaxed pt-1">{tp}</span>
                       </div>
                     ))}
                     {digiTP.length > 4 && (
-                      <div className={`text-[8px] text-black/25 ${isEven ? 'mr-9 text-right' : 'ml-9'}`}>
+                      <div className={`text-[8px] text-black/60 ${isEven ? 'mr-9 text-right' : 'ml-9'}`}>
                         +{digiTP.length - 4} points digitaux
                       </div>
                     )}
@@ -480,14 +480,14 @@ const JourneyMapModule: React.FC = () => {
 
       {/* Onglets */}
       <div className="flex items-center justify-between mb-8 ml-11">
-        <p className="text-[11px] text-black/35">7 étapes &middot; 10 couches &middot; {touchpointLabels.length} touchpoints &middot; {departments.length} départements</p>
+        <p className="text-[11px] text-black/65">7 étapes &middot; 10 couches &middot; {touchpointLabels.length} touchpoints &middot; {departments.length} départements</p>
         <div className="flex items-center gap-1 bg-black/[.04] rounded-xl p-1">
           <button
             onClick={() => setTab('flow')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[11px] font-semibold transition-all ${
               tab === 'flow'
                 ? 'bg-white shadow-sm text-emerald-700 ring-1 ring-emerald-200/40'
-                : 'text-black/35 hover:text-black/55'
+                : 'text-black/65 hover:text-black/55'
             }`}
           >
             <GitBranch size={13} />
@@ -498,7 +498,7 @@ const JourneyMapModule: React.FC = () => {
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-[11px] font-semibold transition-all ${
               tab === 'swimlane'
                 ? 'bg-white shadow-sm text-emerald-700 ring-1 ring-emerald-200/40'
-                : 'text-black/35 hover:text-black/55'
+                : 'text-black/65 hover:text-black/55'
             }`}
           >
             <LayoutGrid size={13} />
@@ -572,7 +572,7 @@ const JourneyMapModule: React.FC = () => {
                 {stageEmotions.map((emo, i) => (
                   <div key={i} className="flex-1 flex flex-col items-center justify-center py-3 border-r border-black/[.04] last:border-r-0">
                     <span className="text-[18px] mb-1">{emo.emoji}</span>
-                    <span className="text-[9px] font-semibold text-black/50">{emo.label}</span>
+                    <span className="text-[9px] font-semibold text-black/65">{emo.label}</span>
                     <div className="flex gap-0.5 mt-1.5">
                       {[1, 2, 3, 4, 5].map((n) => (
                         <div
@@ -613,7 +613,7 @@ const JourneyMapModule: React.FC = () => {
                 {touchpointLabels.map((label, ri) => (
                   <div key={ri} className="flex items-center border-b border-black/[.02] last:border-b-0 hover:bg-black/[.01]">
                     <div className="w-[110px] flex-shrink-0 px-2 py-1">
-                      <span className="text-[8px] text-black/35 leading-tight">{label}</span>
+                      <span className="text-[8px] text-black/65 leading-tight">{label}</span>
                     </div>
                     {stages.map((_, ci) => (
                       <div key={ci} className="flex-1 flex items-center justify-center py-1 border-r border-black/[.02] last:border-r-0">
@@ -649,7 +649,7 @@ const JourneyMapModule: React.FC = () => {
                 {departments.map((dept, ri) => (
                   <div key={ri} className="flex items-center border-b border-black/[.02] last:border-b-0 hover:bg-black/[.01]">
                     <div className="w-[110px] flex-shrink-0 px-2 py-1.5">
-                      <span className="text-[8px] text-black/35 leading-tight">{dept}</span>
+                      <span className="text-[8px] text-black/65 leading-tight">{dept}</span>
                     </div>
                     {stages.map((_, ci) => (
                       <div key={ci} className="flex-1 flex items-center justify-center py-1.5 border-r border-black/[.02] last:border-r-0">
@@ -704,7 +704,7 @@ const JourneyMapModule: React.FC = () => {
                     {techs.map((tech, j) => (
                       <div key={j} className="flex items-start gap-1.5 mb-1.5 last:mb-0">
                         <span className="w-1.5 h-1.5 rounded-full mt-1 flex-shrink-0 bg-indigo-400" />
-                        <span className="text-[9px] text-black/50 leading-tight">{tech}</span>
+                        <span className="text-[9px] text-black/65 leading-tight">{tech}</span>
                       </div>
                     ))}
                   </div>
@@ -721,7 +721,7 @@ const JourneyMapModule: React.FC = () => {
                     {staff.map((role, j) => (
                       <div key={j} className="flex items-start gap-1.5 mb-1.5 last:mb-0">
                         <Users size={8} className="mt-0.5 flex-shrink-0 text-orange-400" />
-                        <span className="text-[9px] text-black/50 leading-tight">{role}</span>
+                        <span className="text-[9px] text-black/65 leading-tight">{role}</span>
                       </div>
                     ))}
                   </div>
@@ -738,7 +738,7 @@ const JourneyMapModule: React.FC = () => {
                     {kpis.map((kpi, j) => (
                       <div key={j} className="flex items-start gap-1.5 mb-1.5 last:mb-0">
                         <BarChart3 size={8} className="mt-0.5 flex-shrink-0 text-rose-400" />
-                        <span className="text-[9px] text-black/50 leading-tight">{kpi}</span>
+                        <span className="text-[9px] text-black/65 leading-tight">{kpi}</span>
                       </div>
                     ))}
                   </div>
@@ -776,7 +776,7 @@ const JourneyMapModule: React.FC = () => {
 
       {/* Duration total */}
       <div className="flex items-center justify-end mt-3 gap-2">
-        <span className="text-[9px] text-black/30">Durée totale moyenne :</span>
+        <span className="text-[9px] text-black/60">Durée totale moyenne :</span>
         <span className="text-[12px] font-bold text-emerald-600">
           ~{Math.round(stageDurations.reduce((a, b) => a + b, 0) / 60 * 10) / 10}h
         </span>
@@ -807,7 +807,7 @@ const JourneyMapModule: React.FC = () => {
                   <div className="text-[12px] font-semibold text-navy">{stage.label}</div>
                 </div>
               </div>
-              <div className="text-[9px] text-black/35">{stage.layers.phase?.[0]}</div>
+              <div className="text-[9px] text-black/65">{stage.layers.phase?.[0]}</div>
             </button>
           ))}
         </div>
@@ -835,7 +835,7 @@ const JourneyMapModule: React.FC = () => {
                     <div className="text-[12px] font-semibold text-navy">{stage.label}</div>
                   </div>
                 </div>
-                <div className="text-[9px] text-black/35">{stage.layers.phase?.[0]}</div>
+                <div className="text-[9px] text-black/65">{stage.layers.phase?.[0]}</div>
               </button>
             );
           })}
@@ -937,7 +937,7 @@ const PersonasModule: React.FC = () => {
             <span className={activePersona === i ? 'text-white' : ''}>{persona.icon}</span>
             <div className="text-left">
               <div className="text-[12px] font-semibold">{persona.name}</div>
-              <div className={`text-[9px] ${activePersona === i ? 'text-white/70' : 'text-black/35'}`}>{persona.role}</div>
+              <div className={`text-[9px] ${activePersona === i ? 'text-white/70' : 'text-black/65'}`}>{persona.role}</div>
             </div>
           </button>
         ))}
@@ -953,10 +953,10 @@ const PersonasModule: React.FC = () => {
             </div>
             <div>
               <div className="font-cormorant text-[22px] font-medium text-navy">{p.name}</div>
-              <div className="text-[10px] text-black/40">{p.age} · {p.role}</div>
+              <div className="text-[10px] text-black/65">{p.age} · {p.role}</div>
             </div>
           </div>
-          <p className="text-[11px] text-black/50 leading-relaxed mb-4">{p.bio}</p>
+          <p className="text-[11px] text-black/65 leading-relaxed mb-4">{p.bio}</p>
           <div className="space-y-2">
             {[
               { l: 'Quartier', v: p.quartier },
@@ -965,7 +965,7 @@ const PersonasModule: React.FC = () => {
               { l: 'Cosmos Club', v: p.cosmosClub },
             ].map((item) => (
               <div key={item.l} className="flex items-start gap-2">
-                <span className="text-[9px] font-bold tracking-[.1em] uppercase text-black/25 w-20 flex-shrink-0 pt-0.5">{item.l}</span>
+                <span className="text-[9px] font-bold tracking-[.1em] uppercase text-black/60 w-20 flex-shrink-0 pt-0.5">{item.l}</span>
                 <span className="text-[11px] text-black/60">{item.v}</span>
               </div>
             ))}
@@ -1058,7 +1058,7 @@ const TouchpointsModule: React.FC = () => {
         <button
           onClick={() => setFilter('all')}
           className={`px-3 py-1.5 rounded-full text-[10px] font-medium border transition-all ${
-            filter === 'all' ? 'bg-emerald-600 text-white border-transparent' : 'border-black/[.08] bg-white text-black/50'
+            filter === 'all' ? 'bg-emerald-600 text-white border-transparent' : 'border-black/[.08] bg-white text-black/65'
           }`}
         >
           Tout ({touchpoints.length})
@@ -1068,7 +1068,7 @@ const TouchpointsModule: React.FC = () => {
             key={phase}
             onClick={() => setFilter(phase)}
             className={`px-3 py-1.5 rounded-full text-[10px] font-medium border transition-all ${
-              filter === phase ? 'bg-emerald-600 text-white border-transparent' : 'border-black/[.08] bg-white text-black/50'
+              filter === phase ? 'bg-emerald-600 text-white border-transparent' : 'border-black/[.08] bg-white text-black/65'
             }`}
           >
             {phase}
@@ -1101,8 +1101,8 @@ const TouchpointsModule: React.FC = () => {
                       {tp.type}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-[10px] text-black/50">{tp.responsable}</td>
-                  <td className="px-4 py-3 text-[10px] text-black/45 max-w-[280px]">{tp.description}</td>
+                  <td className="px-4 py-3 text-[10px] text-black/65">{tp.responsable}</td>
+                  <td className="px-4 py-3 text-[10px] text-black/65 max-w-[280px]">{tp.description}</td>
                   <td className="px-4 py-3">
                     <span className="text-[9px] px-2 py-0.5 rounded-full font-bold" style={{ color: priorityColors[tp.priority], background: `${priorityColors[tp.priority]}12` }}>
                       {tp.priority}
@@ -1120,7 +1120,7 @@ const TouchpointsModule: React.FC = () => {
         {Object.entries(typeColors).map(([type, color]) => (
           <div key={type} className="flex items-center gap-1.5">
             <span className="w-2.5 h-2.5 rounded-full" style={{ background: color }} />
-            <span className="text-[9px] text-black/35 capitalize">{type}</span>
+            <span className="text-[9px] text-black/65 capitalize">{type}</span>
           </div>
         ))}
       </div>
@@ -1158,16 +1158,16 @@ const KpiDashboardModule: React.FC = () => (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-x divide-y divide-black/[.04]">
             {cat.kpis.map((kpi, i) => (
               <div key={i} className="px-5 py-4">
-                <div className="text-[10px] text-black/40 mb-2 leading-tight">{kpi.label}</div>
+                <div className="text-[10px] text-black/65 mb-2 leading-tight">{kpi.label}</div>
                 <div className="font-cormorant text-[26px] font-medium leading-none mb-1" style={{ color: cat.color }}>
                   {kpi.target}
                 </div>
-                <div className="text-[9px] text-black/25">{kpi.unit}</div>
+                <div className="text-[9px] text-black/60">{kpi.unit}</div>
                 <div className="flex items-center gap-3 mt-3">
-                  <span className="text-[8px] px-2 py-0.5 rounded-full bg-black/[.04] text-black/35 font-medium">
+                  <span className="text-[8px] px-2 py-0.5 rounded-full bg-black/[.04] text-black/65 font-medium">
                     {kpi.frequency}
                   </span>
-                  <span className="text-[8px] text-black/25">{kpi.source}</span>
+                  <span className="text-[8px] text-black/60">{kpi.source}</span>
                 </div>
               </div>
             ))}
@@ -1211,7 +1211,7 @@ const ActionPlanModule: React.FC = () => {
         <button
           onClick={() => setFilter('all')}
           className={`px-3 py-1.5 rounded-full text-[10px] font-medium border transition-all ${
-            filter === 'all' ? 'bg-emerald-600 text-white border-transparent' : 'border-black/[.08] bg-white text-black/50'
+            filter === 'all' ? 'bg-emerald-600 text-white border-transparent' : 'border-black/[.08] bg-white text-black/65'
           }`}
         >
           Toutes les phases ({actionPlan.length})
@@ -1223,7 +1223,7 @@ const ActionPlanModule: React.FC = () => {
               key={phase}
               onClick={() => setFilter(phase)}
               className={`px-3 py-1.5 rounded-full text-[10px] font-medium border transition-all ${
-                filter === phase ? 'text-white border-transparent' : 'border-black/[.08] bg-white text-black/50'
+                filter === phase ? 'text-white border-transparent' : 'border-black/[.08] bg-white text-black/65'
               }`}
               style={filter === phase ? { background: item?.phaseColor } : undefined}
             >
@@ -1244,7 +1244,7 @@ const ActionPlanModule: React.FC = () => {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <div className="text-[13px] font-semibold text-navy mb-1">{action.title}</div>
-                  <div className="text-[11px] text-black/40 leading-relaxed">{action.description}</div>
+                  <div className="text-[11px] text-black/65 leading-relaxed">{action.description}</div>
                 </div>
                 <div className="flex items-center gap-2 flex-shrink-0">
                   {statusIcon(action.status)}
@@ -1263,11 +1263,11 @@ const ActionPlanModule: React.FC = () => {
                 <span className="text-[9px] px-2 py-0.5 rounded-full font-medium text-white" style={{ background: action.phaseColor }}>
                   {action.phase}
                 </span>
-                <span className="text-[9px] text-black/30">
+                <span className="text-[9px] text-black/60">
                   <Clock size={10} className="inline mr-1" />
                   {action.deadline}
                 </span>
-                <span className="text-[9px] text-black/30">
+                <span className="text-[9px] text-black/60">
                   <Users size={10} className="inline mr-1" />
                   {action.responsable}
                 </span>
@@ -1307,7 +1307,7 @@ const SignaletiqueModule: React.FC = () => (
       ].map((stat) => (
         <div key={stat.l} className="bg-white rounded-xl border border-black/[.06] px-5 py-4 text-center shadow-[0_1px_8px_rgba(0,0,0,.03)]">
           <div className="font-cormorant text-[28px] font-medium text-emerald-600">{stat.n}</div>
-          <div className="text-[9px] text-black/30 tracking-[.1em] uppercase">{stat.l}</div>
+          <div className="text-[9px] text-black/60 tracking-[.1em] uppercase">{stat.l}</div>
         </div>
       ))}
     </div>
@@ -1325,12 +1325,12 @@ const SignaletiqueModule: React.FC = () => (
             </span>
           </div>
           <div className="text-[12px] font-semibold text-navy mb-1.5">{sign.type}</div>
-          <div className="text-[10px] text-black/40 leading-relaxed mb-3">{sign.description}</div>
-          <div className="text-[9px] text-black/25 mb-1">
+          <div className="text-[10px] text-black/65 leading-relaxed mb-3">{sign.description}</div>
+          <div className="text-[9px] text-black/60 mb-1">
             <MapPin size={10} className="inline mr-1 text-emerald-500" />
             {sign.location}
           </div>
-          <div className="text-[8px] text-black/20 font-mono mt-2 p-2 bg-black/[.02] rounded-lg">
+          <div className="text-[8px] text-black/60 font-mono mt-2 p-2 bg-black/[.02] rounded-lg">
             {sign.specs}
           </div>
         </div>
@@ -1383,7 +1383,7 @@ const ParcoursClient: React.FC = () => {
               Parcours Client
             </h1>
           </div>
-          <p className="text-[14px] text-white/35 leading-relaxed max-w-[560px] mb-8">
+          <p className="text-[14px] text-white/60 leading-relaxed max-w-[560px] mb-8">
             Journey Map à 10 couches, 4 personas, touchpoints, KPIs et plan d&apos;action — de l&apos;approche véhicule à la fidélisation Cosmos Club.
           </p>
 
@@ -1400,7 +1400,7 @@ const ParcoursClient: React.FC = () => {
               <div key={mod.n} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[.06] border border-white/[.08] text-white/50 text-[10px]">
                 <span className="text-emerald-400">{mod.icon}</span>
                 <span className="font-medium">M{mod.n}</span>
-                <span className="text-white/30">&middot;</span>
+                <span className="text-white/60">&middot;</span>
                 <span>{mod.l}</span>
               </div>
             ))}
@@ -1429,7 +1429,7 @@ const ParcoursClient: React.FC = () => {
             </div>
             <div className="text-left">
               <div className="text-[13px] font-medium text-navy">Plan 3D Interactif — Parcours visiteur</div>
-              <div className="text-[10px] text-black/35 mt-0.5">Visualiser les flux, la signalétique et les points de service</div>
+              <div className="text-[10px] text-black/65 mt-0.5">Visualiser les flux, la signalétique et les points de service</div>
             </div>
           </div>
           <ArrowRight size={16} className="text-emerald-400 group-hover:translate-x-1 transition-transform" />

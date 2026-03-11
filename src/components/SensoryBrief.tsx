@@ -51,7 +51,7 @@ export default function SensoryBrief({ scenarioKey }: { scenarioKey: ScenarioKey
     <div id="bw-sensory" style={{ paddingTop: 48 }}>
       <div style={{ fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 8 }}>B11 · Brief sensoriel</div>
       <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 28, fontWeight: 300, color: '#1a1a2e', marginBottom: 8 }}>Identité sonore & olfactive</div>
-      <div style={{ fontSize: 11, color: 'rgba(0,0,0,0.45)', marginBottom: 32 }}>La marque se vit aussi par l'ouïe et l'odorat — brief pour les prestataires</div>
+      <div style={{ fontSize: 11, color: 'rgba(0,0,0,0.65)', marginBottom: 32 }}>La marque se vit aussi par l'ouïe et l'odorat — brief pour les prestataires</div>
       <div style={{ width: 40, height: 2, background: ac.main, marginBottom: 40, opacity: 0.4 }} />
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>

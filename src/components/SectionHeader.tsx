@@ -48,7 +48,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ id, eyebrow, title, desc 
           <EditableText
             storageKey={`section-${id}-desc`}
             defaultValue={desc}
-            className="text-[14px] text-white/40 leading-relaxed max-w-[560px]"
+            className="text-[14px] text-white/65 leading-relaxed max-w-[560px]"
             multiline
           />
         )}

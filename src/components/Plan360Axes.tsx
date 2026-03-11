@@ -322,11 +322,11 @@ const ActionCard: React.FC<{ a: ActionItem; color: string; light: string; border
             >
               Budget {a.budget}
             </span>
-            <span className="text-[9px] text-black/35">{a.timing}</span>
-            <span className="text-[9px] text-black/35">· {a.resp}</span>
+            <span className="text-[9px] text-black/65">{a.timing}</span>
+            <span className="text-[9px] text-black/65">· {a.resp}</span>
           </div>
         </div>
-        <div className="text-black/25 mt-0.5">
+        <div className="text-black/60 mt-0.5">
           {open ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
         </div>
       </button>
@@ -347,7 +347,7 @@ const ActionCard: React.FC<{ a: ActionItem; color: string; light: string; border
               ))}
             </div>
             <div className="rounded-lg p-3 bg-cream/60">
-              <div className="text-[8px] font-bold tracking-[.18em] uppercase text-black/35 mb-2">
+              <div className="text-[8px] font-bold tracking-[.18em] uppercase text-black/65 mb-2">
                 Détails
               </div>
               <div className="text-[11px] text-black/55 leading-[1.7] space-y-0.5">
@@ -392,14 +392,14 @@ const AxeSection: React.FC<{ axe: Axe }> = ({ axe }) => {
         </div>
         <div className="flex items-center gap-4">
           <div className="text-right hidden sm:block">
-            <div className="text-[9px] text-black/35 mb-0.5">Budget</div>
+            <div className="text-[9px] text-black/65 mb-0.5">Budget</div>
             <div className="font-cormorant text-[22px] font-light" style={{ color: axe.color }}>{axe.budget}</div>
           </div>
           <div className="text-right hidden sm:block">
-            <div className="text-[9px] text-black/35 mb-0.5">Timing</div>
+            <div className="text-[9px] text-black/65 mb-0.5">Timing</div>
             <div className="text-[10px] font-semibold text-navy">{axe.timing}</div>
           </div>
-          <div className="text-black/25">
+          <div className="text-black/60">
             {open ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
           </div>
         </div>
@@ -427,7 +427,7 @@ const AxeSection: React.FC<{ axe: Axe }> = ({ axe }) => {
           </div>
 
           {/* Actions */}
-          <div className="text-[8px] font-bold tracking-[.18em] uppercase text-black/35 mb-2.5">
+          <div className="text-[8px] font-bold tracking-[.18em] uppercase text-black/65 mb-2.5">
             5 actions · cliquer pour développer
           </div>
           {axe.actions.map((a) => (
@@ -477,7 +477,7 @@ const Plan360Axes: React.FC = () => (
 
       {/* Budget allocation bar */}
       <div className="px-8 py-3 border-b border-black/[.06] flex items-center gap-5 flex-wrap bg-cream/30">
-        <div className="text-[9px] font-bold tracking-[.2em] uppercase text-black/35">
+        <div className="text-[9px] font-bold tracking-[.2em] uppercase text-black/65">
           Allocation budgétaire
         </div>
         {AXES.map((a) => (
@@ -496,7 +496,7 @@ const Plan360Axes: React.FC = () => (
         ))}
 
         {/* Footer */}
-        <div className="mt-6 p-4 rounded-xl bg-black/[.02] border border-black/[.06] text-[10px] text-black/35 leading-[1.8]">
+        <div className="mt-6 p-4 rounded-xl bg-black/[.02] border border-black/[.06] text-[10px] text-black/65 leading-[1.8]">
           Plan Marketing 360° · Cosmos Angré · Mars 2026 · Document confidentiel — New Heaven SA / RCP<br />
           Prochaine étape : validation budget global → brief agences → lancement opérationnel M-6 (mai 2026)
         </div>

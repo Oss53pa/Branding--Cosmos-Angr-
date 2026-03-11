@@ -109,11 +109,11 @@ const SidebarSecurite: React.FC<SidebarSecuriteProps> = ({ activeSection, onNavi
                   {section.icon}
                 </span>
                 <span className={`text-[10px] font-semibold tracking-[.12em] uppercase flex-1 ${
-                  isActive ? 'text-white' : 'text-white/40 group-hover:text-white/60'
+                  isActive ? 'text-white' : 'text-white/65 group-hover:text-white/60'
                 }`}>
                   {section.group}
                 </span>
-                <span className="text-white/20">
+                <span className="text-white/55">
                   {isOpen ? <ChevronDown size={10} /> : <ChevronRight size={10} />}
                 </span>
               </button>
@@ -134,7 +134,7 @@ const SidebarSecurite: React.FC<SidebarSecuriteProps> = ({ activeSection, onNavi
                       >
                         <span
                           className={`flex-shrink-0 transition-colors ${
-                            active ? 'text-blue-400' : 'text-white/20 group-hover/item:text-white/35'
+                            active ? 'text-blue-400' : 'text-white/55 group-hover/item:text-white/60'
                           }`}
                         >
                           {item.icon}

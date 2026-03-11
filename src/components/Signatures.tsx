@@ -33,7 +33,7 @@ const Signatures: React.FC = () => (
           <div className="font-cormorant text-[30px] text-white font-light">
             <EditableText storageKey="signatures-title" defaultValue="Naming & Signatures" tag="span" />
           </div>
-          <div className="text-[11px] text-white/35 mt-1.5">
+          <div className="text-[11px] text-white/60 mt-1.5">
             <EditableText storageKey="signatures-subtitle" defaultValue="5 signatures validees — 2 usages distincts" tag="span" />
           </div>
         </div>
@@ -51,7 +51,7 @@ const Signatures: React.FC = () => (
               <EditableText storageKey="signatures-permanent-text" defaultValue={'"Un monde a part"'} tag="span" />
             </div>
             <div className="w-12 h-px bg-gold/40 mx-auto my-4" />
-            <div className="text-[12px] text-white/35 leading-relaxed max-w-[480px] mx-auto">
+            <div className="text-[12px] text-white/60 leading-relaxed max-w-[480px] mx-auto">
               <EditableText storageKey="signatures-permanent-desc" defaultValue="Positionne le lieu. Traduction : Cosmos Angre n'est pas un centre commercial ordinaire — c'est une autre experience. Usage : facade, en-tete documents officiels, signaletique d'entree, site web en header." tag="span" multiline />
             </div>
           </div>
@@ -68,7 +68,7 @@ const Signatures: React.FC = () => (
               <EditableText storageKey="signatures-campagne-text" defaultValue={'"Vivez l\'exception"'} tag="span" />
             </div>
             <div className="w-12 h-px bg-gold/40 mx-auto my-4" />
-            <div className="text-[12px] text-white/35 leading-relaxed max-w-[480px] mx-auto">
+            <div className="text-[12px] text-white/60 leading-relaxed max-w-[480px] mx-auto">
               <EditableText storageKey="signatures-campagne-desc" defaultValue="Invite a l'action. Traduction : venez, et vous vivrez quelque chose de different. Usage : campagnes publicitaires, stories Instagram, visuels evenement, SMS/push notifications." tag="span" multiline />
             </div>
           </div>
@@ -89,7 +89,7 @@ const Signatures: React.FC = () => (
                 <div className="font-cormorant text-[22px] font-light italic text-navy mb-3">
                   <EditableText storageKey={`signatures-comp-title-${index}`} defaultValue={s.title} tag="span" />
                 </div>
-                <div className="text-[11px] text-black/40 leading-relaxed">
+                <div className="text-[11px] text-black/65 leading-relaxed">
                   <EditableText storageKey={`signatures-comp-desc-${index}`} defaultValue={s.val} tag="span" />
                 </div>
               </div>

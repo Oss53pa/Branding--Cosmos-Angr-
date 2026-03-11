@@ -127,12 +127,12 @@ const ExportDialog: React.FC<ExportDialogProps> = ({ open, onClose }) => {
         <div className="flex items-center justify-between px-6 py-4 border-b border-black/[.08]">
           <div>
             <div className="font-semibold text-[15px] text-black">Exporter le catalogue</div>
-            <div className="text-[11px] text-black/45 mt-0.5">
+            <div className="text-[11px] text-black/65 mt-0.5">
               Sélectionnez les pages à inclure
             </div>
           </div>
           <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-black/5 transition-colors">
-            <X size={18} className="text-black/40" />
+            <X size={18} className="text-black/65" />
           </button>
         </div>
 
@@ -181,12 +181,12 @@ const ExportDialog: React.FC<ExportDialogProps> = ({ open, onClose }) => {
             {allSelected ? (
               <CheckSquare size={16} className="text-gold" />
             ) : (
-              <Square size={16} className="text-black/25" />
+              <Square size={16} className="text-black/60" />
             )}
             <span className="text-[12px] font-semibold text-black">
               {allSelected ? 'Tout désélectionner' : 'Tout sélectionner'}
             </span>
-            <span className="text-[10px] text-black/40 ml-auto">
+            <span className="text-[10px] text-black/65 ml-auto">
               {selected.size}/{allSections.length} pages
             </span>
           </button>
@@ -208,7 +208,7 @@ const ExportDialog: React.FC<ExportDialogProps> = ({ open, onClose }) => {
                   ) : groupSomeSelected ? (
                     <CheckSquare size={14} className="text-gold/40" />
                   ) : (
-                    <Square size={14} className="text-black/20" />
+                    <Square size={14} className="text-black/60" />
                   )}
                   <span className="text-[11px] font-bold text-black/70 tracking-wide uppercase">
                     {group}
@@ -224,11 +224,11 @@ const ExportDialog: React.FC<ExportDialogProps> = ({ open, onClose }) => {
                       {selected.has(section.id) ? (
                         <CheckSquare size={13} className="text-gold" />
                       ) : (
-                        <Square size={13} className="text-black/20" />
+                        <Square size={13} className="text-black/60" />
                       )}
                       <span
                         className={`text-[12px] ${
-                          selected.has(section.id) ? 'text-black/80' : 'text-black/35'
+                          selected.has(section.id) ? 'text-black/80' : 'text-black/65'
                         }`}
                       >
                         {section.label}
@@ -243,7 +243,7 @@ const ExportDialog: React.FC<ExportDialogProps> = ({ open, onClose }) => {
 
         {/* Footer */}
         <div className="px-6 py-3 border-t border-black/[.08] flex justify-between items-center">
-          <div className="text-[10px] text-black/40">
+          <div className="text-[10px] text-black/65">
             Astuce : dans la boîte d'impression, choisissez « Enregistrer en PDF » pour exporter
           </div>
           <button

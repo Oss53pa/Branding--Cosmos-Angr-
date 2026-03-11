@@ -29,7 +29,7 @@ const Comparatif: React.FC = () => (
           <div className="font-cormorant text-[30px] text-white font-light">
             Comparatif stratégique A vs B vs C vs D
           </div>
-          <div className="text-[11px] text-white/35 mt-1.5">
+          <div className="text-[11px] text-white/60 mt-1.5">
             Forces . Risques . Potentiel . Recommandation
           </div>
         </div>

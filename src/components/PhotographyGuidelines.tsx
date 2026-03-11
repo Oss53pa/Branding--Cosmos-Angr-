@@ -79,7 +79,7 @@ export default function PhotographyGuidelines({ scenarioKey }: { scenarioKey: Sc
     <div id="bw-photo" style={{ paddingTop: 48 }}>
       <div style={{ fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 8 }}>B10 · Direction artistique</div>
       <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 28, fontWeight: 300, color: '#1a1a2e', marginBottom: 8 }}>Direction photographique</div>
-      <div style={{ fontSize: 11, color: 'rgba(0,0,0,0.45)', marginBottom: 32 }}>Lumière, cadrage, sujets, post-production — les codes visuels de l'identité Cosmos</div>
+      <div style={{ fontSize: 11, color: 'rgba(0,0,0,0.65)', marginBottom: 32 }}>Lumière, cadrage, sujets, post-production — les codes visuels de l'identité Cosmos</div>
       <div style={{ width: 40, height: 2, background: ac.main, marginBottom: 40, opacity: 0.4 }} />
 
       {/* Guidelines grid */}
@@ -93,7 +93,7 @@ export default function PhotographyGuidelines({ scenarioKey }: { scenarioKey: Sc
                 <div style={{ fontSize: 11, fontWeight: 600, color: '#1a1a2e' }}>{g.title}</div>
               </div>
               <div style={{ padding: '16px' }}>
-                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.55)', lineHeight: 1.7 }}>{g.desc}</div>
+                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.65)', lineHeight: 1.7 }}>{g.desc}</div>
               </div>
             </div>
           );
@@ -111,7 +111,7 @@ export default function PhotographyGuidelines({ scenarioKey }: { scenarioKey: Sc
           <div key={i} style={{ background: `rgba(${ac.rgb},0.04)`, border: `1px solid rgba(${ac.rgb},0.12)`, borderRadius: 14, padding: 24 }}>
             <brief.icon size={24} color={ac.main} style={{ marginBottom: 12 }} />
             <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 16, fontWeight: 600, color: '#1a1a2e', marginBottom: 10 }}>{brief.type}</div>
-            <div style={{ fontSize: 10.5, color: 'rgba(0,0,0,0.55)', lineHeight: 1.7 }}>{brief.desc}</div>
+            <div style={{ fontSize: 10.5, color: 'rgba(0,0,0,0.65)', lineHeight: 1.7 }}>{brief.desc}</div>
           </div>
         ))}
       </div>

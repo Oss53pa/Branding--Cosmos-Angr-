@@ -610,7 +610,7 @@ const DigitalMockupsSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
         >
           <div className="text-[9px] font-bold tracking-[.25em] uppercase mb-1" style={{ color: c.accent }}>Brand World · B6</div>
           <div className="font-cormorant text-[24px] text-white font-light">Digital Mockups</div>
-          <div className="text-[10px] text-white/30 mt-1">Laptop · Tablet · Mobile · Multi-device · Affichage digital</div>
+          <div className="text-[10px] text-white/60 mt-1">Laptop · Tablet · Mobile · Multi-device · Affichage digital</div>
         </div>
 
         {/* Tab navigation */}
@@ -649,7 +649,7 @@ const DigitalMockupsSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
             <div>
               <div className="text-[9px] font-bold tracking-wider uppercase mb-1" style={{ color: c.accent }}>● Digital · {activeInfo.role}</div>
               <div className="text-[18px] font-bold" style={{ color: c.dark }}>{activeInfo.name}</div>
-              <div className="text-[11px] text-black/40 mt-1 leading-relaxed">{activeInfo.spec}</div>
+              <div className="text-[11px] text-black/65 mt-1 leading-relaxed">{activeInfo.spec}</div>
             </div>
             <div
               className="px-4 py-2 rounded-full text-[10px] font-bold tracking-wider uppercase whitespace-nowrap"

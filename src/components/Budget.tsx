@@ -48,14 +48,14 @@ const Budget: React.FC = () => {
             <div>
               <div className="text-[9px] font-bold tracking-[.2em] uppercase text-gold/70 mb-2">Livrable 4.2</div>
               <EditableText storageKey="budget-title" defaultValue="Budget & Business Case" className="font-cormorant text-[30px] text-white font-light" tag="div" />
-              <EditableText storageKey="budget-subtitle" defaultValue="Investissement marketing . ROI projete . KPIs" className="text-[11px] text-white/35 mt-1.5" tag="div" />
+              <EditableText storageKey="budget-subtitle" defaultValue="Investissement marketing . ROI projete . KPIs" className="text-[11px] text-white/60 mt-1.5" tag="div" />
             </div>
             <div className="text-right">
-              <div className="text-[10px] text-white/30 uppercase tracking-wider mb-1">Budget total</div>
+              <div className="text-[10px] text-white/60 uppercase tracking-wider mb-1">Budget total</div>
               <div className="font-cormorant text-[28px] text-gold font-light">
                 {total.toLocaleString('fr-FR')} <span className="text-[14px] text-gold/60">FCFA</span>
               </div>
-              <div className="text-[10px] text-white/25">
+              <div className="text-[10px] text-white/55">
                 ~ {Math.round(total / 655.957).toLocaleString('fr-FR')} EUR
               </div>
             </div>
@@ -109,7 +109,7 @@ const Budget: React.FC = () => {
                     <td className="px-5 py-3.5 font-bold text-navy text-right text-[14px] font-mono">
                       {total.toLocaleString('fr-FR')}
                     </td>
-                    <td colSpan={2} className="px-5 py-3.5 text-black/35 text-[12px]">
+                    <td colSpan={2} className="px-5 py-3.5 text-black/65 text-[12px]">
                       ~ {Math.round(total / 655.957).toLocaleString('fr-FR')} EUR
                     </td>
                   </tr>
@@ -128,9 +128,9 @@ const Budget: React.FC = () => {
               {kpis.map((k, kIndex) => (
                 <div key={k.title} className="relative bg-gradient-to-br from-cream/50 to-white rounded-xl p-5 border border-black/[.04] hover:shadow-sm transition-shadow overflow-hidden">
                   <div className="absolute top-0 left-0 w-1 h-full bg-gold rounded-l-xl" />
-                  <EditableText storageKey={`budget-kpi-title-${kIndex}`} defaultValue={k.title} className="text-[10px] font-bold text-black/40 tracking-wider uppercase mb-2" tag="div" />
+                  <EditableText storageKey={`budget-kpi-title-${kIndex}`} defaultValue={k.title} className="text-[10px] font-bold text-black/65 tracking-wider uppercase mb-2" tag="div" />
                   <EditableText storageKey={`budget-kpi-val-${kIndex}`} defaultValue={k.val} className="text-[18px] font-semibold text-navy mb-1.5 font-cormorant" tag="div" />
-                  <EditableText storageKey={`budget-kpi-target-${kIndex}`} defaultValue={k.target} className="text-[11px] text-black/35 flex items-center gap-1" tag="div" />
+                  <EditableText storageKey={`budget-kpi-target-${kIndex}`} defaultValue={k.target} className="text-[11px] text-black/65 flex items-center gap-1" tag="div" />
                 </div>
               ))}
             </div>

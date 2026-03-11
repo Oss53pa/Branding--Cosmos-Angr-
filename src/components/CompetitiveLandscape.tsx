@@ -25,13 +25,13 @@ const competitors = [
    Y = Accessible (bas) → Premium (haut) */
 const matrixDots: { name: string; x: number; y: number; size: number; isCosmos?: boolean }[] = [
   { name: 'Cosmos Angré',     x: 82, y: 12, size: 16, isCosmos: true },
-  { name: 'Cosmos Yopougon',  x: 52, y: 62, size: 10 },  // standard international mais accessible
-  { name: 'PlaYce Marcory',   x: 25, y: 65, size: 11 },  // très fonctionnel, accessible
-  { name: 'PlaYce Palmeraie', x: 35, y: 40, size: 10 },  // fonctionnel, mi-premium
-  { name: 'Abidjan Mall',     x: 65, y: 45, size: 12 },  // expérientiel (loisirs), mi-gamme
-  { name: 'Cap Sud',          x: 20, y: 72, size: 9 },   // très fonctionnel, très accessible
-  { name: 'Cap Nord',         x: 28, y: 35, size: 8 },   // fonctionnel, assez premium (expats)
-  { name: 'Prima Center',     x: 22, y: 78, size: 9 },   // fonctionnel, le plus accessible
+  { name: 'Cap Sud',          x: 30, y: 30, size: 10 },  // enseignes luxe (Hugo Boss, Swarovski, Mont Blanc) mais expérience classique
+  { name: 'Abidjan Mall',     x: 65, y: 42, size: 12 },  // expérientiel (Orca Land 7000m², bowling, patinoire), mass market
+  { name: 'PlaYce Palmeraie', x: 32, y: 55, size: 10 },  // mass market accessible (San Marina, Jules, Cache-Cache)
+  { name: 'Cosmos Yopougon',  x: 42, y: 62, size: 10 },  // cinéma Majestic mais bassin populaire, offre utilitaire
+  { name: 'PlaYce Marcory',   x: 25, y: 65, size: 11 },  // grande distribution, fonctionnel, accessible
+  { name: 'Cap Nord',         x: 22, y: 68, size: 8 },   // petit format proximité (15 boutiques, 1900m²)
+  { name: 'Prima Center',     x: 20, y: 72, size: 9 },   // populaire polyvalent, le plus accessible
 ];
 
 const advantages = [
@@ -70,10 +70,10 @@ export default function CompetitiveLandscape({ scenarioKey }: { scenarioKey: Sce
                   {c.name}
                 </td>
                 <td style={{ padding: '10px 12px', color: '#333', fontSize: 9.5 }}>{c.pos}</td>
-                <td style={{ padding: '10px 12px', color: '#555', fontSize: 9 }}>{c.cible}</td>
-                <td style={{ padding: '10px 12px', color: '#555', fontSize: 9, whiteSpace: 'nowrap' }}>{c.surface}</td>
-                <td style={{ padding: '10px 12px', color: '#555', fontSize: 9 }}>{c.enseignes}</td>
-                <td style={{ padding: '10px 12px', color: '#555', fontSize: 9 }}>{c.forces}</td>
+                <td style={{ padding: '10px 12px', color: '#444', fontSize: 9 }}>{c.cible}</td>
+                <td style={{ padding: '10px 12px', color: '#444', fontSize: 9, whiteSpace: 'nowrap' }}>{c.surface}</td>
+                <td style={{ padding: '10px 12px', color: '#444', fontSize: 9 }}>{c.enseignes}</td>
+                <td style={{ padding: '10px 12px', color: '#444', fontSize: 9 }}>{c.forces}</td>
               </tr>
             ))}
           </tbody>
@@ -95,9 +95,9 @@ export default function CompetitiveLandscape({ scenarioKey }: { scenarioKey: Sce
 
         {/* Quadrant labels */}
         <div style={{ position: 'absolute', top: 20, right: 20, fontSize: 10, letterSpacing: 2, color: ac.main, opacity: 0.5, textTransform: 'uppercase', textAlign: 'right', lineHeight: 1.8, fontWeight: 700 }}>Premium<br />expérientiel</div>
-        <div style={{ position: 'absolute', top: 20, left: 50, fontSize: 10, letterSpacing: 2, color: 'rgba(0,0,0,0.12)', textTransform: 'uppercase', lineHeight: 1.8 }}>Premium<br />fonctionnel</div>
-        <div style={{ position: 'absolute', bottom: 20, left: 50, fontSize: 10, letterSpacing: 2, color: 'rgba(0,0,0,0.12)', textTransform: 'uppercase', lineHeight: 1.8 }}>Accessible<br />fonctionnel</div>
-        <div style={{ position: 'absolute', bottom: 20, right: 20, fontSize: 10, letterSpacing: 2, color: 'rgba(0,0,0,0.12)', textTransform: 'uppercase', textAlign: 'right', lineHeight: 1.8 }}>Accessible<br />expérientiel</div>
+        <div style={{ position: 'absolute', top: 20, left: 50, fontSize: 10, letterSpacing: 2, color: 'rgba(0,0,0,0.35)', textTransform: 'uppercase', lineHeight: 1.8 }}>Premium<br />fonctionnel</div>
+        <div style={{ position: 'absolute', bottom: 20, left: 50, fontSize: 10, letterSpacing: 2, color: 'rgba(0,0,0,0.35)', textTransform: 'uppercase', lineHeight: 1.8 }}>Accessible<br />fonctionnel</div>
+        <div style={{ position: 'absolute', bottom: 20, right: 20, fontSize: 10, letterSpacing: 2, color: 'rgba(0,0,0,0.35)', textTransform: 'uppercase', textAlign: 'right', lineHeight: 1.8 }}>Accessible<br />expérientiel</div>
 
         {/* Axes */}
         <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: 2, background: `linear-gradient(180deg, rgba(${ac.rgb},0.08) 0%, rgba(${ac.rgb},0.18) 50%, rgba(${ac.rgb},0.08) 100%)` }} />
@@ -105,8 +105,8 @@ export default function CompetitiveLandscape({ scenarioKey }: { scenarioKey: Sce
 
         {/* Axis end labels */}
         <div style={{ position: 'absolute', top: 8, left: '50%', transform: 'translateX(-50%)', fontSize: 9, letterSpacing: 4, color: ac.main, opacity: 0.4, textTransform: 'uppercase', fontWeight: 700 }}>Premium</div>
-        <div style={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)', fontSize: 9, letterSpacing: 4, color: 'rgba(0,0,0,0.2)', textTransform: 'uppercase', fontWeight: 700 }}>Accessible</div>
-        <div style={{ position: 'absolute', top: '50%', left: 14, transform: 'translateY(-50%) rotate(-90deg)', fontSize: 9, letterSpacing: 4, color: 'rgba(0,0,0,0.2)', textTransform: 'uppercase', fontWeight: 700 }}>Fonctionnel</div>
+        <div style={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)', fontSize: 9, letterSpacing: 4, color: 'rgba(0,0,0,0.4)', textTransform: 'uppercase', fontWeight: 700 }}>Accessible</div>
+        <div style={{ position: 'absolute', top: '50%', left: 14, transform: 'translateY(-50%) rotate(-90deg)', fontSize: 9, letterSpacing: 4, color: 'rgba(0,0,0,0.4)', textTransform: 'uppercase', fontWeight: 700 }}>Fonctionnel</div>
         <div style={{ position: 'absolute', top: '50%', right: 14, transform: 'translateY(-50%) rotate(90deg)', fontSize: 9, letterSpacing: 4, color: ac.main, opacity: 0.4, textTransform: 'uppercase', fontWeight: 700 }}>Expérientiel</div>
 
         {/* SVG connecting lines */}
@@ -138,7 +138,7 @@ export default function CompetitiveLandscape({ scenarioKey }: { scenarioKey: Sce
           {/* Label card */}
           <div style={{ marginTop: 10, background: '#fff', border: `2px solid ${ac.main}`, borderRadius: 10, padding: '8px 16px', textAlign: 'center', whiteSpace: 'nowrap', boxShadow: `0 4px 16px rgba(${ac.rgb},0.15)` }}>
             <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 14, fontWeight: 700, color: ac.main, letterSpacing: 0.5 }}>Cosmos Angré</div>
-            <div style={{ fontSize: 8, color: '#999', letterSpacing: 2, textTransform: 'uppercase', marginTop: 2 }}>Premium lifestyle</div>
+            <div style={{ fontSize: 8, color: '#555', letterSpacing: 2, textTransform: 'uppercase', marginTop: 2 }}>Premium lifestyle</div>
           </div>
         </div>
       </div>

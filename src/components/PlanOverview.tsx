@@ -92,13 +92,13 @@ const steps: StepCard[] = [
 const badgeStyles: Record<string, { bg: string; text: string; dot: string }> = {
   done: { bg: 'bg-emerald-500/10', text: 'text-emerald-600', dot: 'bg-emerald-500' },
   prog: { bg: 'bg-amber-500/10', text: 'text-amber-600', dot: 'bg-amber-500' },
-  todo: { bg: 'bg-black/[.04]', text: 'text-black/40', dot: 'bg-black/20' },
+  todo: { bg: 'bg-black/[.04]', text: 'text-black/65', dot: 'bg-black/20' },
 };
 
 const statusIcons: Record<string, React.ReactNode> = {
   done: <CheckCircle2 size={14} className="text-emerald-500 flex-shrink-0" />,
   prog: <Clock size={14} className="text-amber-500 flex-shrink-0" />,
-  todo: <Circle size={14} className="text-black/20 flex-shrink-0" />,
+  todo: <Circle size={14} className="text-black/60 flex-shrink-0" />,
 };
 
 const PlanOverview: React.FC = () => (
@@ -117,7 +117,7 @@ const PlanOverview: React.FC = () => (
     <EditableText
       storageKey="plan-desc"
       defaultValue="4 étapes séquentielles de la stratégie de marque au plan marketing opérationnel. Chaque étape conditionne la suivante — le Focus Group est le point de pivot central."
-      className="text-[14px] text-black/40 mb-10 leading-relaxed max-w-[640px]"
+      className="text-[14px] text-black/65 mb-10 leading-relaxed max-w-[640px]"
       multiline
     />
 
@@ -168,7 +168,7 @@ const PlanOverview: React.FC = () => (
                   style={{ width: `${progress}%`, background: step.accent }}
                 />
               </div>
-              <div className="text-[9px] text-black/30 mt-1.5 text-right font-medium">
+              <div className="text-[9px] text-black/60 mt-1.5 text-right font-medium">
                 {doneCount}/{step.items.length} terminée{doneCount > 1 ? 's' : ''}
               </div>
             </div>
@@ -185,7 +185,7 @@ const PlanOverview: React.FC = () => (
                     storageKey={`step-${step.num}-item-${i}`}
                     defaultValue={item.text}
                     tag="span"
-                    className={`text-[13px] ${item.status === 'done' ? 'text-black/50 line-through' : 'text-black/70'}`}
+                    className={`text-[13px] ${item.status === 'done' ? 'text-black/65 line-through' : 'text-black/70'}`}
                   />
                 </div>
               ))}
@@ -194,7 +194,7 @@ const PlanOverview: React.FC = () => (
             {/* Footer */}
             <div className="px-6 py-3.5 bg-cream/60 border-t border-black/[.05] flex items-center gap-2">
               <div className="w-1 h-1 rounded-full" style={{ background: step.accent }} />
-              <span className="text-[11px] text-black/40">
+              <span className="text-[11px] text-black/65">
                 <strong className="text-black/60">Livrable :</strong> {step.footer}
               </span>
             </div>

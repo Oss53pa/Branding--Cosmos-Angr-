@@ -306,7 +306,7 @@ const TextileMockupsSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
         >
           <div className="text-[9px] font-bold tracking-[.25em] uppercase mb-1" style={{ color: c.accent }}>Brand World · B4</div>
           <div className="font-cormorant text-[24px] text-white font-light">Uniformes {'&'} Textile</div>
-          <div className="text-[10px] text-white/30 mt-1">4 rôles · Placement logo réaliste · Navigation par pièce</div>
+          <div className="text-[10px] text-white/60 mt-1">4 rôles · Placement logo réaliste · Navigation par pièce</div>
         </div>
 
         {/* Tab navigation */}
@@ -344,7 +344,7 @@ const TextileMockupsSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
             <div>
               <div className="text-[9px] font-bold tracking-wider uppercase mb-1" style={{ color: roleColors[activeTab] || c.accent }}>● Textile · {activeInfo.role}</div>
               <div className="text-[18px] font-bold" style={{ color: c.dark }}>{activeInfo.name}</div>
-              <div className="text-[11px] text-black/40 mt-1 leading-relaxed">{activeInfo.spec}</div>
+              <div className="text-[11px] text-black/65 mt-1 leading-relaxed">{activeInfo.spec}</div>
             </div>
             <div
               className="px-4 py-2 rounded-full text-[10px] font-bold tracking-wider uppercase whitespace-nowrap"
