@@ -21,7 +21,7 @@ const volumes: VolumeCard[] = [
   {
     key: 'marketing',
     num: 'Vol. 1',
-    title: 'Plan Marketing',
+    title: 'Stratégie Marketing',
     subtitle: 'Stratégie · Brand Book · Focus Group · Plan 360°',
     desc: 'Positionnement de marque, identité visuelle, protocole Focus Group et plan marketing opérationnel pour le lancement Q4 2026.',
     icon: <Megaphone size={28} strokeWidth={1.5} />,

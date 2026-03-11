@@ -23,8 +23,8 @@ const allSections: Section[] = [
   { id: 'protocole', label: 'Protocole v2.1', group: 'Focus Group' },
   { id: 'recrutement', label: 'Recrutement', group: 'Focus Group' },
   { id: 'grille', label: "Grille d'analyse", group: 'Focus Group' },
-  { id: 'etape4', label: 'Vue Plan Marketing', group: 'Plan Marketing' },
-  { id: 'plan360', label: 'Plan Opérationnel', group: 'Plan Marketing' },
+  { id: 'etape4', label: 'Vue Stratégie Marketing', group: 'Stratégie Marketing' },
+  { id: 'plan360', label: 'Plan Opérationnel', group: 'Stratégie Marketing' },
 ];
 
 const groups = [...new Set(allSections.map((s) => s.group))];

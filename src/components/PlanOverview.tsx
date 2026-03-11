@@ -72,7 +72,7 @@ const steps: StepCard[] = [
   },
   {
     num: 'ÉTAPE 4',
-    title: 'Plan Marketing',
+    title: 'Stratégie Marketing',
     badge: 'Après FG',
     badgeType: 'todo',
     items: [

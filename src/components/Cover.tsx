@@ -38,7 +38,7 @@ const Cover: React.FC = () => (
         <div className="w-16 h-px bg-gradient-to-r from-transparent to-gold/40" />
         <EditableText
           storageKey="cover-eyebrow"
-          defaultValue="Plan Marketing — Catalogue de référence"
+          defaultValue="Stratégie Marketing — Catalogue de référence"
           className="text-[10px] font-bold tracking-[.3em] uppercase text-gold/80"
         />
         <div className="w-16 h-px bg-gradient-to-l from-transparent to-gold/40" />
@@ -52,7 +52,7 @@ const Cover: React.FC = () => (
       {/* Subtitle */}
       <EditableText
         storageKey="cover-subtitle"
-        defaultValue="Stratégie . Brand Book . Focus Group . Plan Marketing . 2026"
+        defaultValue="Stratégie . Brand Book . Focus Group . Plan 360° . 2026"
         className="text-[15px] text-white/65 mb-14 tracking-[.15em] font-light"
       />
 

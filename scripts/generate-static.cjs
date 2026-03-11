@@ -432,7 +432,7 @@ function generatePlanMarketingHTML() {
         { done: false, text: 'Recrutement — brief agence terrain' },
         { done: false, text: 'Grille analyse + template rapport' },
       ], footer: 'Protocole FG v2.1 — prêt à briefer agence', accent: '#C8A96E' },
-    { num: 'ÉTAPE 4', title: 'Plan Marketing', badge: 'Après FG', badgeColor: '#9CA3AF',
+    { num: 'ÉTAPE 4', title: 'Stratégie Marketing', badge: 'Après FG', badgeColor: '#9CA3AF',
       items: [
         { done: false, text: 'Plateforme finale (post-FG)' },
         { done: false, text: 'Plan 360 par axe' },
@@ -440,7 +440,7 @@ function generatePlanMarketingHTML() {
         { done: false, text: 'Business case ROI projeté' },
         { done: false, text: 'Plan digital complet' },
         { done: false, text: 'Calendrier éditorial 6 mois' },
-      ], footer: 'Plan marketing validable CODIR', accent: '#e65100' },
+      ], footer: 'Stratégie marketing validable CODIR', accent: '#e65100' },
   ];
 
   const decisions = [
@@ -625,9 +625,9 @@ function generatePlanMarketingHTML() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cosmos Angré — Vol. 1 Plan Marketing Complet</title>
-<meta name="description" content="Plan marketing stratégique Cosmos Angré — 4 scénarios de positionnement, comparatif, protocole Focus Group, plan 360° opérationnel.">
-<meta property="og:title" content="Cosmos Angré — Plan Marketing">
+<title>Cosmos Angré — Vol. 1 Stratégie Marketing</title>
+<meta name="description" content="Stratégie marketing Cosmos Angré — 4 scénarios de positionnement, comparatif, protocole Focus Group, plan 360° opérationnel.">
+<meta property="og:title" content="Cosmos Angré — Stratégie Marketing">
 <meta property="og:description" content="Stratégie de marque & positionnement — 4 scénarios, comparatif, Focus Group, Plan 360°">
 <meta property="og:image" content="https://branding-cosmos-angr-wd7e.vercel.app/logo-cosmos.png">
 <style>
@@ -787,7 +787,7 @@ body{font-family:'Inter',sans-serif;background:${CREAM};color:#1a1410;line-heigh
 <!-- HERO -->
 <div class="hero">
   <div class="container">
-    <div class="vol">Vol. 1 — Plan Marketing</div>
+    <div class="vol">Vol. 1 — Stratégie Marketing</div>
     <h1 class="serif">Cosmos <span>Angré</span></h1>
     <div class="sub">Stratégie de marque & positionnement — 4 scénarios de positionnement, comparatif stratégique, protocole Focus Group, plan opérationnel 360°.</div>
     <div class="meta">
@@ -820,7 +820,7 @@ body{font-family:'Inter',sans-serif;background:${CREAM};color:#1a1410;line-heigh
 <div class="container">
   <div class="eyebrow">Vue d'ensemble</div>
   <h2 class="serif">Plan de travail global</h2>
-  <div class="desc">4 étapes séquentielles de la stratégie de marque au plan marketing opérationnel. Chaque étape conditionne la suivante — le Focus Group est le point de pivot central.</div>
+  <div class="desc">4 étapes séquentielles de la stratégie de marque au plan opérationnel. Chaque étape conditionne la suivante — le Focus Group est le point de pivot central.</div>
   <div class="steps-grid">
 ${steps.map(s => {
   const doneCount = s.items.filter(i => i.done).length;

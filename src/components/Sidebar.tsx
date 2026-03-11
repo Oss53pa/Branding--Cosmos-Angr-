@@ -91,11 +91,11 @@ const tocData: TocSection[] = [
     ],
   },
   {
-    group: 'Plan Marketing',
+    group: 'Stratégie Marketing',
     color: '#e65100',
     icon: <Megaphone size={11} />,
     items: [
-      { id: 'etape4', num: '4.0', label: 'Vue Plan Marketing', icon: <Megaphone size={11} /> },
+      { id: 'etape4', num: '4.0', label: 'Vue Stratégie Marketing', icon: <Megaphone size={11} /> },
       { id: 'plan360', num: '4.1', label: 'Plan Opérationnel', icon: <Globe2 size={11} /> },
       { id: 'plan360axes', num: '4.2', label: 'Axes Stratégiques', icon: <Crosshair size={11} /> },
       { id: 'plan3d', num: '4.3', label: 'Plan 3D Interactif', icon: <Box size={11} /> },
@@ -107,7 +107,7 @@ const progressData: Record<string, { done: number; total: number }> = {
   'Stratégie & Plateforme': { done: 2, total: 5 },
   'Brand Book': { done: 1, total: 1 },
   'Focus Group': { done: 3, total: 4 },
-  'Plan Marketing': { done: 0, total: 3 },
+  'Stratégie Marketing': { done: 0, total: 3 },
 };
 
 const Sidebar: React.FC<SidebarProps> = ({ activeSection, onNavigate, onExport }) => {

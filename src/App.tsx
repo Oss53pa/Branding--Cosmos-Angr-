@@ -309,7 +309,7 @@ function App() {
             <SectionHeader
               id="etape4"
               eyebrow="Étape 4"
-              title="Plan Marketing"
+              title="Stratégie Marketing"
               desc="Plan marketing opérationnel post-Focus Group — budget, actions 360°, digital, calendrier éditorial."
             />
             <Plan360 />
