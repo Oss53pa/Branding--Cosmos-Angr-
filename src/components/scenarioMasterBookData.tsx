@@ -111,6 +111,8 @@ interface PersonaCard { prenom: string; age: string; profession: string; quartie
 interface BrandRule { rule: string }
 interface FocusGroupQ { question: string }
 interface UspPrerequisite { text: string }
+interface StimulusItem { title: string; content: string }
+interface FGStimuli { stimuli: StimulusItem[] }
 
 export interface SmbContent {
   scenarioLabel: string;
@@ -143,6 +145,7 @@ export interface SmbContent {
   risksLeftTitle: string;
   risksRightTitle: string;
   focusGroupQuestions?: FocusGroupQ[];
+  focusGroupStimuli?: FGStimuli;
   finaleQuote: [string, string];
   finaleSub: string;
 }
@@ -255,16 +258,16 @@ const contentC: SmbContent = {
     { bg: '#B25A38', title: 'Textile staff', spec: 'Terra 85 · Bronze 15', brandText: 'COSMOS ANGRE', brandSub: 'STAFF', brandSize: 18, brandWeight: 700 },
   ],
   logoVariants: [
-    { bg: 'var(--ebene-deep)', stroke: '#ffffff', tag: 'Version principale', name: 'Fond sombre — Référence', spec: 'Façade, en-tête, site web. Points blancs, O plein or.' },
-    { bg: 'var(--fond)', stroke: '#2C1A0A', tag: 'Version fond clair', name: 'Papeterie & signalétique', spec: 'Points ébène, O plein or. Brochures, en-tête, intérieur.' },
-    { bg: 'var(--terra)', stroke: 'rgba(242,235,221,0.9)', tag: 'Version textile staff', name: 'Broderie polo terracotta', spec: 'Points crème sur fond terracotta. O plein or.' },
-    { bg: 'var(--pierre)', stroke: 'rgba(44,26,10,0.3)', tag: 'Version pierre / neutre', name: 'Signalétique intérieure', spec: 'Points atténués sur fond sable. Discret et élégant.' },
-    { bg: 'linear-gradient(160deg,#1a0d04,var(--ebene))', stroke: '#ffffff', tag: 'Enseigne façade', name: 'Rétro-éclairée LED 3000K', spec: 'Inox brossé 80cm. Halo doré. Visible à 150m.' },
-    { bg: 'var(--ebene-deep)', stroke: '#ffffff', tag: 'Carte de visite', name: '85×55mm · Coton 350g', spec: 'Dorure à chaud · Coins arrondis · Fond ébène' },
-    { bg: '#B8AA8C', stroke: '#2C1A0A', tag: 'Sac shopping kraft', name: 'Packaging boutique', spec: 'Kraft recyclé grège doré · Logo ébène · Poignées coton tressé' },
-    { bg: 'linear-gradient(180deg,#2C1A0A 50%,#5C3A1A)', stroke: '#F2EBDD', tag: 'Totem mall', name: 'Wayfinding intérieur', spec: 'Aluminium anodisé ébène · Lettrage crème · Éclairé LED 2700K' },
-    { bg: 'var(--ebene)', stroke: '#C9943A', tag: 'App icon', name: 'Icône mobile Cosmos', spec: 'Fond ébène · Logo or simplifié · Coins arrondis iOS/Android' },
-    { bg: '#F2EBDD', stroke: '#2C1A0A', tag: 'Document BEFA', name: 'En-tête officiel EXCO', spec: 'Fond crème · Logo ébène discret · Filet terracotta en bas de page' },
+    { bg: '#F2EBDD', stroke: '#2C1A0A', tag: 'Sable Territorial', name: 'Fond Sable', spec: 'Halls, lounge, surfaces intérieures. Points ébène.' },
+    { bg: '#2C1A0A', stroke: '#F2EBDD', tag: 'Ébène Chaud', name: 'Fond Ébène', spec: 'Prestige, signalétique, documents. Points crème.' },
+    { bg: '#A85430', stroke: '#F2EBDD', tag: 'TEJA', name: 'Fond Terracotta Foncé', spec: 'Murs à fort impact, entrées de zones. Points crème.' },
+    { bg: '#C47850', stroke: '#2C1A0A', tag: 'IGNERO', name: 'Fond Terracotta Doux', spec: 'Zones de transition, espaces larges. Points ébène.' },
+    { bg: '#C9943A', stroke: '#2C1A0A', tag: 'Bronze Doré', name: 'Fond Bronze', spec: 'Logo, lettrage, luminaires. Points ébène.' },
+    { bg: '#6D7447', stroke: '#F2EBDD', tag: 'Kaki Végétal', name: 'Fond Kaki', spec: 'Jardinières, zones vertes, événements. Points crème.' },
+    { bg: '#B8AA8C', stroke: '#2C1A0A', tag: 'Bardage Cosmos', name: 'Fond Grège Doré', spec: 'Façade extérieure, packaging. Points ébène.' },
+    { bg: '#D4C9B0', stroke: '#2C1A0A', tag: 'Sol Cosmos', name: 'Fond Terrazo', spec: 'Sol signature, constellation scintillante. Points ébène.' },
+    { bg: '#7A5C42', stroke: '#F2EBDD', tag: 'Couronne Cosmos', name: 'Fond Noyer Fumé', spec: 'Têtes de mur, détail architectural. Points crème.' },
+    { bg: '#0B1026', stroke: '#C9943A', tag: 'Bleu Cosmos', name: 'Fond Cosmique', spec: 'Carte Cosmos Club, dark mode digital. Points or.' },
   ],
   parcoursRow1: [
     { border: 'var(--ebene)', step: 'Moment 01 · Arrivée', title: 'La première impression', text: "Totem bronze visible à 150m. Bardage terracotta reconnaissable depuis la route.", quote: '"La bardade bronze, ça a de la gueule."' },
@@ -304,10 +307,20 @@ const contentC: SmbContent = {
     { rule: 'Bleu Cosmos #0B1026 interdit en façade, signalétique intérieure et textile staff.' },
   ],
   focusGroupQuestions: [
-    { question: 'En voyant "Votre monde. Votre orbite." (Niveau 1), ressentez-vous une dimension cosmique ? Laquelle ?' },
-    { question: "L'association Sol Cosmos (terrazo scintillant) + terracotta TEJA/IGNERO évoque-t-elle un univers premium accessible ou un univers distant ?" },
-    { question: 'Entre "L\'exception, tout simplement" et "Ici, on vit quelque chose", laquelle vous donnerait le plus envie de venir régulièrement ?' },
+    { question: 'Entre "L\'exception, tout simplement" et "Votre monde. Votre orbite." — laquelle vous donne le plus envie de visiter Cosmos Angré ?' },
+    { question: 'La palette terracotta + bronze + beige vous évoque : (a) un centre africain premium moderne, (b) quelque chose de trop rustique, (c) quelque chose de chaud et accueillant, (d) autre ?' },
+    { question: '"L\'hospitalité africaine" comme promesse d\'un centre commercial — est-ce une promesse qui vous attire, ou qui vous semble condescendante ?' },
+    { question: '[Stimulus Façade] En voyant ces murs terracotta sur la façade, est-ce que cela vous donne envie d\'entrer ou cela vous laisse indifférent(e) ?' },
+    { question: '[Stimulus Post] Ce visuel terracotta sur un panneau d\'affichage à Cocody — il vous attire ou il ne vous parle pas ?' },
   ],
+  focusGroupStimuli: {
+    stimuli: [
+      { title: 'Stimulus 1 — Planche Ambiance', content: 'Palette : Grège Doré #B8AA8C · Terracotta TEJA #A85430 · Bronze #C9943A · Beige Sol Cosmos #D4C9B0 · Noyer #7A5C42\nMatières : Bardage aluminium grège · Murs terracotta (20–30% façade) · Sol terrazo beige dominant · Têtes de mur noyer · Accents bronze\nSignature centrale : "L\'exception, tout simplement."' },
+      { title: 'Stimulus 2 — Mockup Façade', content: 'Proportions visuelles : 70% grège doré (bardage) · 20–30% terracotta réelle (murs extérieurs) · enseigne avec lettrage Grège Doré Métallique\nNote visible : "Terracotta : matière réelle sur chantier — 20 à 30% de la surface extérieure"' },
+      { title: 'Stimulus 3 — Post Instagram / Affichage OOH', content: 'Format carré 1:1 et format 4×3 affichage\nFond : Terracotta TEJA #A85430\nSignature : "Cocody vient de changer d\'adresse."\nSous-titre : "Cosmos Angré — Soft Opening Oct 2026"\nAccent : Grège Doré Métallique #B8AA8C' },
+      { title: 'Stimulus 4 — Carte Cosmos Club', content: 'Fond : Ébène #2C1A0E\nLettrage : Grège Doré Métallique #B8AA8C\nSignature carte : "Un monde à part."\nNote brief animateur : Tester si la terracotta de la façade est perçue comme un atout différenciant ou comme "trop traditionnel".' },
+    ],
+  },
   finaleQuote: ['Votre monde.', 'Votre orbite.'],
   finaleSub: "Brand & Tenant Master Book · Scénario C Enrichi · L'Exception, Tout Simplement",
 };
@@ -322,7 +335,12 @@ const contentA: SmbContent = {
   heroQuoteHighlight: 'enfin ici.',
   uspStatement: "Cosmos Angré est le centre commercial que la zone attendait depuis dix ans : une qualité premium accessible au quotidien, enfin à 10 minutes de chez vous.",
   uspHighlight: 'une qualité premium accessible au quotidien, enfin à 10 minutes de chez vous.',
-  uspNote: 'Signature de lancement · "Enfin tout, enfin ici" · Oct 2026 → Déc 2027 (18 mois max). Prérequis J+1 : Carrefour opérationnel + minimum 3 restaurants + cinéma. Sans ces trois éléments, la promesse "Enfin tout" est mensongère.',
+  uspNote: 'Signature de lancement · "Enfin tout, enfin ici" · Oct 2026 → Déc 2027 (18 mois max). Sans les prérequis ci-dessous, la promesse "Enfin tout" est mensongère.',
+  uspPrerequisites: [
+    { text: 'Carrefour opérationnel au soft opening' },
+    { text: 'Minimum 3 restaurants actifs' },
+    { text: 'Cinéma opérationnel' },
+  ],
   uspPillars: [
     { color: 'var(--terra)', title: "Complétude de l'offre", desc: "Carrefour + mode + restauration + services + cinéma. Tout, enfin ici. En un seul déplacement." },
     { color: 'var(--bronze)', title: 'Proximité stratégique', desc: "60% des résidents de la zone sortaient de Cocody pour consommer. Ce temps perdu est rendu." },
@@ -356,8 +374,9 @@ const contentA: SmbContent = {
   ],
   signatureMain: { text: 'Votre évidence. ', highlight: 'Ici.', sub: 'Signature permanente · Niveau 1 · Façade · Institutionnel · 10 ans+ · À tester en focus group contre "L\'évidence, enfin."' },
   signatureAlts: [
+    { text: '"Votre temps vaut mieux que ça."', sub: 'Niveau 0 · Campagne Acquisition · Affichage OOH Cocody · Août–Oct 2026' },
     { text: '"Enfin tout, enfin ici."', sub: 'Niveau 2 · Signature de lancement · Oct 2026 → Déc 2027 · 18 mois max' },
-    { text: '"Votre temps vaut mieux que ça."', sub: 'Niveau 3 · Campagne acquisition · Adresse directe · Insight fort' },
+    { text: '"L\'évidence, enfin."', sub: 'Niveau 3 · Institutionnel · À tester en focus group contre "Votre évidence. Ici."' },
     { text: '"Cosmos, mon endroit."', sub: 'Niveau 4 · Fidélisation · Cosmos Club · Bouche à oreille' },
   ],
   paletteBar: [
@@ -378,7 +397,6 @@ const contentA: SmbContent = {
     { bg: '#B8AA8C', role: 'Façade · 70%', name: 'Bardage Cosmos', hex: '#B8AA8C', where: 'Aluminium nervuré mat. Façade extérieure — première impression à 150m.' },
     { bg: '#D4C9B0', role: 'Sol · Actif signature', name: 'Sol Cosmos', hex: '#D4C9B0', where: 'Terrazo granito fond beige + éclats — actif sensoriel, constellation au sol.' },
     { bg: '#7A5C42', role: 'Architectural · 3%', name: 'Kutu Baffle', hex: '#7A5C42', where: 'Noyer fumé. Têtes de mur — détail architectural commun aux 4 scénarios.' },
-    { bg: '#1B2A4A', role: 'Cosmique · 2%', name: 'Nuit Profonde', hex: '#1B2A4A', where: 'Pantone 2767 C. Carte Cosmos Club, dark mode digital, documents EXCO. Active l\'ADN cosmique.' },
   ],
   proportions: [
     { title: 'Espaces physiques intérieurs', sub: 'Allées, galeries, hall — ce que voit le visiteur en marchant', bars: [{ w: '60%', bg: 'var(--fond)', c: 'rgba(47,84,57,0.6)', l: '60%' }, { w: '25%', bg: 'var(--terra)', c: 'rgba(242,235,221,0.8)', l: '25%' }, { w: '15%', bg: 'var(--bronze)', c: 'rgba(26,20,16,0.7)', l: '15%' }], legend: [{ dot: 'var(--fond)', l: 'Sable Territorial — sols, murs, mobilier', p: '60%' }, { dot: 'var(--terra)', l: 'Forêt — piliers, encadrements, accents', p: '25%' }, { dot: 'var(--bronze)', l: 'Or Cuivré — signalétique, poignées, détails', p: '15%' }] },
@@ -396,6 +414,7 @@ const contentA: SmbContent = {
     { grad: 'linear-gradient(135deg,#B8AA8C,#9a8e74)', name: 'Bardage Cosmos', sub: 'Aluminium nervuré mat #B8AA8C', desc: "Façade extérieure — première impression à 150m." },
     { grad: 'linear-gradient(135deg,#7A5C42,#3D2A1A)', name: 'Couronne Cosmos', sub: 'Kutu Baffle noyer fumé', desc: "Têtes de mur — détail architectural signature." },
     { grad: 'linear-gradient(135deg,#D4C9B0,#c4b89a)', name: 'Sol Cosmos', sub: 'Terrazo granito fond beige + éclats', desc: "Actif sensoriel signature — constellation au sol sous éclairage 2700-3000K." },
+    { grad: 'linear-gradient(135deg,#A85430,#C47850)', name: 'Terracotta bichrome', sub: 'TEJA RAL 040 40 60 + IGNERO RAL 040 50 40', desc: "Murs extérieurs (20–30%) et accents intérieurs. Deux références RAL confirmées sur chantier." },
     { grad: 'linear-gradient(135deg,#C9943A,#a07828)', name: 'Laiton cuivré', sub: 'Finition brossée', desc: "Signalétique, luminaires, garde-corps, poignées." },
     { grad: 'linear-gradient(135deg,#76764D,#545434)', name: 'Raphia & fibres végétales', sub: 'Tissage naturel', desc: "Suspensions, panneaux acoustiques, assises lounge." },
   ],
@@ -405,16 +424,16 @@ const contentA: SmbContent = {
     { bg: '#2F5439', title: 'Textile staff', spec: 'Forêt 70 · Sable 15 · Or brodé 15', brandText: 'COSMOS ANGRÉ', brandSub: 'STAFF', brandSize: 18, brandWeight: 700 },
   ],
   logoVariants: [
-    { bg: 'var(--ebene-deep)', stroke: '#F2EBDD', tag: 'Version principale', name: 'Fond Forêt — Référence', spec: 'Façade, en-tête, site web. Points sable, O plein or.' },
-    { bg: 'var(--fond)', stroke: '#2F5439', tag: 'Version fond sable', name: 'Papeterie & intérieur', spec: 'Points Forêt, O plein or. Brochures, en-tête, signalétique.' },
-    { bg: 'var(--terra)', stroke: 'rgba(242,235,221,0.9)', tag: 'Version textile staff', name: 'Broderie polo forêt', spec: 'Points sable sur fond forêt. O plein or.' },
-    { bg: 'var(--pierre)', stroke: 'rgba(47,84,57,0.3)', tag: 'Version pierre / neutre', name: 'Signalétique intérieure', spec: 'Points atténués sur fond pierre. Discret et organique.' },
-    { bg: 'linear-gradient(160deg,#1a3020,var(--terra))', stroke: '#ffffff', tag: 'Enseigne façade', name: 'Rétro-éclairée LED 3000K', spec: 'Inox brossé 80cm. Halo doré. Visible à 150m.' },
-    { bg: 'var(--ebene-deep)', stroke: '#F2EBDD', tag: 'Carte de visite', name: '85×55mm · Coton 350g', spec: 'Dorure à chaud Or · Coins arrondis · Fond Forêt' },
-    { bg: '#B8AA8C', stroke: '#2F5439', tag: 'Sac shopping kraft', name: 'Packaging boutique', spec: 'Kraft recyclé grège doré · Logo Forêt · Poignées coton naturel' },
-    { bg: 'linear-gradient(180deg,#2F5439 50%,#4a7558)', stroke: '#F2EBDD', tag: 'Totem mall', name: 'Wayfinding intérieur', spec: 'Aluminium laqué Forêt · Lettrage sable · Pictos or · LED 2700K' },
-    { bg: '#2F5439', stroke: '#C9943A', tag: 'App icon', name: 'Icône mobile Cosmos', spec: 'Fond Forêt · Logo or simplifié · Coins arrondis iOS/Android' },
-    { bg: '#F2EBDD', stroke: '#2F5439', tag: 'Document BEFA', name: 'En-tête officiel EXCO', spec: 'Fond sable · Logo Forêt discret · Filet or en bas de page' },
+    { bg: '#F2EBDD', stroke: '#2F5439', tag: 'Sable Territorial', name: 'Fond Sable', spec: 'Murs intérieurs, halls, lounge. Points Forêt, O or.' },
+    { bg: '#2F5439', stroke: '#F2EBDD', tag: 'Forêt Profond', name: 'Fond Forêt', spec: 'Enseigne, signalétique, communication. Points sable, O or.' },
+    { bg: '#C9943A', stroke: '#1A1410', tag: 'Or Cuivré', name: 'Fond Or', spec: 'Logo, lettrage, luminaires. Points noir chaud.' },
+    { bg: '#76764D', stroke: '#F2EBDD', tag: 'Kaki Minéral', name: 'Fond Kaki', spec: 'Jardinières, événements. Points sable.' },
+    { bg: '#E8C97A', stroke: '#2F5439', tag: 'Or Doux', name: 'Fond Or Doux', spec: 'Icônes digitales, filets décoratifs. Points Forêt.' },
+    { bg: '#1A1410', stroke: '#F2EBDD', tag: 'Noir Chaud', name: 'Fond Noir', spec: 'Documents officiels BEFA/EXCO. Points sable, O or.' },
+    { bg: '#B8AA8C', stroke: '#2F5439', tag: 'Bardage Cosmos', name: 'Fond Grège Doré', spec: 'Façade extérieure, packaging. Points Forêt.' },
+    { bg: '#D4C9B0', stroke: '#2F5439', tag: 'Sol Cosmos', name: 'Fond Terrazo', spec: 'Actif sensoriel, constellation au sol. Points Forêt.' },
+    { bg: '#7A5C42', stroke: '#F2EBDD', tag: 'Kutu Baffle', name: 'Fond Noyer Fumé', spec: 'Têtes de mur, détail architectural. Points sable.' },
+    { bg: '#1B2A4A', stroke: '#C9943A', tag: 'Nuit Profonde', name: 'Fond Cosmique', spec: 'Carte Cosmos Club, dark mode digital. Points or.' },
   ],
   parcoursRow1: [
     { border: 'var(--terra)', step: 'Moment 01 · Arrivée', title: "L'annonce du quartier", text: "Enseigne Forêt & Or visible à 150m depuis la route. Bardage bois huilé. Signalétique parkings P1/P2/P3 claire. Végétation luxuriante en façade.", quote: '"Ah, c\'est là. Enfin !"' },
@@ -454,10 +473,20 @@ const contentA: SmbContent = {
     { rule: 'Bardage façade = aluminium nervuré mat Grège Doré #B8AA8C (réalité chantier confirmée).' },
   ],
   focusGroupQuestions: [
-    { question: '"Votre évidence. Ici." vs "L\'évidence, enfin." — laquelle est la plus forte pour incarner votre quartier ?' },
-    { question: 'Le concept "Enfin tout, enfin ici" résonne-t-il comme une promesse de lancement ou comme une vérité permanente ?' },
-    { question: 'Le Sol Cosmos (terrazo scintillant) contribue-t-il à l\'impression premium ou passe-t-il inaperçu ?' },
+    { question: 'Entre "Votre évidence. Ici." et "L\'évidence, enfin." — laquelle vous donne envie de visiter le centre ?' },
+    { question: '"Enfin tout, enfin ici" vous donne-t-il le sentiment que ce centre est fait pour vous — ou pour quelqu\'un d\'autre ?' },
+    { question: 'La couleur verte associée à Cosmos Angré vous évoque-t-elle : (a) la nature et la fraîcheur, (b) l\'écologie et le bio, (c) un centre de quartier solide, (d) autre ?' },
+    { question: '[Stimulus Façade] En regardant ce visuel de façade — est-ce que le vert de l\'enseigne vous semble cohérent avec le reste du bâtiment ?' },
+    { question: '[Stimulus Post] Ce visuel vous donnerait-il envie de vous arrêter devant un panneau d\'affichage à Cocody ?' },
   ],
+  focusGroupStimuli: {
+    stimuli: [
+      { title: 'Stimulus 1 — Planche Ambiance', content: 'Palette : Grège Doré #B8AA8C · Forêt Profond #2F5439 · Terracotta TEJA #A85430 · Beige #D4C9B0\nMatières : Bardage aluminium grège · Enseigne verte rétro-éclairée · Sol terrazo beige · Têtes de mur noyer\nSignature centrale : "Votre évidence. Ici."' },
+      { title: 'Stimulus 2 — Mockup Façade', content: 'Proportions visuelles : 70% grège doré (bardage) · 20–30% terracotta (murs extérieurs) · caisson enseigne vert Forêt Profond avec lettrage Grège Doré Métallique\nNote visible : "Vert : enseigne et signalétique uniquement — pas sur le bardage"' },
+      { title: 'Stimulus 3 — Post Instagram / Affichage OOH', content: 'Format carré 1:1 et format 4×3 affichage\nFond : Forêt Profond #2F5439\nSignature : "Votre temps vaut mieux que ça."\nSous-titre : "Cosmos Angré — Ouverture Oct 2026"\nAccent : Grège Doré Métallique #B8AA8C' },
+      { title: 'Stimulus 4 — Carte Cosmos Club', content: 'Fond : Forêt Profond #2F5439\nLettrage : Grège Doré Métallique #B8AA8C\nSignature carte : "Cosmos Club"\nNote brief animateur : La carte Club est commune aux 4 scénarios — tester la réaction à la couleur verte spécifiquement.' },
+    ],
+  },
   finaleQuote: ['Votre évidence.', 'Ici.'],
   finaleSub: "Brand & Tenant Master Book · Scénario A · Premium de Proximité",
 };
@@ -563,16 +592,16 @@ const contentB: SmbContent = {
     { bg: '#0D1B4B', title: 'Textile staff', spec: 'Bleu nuit 85 · Or 15', brandText: 'COSMOS ANGRE', brandSub: 'STAFF', brandSize: 18, brandWeight: 700 },
   ],
   logoVariants: [
-    { bg: 'var(--ebene-deep)', stroke: '#ffffff', tag: 'Version principale', name: 'Fond nuit — Référence', spec: 'Façade, en-tête, site web. Points blancs, O plein or.' },
-    { bg: 'var(--fond)', stroke: '#0D1B4B', tag: 'Version fond clair', name: 'Papeterie & print', spec: 'Points bleu nuit, O plein or. Brochures ivoire.' },
-    { bg: 'var(--terra)', stroke: 'rgba(242,237,227,0.9)', tag: 'Version textile staff', name: 'Broderie polo or mat', spec: 'Points ivoire sur fond or mat. O plein or.' },
-    { bg: 'var(--pierre)', stroke: 'rgba(13,27,75,0.3)', tag: 'Version pierre / neutre', name: 'Signalétique intérieure', spec: 'Points atténués sur fond ivoire. Discret et raffiné.' },
-    { bg: 'linear-gradient(160deg,#060E2A,var(--ebene))', stroke: '#ffffff', tag: 'Enseigne façade', name: 'Rétro-éclairée LED 3000K', spec: 'Laiton poli 80cm. Halo doré. Visible à 150m.' },
-    { bg: 'var(--ebene-deep)', stroke: '#ffffff', tag: 'Carte de visite', name: '85×55mm · Coton 350g', spec: 'Dorure à chaud · Coins droits · Fond nuit abyssale' },
-    { bg: '#B8AA8C', stroke: '#0D1B4B', tag: 'Sac shopping premium', name: 'Packaging boutique', spec: 'Papier texturé grège doré · Logo bleu nuit gaufré · Ruban or mat' },
-    { bg: 'linear-gradient(180deg,#0D1B4B 50%,#1A3060)', stroke: '#B8924A', tag: 'Totem mall', name: 'Wayfinding intérieur', spec: 'Aluminium anodisé bleu nuit · Lettrage or mat · LED 2700K indirect' },
-    { bg: '#0D1B4B', stroke: '#B8924A', tag: 'App icon', name: 'Icône mobile Cosmos', spec: 'Fond bleu nuit · Logo or simplifié · Coins arrondis iOS/Android' },
-    { bg: '#FAF7F2', stroke: '#0D1B4B', tag: 'Document BEFA', name: 'En-tête officiel EXCO', spec: 'Fond ivoire · Logo bleu nuit discret · Filet or mat en bas de page' },
+    { bg: '#FAF7F2', stroke: '#0D1B4B', tag: 'Blanc Chaud', name: 'Fond Blanc Chaud', spec: 'Plafonds, transitions. Points bleu nuit.' },
+    { bg: '#E8E0D5', stroke: '#0D1B4B', tag: 'Pierre Naturelle', name: 'Fond Pierre', spec: 'Sols galeries, murs secondaires. Points bleu nuit.' },
+    { bg: '#F2EDE3', stroke: '#0D1B4B', tag: 'Ivoire', name: 'Fond Ivoire', spec: 'Print, signalétique intérieure. Points bleu nuit.' },
+    { bg: '#D4C9B0', stroke: '#0D1B4B', tag: 'Sol Cosmos', name: 'Fond Terrazo', spec: 'Sol signature terrazo granito. Points bleu nuit.' },
+    { bg: '#B8AA8C', stroke: '#0D1B4B', tag: 'Bardage Cosmos', name: 'Fond Grège Doré', spec: 'Façade extérieure, packaging. Points bleu nuit.' },
+    { bg: '#7A5C42', stroke: '#FAF7F2', tag: 'Kutu Baffle', name: 'Fond Noyer Fumé', spec: 'Têtes de mur, architectural. Points blanc chaud.' },
+    { bg: '#B8924A', stroke: '#0D1B4B', tag: 'Or Mat', name: 'Fond Or', spec: 'Logo, lettrage, CTA. Points bleu nuit.' },
+    { bg: '#1A3060', stroke: '#B8924A', tag: 'Bleu Profond', name: 'Fond Bleu Profond', spec: 'Sous-menus, hover, dégradés. Points or mat.' },
+    { bg: '#0D1B4B', stroke: '#B8924A', tag: 'Bleu Nuit', name: 'Fond Bleu Nuit', spec: 'Digital, packaging, textile. Points or mat.' },
+    { bg: '#060E2A', stroke: '#ffffff', tag: 'Nuit Abyssale', name: 'Fond Nuit Profonde', spec: 'Carte Cosmos Club Black, fond premium. Points blancs.' },
   ],
   parcoursRow1: [
     { border: 'var(--ebene)', step: 'Moment 01 · Arrivée', title: 'La première impression', text: "Façade nuit abyssale. Lettrage or mat rétro-éclairé. Lignes pures, marbre noir visible.", quote: '"On sait que c\'est un endroit à part."' },
@@ -612,10 +641,20 @@ const contentB: SmbContent = {
     { rule: 'Bardage façade = aluminium nervuré mat Grège Doré #B8AA8C (réalité chantier confirmée).' },
   ],
   focusGroupQuestions: [
-    { question: 'Le concept "Un monde à part" est-il perçu comme aspirationnel ou comme exclusif/excluant pour le résident d\'Angré ?' },
-    { question: 'Le protocole de lancement progressif (3 phases/signatures) est-il crédible ou crée-t-il une impression d\'inachevé ?' },
-    { question: 'Le Sol Cosmos (terrazo scintillant) contribue-t-il à l\'impression "destination" ou est-il en contradiction avec le positionnement marbre/laiton ?' },
+    { question: '"Un monde à part" — cette signature vous donne-t-elle envie de visiter Cosmos Angré, ou vous donne-t-elle le sentiment que ce n\'est pas pour vous ?' },
+    { question: 'Un centre commercial bleu nuit et or mat à Cocody Angré — trouvez-vous ça : (a) très élégant et premium, (b) trop froid et intimidant, (c) adapté au quartier, (d) fait pour une autre clientèle ?' },
+    { question: 'Si Cosmos Angré s\'appelait "La Destination" sans le mot Cosmos, est-ce que le lieu vous attirerait autant ?' },
+    { question: '[Stimulus Façade] En voyant ce bâtiment avec une enseigne bleu nuit rétro-éclairée, est-ce que vous avez envie d\'entrer ?' },
+    { question: '[Stimulus Carte Club] Si on vous offrait cette carte noire, est-ce que vous vous sentiriez privilégié(e) ou mis(e) à l\'écart ?' },
   ],
+  focusGroupStimuli: {
+    stimuli: [
+      { title: 'Stimulus 1 — Planche Ambiance', content: 'Palette : Grège Doré #B8AA8C · Bleu Nuit #0D1B4B · Or Mat #B8924A · Beige #D4C9B0\nMatières : Bardage aluminium grège · Caisson enseigne bleu nuit rétro-éclairé · Sol terrazo beige · Comptoir marbre noir · Têtes de mur noyer\nSignature centrale : "Un monde à part."' },
+      { title: 'Stimulus 2 — Mockup Façade', content: 'Proportions visuelles : 70% grège doré (bardage) · terracotta 20–30% (murs extérieurs) · caisson enseigne Bleu Nuit rétro-éclairé avec lettrage Grège Doré Métallique\nNote visible : "Bleu Nuit : caisson enseigne rétro-éclairé uniquement — pas sur le bardage"' },
+      { title: 'Stimulus 3 — Post Instagram / Affichage OOH', content: 'Format carré 1:1 et format 4×3 affichage\nFond : Bleu Nuit #0D1B4B\nSignature : "La destination commence ici."\nSous-titre : "Cosmos Angré — Soft Opening Oct 2026"\nAccent : Or Mat #B8924A' },
+      { title: 'Stimulus 4 — Carte Cosmos Club Black', content: 'Fond : Bleu Nuit #0D1B4B\nLettrage : Or Mat #B8924A\nSignature carte : "Un monde à part."\nNote brief animateur : Tester la réaction à la carte noire/or — est-ce perçu comme ultra-premium ou intimidant ?' },
+    ],
+  },
   finaleQuote: ['Un monde', 'à part.'],
   finaleSub: "Brand & Tenant Master Book · Scénario B · Destination Premium",
 };
@@ -724,16 +763,16 @@ const contentD: SmbContent = {
     { bg: '#898D5D', title: 'Textile staff', spec: 'Polo kaki 75 · Or broderies 25', brandText: 'COSMOS ANGRÉ', brandSize: 20, brandWeight: 700 },
   ],
   logoVariants: [
-    { bg: 'var(--ebene-deep)', stroke: '#ffffff', tag: 'Version principale', name: 'Fond forêt nuit', spec: 'Enseigne façade, site web, communication principale. Points blancs · O plein kaki · "ANGRÉ" or.' },
-    { bg: 'var(--fond)', stroke: '#3D4A2A', tag: 'Version fond clair', name: 'Papeterie & documents', spec: 'Brochures, en-tête, lettres enseignes. Points forêt · O kaki · Or.' },
-    { bg: 'var(--terra)', stroke: 'rgba(245,240,228,0.9)', tag: 'Version textile staff', name: 'Broderie polo kaki', spec: 'Points ivoire sur fond kaki · O plein or · "ANGRÉ" or.' },
-    { bg: 'var(--pierre)', stroke: 'rgba(61,74,42,0.35)', tag: 'Signalétique intérieure', name: 'Fond pierre verte', spec: 'Panneaux allées, directions intérieures. Discret, élégant.' },
-    { bg: 'linear-gradient(150deg,#1C2215,#2A3320)', stroke: '#ffffff', tag: 'Enseigne façade LED', name: 'Rétro-éclairée 2700K', spec: 'Aluminium laqué 80cm. Or lumineux visible à 150m.' },
-    { bg: 'var(--ebene-deep)', stroke: '#ffffff', tag: 'Carte Cosmos Club Gold', name: 'Programme fidélité mall', spec: 'PVC métallisé · NFC · Dorure or à chaud · Numérotée' },
-    { bg: '#B8AA8C', stroke: '#3D4A2A', tag: 'Sac shopping éco', name: 'Packaging boutique', spec: 'Kraft recyclé grège doré · Logo kaki-forêt · Poignées coton bio' },
-    { bg: 'linear-gradient(180deg,#3D4A2A 50%,#5A6B3C)', stroke: '#F5F0E4', tag: 'Totem mall', name: 'Wayfinding intérieur', spec: 'Aluminium laqué kaki · Pictogrammes ivoire · Éclairé LED 2700K' },
-    { bg: '#3D4A2A', stroke: '#C9943A', tag: 'App icon', name: 'Icône mobile Cosmos', spec: 'Fond kaki-forêt · Logo or simplifié · Coins arrondis iOS/Android' },
-    { bg: '#F5F0E4', stroke: '#3D4A2A', tag: 'Document BEFA', name: 'En-tête officiel EXCO', spec: 'Fond ivoire · Logo kaki discret · Filet or + vert en bas de page' },
+    { bg: '#E5DECC', stroke: '#1C2215', tag: 'Pierre Beige', name: 'Fond Pierre', spec: 'Sols allées, murs galeries, hall. Points forêt nuit.' },
+    { bg: '#D4C9B0', stroke: '#1C2215', tag: 'Sol Cosmos', name: 'Fond Terrazo', spec: 'Sol signature terrazo granito. Points forêt nuit.' },
+    { bg: '#B8AA8C', stroke: '#1C2215', tag: 'Peau Cosmos', name: 'Fond Grège Doré', spec: 'Façade bardage aluminium. Points forêt nuit.' },
+    { bg: '#898D5D', stroke: '#F5F0E4', tag: 'Kaki Végétal', name: 'Fond Kaki', spec: 'Accents archi, textile staff, logo. Points ivoire.' },
+    { bg: '#7A5C42', stroke: '#F5F0E4', tag: 'Kutu Baffle', name: 'Fond Noyer Fumé', spec: 'Têtes de mur, architectural. Points ivoire.' },
+    { bg: '#F5F0E4', stroke: '#898D5D', tag: 'Ivoire Chaud', name: 'Fond Ivoire', spec: 'Contre-fonds, transitions. Points kaki.' },
+    { bg: '#D4A843', stroke: '#1C2215', tag: 'Or Soleil', name: 'Fond Or', spec: 'Signalétique, lettrage, CTA. Points forêt nuit.' },
+    { bg: '#6B7A4A', stroke: '#F5F0E4', tag: 'Mousse', name: 'Fond Mousse', spec: 'Jardinières, bandes, événements. Points ivoire.' },
+    { bg: '#2C3E6B', stroke: '#D4A843', tag: 'Nuit Végétale', name: 'Fond Cosmique', spec: 'Carte Cosmos Club Gold, dark mode. Points or.' },
+    { bg: '#FAFAF6', stroke: '#898D5D', tag: 'Blanc Pur', name: 'Fond Blanc', spec: 'Plafonds, zones calmes. Points kaki.' },
   ],
   parcoursRow1: [
     { border: 'var(--ebene)', step: 'Moment 01 · Arrivée', title: 'Le signal qui fait venir', text: "Totem kaki visible à 150m depuis la voie principale. Lettrage or. Végétation en façade. Panneau \"OUVERT\" dynamique LED.", quote: '"Il y a quelque chose là-bas."' },
