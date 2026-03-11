@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CosmosLogo from './CosmosLogo';
-import { Megaphone, ShieldCheck, Route, Box, ArrowRight } from 'lucide-react';
+import { Megaphone, ShieldCheck, Route, Box, ArrowRight, Link2, Check } from 'lucide-react';
 
 export type VolumeKey = 'marketing' | 'securite' | 'parcours';
 
@@ -14,6 +14,7 @@ interface VolumeCard {
   accent: string;
   gradient: string;
   stats: { n: string; l: string }[];
+  shareUrl?: string;
 }
 
 const volumes: VolumeCard[] = [
@@ -26,6 +27,7 @@ const volumes: VolumeCard[] = [
     icon: <Megaphone size={28} strokeWidth={1.5} />,
     accent: '#C9943A',
     gradient: 'from-[#1a1a2e] via-[#16213e] to-[#1a1a2e]',
+    shareUrl: 'https://branding-cosmos-angr-wd7e.vercel.app/plan-marketing.html',
     stats: [
       { n: '4', l: 'Étapes' },
       { n: '14', l: 'Livrables' },
@@ -68,7 +70,19 @@ interface CatalogueHomeProps {
   onSelectVolume: (volume: VolumeKey) => void;
 }
 
-const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => (
+const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => {
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
+
+  const copyLink = (e: React.MouseEvent, vol: VolumeCard) => {
+    e.stopPropagation();
+    if (!vol.shareUrl) return;
+    navigator.clipboard.writeText(vol.shareUrl).then(() => {
+      setCopiedKey(vol.key);
+      setTimeout(() => setCopiedKey(null), 2000);
+    });
+  };
+
+  return (
   <div className="min-h-screen bg-navy flex flex-col">
     {/* Header */}
     <div className="flex flex-col items-center pt-16 pb-10 px-8 relative overflow-hidden">
@@ -162,10 +176,31 @@ const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => (
                 ))}
               </div>
 
-              {/* CTA */}
-              <div className="flex items-center gap-2 text-[11px] font-medium group-hover:gap-3 transition-all" style={{ color: vol.accent }}>
-                Ouvrir ce volume
-                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              {/* CTA row */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-[11px] font-medium group-hover:gap-3 transition-all" style={{ color: vol.accent }}>
+                  Ouvrir ce volume
+                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                </div>
+                {vol.shareUrl && (
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={(e) => copyLink(e, vol)}
+                    onKeyDown={(e) => { if (e.key === 'Enter') copyLink(e as unknown as React.MouseEvent, vol); }}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all cursor-pointer hover:scale-105"
+                    style={{
+                      borderColor: copiedKey === vol.key ? '#22c55e40' : `${vol.accent}30`,
+                      background: copiedKey === vol.key ? '#22c55e12' : `${vol.accent}08`,
+                      color: copiedKey === vol.key ? '#22c55e' : `${vol.accent}bb`,
+                    }}
+                  >
+                    {copiedKey === vol.key ? <Check size={11} /> : <Link2 size={11} />}
+                    <span className="text-[9px] font-semibold tracking-[.05em]">
+                      {copiedKey === vol.key ? 'Copié !' : 'Copier le lien'}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </button>
@@ -202,6 +237,7 @@ const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => (
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export default CatalogueHome;
