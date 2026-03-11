@@ -1,6 +1,7 @@
 import React from 'react';
 import type { ScenarioKey } from './Scenarios';
 import { hexRgba } from './colorUtils';
+import { smbContent } from './scenarioMasterBookData';
 
 interface ScColors { primary: string; dark: string; accent: string; secondary: string; light: string; }
 const sc: Record<ScenarioKey, ScColors> = {
@@ -345,6 +346,76 @@ const PersonasFocusGroupSection: React.FC<{ k: ScenarioKey }> = ({ k }) => {
                 ))}
               </div>
             </div>
+
+            {/* ── Questions spécifiques au scénario ── */}
+            {smbContent[k].focusGroupQuestions && smbContent[k].focusGroupQuestions!.length > 0 && (
+              <div>
+                <div className="text-[9px] font-bold tracking-[.2em] uppercase mb-1" style={{ color: c.accent }}>
+                  Questions spécifiques à tester
+                </div>
+                <div className="text-[10px] text-black/40 mb-4">
+                  {smbContent[k].focusGroupQuestions!.length} questions clés pour le {smbContent[k].scenarioLabel} — Sessions mars 2026
+                </div>
+                <div
+                  className="rounded-xl border border-black/[.06] overflow-hidden"
+                  style={{ background: hexRgba(c.accent, 0.03) }}
+                >
+                  <ol className="divide-y divide-black/[.05]">
+                    {smbContent[k].focusGroupQuestions!.map((q, i) => (
+                      <li key={i} className="flex items-start gap-4 px-5 py-4">
+                        <span
+                          className="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-bold text-white mt-0.5"
+                          style={{ background: c.accent }}
+                        >
+                          Q{i + 1}
+                        </span>
+                        <span className="text-[11px] text-black/60 leading-relaxed pt-1">{q.question}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </div>
+            )}
+
+            {/* ── Stimuli Focus Group ── */}
+            {smbContent[k].focusGroupStimuli && smbContent[k].focusGroupStimuli!.stimuli.length > 0 && (
+              <div>
+                <div className="text-[9px] font-bold tracking-[.2em] uppercase mb-1" style={{ color: c.accent }}>
+                  Stimuli Focus Group — {smbContent[k].scenarioLabel}
+                </div>
+                <div className="text-[10px] text-black/40 mb-4">
+                  {smbContent[k].focusGroupStimuli!.stimuli.length} stimuli visuels à présenter en session — Mars 2026
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {smbContent[k].focusGroupStimuli!.stimuli.map((s, i) => (
+                    <div
+                      key={i}
+                      className="rounded-xl border border-black/[.06] overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,.03)]"
+                    >
+                      <div
+                        className="px-5 py-4 border-b border-black/[.06]"
+                        style={{ background: `linear-gradient(135deg, ${c.dark}, ${c.primary})` }}
+                      >
+                        <div className="text-[9px] font-bold tracking-[.15em] uppercase mb-1" style={{ color: hexRgba(c.accent, 0.7) }}>
+                          Stimulus {i + 1}
+                        </div>
+                        <div className="font-cormorant text-[16px] text-white font-light leading-snug">
+                          {s.title.replace(/^Stimulus \d+ — /, '')}
+                        </div>
+                      </div>
+                      <div className="px-5 py-4">
+                        {s.content.split('\n').map((line, j) => (
+                          <div key={j} className="flex items-start gap-2 mb-1.5 last:mb-0">
+                            <span className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: c.accent }} />
+                            <span className="text-[10px] text-black/55 leading-relaxed">{line}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
           </div>
         </div>
