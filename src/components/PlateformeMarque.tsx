@@ -130,7 +130,7 @@ function PageIntro({ onNav }: { onNav: (id: PageId) => void }) {
           {[
             { id: 'scA' as PageId, sc: 'Scénario A', title: 'Premium\nde Proximité', sub: '"Enfin tout, enfin ici"' },
             { id: 'scB' as PageId, sc: 'Scénario B', title: 'Destination\nPremium', sub: '"Un monde à part"' },
-            { id: 'scC' as PageId, sc: 'Scénario C', title: "L'Exception\nde Proximité", sub: '"L\'exception, tout simplement"' },
+            { id: 'scC' as PageId, sc: 'Scénario C', title: "L'Exception\nNaturelle", sub: '"L\'exception, tout simplement"' },
             { id: 'scD' as PageId, sc: 'Scénario D', title: 'Nature\nContemporaine', sub: '"Ici, on vit quelque chose"' },
           ].map(s => (
             <div key={s.id} onClick={() => onNav(s.id)} style={{ padding: 18, background: 'rgba(255,255,255,.06)', borderRadius: 10, border: '1px solid rgba(255,255,255,.08)', cursor: 'pointer' }}>
@@ -283,9 +283,9 @@ function PageC() {
     <>
       <div className="pm-cover pm-cover-c">
         <div className="pm-cover-eyebrow">Plateforme de marque · Cosmos Angré</div>
-        <div className="pm-cover-sc">Scénario C — Hybride</div>
-        <div className="pm-cover-title">L'Exception<br />de Proximité</div>
-        <div className="pm-cover-usp">"Vivez l'exception, ici chez vous"</div>
+        <div className="pm-cover-sc">Scénario C — L'Exception Naturelle</div>
+        <div className="pm-cover-title">L'Exception<br />Naturelle</div>
+        <div className="pm-cover-usp">"L'exception, tout simplement"</div>
         <div className="pm-cover-div" />
         <div className="pm-cover-pillars">
           {['Premium ancré', 'Destination & quotidien', 'Aspiration inclusive', 'Identité africaine forte'].map(p => <span key={p} className="pm-pillar">{p}</span>)}
@@ -317,15 +317,15 @@ function PageC() {
         </div>
         <div className="pm-eyebrow" style={{ color: '#C9943A' }}>Ton de communication</div>
         <div className="pm-ton-grid">
-          <TonCard label="Ton général" content="Chaleureux et élégant. La distinction dans la bienveillance. &quot;Nous avons préparé quelque chose d'exceptionnel — pour vous.&quot;" ex="&quot;L'exception, ici chez vous.&quot;" />
+          <TonCard label="Ton général" content="Chaleureux et élégant. La distinction dans la bienveillance. &quot;Nous avons préparé quelque chose d'exceptionnel — pour vous.&quot;" ex="&quot;L'exception, tout simplement.&quot;" />
           <TonCard label="Ce qu'on ne dit jamais" content="Jamais &quot;luxe&quot; seul, jamais &quot;populaire&quot;. On dit &quot;exceptionnel&quot;, &quot;pour vous&quot;, &quot;ici&quot;. Le &quot;ici&quot; est crucial — il ancre sans brider." ex="&quot;Ce qui se fait de mieux. Ici.&quot;" />
           <TonCard label="Digital & réseaux" content="Mix contenu lifestyle premium + contenu proximité. Gastronomie ET marché local. Événements VIP ET animations familles. Les deux coexistent." ex="&quot;De la terrasse au cinéma — votre samedi à Cosmos Angré.&quot;" />
           <TonCard label="Institutionnel" content="Premier mixed-use premium d'Abidjan, ancré dans la zone la plus aisée de Cocody. Trafic qualifié et régulier — pas seulement occasionnel." ex="&quot;La destination premium du quotidien.&quot;" />
         </div>
         <div className="pm-eyebrow" style={{ color: '#C9943A' }}>Signatures</div>
         <div className="pm-sig-grid">
-          <SigCard type="Signature permanente — façade, baux, institutionnel" text={`"Vivez l'exception, ici chez vous"`} color="#8a5a10" why="Synthèse parfaite de C : &quot;Vivez l'exception&quot; (aspiration B) + &quot;ici chez vous&quot; (ancrage A). Les deux promesses en une phrase. Risque : longueur. À tester en FG." />
-          <SigCard type="Alternative plus courte" text={`"L'exception de proximité"`} color="#8a5a10" why="Plus compact, plus mémorable. Oxymoron volontaire — l'exception n'est plus lointaine. Pose le territoire C en 3 mots." />
+          <SigCard type="Signature permanente — façade, baux, institutionnel" text={`"L'exception, tout simplement"`} color="#8a5a10" why="Tagline canonique. Court, mémorable, signe le territoire C." />
+          <SigCard type="Alternative plus courte" text={`"L'exceptionnel, au quotidien"`} color="#8a5a10" why="Plus compact, plus mémorable. Oxymoron volontaire — l'exception n'est plus lointaine. Pose le territoire C en 3 mots." />
         </div>
       </div>
     </>
@@ -412,7 +412,7 @@ function PageComp() {
               <th style={{ width: 140 }}>Dimension</th>
               <th>A — Proximité</th>
               <th>B — Destination</th>
-              <th>C — Hybride</th>
+              <th>C — L'Exception Naturelle</th>
               <th>D — Nature</th>
             </tr>
           </thead>

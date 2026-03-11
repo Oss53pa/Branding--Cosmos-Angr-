@@ -2,15 +2,15 @@ import React from 'react';
 import { Star } from 'lucide-react';
 
 const rows = [
-  ['Differenciation vs Yopougon', 'Moyenne', 'Forte', 'Forte', 'Tres forte'],
+  ['Différenciation vs Yopougon', 'Moyenne', 'Forte', 'Forte', 'Très forte'],
   ['Justification loyers premium', 'Difficile', 'Facile', 'Facile', 'Facile'],
-  ['Accessibilite percue (FG)', 'Tres haute', 'Moyenne', 'Haute', 'Haute'],
-  ["Risque d'alienation cible", 'Faible', 'Eleve', 'Faible', 'Faible'],
-  ['Ambition long terme', 'Limitee', 'Maximale', 'Maximale', 'Maximale'],
-  ['Faisabilite court terme', 'Elevee', 'Moyenne', 'Elevee', 'Moyenne'],
-  ['Coherence avec enseignes', 'Bonne', 'Tres bonne', 'Tres bonne', 'Tres bonne'],
-  ['Identite visuelle unique', 'Moderee', 'Forte', 'Forte', 'Inimitable'],
-  ['Barriere a la copie', 'Faible', 'Moyenne', 'Moyenne', 'Naturelle (5 ans)'],
+  ['Accessibilité perçue (FG)', 'Très haute', 'Moyenne', 'Haute', 'Haute'],
+  ["Risque d'aliénation cible", 'Faible', 'Élevé', 'Faible', 'Faible'],
+  ['Ambition long terme', 'Limitée', 'Maximale', 'Maximale', 'Maximale'],
+  ['Faisabilité court terme', 'Élevée', 'Moyenne', 'Élevée', 'Moyenne'],
+  ['Cohérence avec enseignes', 'Bonne', 'Très bonne', 'Très bonne', 'Très bonne'],
+  ['Identité visuelle unique', 'Modérée', 'Forte', 'Forte', 'Inimitable'],
+  ['Barrière à la copie', 'Faible', 'Moyenne', 'Moyenne', 'Naturelle (5 ans)'],
   ['Statut', 'Option', 'Option', 'Option', 'Option'],
 ];
 
@@ -27,7 +27,7 @@ const Comparatif: React.FC = () => (
             Livrable 1.3
           </div>
           <div className="font-cormorant text-[30px] text-white font-light">
-            Comparatif strategique A vs B vs C vs D
+            Comparatif stratégique A vs B vs C vs D
           </div>
           <div className="text-[11px] text-white/35 mt-1.5">
             Forces . Risques . Potentiel . Recommandation
@@ -40,7 +40,7 @@ const Comparatif: React.FC = () => (
           <table className="w-full border-collapse text-[13px]">
             <thead>
               <tr>
-                {['Critere', 'A — Proximite', 'B — Destination', 'C — Hybride', 'D — Nature'].map((h, j) => (
+                {['Critère', 'A — Proximité', 'B — Destination', 'C — L\'Exception Naturelle', 'D — Nature'].map((h, j) => (
                   <th
                     key={h}
                     className="px-5 py-4 text-left text-[10px] font-bold tracking-[.12em] uppercase text-white"

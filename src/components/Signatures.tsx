@@ -15,7 +15,7 @@ const scenarioSignatures = [
   },
   {
     title: '"Votre monde. Votre standard."',
-    val: 'Scenario C — hybride. Personnalisation + excellence.',
+    val: "Scénario C — L'Exception Naturelle. Personnalisation + excellence.",
     accent: '#C9943A',
   },
 ];

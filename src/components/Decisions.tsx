@@ -3,17 +3,17 @@ import { CheckCircle2, AlertCircle } from 'lucide-react';
 import EditableText from './EditableText';
 
 const decisions = [
-  { confirmed: true, text: '4 scenarios testes au Focus Group (A, B, C, D)' },
-  { confirmed: true, text: 'Scenario C = option hybride autonome (pas simple compromis)' },
-  { confirmed: true, text: 'Scenario D = Nature Contemporaine — identite vegetale unique, barriere naturelle 5 ans' },
+  { confirmed: true, text: '4 scénarios testés au Focus Group (A, B, C, D)' },
+  { confirmed: true, text: 'Scénario C = L\u2019Exception Naturelle (pas simple compromis)' },
+  { confirmed: true, text: 'Scénario D = Nature Contemporaine — identité végétale unique, barrière naturelle 5 ans' },
   { confirmed: true, text: 'Analogies Sofitel/Novotel/Apple Store = usage interne uniquement' },
-  { confirmed: true, text: 'Kiabi, Gemo, Tecno = enseignes aspirationnelles contexte ivoirien' },
-  { confirmed: true, text: 'Zino = equivalent Sephora — ancre beaute/parfumerie premium' },
-  { confirmed: true, text: 'Cinema confirme — ancre destination, 0 concurrent zone primaire' },
-  { confirmed: true, text: 'Clinique confirmee — differenciateur mixed-use unique marche' },
-  { confirmed: true, text: 'Bardade bronze — contrainte fixe facade, scenario 2' },
-  { confirmed: false, text: 'Restaurant gastronomique — en cours de negociation' },
-  { confirmed: false, text: 'FNAC ou equivalent culturel — en cours de discussion' },
+  { confirmed: true, text: 'Kiabi, Gémo, Tecno = enseignes aspirationnelles contexte ivoirien' },
+  { confirmed: true, text: 'Zino = équivalent Sephora — ancre beauté/parfumerie premium' },
+  { confirmed: true, text: 'Cinéma confirmé — ancre destination, 0 concurrent zone primaire' },
+  { confirmed: true, text: 'Clinique confirmée — différenciateur mixed-use unique marché' },
+  { confirmed: true, text: 'Bardage bronze — contrainte fixe façade, scénario 2' },
+  { confirmed: false, text: 'Restaurant gastronomique — en cours de négociation' },
+  { confirmed: false, text: 'FNAC ou équivalent culturel — en cours de discussion' },
 ];
 
 const Decisions: React.FC = () => (
@@ -25,10 +25,10 @@ const Decisions: React.FC = () => (
       </span>
     </div>
     <div className="font-cormorant text-[42px] font-light text-navy mb-2 leading-tight">
-      Decisions actees
+      Décisions actées
     </div>
     <div className="text-[14px] text-black/40 mb-10 leading-relaxed max-w-[640px]">
-      Points non negociables — valeurs fixes a integrer dans tous les livrables.
+      Points non négociables — valeurs fixes à intégrer dans tous les livrables.
     </div>
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">

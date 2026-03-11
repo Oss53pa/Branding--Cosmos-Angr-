@@ -38,7 +38,7 @@ const Cover: React.FC = () => (
         <div className="w-16 h-px bg-gradient-to-r from-transparent to-gold/40" />
         <EditableText
           storageKey="cover-eyebrow"
-          defaultValue="Plan Marketing — Catalogue de reference"
+          defaultValue="Plan Marketing — Catalogue de référence"
           className="text-[10px] font-bold tracking-[.3em] uppercase text-gold/80"
         />
         <div className="w-16 h-px bg-gradient-to-l from-transparent to-gold/40" />
@@ -52,7 +52,7 @@ const Cover: React.FC = () => (
       {/* Subtitle */}
       <EditableText
         storageKey="cover-subtitle"
-        defaultValue="Strategie . Brand Book . Focus Group . Plan Marketing . 2026"
+        defaultValue="Stratégie . Brand Book . Focus Group . Plan Marketing . 2026"
         className="text-[15px] text-white/40 mb-14 tracking-[.15em] font-light"
       />
 
@@ -68,9 +68,9 @@ const Cover: React.FC = () => (
       {/* Stats */}
       <div className="flex gap-12 justify-center flex-wrap">
         {[
-          { n: '4', l: 'Etapes' },
+          { n: '4', l: 'Étapes' },
           { n: '14', l: 'Livrables' },
-          { n: '4', l: 'Scenarios' },
+          { n: '4', l: 'Scénarios' },
           { n: 'Q4', l: 'Ouverture 2026' },
         ].map((s) => (
           <div key={s.l} className="text-center group">

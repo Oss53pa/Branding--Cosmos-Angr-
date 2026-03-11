@@ -60,7 +60,7 @@ const tocData: TocSection[] = [
       { id: 'scenarios', num: '1.2', label: '4 Scénarios', icon: <Layers size={11} />, children: [
         { id: 'sc-A', label: 'A · Premium de proximité', color: '#4A7558' },
         { id: 'sc-B', label: 'B · Destination premium', color: '#0D1B4B' },
-        { id: 'sc-C', label: 'C · Hybride', color: '#C9943A' },
+        { id: 'sc-C', label: "C · L'Exception Naturelle", color: '#C9943A' },
         { id: 'sc-D', label: 'D · Nature Contemporaine', color: '#898D5D' },
       ] },
       { id: 'comparatif', num: '1.3', label: 'Comparatif A·B·C·D', icon: <BarChart3 size={11} /> },

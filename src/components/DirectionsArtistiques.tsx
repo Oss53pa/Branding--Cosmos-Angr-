@@ -186,8 +186,8 @@ const IntroTab: React.FC<{ onSwitch: (t: TabKey) => void }> = ({ onSwitch }) => 
           </div>
           {/* Piste C card */}
           <div onClick={() => onSwitch('scC')} style={{ background: '#fff', borderRadius: 14, border: '1px solid rgba(26,20,16,.07)', padding: 20, cursor: 'pointer' }}>
-            <div style={{ fontSize: 9, letterSpacing: '.25em', textTransform: 'uppercase', marginBottom: 8, color: '#8a5a10' }}>Piste C — Exception de Proximité</div>
-            <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 20, fontWeight: 300, marginBottom: 4 }}>"Vivez l'exception, ici chez vous"</div>
+            <div style={{ fontSize: 9, letterSpacing: '.25em', textTransform: 'uppercase', marginBottom: 8, color: '#8a5a10' }}>Piste C — L'Exception Naturelle</div>
+            <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 20, fontWeight: 300, marginBottom: 4 }}>"L'exception, tout simplement"</div>
             <div style={{ fontSize: 11, color: 'rgba(26,20,16,.42)', lineHeight: 1.5 }}>
               Bronze africain · Kaki végétal · Sable naturel<br />
               <Delta>↑ Kaki #6D7447</Delta> <Delta>↑ Sable #D6C29C</Delta>
@@ -449,7 +449,7 @@ const PisteBTab: React.FC = () => (
 const PisteCTab: React.FC = () => (
   <div>
     <div style={{ padding: '56px 56px 48px', borderBottom: '1px solid rgba(26,20,16,.06)' }}>
-      <div style={{ fontSize: 10, letterSpacing: '.28em', textTransform: 'uppercase', color: 'rgba(26,20,16,.35)', marginBottom: 12 }}>Brand Book v2.2 · Piste C · Exception de Proximité</div>
+      <div style={{ fontSize: 10, letterSpacing: '.28em', textTransform: 'uppercase', color: 'rgba(26,20,16,.35)', marginBottom: 12 }}>Brand Book v2.2 · Piste C · L'Exception Naturelle</div>
       <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 48, fontWeight: 300, lineHeight: 1.05, color: '#1a1410', marginBottom: 10 }}>Bronze Africain & Kaki Végétal</div>
       <div style={{ fontSize: 13, color: 'rgba(26,20,16,.45)', lineHeight: 1.75, maxWidth: 560, marginBottom: 28 }}>v2.2 — Le kaki végétal #6D7447 remplace la terracotta vif #C97845. Le sable naturel #D6C29C remplace le sable doré #E8C49A. La palette gagne en ancrage naturel tout en conservant son identité africaine.</div>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}><Pill>Kaki végétal #6D7447</Pill><Pill>Sable naturel #D6C29C</Pill><Pill>Identité africaine assumée</Pill><Pill>Cohérence bardade maximale</Pill></div>
@@ -488,13 +488,13 @@ const PisteCTab: React.FC = () => (
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 20, fontWeight: 600, color: '#2C1A0A' }}>Cosmos Angré</div>
               <div style={{ width: 28, height: 1, background: '#C9943A', margin: '6px auto' }} />
-              <div style={{ fontSize: 9, color: 'rgba(44,26,10,.4)', letterSpacing: '.12em' }}>L'exception de proximité</div>
+              <div style={{ fontSize: 9, color: 'rgba(44,26,10,.4)', letterSpacing: '.12em' }}>L'exceptionnel, au quotidien</div>
             </div>
           } />
           <AppCard previewBg="#2C1A0A" cat="Digital — App, site, réseaux" title="Dark Ébène · CTA Bronze Doré arrondi 4px" rules="Fond : #2C1A0A · Fond light : #F2EBDD · Boutons #C9943A arrondi 4px · Images à lumière chaude obligatoire" preview={
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: 8, letterSpacing: '.18em', color: 'rgba(232,196,154,.3)', marginBottom: 5 }}>COSMOS ANGRÉ</div>
-              <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 14, fontWeight: 600, color: '#D6C29C' }}>L'exception, ici chez vous.</div>
+              <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 14, fontWeight: 600, color: '#D6C29C' }}>L'exception, tout simplement.</div>
               <div style={{ marginTop: 9, display: 'inline-block', padding: '4px 14px', background: '#C9943A', borderRadius: 4, fontSize: 8, color: '#2C1A0A', fontWeight: 600 }}>EXPLORER</div>
             </div>
           } />
@@ -527,13 +527,13 @@ const PisteCTab: React.FC = () => (
       <div style={{ marginBottom: 36 }}>
         <SH num="03" title="Système de signatures — inchangé" />
         <div style={{ borderRadius: 14, padding: 36, textAlign: 'center', marginBottom: 12, background: 'linear-gradient(135deg,#2C1A0A,#3d2510)' }}>
-          <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 34, fontWeight: 300, marginBottom: 8, lineHeight: 1.2, color: '#D6C29C' }}>"Vivez l'exception, ici chez vous"</div>
+          <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 34, fontWeight: 300, marginBottom: 8, lineHeight: 1.2, color: '#D6C29C' }}>"L'exception, tout simplement"</div>
           <div style={{ fontSize: 9, letterSpacing: '.2em', textTransform: 'uppercase', color: 'rgba(232,196,154,.28)' }}>Signature permanente · À tester FG · Façade · Institutionnel</div>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
           <div style={{ background: '#fff', borderRadius: 12, border: '1px solid rgba(26,20,16,.07)', padding: 18 }}>
             <div style={{ fontSize: 9, letterSpacing: '.18em', textTransform: 'uppercase', color: 'rgba(26,20,16,.3)', marginBottom: 8 }}>Signature compacte — si FG juge la longue trop complexe</div>
-            <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 20, fontWeight: 300, marginBottom: 6, color: '#8a5a10' }}>"L'exception de proximité"</div>
+            <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 20, fontWeight: 300, marginBottom: 6, color: '#8a5a10' }}>"L'exceptionnel, au quotidien"</div>
             <div style={{ fontSize: 11, color: 'rgba(26,20,16,.5)', lineHeight: 1.6 }}>3 mots. Oxymoron volontaire — l'exception n'est plus inaccessible. Extrêmement mémorable.</div>
           </div>
           <div style={{ background: '#fff', borderRadius: 12, border: '1px solid rgba(26,20,16,.07)', padding: 18 }}>

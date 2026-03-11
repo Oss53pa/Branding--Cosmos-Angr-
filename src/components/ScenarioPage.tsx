@@ -314,8 +314,8 @@ const fullData: Record<ScenarioKey, FullScenario> = {
     moodboard: "Galerie marchande en fin de journée, lumières tamisées, sol en marbre noir veiné, enseignes sobres en lettres or mat. Typographie \"Cosmos Angré\" en Playfair Display or mat sur fond nuit abyssale. Élévation silencieuse.",
   },
   C: {
-    label: 'Scénario C — Hybride',
-    coverTitle: "L'Exception\nde Proximité",
+    label: "Scénario C — L'Exception Naturelle",
+    coverTitle: "L'Exception\nNaturelle",
     usp: "Cosmos Angré habille en Sofitel et accueille en Novotel. Pas un compromis — une synthèse inédite.",
     uspQuote: '"Cosmos Angré est une destination premium complète — et votre centre de vie. Le premium n\'exclut pas. Il élève."',
     uspSub: "Le Scénario C refuse de choisir entre A et B. L'identité visuelle est premium (codes B), l'accueil est chaleureux (ADN A).",
@@ -331,7 +331,7 @@ const fullData: Record<ScenarioKey, FullScenario> = {
     ],
     promesse: '"L\'exception, pour tous les jours."',
     ton: [
-      { label: 'Ton général', content: 'Chaleureux et élégant. La distinction dans la bienveillance.', ex: '"L\'exception, ici chez vous."' },
+      { label: 'Ton général', content: 'Chaleureux et élégant. La distinction dans la bienveillance.', ex: '"L\'exception, tout simplement."' },
       { label: 'Ce qu\'on ne dit jamais', content: 'Jamais "luxe" seul, jamais "populaire". On dit "exceptionnel", "pour vous", "ici".', ex: '"Ce qui se fait de mieux. Ici."' },
       { label: 'Digital & réseaux', content: 'Mix lifestyle premium + proximité. Gastronomie ET marché local.', ex: '"De la terrasse au cinéma — votre samedi à Cosmos."' },
       { label: 'Institutionnel', content: 'Premier mixed-use premium, ancré dans la zone la plus aisée de Cocody.', ex: '"La destination premium du quotidien."' },
@@ -346,12 +346,12 @@ const fullData: Record<ScenarioKey, FullScenario> = {
       { num: '06', facette: 'Mentalisation', title: 'Je vis bien — et je le partage', content: "Goût, modernité, beauté — sans snobisme. Fierté sans arrogance.", yes: ['Fierté','Partage','Modernité'] },
     ],
     signatures: [
-      { type: 'Signature permanente', text: '"Vivez l\'exception, ici chez vous"', why: '"Vivez l\'exception" (aspiration B) + "ici chez vous" (ancrage A).' },
-      { type: 'Alternative', text: '"L\'exception de proximité"', why: 'Oxymoron volontaire. Territoire C en 3 mots.' },
+      { type: 'Signature permanente', text: '"L\'exception, tout simplement"', why: 'Tagline canonique. Court, mémorable, signe le territoire C.' },
+      { type: 'Alternative', text: '"L\'exceptionnel, au quotidien"', why: 'Tagline2 canonique. Ancre le premium dans le quotidien.' },
       { type: 'Complémentaire', text: '"Votre monde. Votre standard."', why: 'Personnalisation + excellence.' },
     ],
     direction: {
-      label: 'Piste C — Hybride',
+      label: 'Piste C — L'Exception Naturelle',
       concept: "L'Afrique contemporaine premium. Terracotta, bronze doré, textures artisanales. La chaleur de la terre rencontre la sophistication urbaine.",
       palette: [
         { bg: '#2C1A0A', color: '#fff', name: 'Ébène Chaud', hex: '#2C1A0A' },

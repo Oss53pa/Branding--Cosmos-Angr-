@@ -20,32 +20,32 @@ interface StepCard {
 
 const steps: StepCard[] = [
   {
-    num: 'ETAPE 1',
-    title: 'Strategie & Plateforme de marque',
+    num: 'ÉTAPE 1',
+    title: 'Stratégie & Plateforme de marque',
     badge: 'En cours',
     badgeType: 'prog',
     items: [
-      { status: 'prog', text: 'Plateforme Scenario A — Premium de proximite' },
-      { status: 'prog', text: 'Plateforme Scenario B — Destination premium' },
-      { status: 'prog', text: 'Plateforme Scenario C — Hybride autonome' },
-      { status: 'prog', text: 'Plateforme Scenario D — Nature Contemporaine' },
-      { status: 'prog', text: 'Comparatif strategique A vs B vs C vs D' },
+      { status: 'prog', text: 'Plateforme Scénario A — Premium de proximité' },
+      { status: 'prog', text: 'Plateforme Scénario B — Destination premium' },
+      { status: 'prog', text: "Plateforme Scénario C — L'Exception Naturelle" },
+      { status: 'prog', text: 'Plateforme Scénario D — Nature Contemporaine' },
+      { status: 'prog', text: 'Comparatif stratégique A vs B vs C vs D' },
     ],
-    footer: 'Document plateforme 4 scenarios — EXCO / Cheick',
+    footer: 'Document plateforme 4 scénarios — EXCO / Cheick',
     icon: <Compass size={20} />,
     accent: '#4A7558',
   },
   {
-    num: 'ETAPE 2',
+    num: 'ÉTAPE 2',
     title: 'Brand Book draft',
-    badge: 'A faire',
+    badge: 'À faire',
     badgeType: 'todo',
     items: [
-      { status: 'todo', text: 'DA Scenario A — univers, palette, typo' },
-      { status: 'todo', text: 'DA Scenario B — univers, palette, typo' },
-      { status: 'todo', text: 'DA Scenario C Hybride' },
-      { status: 'todo', text: 'DA Scenario D — Nature Contemporaine' },
-      { status: 'done', text: 'Naming & 5 signatures posees' },
+      { status: 'todo', text: 'DA Scénario A — univers, palette, typo' },
+      { status: 'todo', text: 'DA Scénario B — univers, palette, typo' },
+      { status: 'todo', text: "DA Scénario C — L'Exception Naturelle" },
+      { status: 'todo', text: 'DA Scénario D — Nature Contemporaine' },
+      { status: 'done', text: 'Naming & 5 signatures posées' },
       { status: 'done', text: 'Moodboards textuels (brief Fernand)' },
       { status: 'done', text: 'Templates application (Color Book v2.0)' },
     ],
@@ -54,34 +54,34 @@ const steps: StepCard[] = [
     accent: '#C9943A',
   },
   {
-    num: 'ETAPE 3',
+    num: 'ÉTAPE 3',
     title: 'Focus Group',
     badge: 'En cours',
     badgeType: 'prog',
     items: [
-      { status: 'done', text: 'Protocole Yvan — 6 points corriges' },
-      { status: 'done', text: 'Stimuli visuels integres' },
-      { status: 'done', text: '4 scenarios + bardade bronze' },
+      { status: 'done', text: 'Protocole Yvan — 6 points corrigés' },
+      { status: 'done', text: 'Stimuli visuels intégrés' },
+      { status: 'done', text: '4 scénarios + bardage bronze' },
       { status: 'prog', text: 'Noms impactants 4 positionnements' },
       { status: 'todo', text: 'Recrutement — brief agence terrain' },
       { status: 'todo', text: "Grille analyse + template rapport" },
     ],
-    footer: 'Protocole FG v2.1 — pret a briefer agence',
+    footer: 'Protocole FG v2.1 — prêt à briefer agence',
     icon: <Users size={20} />,
     accent: '#C8A96E',
   },
   {
-    num: 'ETAPE 4',
+    num: 'ÉTAPE 4',
     title: 'Plan Marketing',
-    badge: 'Apres FG',
+    badge: 'Après FG',
     badgeType: 'todo',
     items: [
       { status: 'todo', text: 'Plateforme finale (post-FG)' },
       { status: 'todo', text: 'Plan 360 par axe' },
-      { status: 'todo', text: 'Budget ventile — 20 actions' },
-      { status: 'todo', text: 'Business case ROI projete' },
+      { status: 'todo', text: 'Budget ventilé — 20 actions' },
+      { status: 'todo', text: 'Business case ROI projeté' },
       { status: 'todo', text: 'Plan digital complet' },
-      { status: 'todo', text: 'Calendrier editorial 6 mois' },
+      { status: 'todo', text: 'Calendrier éditorial 6 mois' },
     ],
     footer: 'Plan marketing validable CODIR',
     icon: <Megaphone size={20} />,
@@ -116,7 +116,7 @@ const PlanOverview: React.FC = () => (
     />
     <EditableText
       storageKey="plan-desc"
-      defaultValue="4 etapes sequentielles de la strategie de marque au plan marketing operationnel. Chaque etape conditionne la suivante — le Focus Group est le point de pivot central."
+      defaultValue="4 étapes séquentielles de la stratégie de marque au plan marketing opérationnel. Chaque étape conditionne la suivante — le Focus Group est le point de pivot central."
       className="text-[14px] text-black/40 mb-10 leading-relaxed max-w-[640px]"
       multiline
     />
@@ -169,7 +169,7 @@ const PlanOverview: React.FC = () => (
                 />
               </div>
               <div className="text-[9px] text-black/30 mt-1.5 text-right font-medium">
-                {doneCount}/{step.items.length} terminee{doneCount > 1 ? 's' : ''}
+                {doneCount}/{step.items.length} terminée{doneCount > 1 ? 's' : ''}
               </div>
             </div>
 

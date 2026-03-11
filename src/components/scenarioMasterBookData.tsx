@@ -29,7 +29,7 @@ export const smbThemes: Record<ScenarioKey, Record<string, string>> = {
     '--terra': '#B8924A',
     '--kaki': '#1A3060',
     '--bronze': '#D4B06A',
-    '--sable': '#D4B06A',
+    '--sable': '#E8E0D5',
     '--fond': '#F2EDE3',
     '--pierre': '#E8E0D5',
     '--blanc-chaud': '#FAF7F2',
@@ -322,7 +322,7 @@ const contentC: SmbContent = {
     ],
   },
   finaleQuote: ['Votre monde.', 'Votre orbite.'],
-  finaleSub: "Brand & Tenant Master Book · Scénario C Enrichi · L'Exception, Tout Simplement",
+  finaleSub: "Brand & Tenant Master Book · Scénario C Enrichi · L'exception, tout simplement",
 };
 
 /* ══════════════════════════════════════════
@@ -573,8 +573,8 @@ const contentB: SmbContent = {
     { title: 'Textile & collection de marque', sub: 'Uniformes staff, goodies, packaging', bars: [{ w: '85%', bg: 'var(--ebene)', c: 'rgba(242,237,227,0.7)', l: '85%' }, { w: '15%', bg: 'var(--terra)', c: 'rgba(242,237,227,0.8)', l: '15%' }], legend: [{ dot: 'var(--ebene)', l: 'Bleu nuit dominant', p: '85%' }, { dot: 'var(--terra)', l: 'Or mat broderies', p: '15%' }] },
   ],
   typoSections: [
-    { label: 'Playfair Display Regular 400 · Titres', fontFamily: "'Cormorant Garamond',serif", fontSize: 56, fontWeight: 400, color: 'var(--ebene)', example: ['Un monde', 'à part'], desc: 'Titres H1/H2, signatures, lettrage institutionnel.' },
-    { label: 'Playfair Display Italic · Accents', fontFamily: "'Cormorant Garamond',serif", fontSize: 56, fontWeight: 400, fontStyle: 'italic', color: 'var(--terra)', example: ["Vivez", "l'exception"], desc: 'Slogans, citations, invitations événementielles.' },
+    { label: 'Cormorant Garamond Regular 400 · Titres', fontFamily: "'Cormorant Garamond',serif", fontSize: 56, fontWeight: 400, color: 'var(--ebene)', example: ['Un monde', 'à part'], desc: 'Titres H1/H2, signatures, lettrage institutionnel.' },
+    { label: 'Cormorant Garamond Italic 400 · Accents', fontFamily: "'Cormorant Garamond',serif", fontSize: 56, fontWeight: 400, fontStyle: 'italic', color: 'var(--terra)', example: ["Vivez", "l'exception"], desc: 'Slogans, citations, invitations événementielles.' },
     { label: 'Inter Light 300 · Sous-titres & UI', fontFamily: "'Inter',sans-serif", fontSize: 32, fontWeight: 300, color: 'var(--ebene)', example: ['Cosmos Angré', 'Cocody'], desc: 'Sous-titres, signalétique, navigation, labels, UI digital.' },
     { label: 'Inter Regular 400 · Corps', fontFamily: "'Inter',sans-serif", fontSize: 12, fontWeight: 400, color: 'rgba(13,27,75,0.6)', example: ["La première destination premium mixed-use d'Abidjan.", "Hôtel, cinéma, bureaux, gastronomie — on y vit une expérience."], desc: 'Corps de texte, descriptions. Taille min : 9px écran / 7pt impression.' },
   ],

@@ -2,14 +2,14 @@ import React from 'react';
 import EditableText from './EditableText';
 
 const timeline = [
-  { date: 'CETTE SEMAINE — 07/03', title: 'Etape 1 — Strategie & plateforme de marque', desc: '4 scenarios complets (A, B, C, D), coherents, prets a etre testes. Document EXCO.', active: true },
-  { date: 'SEMAINE DU 09/03', title: 'Etape 2 — Brand Book draft 4 pistes', desc: 'Directions artistiques A, B, C, D + brief operationnel pour Fernand.', active: false },
-  { date: 'SEMAINE DU 09/03', title: 'Etape 3 — Protocole FG v2.1 complet', desc: 'Finalisation protocole + lancement recrutement agence terrain immediatement.', active: false },
-  { date: '20 — 25/03', title: 'Focus Group — Sessions terrain', desc: 'Recrutement a lancer des maintenant. 3 groupes — profils Cocody/Angre/2 Plateaux CSP+.', active: false },
-  { date: 'SEMAINE DU 23/03', title: 'Etape 4 — Plan marketing complet', desc: 'Post-FG. Budget, business case, plan digital, calendrier editorial.', active: false },
-  { date: 'A PARTIR DU 27/03', title: 'Charte graphique — Demarrage avec Fernand', desc: 'Apres arbitrage Focus Group. Identite visuelle finale, systeme de signaletique.', active: false },
-  { date: '16/10/2026', title: 'Soft Opening Cosmos Angre', desc: 'Ouverture progressive avec les enseignes pretes.', active: false },
-  { date: '16/11/2026', title: 'Inauguration officielle', desc: "Evenement d'inauguration — presence medias, partenaires institutionnels, VIP.", active: false },
+  { date: 'CETTE SEMAINE — 07/03', title: 'Étape 1 — Stratégie & plateforme de marque', desc: '4 scénarios complets (A, B, C, D), cohérents, prêts à être testés. Document EXCO.', active: true },
+  { date: 'SEMAINE DU 09/03', title: 'Étape 2 — Brand Book draft 4 pistes', desc: 'Directions artistiques A, B, C, D + brief opérationnel pour Fernand.', active: false },
+  { date: 'SEMAINE DU 09/03', title: 'Étape 3 — Protocole FG v2.1 complet', desc: 'Finalisation protocole + lancement recrutement agence terrain immédiatement.', active: false },
+  { date: '20 — 25/03', title: 'Focus Group — Sessions terrain', desc: 'Recrutement à lancer dès maintenant. 3 groupes — profils Cocody/Angré/2 Plateaux CSP+.', active: false },
+  { date: 'SEMAINE DU 23/03', title: 'Étape 4 — Plan marketing complet', desc: 'Post-FG. Budget, business case, plan digital, calendrier éditorial.', active: false },
+  { date: 'À PARTIR DU 27/03', title: 'Charte graphique — Démarrage avec Fernand', desc: 'Après arbitrage Focus Group. Identité visuelle finale, système de signalétique.', active: false },
+  { date: '16/10/2026', title: 'Soft Opening Cosmos Angré', desc: 'Ouverture progressive avec les enseignes prêtes.', active: false },
+  { date: '16/11/2026', title: 'Inauguration officielle', desc: "Événement d'inauguration — présence médias, partenaires institutionnels, VIP.", active: false },
 ];
 
 const Calendrier: React.FC = () => (

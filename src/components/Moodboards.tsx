@@ -15,7 +15,7 @@ const boards = [
     accent: '#8FA888',
   },
   {
-    label: 'Moodboard Direction 3 — Hybride (recommande)',
+    label: "Moodboard Direction 3 — L'Exception Naturelle (recommandé)",
     text: "Diptyque : a gauche, la facade Cosmos Angre la nuit — bardade bronze illuminee, typographie en or mat sur bleu nuit, sobre et majestueuse. A droite, l'interieur en journee — lumiere chaude, vert sauge aux murs, familles dans l'allee centrale, cinema en fond avec son grand format. Deux images, une seule identite : \"habiller en Sofitel, accueillir en Novotel\". La signature \"Un monde a part\" apparait sur la facade. \"Vivez l'exception\" sur le visuel interieur campagne.",
     gradient: 'from-[#8B4A1A] to-[#B8724A]',
     accent: '#C9943A',
