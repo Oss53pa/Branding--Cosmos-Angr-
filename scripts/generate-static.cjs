@@ -1174,6 +1174,28 @@ if (!fs.existsSync(distDir)) {
   })();
   fs.writeFileSync(path.join(distDir, 'plan-marketing.html'), pmRedirect, 'utf-8');
   console.log('✓ dist/plan-marketing.html (standalone)');
+
+  // Plan Sécuritaire — standalone copy of index.html
+  const psHtml = (() => {
+    const indexPath = path.join(distDir, 'index.html');
+    let indexHtml = fs.readFileSync(indexPath, 'utf-8');
+    return indexHtml
+      .replace('<title>Cosmos Angré — Catalogue Marketing</title>', '<title>Cosmos Angré — Vol. 2 Plan Sécuritaire</title>')
+      .replace('<div id="root"></div>', '<div id="root"></div><script>window.__STANDALONE__=true;if(!location.hash)location.hash="securite";<\/script>');
+  })();
+  fs.writeFileSync(path.join(distDir, 'plan-securite.html'), psHtml, 'utf-8');
+  console.log('✓ dist/plan-securite.html (standalone)');
+
+  // Parcours Client — standalone copy of index.html
+  const pcHtml = (() => {
+    const indexPath = path.join(distDir, 'index.html');
+    let indexHtml = fs.readFileSync(indexPath, 'utf-8');
+    return indexHtml
+      .replace('<title>Cosmos Angré — Catalogue Marketing</title>', '<title>Cosmos Angré — Vol. 3 Parcours Client</title>')
+      .replace('<div id="root"></div>', '<div id="root"></div><script>window.__STANDALONE__=true;if(!location.hash)location.hash="parcours";<\/script>');
+  })();
+  fs.writeFileSync(path.join(distDir, 'plan-parcours.html'), pcHtml, 'utf-8');
+  console.log('✓ dist/plan-parcours.html (standalone)');
 }
 
 console.log('Static pages generated.');

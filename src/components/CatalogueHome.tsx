@@ -43,6 +43,7 @@ const volumes: VolumeCard[] = [
     icon: <ShieldCheck size={28} strokeWidth={1.5} />,
     accent: '#3B82F6',
     gradient: 'from-[#0c1220] via-[#1a2744] to-[#0c1220]',
+    shareUrl: 'https://branding-cosmos-angr-wd7e.vercel.app/plan-securite.html',
     stats: [
       { n: '5', l: 'Zones' },
       { n: '120+', l: 'Caméras' },
@@ -58,6 +59,7 @@ const volumes: VolumeCard[] = [
     icon: <Route size={28} strokeWidth={1.5} />,
     accent: '#10B981',
     gradient: 'from-[#0a1a14] via-[#153d2e] to-[#0a1a14]',
+    shareUrl: 'https://branding-cosmos-angr-wd7e.vercel.app/plan-parcours.html',
     stats: [
       { n: '7', l: 'Moments clés' },
       { n: '3', l: 'Niveaux' },
