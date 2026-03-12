@@ -27,7 +27,7 @@ const volumes: VolumeCard[] = [
     icon: <Megaphone size={28} strokeWidth={1.5} />,
     accent: '#C9943A',
     gradient: 'from-[#1a1a2e] via-[#16213e] to-[#1a1a2e]',
-    shareUrl: 'https://branding-cosmos-angr-wd7e.vercel.app/#marketing',
+    shareUrl: 'https://branding-cosmos-angr-wd7e.vercel.app/plan-marketing.html',
     stats: [
       { n: '4', l: 'Étapes' },
       { n: '14', l: 'Livrables' },

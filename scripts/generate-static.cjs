@@ -1148,22 +1148,22 @@ if (!fs.existsSync(distDir)) {
   const pubDir = path.join(__dirname, '..', 'public');
   if (!fs.existsSync(pubDir)) fs.mkdirSync(pubDir, { recursive: true });
   for (const key of ['A', 'B', 'C', 'D']) {
-    const redir = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cosmos Angré — Scénario ${key}</title><script>window.location.replace('index.html#scenario-${key}');<\/script></head><body><p>Redirection… <a href="index.html#scenario-${key}">Cliquez ici</a></p></body></html>`;
+    const redir = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cosmos Angré — Scénario ${key}</title><script>window.location.replace('index.html?standalone=1#scenario-${key}');<\/script></head><body><p>Redirection… <a href="index.html#scenario-${key}">Cliquez ici</a></p></body></html>`;
     fs.writeFileSync(path.join(pubDir, `scenario-${key}.html`), redir, 'utf-8');
     console.log(`✓ public/scenario-${key}.html (redirect)`);
   }
   // Plan Marketing — redirect to React app
-  const pmRedirect = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cosmos Angré — Vol. 1 Stratégie Marketing</title><script>window.location.replace('index.html#marketing');<\/script></head><body><p>Redirection… <a href="index.html#marketing">Cliquez ici</a></p></body></html>`;
+  const pmRedirect = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cosmos Angré — Vol. 1 Stratégie Marketing</title><script>window.location.replace('index.html?standalone=1#marketing');<\/script></head><body><p>Redirection… <a href="index.html#marketing">Cliquez ici</a></p></body></html>`;
   fs.writeFileSync(path.join(pubDir, 'plan-marketing.html'), pmRedirect, 'utf-8');
   console.log('✓ public/plan-marketing.html (redirect)');
 } else {
   for (const key of ['A', 'B', 'C', 'D']) {
-    const redir = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cosmos Angré — Scénario ${key}</title><script>window.location.replace('index.html#scenario-${key}');<\/script></head><body><p>Redirection… <a href="index.html#scenario-${key}">Cliquez ici</a></p></body></html>`;
+    const redir = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cosmos Angré — Scénario ${key}</title><script>window.location.replace('index.html?standalone=1#scenario-${key}');<\/script></head><body><p>Redirection… <a href="index.html#scenario-${key}">Cliquez ici</a></p></body></html>`;
     fs.writeFileSync(path.join(distDir, `scenario-${key}.html`), redir, 'utf-8');
     console.log(`✓ dist/scenario-${key}.html (redirect)`);
   }
   // Plan Marketing — redirect to React app
-  const pmRedirect = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cosmos Angré — Vol. 1 Stratégie Marketing</title><script>window.location.replace('index.html#marketing');<\/script></head><body><p>Redirection… <a href="index.html#marketing">Cliquez ici</a></p></body></html>`;
+  const pmRedirect = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Cosmos Angré — Vol. 1 Stratégie Marketing</title><script>window.location.replace('index.html?standalone=1#marketing');<\/script></head><body><p>Redirection… <a href="index.html#marketing">Cliquez ici</a></p></body></html>`;
   fs.writeFileSync(path.join(distDir, 'plan-marketing.html'), pmRedirect, 'utf-8');
   console.log('✓ dist/plan-marketing.html (redirect)');
 }

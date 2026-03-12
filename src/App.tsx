@@ -69,18 +69,21 @@ const volumeLabels: Record<string, { label: string; accent: string }> = {
 function App() {
   const getInitialPage = (): PageView => {
     const hash = window.location.hash.replace('#', '');
+    const params = new URLSearchParams(window.location.search);
     if (['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D'].includes(hash)) return hash as PageView;
     if (['marketing', 'securite', 'parcours'].includes(hash)) return hash as PageView;
+    if (params.has('standalone')) return 'marketing';
     return 'home';
   };
 
+  const [standalone] = useState(() => new URLSearchParams(window.location.search).has('standalone'));
   const [activeSection, setActiveSection] = useState('cover');
   const [currentPage, setCurrentPage] = useState<PageView>(getInitialPage);
   const [exportOpen, setExportOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const mainRef = useRef<HTMLDivElement>(null);
 
-  const isHome = currentPage === 'home';
+  const isHome = currentPage === 'home' && !standalone;
   const isMarketing = currentPage === 'marketing';
   const isScenario = currentPage.startsWith('scenario-');
   const isVolume = ['marketing', 'securite', 'parcours'].includes(currentPage);
@@ -228,16 +231,19 @@ function App() {
               {sidebarOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
 
-            {/* Home button */}
-            <button
-              onClick={() => setCurrentPage('home')}
-              className="flex items-center gap-2 px-3 h-full text-[11px] font-medium tracking-wide border-b-2 border-transparent text-white/40 hover:text-white/70 transition-all"
-            >
-              <Home size={14} />
-              Accueil
-            </button>
-
-            <div className="w-px h-5 bg-white/[.1] mx-1" />
+            {/* Home button — hidden in standalone mode */}
+            {!standalone && (
+              <>
+                <button
+                  onClick={() => setCurrentPage('home')}
+                  className="flex items-center gap-2 px-3 h-full text-[11px] font-medium tracking-wide border-b-2 border-transparent text-white/40 hover:text-white/70 transition-all"
+                >
+                  <Home size={14} />
+                  Accueil
+                </button>
+                <div className="w-px h-5 bg-white/[.1] mx-1" />
+              </>
+            )}
 
             {/* Current volume label (non-clickable) */}
             {(() => {
