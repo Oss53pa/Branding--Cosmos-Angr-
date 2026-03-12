@@ -60,11 +60,21 @@ export default function CompetitiveLandscape() {
   const [hoveredDot, setHoveredDot] = useState<string | null>(null);
 
   return (
-    <section className="bg-white" id="smb-concurrence">
-      <div className="eyebrow green">D3 · Concurrence</div>
-      <h2 className="light">Positionnement concurrentiel</h2>
-      <div className="sub">Benchmark Abidjan — où se situe Cosmos Angré dans le paysage retail</div>
-      <div className="divider kaki" />
+    <section id="smb-concurrence" className="px-4 sm:px-8 lg:px-[72px] py-12">
+      <div className="bg-white rounded-2xl border border-black/[.06] overflow-hidden shadow-[0_2px_20px_rgba(0,0,0,.04)]">
+      {/* Header */}
+      <div className="relative px-8 py-8 bg-gradient-to-br from-navy via-[#16213e] to-navy overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_30%,rgba(201,148,58,.12)_0%,transparent_60%)]" />
+        <div className="relative z-10">
+          <div className="text-[9px] font-bold tracking-[.22em] uppercase text-gold/70 mb-2">Concurrence</div>
+          <div className="font-cormorant text-[32px] text-white font-light leading-tight">
+            Positionnement concurrentiel
+          </div>
+          <div className="text-[11px] text-white/50 mt-1.5">Benchmark Abidjan — où se situe Cosmos Angré dans le paysage retail</div>
+        </div>
+      </div>
+
+      <div className="px-8 py-8">
 
       {/* Tableau comparatif */}
       <div style={{ marginBottom: 40, overflow: 'hidden', borderRadius: 14, border: '1px solid rgba(0,0,0,0.08)' }}>
@@ -211,6 +221,8 @@ export default function CompetitiveLandscape() {
             {a}
           </div>
         ))}
+      </div>
+      </div>
       </div>
     </section>
   );
