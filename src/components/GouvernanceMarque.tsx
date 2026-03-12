@@ -42,9 +42,9 @@ const actors = [
 ];
 
 const validationLevels = [
-  { level: 'Niveau 1', who: 'Pame (SDR)', scope: 'Usage quotidien, posts réseaux sociaux, signalétique standard', color: '#16a34a' },
-  { level: 'Niveau 2', who: 'Hadja + Fernand', scope: 'Campagnes publicitaires, événements, partenariats commerciaux', color: GOLD },
-  { level: 'Niveau 3', who: 'EXCO (Cheick)', scope: 'Évolutions identitaires, partenariats stratégiques, refonte majeure', color: '#dc2626' },
+  { level: 'Niveau 1', who: 'Pame (SDR)', scope: 'Usage quotidien, posts réseaux sociaux, signalétique standard, campagnes publicitaires, événements, partenariats commerciaux', color: '#16a34a' },
+  { level: 'Niveau 2', who: 'Pame (SDR) → Fernand', scope: 'Production graphique, créations visuelles, supports de communication', color: GOLD },
+  { level: 'Niveau 3', who: 'EXCO (Cheick, Mariama, Julien)', scope: 'Évolutions identitaires, partenariats stratégiques, refonte majeure', color: '#dc2626' },
 ];
 
 const controlTools = [
@@ -144,6 +144,13 @@ const GouvernanceMarque: React.FC = () => (
                 <div className="text-[11px] text-black/60 leading-relaxed">{l.scope}</div>
               </div>
             ))}
+          </div>
+
+          {/* Note Pame & Hadja */}
+          <div className="mt-4 rounded-xl border border-gold/20 bg-gold/5 px-5 py-3">
+            <p className="text-[11px] text-navy/80 leading-relaxed">
+              <strong>Note :</strong> Pame (SDR) est l'architecte de la stratégie de marque et le point de passage obligé sur l'ensemble des décisions. Hadja Timite (Center Manager) est informée des décisions.
+            </p>
           </div>
         </div>
 
