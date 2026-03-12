@@ -114,10 +114,12 @@ const tocData: TocSection[] = [
       { id: 'definition-premium', num: '5.4', label: 'Définition Premium', icon: <Star size={11} /> },
       { id: 'budget-consolide', num: '5.5', label: 'Budget Consolidé', icon: <TrendingUp size={11} /> },
       { id: 'business-case-roi', num: '5.6', label: 'Business Case ROI', icon: <TrendingUp size={11} /> },
-      { id: 'benchmark-international', num: '5.7', label: 'Benchmark International', icon: <Globe size={11} /> },
-      { id: 'matrice-risques', num: '5.8', label: 'Matrice Risques', icon: <AlertTriangle size={11} /> },
-      { id: 'gouvernance-calendrier', num: '5.9', label: 'Gouvernance', icon: <Calendar size={11} /> },
-      { id: 'plan-contingence', num: '5.10', label: 'Plan Contingence', icon: <Shield size={11} /> },
+      { id: 'smb-concurrence', num: '5.7', label: 'Matrice Concurrentielle', icon: <BarChart2 size={11} /> },
+      { id: 'benchmark-international', num: '5.8', label: 'Benchmark International', icon: <Globe size={11} /> },
+      { id: 'gouvernance-marque', num: '5.9', label: 'Gouvernance de Marque', icon: <Shield size={11} /> },
+      { id: 'matrice-risques', num: '5.10', label: 'Matrice Risques', icon: <AlertTriangle size={11} /> },
+      { id: 'gouvernance-calendrier', num: '5.11', label: 'Calendrier Gates', icon: <Calendar size={11} /> },
+      { id: 'plan-contingence', num: '5.12', label: 'Plan Contingence', icon: <Shield size={11} /> },
     ],
   },
 ];
@@ -127,7 +129,7 @@ const progressData: Record<string, { done: number; total: number }> = {
   'Brand Book': { done: 1, total: 1 },
   'Focus Group': { done: 3, total: 4 },
   'Stratégie Marketing': { done: 0, total: 3 },
-  'Dossier EXCO': { done: 10, total: 10 },
+  'Dossier EXCO': { done: 12, total: 12 },
 };
 
 const Sidebar: React.FC<SidebarProps> = ({ activeSection, onNavigate, onExport }) => {

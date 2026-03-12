@@ -50,7 +50,7 @@ const sectionIds = [
   'etape4', 'plan360', 'plan360axes',
   'etape5', 'executive-summary', 'kpi-anchoring', 'segmentation-quantitative',
   'definition-premium', 'budget-consolide', 'business-case-roi',
-  'benchmark-international', 'matrice-risques', 'gouvernance-calendrier', 'plan-contingence',
+  'smb-concurrence', 'benchmark-international', 'gouvernance-marque', 'matrice-risques', 'gouvernance-calendrier', 'plan-contingence',
 ];
 
 const scenarioTabs: { key: ScenarioKey; pageView: PageView; shortLabel: string; accent: string }[] = [
