@@ -61,7 +61,7 @@ const scenarioTabs: { key: ScenarioKey; pageView: PageView; shortLabel: string; 
 ];
 
 const volumeLabels: Record<string, { label: string; accent: string }> = {
-  marketing: { label: 'Vol. 1 — Marketing', accent: '#C9943A' },
+  marketing: { label: 'Vol. 1 — Stratégie Marketing', accent: '#C9943A' },
   securite: { label: 'Vol. 2 — Sécurité', accent: '#3B82F6' },
   parcours: { label: 'Vol. 3 — Parcours', accent: '#10B981' },
 };
