@@ -106,7 +106,7 @@ const Cover: React.FC = () => (
         <div className="h-px flex-1 bg-gold/10" />
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {/* Façade extérieure */}
         <div className="rounded-2xl overflow-hidden border border-white/[.06] bg-navy/60 backdrop-blur-sm">
           <div className="h-20 relative" style={{ background: '#B8AA8C' }}>
