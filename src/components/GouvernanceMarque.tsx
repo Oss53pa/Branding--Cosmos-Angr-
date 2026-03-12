@@ -14,16 +14,16 @@ interface RaciRow {
 }
 
 const raciData: RaciRow[] = [
-  { action: 'Définition du positionnement de marque', pame: 'A', fernand: 'C', hadja: 'I', yvan: 'C', exco: 'R' },
-  { action: 'Choix du scénario directionnel', pame: 'A', fernand: 'C', hadja: 'I', yvan: 'C', exco: 'R' },
-  { action: 'Validation des créations graphiques finales', pame: 'R', fernand: 'A', hadja: 'I', yvan: 'C', exco: 'I' },
-  { action: 'Production des supports (identité, signalétique, print)', pame: 'I', fernand: 'R', hadja: 'I', yvan: 'I', exco: 'A' },
-  { action: 'Usage quotidien de la charte (réseaux, affichage standard)', pame: 'R', fernand: 'C', hadja: 'A', yvan: 'I', exco: 'I' },
-  { action: 'Campagnes publicitaires et événements', pame: 'A', fernand: 'C', hadja: 'C', yvan: 'R', exco: 'A' },
-  { action: 'Conformité enseigne / tenant guidelines', pame: 'R', fernand: 'I', hadja: 'A', yvan: 'I', exco: 'I' },
+  { action: 'Définition du positionnement de marque', pame: 'R', fernand: 'C', hadja: 'I', yvan: 'C', exco: 'A' },
+  { action: 'Choix du scénario directionnel', pame: 'R', fernand: 'C', hadja: 'I', yvan: 'C', exco: 'A' },
+  { action: 'Validation des créations graphiques finales', pame: 'A', fernand: 'R', hadja: 'I', yvan: 'C', exco: 'I' },
+  { action: 'Production des supports (identité, signalétique, print)', pame: 'A', fernand: 'R', hadja: 'I', yvan: 'I', exco: 'I' },
+  { action: 'Usage quotidien de la charte (réseaux, affichage standard)', pame: 'R', fernand: 'C', hadja: 'I', yvan: 'I', exco: 'I' },
+  { action: 'Campagnes publicitaires et événements', pame: 'R', fernand: 'C', hadja: 'I', yvan: 'C', exco: 'A' },
+  { action: 'Conformité enseigne / tenant guidelines', pame: 'A', fernand: 'I', hadja: 'I', yvan: 'I', exco: 'I' },
   { action: 'Évolutions identitaires majeures', pame: 'C', fernand: 'C', hadja: 'I', yvan: 'C', exco: 'R' },
-  { action: 'Partenariats stratégiques impliquant la marque', pame: 'A', fernand: 'I', hadja: 'I', yvan: 'C', exco: 'R' },
-  { action: 'Benchmarks marché & veille concurrentielle', pame: 'C', fernand: 'I', hadja: 'I', yvan: 'R', exco: 'I' },
+  { action: 'Partenariats stratégiques impliquant la marque', pame: 'R', fernand: 'I', hadja: 'I', yvan: 'C', exco: 'A' },
+  { action: 'Benchmarks marché & veille concurrentielle', pame: 'R', fernand: 'I', hadja: 'I', yvan: 'C', exco: 'I' },
 ];
 
 const raciColors: Record<string, { bg: string; text: string }> = {
