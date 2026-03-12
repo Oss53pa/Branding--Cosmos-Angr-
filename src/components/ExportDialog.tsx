@@ -25,6 +25,17 @@ const allSections: Section[] = [
   { id: 'grille', label: "Grille d'analyse", group: 'Focus Group' },
   { id: 'etape4', label: 'Vue Stratégie Marketing', group: 'Stratégie Marketing' },
   { id: 'plan360', label: 'Plan Opérationnel', group: 'Stratégie Marketing' },
+  { id: 'etape5', label: 'Vue dossier EXCO', group: 'Dossier EXCO' },
+  { id: 'executive-summary', label: 'Résumé Exécutif', group: 'Dossier EXCO' },
+  { id: 'kpi-anchoring', label: 'Ancrage Marché', group: 'Dossier EXCO' },
+  { id: 'segmentation-quantitative', label: 'Segmentation', group: 'Dossier EXCO' },
+  { id: 'definition-premium', label: 'Définition Premium', group: 'Dossier EXCO' },
+  { id: 'budget-consolide', label: 'Budget Consolidé', group: 'Dossier EXCO' },
+  { id: 'business-case-roi', label: 'Business Case ROI', group: 'Dossier EXCO' },
+  { id: 'benchmark-international', label: 'Benchmark International', group: 'Dossier EXCO' },
+  { id: 'matrice-risques', label: 'Matrice Risques', group: 'Dossier EXCO' },
+  { id: 'gouvernance-calendrier', label: 'Gouvernance', group: 'Dossier EXCO' },
+  { id: 'plan-contingence', label: 'Plan Contingence', group: 'Dossier EXCO' },
 ];
 
 const groups = [...new Set(allSections.map((s) => s.group))];

@@ -7,7 +7,8 @@ import {
   Palette, Paintbrush,
   Users, ClipboardList, UserPlus, Grid3X3,
   Megaphone, Globe2, Crosshair,
-  ChevronDown, ChevronRight, Sparkles, Box
+  ChevronDown, ChevronRight, Sparkles, Box,
+  Briefcase, Target, PieChart, TrendingUp, Star, Globe, AlertTriangle, Calendar, Shield, BarChart2
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -101,6 +102,24 @@ const tocData: TocSection[] = [
       { id: 'plan3d', num: '4.3', label: 'Plan 3D Interactif', icon: <Box size={11} /> },
     ],
   },
+  {
+    group: 'Dossier EXCO',
+    color: '#8B7355',
+    icon: <Briefcase size={11} />,
+    items: [
+      { id: 'etape5', num: '5.0', label: 'Vue dossier', icon: <Briefcase size={11} /> },
+      { id: 'executive-summary', num: '5.1', label: 'Résumé Exécutif', icon: <Target size={11} /> },
+      { id: 'kpi-anchoring', num: '5.2', label: 'Ancrage Marché', icon: <BarChart2 size={11} /> },
+      { id: 'segmentation-quantitative', num: '5.3', label: 'Segmentation', icon: <PieChart size={11} /> },
+      { id: 'definition-premium', num: '5.4', label: 'Définition Premium', icon: <Star size={11} /> },
+      { id: 'budget-consolide', num: '5.5', label: 'Budget Consolidé', icon: <TrendingUp size={11} /> },
+      { id: 'business-case-roi', num: '5.6', label: 'Business Case ROI', icon: <TrendingUp size={11} /> },
+      { id: 'benchmark-international', num: '5.7', label: 'Benchmark International', icon: <Globe size={11} /> },
+      { id: 'matrice-risques', num: '5.8', label: 'Matrice Risques', icon: <AlertTriangle size={11} /> },
+      { id: 'gouvernance-calendrier', num: '5.9', label: 'Gouvernance', icon: <Calendar size={11} /> },
+      { id: 'plan-contingence', num: '5.10', label: 'Plan Contingence', icon: <Shield size={11} /> },
+    ],
+  },
 ];
 
 const progressData: Record<string, { done: number; total: number }> = {
@@ -108,6 +127,7 @@ const progressData: Record<string, { done: number; total: number }> = {
   'Brand Book': { done: 1, total: 1 },
   'Focus Group': { done: 3, total: 4 },
   'Stratégie Marketing': { done: 0, total: 3 },
+  'Dossier EXCO': { done: 10, total: 10 },
 };
 
 const Sidebar: React.FC<SidebarProps> = ({ activeSection, onNavigate, onExport }) => {

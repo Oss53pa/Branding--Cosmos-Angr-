@@ -18,6 +18,16 @@ import Recrutement from './components/Recrutement';
 import Grille from './components/Grille';
 import Plan360 from './components/Plan360';
 import Plan360Axes from './components/Plan360Axes';
+import ExecutiveSummary from './components/ExecutiveSummary';
+import KpiAnchoring from './components/KpiAnchoring';
+import BudgetConsolide from './components/BudgetConsolide';
+import BusinessCaseROI from './components/BusinessCaseROI';
+import DefinitionPremium from './components/DefinitionPremium';
+import BenchmarkInternational from './components/BenchmarkInternational';
+import MatriceRisques from './components/MatriceRisques';
+import GouvernanceCalendrier from './components/GouvernanceCalendrier';
+import PlanContingence from './components/PlanContingence';
+import SegmentationQuantitative from './components/SegmentationQuantitative';
 import PlateformeMarque from './components/PlateformeMarque';
 import PrismeKapferer from './components/PrismeKapferer';
 import ScenarioMasterBook from './components/ScenarioMasterBook';
@@ -35,7 +45,10 @@ const sectionIds = [
   'etape1', 'plateforme', 'kapferer', 'scenarios', 'sc-A', 'sc-B', 'sc-C', 'sc-D', 'comparatif',
   'etape2', 'da',
   'etape3', 'protocole', 'recrutement', 'grille',
-  'etape4', 'plan360',
+  'etape4', 'plan360', 'plan360axes',
+  'etape5', 'executive-summary', 'kpi-anchoring', 'segmentation-quantitative',
+  'definition-premium', 'budget-consolide', 'business-case-roi',
+  'benchmark-international', 'matrice-risques', 'gouvernance-calendrier', 'plan-contingence',
 ];
 
 const scenarioTabs: { key: ScenarioKey; pageView: PageView; shortLabel: string; accent: string }[] = [
@@ -314,6 +327,23 @@ function App() {
             />
             <Plan360 />
             <Plan360Axes />
+
+            <SectionHeader
+              id="etape5"
+              eyebrow="Annexes EXCO"
+              title="Dossier d'investissement"
+              desc="Données chiffrées, benchmark, risques et gouvernance — niveau de rigueur EXCO / COPIL."
+            />
+            <ExecutiveSummary />
+            <KpiAnchoring />
+            <SegmentationQuantitative />
+            <DefinitionPremium />
+            <BudgetConsolide />
+            <BusinessCaseROI />
+            <BenchmarkInternational />
+            <MatriceRisques />
+            <GouvernanceCalendrier />
+            <PlanContingence />
           </div>
         ) : isScenario ? (
           <ScenarioMasterBook
