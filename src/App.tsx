@@ -69,14 +69,13 @@ const volumeLabels: Record<string, { label: string; accent: string }> = {
 function App() {
   const getInitialPage = (): PageView => {
     const hash = window.location.hash.replace('#', '');
-    const params = new URLSearchParams(window.location.search);
     if (['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D'].includes(hash)) return hash as PageView;
     if (['marketing', 'securite', 'parcours'].includes(hash)) return hash as PageView;
-    if (params.has('standalone')) return 'marketing';
+    if ((window as any).__STANDALONE__) return 'marketing';
     return 'home';
   };
 
-  const [standalone] = useState(() => new URLSearchParams(window.location.search).has('standalone'));
+  const [standalone] = useState(() => !!(window as any).__STANDALONE__);
   const [activeSection, setActiveSection] = useState('cover');
   const [currentPage, setCurrentPage] = useState<PageView>(getInitialPage);
   const [exportOpen, setExportOpen] = useState(false);
