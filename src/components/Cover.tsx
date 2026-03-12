@@ -38,7 +38,7 @@ const Cover: React.FC = () => (
         <div className="w-16 h-px bg-gradient-to-r from-transparent to-gold/40" />
         <EditableText
           storageKey="cover-eyebrow"
-          defaultValue="Stratégie Marketing — Catalogue de référence"
+          defaultValue="Stratégie Marketing"
           className="text-[10px] font-bold tracking-[.3em] uppercase text-gold/80"
         />
         <div className="w-16 h-px bg-gradient-to-l from-transparent to-gold/40" />

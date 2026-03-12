@@ -102,7 +102,7 @@ const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => {
         <div className="flex items-center gap-4 mb-6">
           <div className="w-12 h-px bg-gradient-to-r from-transparent to-gold/40" />
           <span className="text-[9px] font-bold tracking-[.3em] uppercase text-gold/60">
-            Catalogue de référence — 2026
+            Stratégie Marketing — 2026
           </span>
           <div className="w-12 h-px bg-gradient-to-l from-transparent to-gold/40" />
         </div>
