@@ -1,5 +1,5 @@
 import React from 'react';
-import { Eye, Users, CheckCircle, ArrowRight, Sun, CloudRain, BookOpen, Sparkles, Calendar } from 'lucide-react';
+import { Shield, Eye, Users, CheckCircle, ArrowRight, Sun, CloudRain, BookOpen, Sparkles, Calendar } from 'lucide-react';
 import type { ScenarioKey } from './Scenarios';
 
 const accents: Record<ScenarioKey, { main: string; rgb: string }> = {
