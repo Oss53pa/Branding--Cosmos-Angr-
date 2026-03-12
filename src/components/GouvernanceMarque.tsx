@@ -146,12 +146,7 @@ const GouvernanceMarque: React.FC = () => (
             ))}
           </div>
 
-          {/* Note Pame & Hadja */}
-          <div className="mt-4 rounded-xl border border-gold/20 bg-gold/5 px-5 py-3">
-            <p className="text-[11px] text-navy/80 leading-relaxed">
-              <strong>Note :</strong> Pame (SDR) est l'architecte de la stratégie de marque et le point de passage obligé sur l'ensemble des décisions. Hadja Timite (Center Manager) est informée des décisions.
-            </p>
-          </div>
+
         </div>
 
         {/* Outils de contrôle */}
