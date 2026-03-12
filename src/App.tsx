@@ -76,6 +76,13 @@ function App() {
   };
 
   const [standalone] = useState(() => !!(window as any).__STANDALONE__);
+  // In standalone mode, lock to the initial volume (marketing, securite, or parcours)
+  const [standaloneVolume] = useState<string | null>(() => {
+    if (!(window as any).__STANDALONE__) return null;
+    const hash = window.location.hash.replace('#', '');
+    if (['securite', 'parcours'].includes(hash)) return hash;
+    return 'marketing';
+  });
   const [activeSection, setActiveSection] = useState('cover');
   const [currentPage, setCurrentPage] = useState<PageView>(getInitialPage);
   const [exportOpen, setExportOpen] = useState(false);
@@ -99,6 +106,14 @@ function App() {
   useEffect(() => {
     const onHash = () => {
       const hash = window.location.hash.replace('#', '');
+      // In standalone mode, only allow navigation within the locked volume
+      if (standaloneVolume) {
+        if (standaloneVolume === 'marketing' && ['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D'].includes(hash)) {
+          setCurrentPage(hash as PageView);
+        }
+        // Block switching to other volumes
+        return;
+      }
       if (['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D'].includes(hash)) {
         setCurrentPage(hash as PageView);
       } else if (['marketing', 'securite', 'parcours'].includes(hash)) {
@@ -109,7 +124,7 @@ function App() {
     };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
-  }, []);
+  }, [standaloneVolume]);
 
   const handleNavigate = useCallback((id: string) => {
     if (currentPage !== 'marketing') {
