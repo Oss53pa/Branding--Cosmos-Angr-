@@ -161,7 +161,7 @@ const contentC: SmbContent = {
   uspStatement: "L'exceptionnel au quotidien — un univers où chaque visite est une découverte et chaque passage une habitude.",
   uspHighlight: "L'exceptionnel au quotidien",
   uspPrerequisites: [
-    { text: 'Murs TEJA (RAL 040 40 60) et IGNERO (RAL 040 50 40) posés et secs dès le soft opening' },
+    { text: 'Murs extérieurs TEJA (RAL 040 40 60) et IGNERO (RAL 040 50 40) posés et secs dès le soft opening' },
     { text: 'Têtes de mur Kutu Baffle noyer fumé installées' },
     { text: 'Formation staff "Hospitalité souveraine" complétée avant J-7' },
     { text: 'Mix restauration : minimum food court opérationnel + 1 restaurant sit-down' },
@@ -174,7 +174,7 @@ const contentC: SmbContent = {
     { color: 'var(--sable)', title: 'Orbite cosmique', desc: "Comme un astre qui attire naturellement — clients, enseignes, événements gravitent autour de Cosmos." },
   ],
   kapferer: [
-    { num: '01', facette: 'Physique', title: 'Le premium qui accueille', desc: "Façade aluminium nervuré mat Grège Doré (#B8AA8C), murs terracotta bichrome TEJA/IGNERO, têtes de mur Kutu Baffle noyer fumé, Sol Cosmos terrazo granito scintillant, bronze patiné, végétation structurante, lumière zénithale 2700-3000K. Le cosmos est dans la dalle — le Sol Cosmos scintille à chaque pas.", yes: ['Premium', 'Africain', 'Sensoriel'], no: ['Froid'] },
+    { num: '01', facette: 'Physique', title: 'Le premium qui accueille', desc: "Façade aluminium nervuré mat Grège Doré (#B8AA8C), murs extérieurs terracotta bichrome TEJA/IGNERO, murs intérieurs beige (Sable Territorial / Pierre naturelle), têtes de mur Kutu Baffle noyer fumé, Sol Cosmos terrazo granito scintillant, bronze patiné, végétation structurante, lumière zénithale 2700-3000K.", yes: ['Premium', 'Africain', 'Sensoriel'], no: ['Froid'] },
     { num: '02', facette: 'Personnalité', title: "L'hôte africain accompli", desc: "Entrepreneur ivoirien de 40 ans. Trois comportements : il accueille chaque visiteur par le regard avant le mot ; il résout un problème avant qu'on le formule ; il ne dit jamais non — il propose mieux.", yes: ['Accompli', 'Chaleureux', 'Attentif'], no: ['Condescendant'] },
     { num: '03', facette: 'Culture', title: "L'excellence comme hospitalité", desc: "L'Afrique n'a pas à choisir entre qualité et chaleur. Ici l'excellence EST l'hospitalité — enracinée dans la fierté africaine, pas importée d'ailleurs. Cosmos Angré est le centre de gravité naturel d'Angré — ce que le cosmos est à ses planètes, Cosmos Angré l'est à sa zone.", yes: ['Excellence', 'Hospitalité', 'Fierté'], no: ['Importé'] },
     { num: '04', facette: 'Relation', title: "L'exception de chaque jour", desc: "Votre centre de gravité — l'endroit où l'exceptionnel et le quotidien ne sont plus des contraires mais une seule et même expérience.", yes: ['Quotidien', 'Exception', 'Fidèle'], no: ['Occasionnel'] },
@@ -223,8 +223,8 @@ const contentC: SmbContent = {
     { bg: 'var(--pierre)', role: 'Neutre 2 · 25%', name: 'Pierre naturelle', hex: '#E8E0D5', where: 'Murs de galerie, surfaces de repos' },
     { bg: 'var(--fond)', role: 'Neutre 3 · 23%', name: 'Sable Territorial', hex: '#F2EBDD', where: "Hall d'accueil, espaces lounge exclusivement. RÈGLE : jamais côte à côte avec Blanc Chaud." },
     { bg: '#D4C9B0', role: 'Sol · Actif signature', name: 'Sol Cosmos', hex: '#D4C9B0', where: 'Terrazo granito fond beige + éclats clairs. Sous éclairage zénithal 2700-3000K, les éclats produisent un scintillement discret — une constellation au sol.' },
-    { bg: '#A85430', role: 'Signature Forte · 8%', name: 'TEJA', hex: '#A85430', where: 'RAL 040 40 60. Murs à fort impact, entrées de zones, murs de fond.' },
-    { bg: '#C47850', role: 'Signature Douce · 4%', name: 'IGNERO', hex: '#C47850', where: 'RAL 040 50 40. Zones de transition, espaces larges.' },
+    { bg: '#A85430', role: 'Extérieur · 8%', name: 'TEJA', hex: '#A85430', where: 'RAL 040 40 60. Murs extérieurs à fort impact, entrées de zones, façades latérales.' },
+    { bg: '#C47850', role: 'Extérieur · 4%', name: 'IGNERO', hex: '#C47850', where: 'RAL 040 50 40. Murs extérieurs — zones de transition, accès secondaires.' },
     { bg: '#7A5C42', role: 'Architectural · 3%', name: 'Couronne Cosmos', hex: '#7A5C42', where: 'Kutu Baffle noyer fumé. Têtes de mur — détail architectural signature.' },
     { bg: '#B8AA8C', role: 'Façade · 70%', name: 'Bardage Cosmos', hex: '#B8AA8C', where: 'Aluminium nervuré mat. Façade extérieure — première impression à 150m.' },
     { bg: 'var(--bronze)', role: 'Prestige · 8%', name: 'Bronze Doré', hex: '#C9943A', where: 'Logo, lettrage, poignées, luminaires, broderies, enseigne.' },
@@ -247,7 +247,7 @@ const contentC: SmbContent = {
   materials: [
     { grad: 'linear-gradient(135deg,#B8AA8C,#9a8e74)', name: 'Bardage Cosmos', sub: 'Aluminium nervuré mat #B8AA8C', desc: "Façade extérieure — première impression à 150m. L'identité s'exprime par l'enseigne LED, la signalétique bronze et les accents Or." },
     { grad: 'linear-gradient(135deg,#7A5C42,#3D2A1A)', name: 'Couronne Cosmos', sub: 'Kutu Baffle noyer fumé', desc: "Têtes de mur — détail architectural signature. Veines #3D2A1A sur fond #7A5C42." },
-    { grad: 'linear-gradient(135deg,#A85430,#C47850)', name: 'Terracotta bichrome', sub: 'TEJA RAL 040 40 60 + IGNERO RAL 040 50 40', desc: "Murs signature. TEJA : zones à fort impact. IGNERO : transitions. Deux références RAL confirmées sur chantier." },
+    { grad: 'linear-gradient(135deg,#A85430,#C47850)', name: 'Terracotta bichrome', sub: 'TEJA RAL 040 40 60 + IGNERO RAL 040 50 40', desc: "Murs extérieurs signature. TEJA : façades à fort impact, entrées. IGNERO : façades latérales, transitions. Murs intérieurs = beige (Sable Territorial / Pierre naturelle)." },
     { grad: 'linear-gradient(135deg,#D4C9B0,#c4b89a)', name: 'Sol Cosmos', sub: 'Terrazo granito fond beige + éclats', desc: "Actif sensoriel signature. Scintillement discret sous éclairage zénithal 2700-3000K — constellation au sol." },
     { grad: 'linear-gradient(135deg,#C9943A,#a07828)', name: 'Bronze patiné', sub: 'Accent métal #C9943A', desc: "Signalétique, luminaires, poignées, lettrage. Patine naturelle protégée." },
     { grad: 'linear-gradient(135deg,#6D7447,#4a5030)', name: 'Végétation structurante', sub: 'Arbres intégrés — palmiers, figuiers', desc: "Hall central, allées, terrasse food court. Paysagiste intégré. Budget entretien permanent." },
@@ -260,8 +260,8 @@ const contentC: SmbContent = {
   logoVariants: [
     { bg: '#F2EBDD', stroke: '#2C1A0A', tag: 'Sable Territorial', name: 'Fond Sable', spec: 'Halls, lounge, surfaces intérieures. Points ébène.' },
     { bg: '#2C1A0A', stroke: '#F2EBDD', tag: 'Ébène Chaud', name: 'Fond Ébène', spec: 'Prestige, signalétique, documents. Points crème.' },
-    { bg: '#A85430', stroke: '#F2EBDD', tag: 'TEJA', name: 'Fond Terracotta Foncé', spec: 'Murs à fort impact, entrées de zones. Points crème.' },
-    { bg: '#C47850', stroke: '#2C1A0A', tag: 'IGNERO', name: 'Fond Terracotta Doux', spec: 'Zones de transition, espaces larges. Points ébène.' },
+    { bg: '#A85430', stroke: '#F2EBDD', tag: 'TEJA', name: 'Fond Terracotta Foncé', spec: 'Murs extérieurs à fort impact, entrées de zones. Points crème.' },
+    { bg: '#C47850', stroke: '#2C1A0A', tag: 'IGNERO', name: 'Fond Terracotta Doux', spec: 'Murs extérieurs — transitions, accès secondaires. Points ébène.' },
     { bg: '#C9943A', stroke: '#2C1A0A', tag: 'Bronze Doré', name: 'Fond Bronze', spec: 'Logo, lettrage, luminaires. Points ébène.', oColor: '#2C1A0A' },
     { bg: '#6D7447', stroke: '#F2EBDD', tag: 'Kaki Végétal', name: 'Fond Kaki', spec: 'Jardinières, zones vertes, événements. Points crème.' },
     { bg: '#B8AA8C', stroke: '#2C1A0A', tag: 'Bardage Cosmos', name: 'Fond Grège Doré', spec: 'Façade extérieure, packaging. Points ébène.' },
@@ -270,25 +270,25 @@ const contentC: SmbContent = {
     { bg: '#0B1026', stroke: '#C9943A', tag: 'Bleu Cosmos', name: 'Fond Cosmique', spec: 'Carte Cosmos Club, dark mode digital. Points or.' },
   ],
   parcoursRow1: [
-    { border: 'var(--ebene)', step: 'Moment 01 · Arrivée', title: 'La première impression', text: "Totem bronze visible à 150m. Bardage terracotta reconnaissable depuis la route.", quote: '"La bardade bronze, ça a de la gueule."' },
-    { border: 'var(--ebene)', step: 'Moment 02 · Parking', title: 'Fluidité & sécurité', text: "Bandes de guidage terracotta au sol. Éclairage 3000K. Totem statut P1/P2/P3.", quote: '"Ça se gare bien. Et c\'est propre."' },
-    { border: 'var(--terra)', step: 'Moment 03 · Entrée', title: "L'effet seuil", text: "Portique terracotta. Changement sensoriel immédiat : lumière chaude, odeur signature (notes de fève tonka, bois de santal, pointe d'agrume — la terracotta olfactive), musique afro-jazz.", quote: '"On sait qu\'on est quelque part."' },
+    { border: 'var(--ebene)', step: 'Moment 01 · Arrivée', title: 'La première impression', text: "Totem bronze visible à 150m. Murs extérieurs terracotta reconnaissables depuis la route.", quote: '"La bardade bronze, ça a de la gueule."' },
+    { border: 'var(--ebene)', step: 'Moment 02 · Parking', title: 'Fluidité & sécurité', text: "Bandes de guidage au sol. Éclairage 3000K. Totem statut P1/P2/P3.", quote: '"Ça se gare bien. Et c\'est propre."' },
+    { border: 'var(--terra)', step: 'Moment 03 · Entrée', title: "L'effet seuil", text: "Portique avec accents terracotta extérieurs. Changement sensoriel immédiat : murs intérieurs beiges chaleureux, lumière chaude, odeur signature (fève tonka, santal, agrume), musique afro-jazz.", quote: '"On sait qu\'on est quelque part."' },
     { border: 'var(--bronze)', step: 'Moment 04 · Hall', title: "L'effet \"wow\" africain", text: 'Suspensions raphia monumentales. Sol crème sablée. Comptoir ébène-bronze. Totem digital 75" interactif.', quote: '"C\'est beau — et on se sent chez soi."' },
   ],
   parcoursRow2: [
-    { border: 'var(--ebene)', step: 'Moment 05 · Shopping', title: "L'écrin qui libère", text: "Galeries à 70% neutral. Piliers ébène à bandeau terracotta. Wayfinding bronze intuitif.", quote: '"On y revient. Toujours."' },
+    { border: 'var(--ebene)', step: 'Moment 05 · Shopping', title: "L'écrin qui libère", text: "Galeries à 70% neutral — murs beiges chaleureux. Piliers ébène à bandeau bronze. Wayfinding bronze intuitif.", quote: '"On y revient. Toujours."' },
     { border: 'var(--terra)', step: 'Moment 06 · Restauration', title: 'Du midi au soir', text: "Food court N2 ouvert sur terrasse extérieure. Mobilier bois ébène, coussins kaki-crème.", quote: '"De la terrasse au cinéma — votre samedi à Cosmos."' },
     { border: 'var(--ebene)', step: 'Moment 07 · Fidélisation', title: 'Le lien qui dure', text: "Programme Cosmos Club : carte Platinum NFC, accumulation de points, accès avant-premières.", quote: '"Cosmos, c\'est mon endroit."' },
   ],
   espacesCommuns: [
-    { zone: 'Allées principales', title: 'Galeries marchandes', bars: [{ w: '70%', bg: 'var(--pierre)', c: 'rgba(44,26,10,0.5)', l: '70% Neutral' }, { w: '20%', bg: 'var(--terra)', c: 'rgba(242,235,221,0.8)', l: '20%' }, { w: '10%', bg: 'var(--bronze)', c: 'rgba(242,235,221,0.8)', l: '10%' }], rules: ['Sol : pierre naturelle ton sable', 'Murs : blanc chaud cassé', 'Piliers : ébène, bandeau terracotta en pied', 'Signalétique : fond crème, header bronze'] },
+    { zone: 'Allées principales', title: 'Galeries marchandes', bars: [{ w: '70%', bg: 'var(--pierre)', c: 'rgba(44,26,10,0.5)', l: '70% Neutral' }, { w: '20%', bg: 'var(--fond)', c: 'rgba(44,26,10,0.5)', l: '20%' }, { w: '10%', bg: 'var(--bronze)', c: 'rgba(242,235,221,0.8)', l: '10%' }], rules: ['Sol : pierre naturelle ton sable', 'Murs intérieurs : beige (Sable Territorial / Pierre naturelle)', 'Piliers : ébène, bandeau bronze en pied', 'Signalétique : fond crème, header bronze'] },
     { zone: "Hall d'entrée", title: 'Accueil central', bars: [{ w: '60%', bg: 'var(--fond)', c: 'rgba(44,26,10,0.5)', l: '60% Sable' }, { w: '25%', bg: 'var(--sable)', c: 'rgba(44,26,10,0.6)', l: '25%' }, { w: '15%', bg: 'var(--bronze)', c: 'rgba(242,235,221,0.8)', l: '15%' }], rules: ['Sol : crème sablée', 'Comptoir : bois ébène + bronze patiné', 'Suspensions : raphia naturel', 'Éclairage : 2700K'] },
     { zone: 'Espaces verts & terrasse', title: 'Zones végétales', bars: [{ w: '55%', bg: 'var(--pierre)', c: 'rgba(44,26,10,0.5)', l: '55%' }, { w: '30%', bg: 'var(--kaki)', c: 'rgba(242,235,221,0.8)', l: '30% Kaki' }, { w: '15%', bg: 'var(--bronze)', c: 'rgba(242,235,221,0.8)', l: '15%' }], rules: ['Jardinières : terracotta artisanale', 'Mobilier : bois ébène, coussins kaki', 'Végétation tropicale dense', 'Éclairage : projecteurs bronze 2700K'] },
-    { zone: 'Parking & accès', title: 'Infrastructure service', bars: [{ w: '80%', bg: '#c8c0b4', c: 'rgba(44,26,10,0.5)', l: '80% Béton clair' }, { w: '12%', bg: 'var(--terra)', c: 'rgba(242,235,221,0.8)', l: '12%' }, { w: '8%', bg: 'var(--bronze)', c: 'rgba(242,235,221,0.8)', l: '8%' }], rules: ['Structure : béton clair', 'Bandes de guidage : terracotta au sol', 'Signalétique : blanc sur fond sombre', 'Totem : aluminium thermolaqué ébène'] },
+    { zone: 'Parking & accès', title: 'Infrastructure service', bars: [{ w: '80%', bg: '#c8c0b4', c: 'rgba(44,26,10,0.5)', l: '80% Béton clair' }, { w: '12%', bg: 'var(--fond)', c: 'rgba(44,26,10,0.5)', l: '12%' }, { w: '8%', bg: 'var(--bronze)', c: 'rgba(242,235,221,0.8)', l: '8%' }], rules: ['Structure : béton clair', 'Bandes de guidage au sol', 'Signalétique : blanc sur fond sombre', 'Totem : aluminium thermolaqué ébène'] },
   ],
   risksVigilance: [
     "La cohérence 70% neutral dans les espaces physiques doit être tenue jusqu'au dernier détail.",
-    "Le terracotta en bardage extérieur vieillit différemment selon l'exposition soleil — à valider avec le bureau de contrôle.",
+    "Le terracotta sur les murs extérieurs vieillit différemment selon l'exposition soleil — à valider avec le bureau de contrôle.",
     "Formation du staff critique — l'hospitalité africaine doit être incarnée, pas simulée.",
     "Certaines enseignes premium ont des chartes internes strictes — prévoir une procédure de dérogation encadrée.",
   ],
@@ -303,7 +303,7 @@ const contentC: SmbContent = {
   brandRules: [
     { rule: 'Blanc Chaud #FAF7F2 et Sable Territorial #F2EBDD ne doivent jamais être côte à côte (ΔE 4.2).' },
     { rule: 'TEJA #A85430 et IGNERO #C47850 : deux références RAL officielles. Remplacent toute mention de terracotta générique #B25A38.' },
-    { rule: 'Bardage façade = aluminium nervuré mat Grège Doré #B8AA8C. Terracotta artisanale en bardage extérieur est interdite.' },
+    { rule: 'Bardage façade = aluminium nervuré mat Grège Doré #B8AA8C. Murs extérieurs = terracotta TEJA/IGNERO. Murs intérieurs = beige (jamais terracotta).' },
     { rule: 'Bleu Cosmos #0B1026 interdit en façade, signalétique intérieure et textile staff.' },
   ],
   focusGroupQuestions: [
@@ -316,7 +316,7 @@ const contentC: SmbContent = {
   focusGroupStimuli: {
     stimuli: [
       { title: 'Stimulus 1 — Planche Ambiance', content: 'Palette : Grège Doré #B8AA8C · Terracotta TEJA #A85430 · Bronze #C9943A · Beige Sol Cosmos #D4C9B0 · Noyer #7A5C42\nMatières : Bardage aluminium grège · Murs terracotta (20–30% façade) · Sol terrazo beige dominant · Têtes de mur noyer · Accents bronze\nSignature centrale : "L\'exception, tout simplement."' },
-      { title: 'Stimulus 2 — Mockup Façade', content: 'Proportions visuelles : 70% grège doré (bardage) · 20–30% terracotta réelle (murs extérieurs) · enseigne avec lettrage Grège Doré Métallique\nNote visible : "Terracotta : matière réelle sur chantier — 20 à 30% de la surface extérieure"' },
+      { title: 'Stimulus 2 — Mockup Façade', content: 'Proportions visuelles : 70% grège doré (bardage) · 20–30% terracotta (murs extérieurs) · enseigne avec lettrage Grège Doré Métallique\nNote visible : "Terracotta TEJA/IGNERO sur murs extérieurs — 20 à 30% de la surface. Intérieur = beige."' },
       { title: 'Stimulus 3 — Post Instagram / Affichage OOH', content: 'Format carré 1:1 et format 4×3 affichage\nFond : Terracotta TEJA #A85430\nSignature : "Cocody vient de changer d\'adresse."\nSous-titre : "Cosmos Angré — Soft Opening Oct 2026"\nAccent : Grège Doré Métallique #B8AA8C' },
       { title: 'Stimulus 4 — Carte Cosmos Club', content: 'Fond : Ébène #2C1A0E\nLettrage : Grège Doré Métallique #B8AA8C\nSignature carte : "Un monde à part."\nNote brief animateur : Tester si la terracotta de la façade est perçue comme un atout différenciant ou comme "trop traditionnel".' },
     ],
@@ -388,7 +388,7 @@ const contentA: SmbContent = {
     { w: '5%', bg: 'var(--ebene)', c: 'rgba(242,235,221,0.6)' },
   ],
   paletteColors: [
-    { bg: 'var(--fond)', role: 'Dominant · 35%', name: 'Sable Territorial', hex: '#F2EBDD', where: 'Murs intérieurs, halls, espaces lounge, sol galeries. Toutes les surfaces intérieures.' },
+    { bg: 'var(--fond)', role: 'Dominant · 35%', name: 'Sable Territorial', hex: '#F2EBDD', where: 'Murs intérieurs (beige dominant), halls, espaces lounge, sol galeries. Toutes les surfaces intérieures.' },
     { bg: 'var(--terra)', role: 'Structure · 25%', name: 'Forêt Profond', hex: '#2F5439', where: 'Signalétique directionnelle, enseigne LED (caisson), communication. INTERDIT en façade principale — le bâtiment réel a un bardage aluminium Grège Doré #B8AA8C.' },
     { bg: 'var(--bronze)', role: 'Prestige · 15%', name: 'Or Cuivré', hex: '#C9943A', where: 'Logo, lettrage enseigne, signalétique, poignées, broderies, luminaires.' },
     { bg: 'var(--kaki)', role: 'Végétal · 10%', name: 'Kaki Minéral', hex: '#76764D', where: 'Jardinières, zones végétales, événements, maintenance, signalétique secondaire.' },
@@ -414,7 +414,7 @@ const contentA: SmbContent = {
     { grad: 'linear-gradient(135deg,#B8AA8C,#9a8e74)', name: 'Bardage Cosmos', sub: 'Aluminium nervuré mat #B8AA8C', desc: "Façade extérieure — première impression à 150m." },
     { grad: 'linear-gradient(135deg,#7A5C42,#3D2A1A)', name: 'Couronne Cosmos', sub: 'Kutu Baffle noyer fumé', desc: "Têtes de mur — détail architectural signature." },
     { grad: 'linear-gradient(135deg,#D4C9B0,#c4b89a)', name: 'Sol Cosmos', sub: 'Terrazo granito fond beige + éclats', desc: "Actif sensoriel signature — constellation au sol sous éclairage 2700-3000K." },
-    { grad: 'linear-gradient(135deg,#A85430,#C47850)', name: 'Terracotta bichrome', sub: 'TEJA RAL 040 40 60 + IGNERO RAL 040 50 40', desc: "Murs extérieurs (20–30%) et accents intérieurs. Deux références RAL confirmées sur chantier." },
+    { grad: 'linear-gradient(135deg,#A85430,#C47850)', name: 'Terracotta bichrome', sub: 'TEJA RAL 040 40 60 + IGNERO RAL 040 50 40', desc: "Murs extérieurs uniquement (20–30%). Intérieurs = beige. Deux références RAL confirmées sur chantier." },
     { grad: 'linear-gradient(135deg,#C9943A,#a07828)', name: 'Laiton cuivré', sub: 'Finition brossée', desc: "Signalétique, luminaires, garde-corps, poignées." },
     { grad: 'linear-gradient(135deg,#76764D,#545434)', name: 'Raphia & fibres végétales', sub: 'Tissage naturel', desc: "Suspensions, panneaux acoustiques, assises lounge." },
   ],
@@ -750,7 +750,7 @@ const contentD: SmbContent = {
   materials: [
     { grad: 'linear-gradient(135deg,#B8AA8C,#9a8e74)', name: 'Peau Cosmos', sub: 'Aluminium nervuré mat #B8AA8C', desc: "Façade extérieure — première impression à 150m." },
     { grad: 'linear-gradient(135deg,#7A5C42,#3D2A1A)', name: 'Kutu Baffle noyer fumé', sub: 'Têtes de mur #7A5C42', desc: "Détail architectural signature." },
-    { grad: 'linear-gradient(135deg,#A85430,#C47850)', name: 'Terracotta bichrome', sub: 'TEJA RAL 040 40 60 + IGNERO RAL 040 50 40', desc: "Murs accent — deux références RAL confirmées sur chantier." },
+    { grad: 'linear-gradient(135deg,#A85430,#C47850)', name: 'Terracotta bichrome', sub: 'TEJA RAL 040 40 60 + IGNERO RAL 040 50 40', desc: "Murs extérieurs uniquement. Intérieurs = beige. Deux références RAL confirmées sur chantier." },
     { grad: 'linear-gradient(135deg,#D4C9B0,#c4b89a)', name: 'Sol Cosmos', sub: 'Terrazo granito fond beige + éclats', desc: "Actif sensoriel signature — constellation au sol sous éclairage zénithal." },
     { grad: 'linear-gradient(135deg,#898D5D,#6B7A4A)', name: 'Pierre kaki texturée', sub: 'Grès cérame local', desc: 'Totems, sols allées centrales.' },
     { grad: 'linear-gradient(135deg,#D4A843,#a88028)', name: 'Laiton brossé doré', sub: 'Finition satin mat', desc: 'Lettrage totems, poignées, luminaires.' },

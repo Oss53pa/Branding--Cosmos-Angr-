@@ -133,14 +133,27 @@ const Cover: React.FC = () => (
           </div>
         </div>
 
-        {/* Murs intérieurs — Terracotta */}
+        {/* Murs intérieurs — Beige */}
         <div className="rounded-2xl overflow-hidden border border-white/[.06] bg-navy/60 backdrop-blur-sm">
           <div className="h-20 relative overflow-hidden">
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #D4C4A8 0%, #E0D2B8 50%, #C8B89C 100%)' }} />
-            <div className="absolute bottom-2 right-2 text-[8px] font-mono font-bold px-1.5 py-0.5 rounded bg-black/30 text-white/80">RAL 040</div>
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #F2EBDD 0%, #E8E0D5 50%, #F2EBDD 100%)' }} />
+            <div className="absolute bottom-2 right-2 text-[8px] font-mono font-bold px-1.5 py-0.5 rounded bg-black/30 text-white/80">#F2EBDD</div>
           </div>
           <div className="px-3 py-2.5">
             <div className="text-[10px] font-semibold text-white/70 mb-0.5">Murs intérieurs</div>
+            <div className="text-[8px] text-white/60 leading-relaxed">Sable Territorial / Pierre naturelle</div>
+            <div className="text-[8px] text-gold/50 mt-0.5 font-medium">Beige</div>
+          </div>
+        </div>
+
+        {/* Murs extérieurs — Terracotta */}
+        <div className="rounded-2xl overflow-hidden border border-white/[.06] bg-navy/60 backdrop-blur-sm">
+          <div className="h-20 relative overflow-hidden">
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #A85430 0%, #C47850 100%)' }} />
+            <div className="absolute bottom-2 right-2 text-[8px] font-mono font-bold px-1.5 py-0.5 rounded bg-black/30 text-white/80">RAL 040</div>
+          </div>
+          <div className="px-3 py-2.5">
+            <div className="text-[10px] font-semibold text-white/70 mb-0.5">Murs extérieurs</div>
             <div className="text-[8px] text-white/60 leading-relaxed">Teja + Ignero RAL 040</div>
             <div className="text-[8px] text-gold/50 mt-0.5 font-medium">Terracotta</div>
           </div>
