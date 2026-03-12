@@ -27,7 +27,7 @@ const volumes: VolumeCard[] = [
     icon: <Megaphone size={28} strokeWidth={1.5} />,
     accent: '#C9943A',
     gradient: 'from-[#1a1a2e] via-[#16213e] to-[#1a1a2e]',
-    shareUrl: 'https://branding-cosmos-angr-wd7e.vercel.app/plan-marketing.html',
+    shareUrl: 'https://branding-cosmos-angr.vercel.app/plan-marketing.html',
     stats: [
       { n: '4', l: 'Étapes' },
       { n: '14', l: 'Livrables' },
@@ -43,7 +43,7 @@ const volumes: VolumeCard[] = [
     icon: <ShieldCheck size={28} strokeWidth={1.5} />,
     accent: '#3B82F6',
     gradient: 'from-[#0c1220] via-[#1a2744] to-[#0c1220]',
-    shareUrl: 'https://branding-cosmos-angr-wd7e.vercel.app/plan-securite.html',
+    shareUrl: 'https://branding-cosmos-angr.vercel.app/plan-securite.html',
     stats: [
       { n: '5', l: 'Zones' },
       { n: '120+', l: 'Caméras' },
@@ -59,7 +59,7 @@ const volumes: VolumeCard[] = [
     icon: <Route size={28} strokeWidth={1.5} />,
     accent: '#10B981',
     gradient: 'from-[#0a1a14] via-[#153d2e] to-[#0a1a14]',
-    shareUrl: 'https://branding-cosmos-angr-wd7e.vercel.app/plan-parcours.html',
+    shareUrl: 'https://branding-cosmos-angr.vercel.app/plan-parcours.html',
     stats: [
       { n: '7', l: 'Moments clés' },
       { n: '3', l: 'Niveaux' },
