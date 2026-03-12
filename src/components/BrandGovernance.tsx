@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Eye, Users, Calendar, CheckCircle, ArrowRight, Sun, CloudRain, BookOpen, Sparkles } from 'lucide-react';
+import { Eye, Users, CheckCircle, ArrowRight, Sun, CloudRain, BookOpen, Sparkles, Calendar } from 'lucide-react';
 import type { ScenarioKey } from './Scenarios';
 
 const accents: Record<ScenarioKey, { main: string; rgb: string }> = {
@@ -117,76 +117,6 @@ export default function BrandGovernance({ scenarioKey }: { scenarioKey: Scenario
         </div>
       </section>
 
-      {/* ═══ D2 — GOUVERNANCE DE MARQUE ═══ */}
-      <section className="bg-warm" id="smb-gouvernance">
-        <div className="eyebrow green">D2 · Gouvernance</div>
-        <h2 className="light">Gouvernance de marque</h2>
-        <div className="sub">Organisation, circuit de validation et outils de contrôle</div>
-        <div className="divider kaki" />
-
-        {/* Comité de marque */}
-        <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 16 }}>Comité de marque</div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 16, marginBottom: 40 }}>
-          {[
-            { role: 'Directeur Marketing', scope: 'Vision stratégique, arbitrage final', freq: 'Permanent' },
-            { role: 'Directeur Artistique', scope: 'Cohérence visuelle, validation créative', freq: 'Permanent' },
-            { role: 'Responsable Retail', scope: 'Relations enseignes, conformité terrain', freq: 'Permanent' },
-            { role: 'Consultant Externe', scope: 'Audit indépendant, benchmarks marché', freq: 'Trimestriel' },
-          ].map((m, i) => (
-            <div key={i} style={cardStyle}>
-              <div style={{ background: `rgba(${ac.rgb},0.06)`, padding: '16px 20px', borderBottom: '1px solid rgba(0,0,0,0.04)' }}>
-                <div style={{ fontSize: 11, fontWeight: 600, color: '#1a1a2e' }}>{m.role}</div>
-              </div>
-              <div style={{ padding: '16px 20px' }}>
-                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.65)', lineHeight: 1.6, marginBottom: 8 }}>{m.scope}</div>
-                <div style={{ fontSize: 9, color: ac.main, fontWeight: 600 }}>{m.freq}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Circuit de validation */}
-        <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 16 }}>Circuit de validation</div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 0, marginBottom: 40, border: '1px solid rgba(0,0,0,0.06)', borderRadius: 14, overflow: 'hidden' }}>
-          {[
-            { level: 'Niveau 1', who: 'Brand Manager', scope: 'Usage quotidien, posts réseaux sociaux, signalétique standard', color: '#16a34a' },
-            { level: 'Niveau 2', who: 'Directeur Marketing', scope: 'Campagnes publicitaires, événements, partenariats commerciaux', color: '#C9943A' },
-            { level: 'Niveau 3', who: 'Comité de marque', scope: 'Évolutions identitaires, partenariats stratégiques, refonte majeure', color: '#dc2626' },
-          ].map((l, i) => (
-            <div key={i} style={{ background: '#fff', padding: 24, borderRight: i < 2 ? '1px solid rgba(0,0,0,0.06)' : 'none', position: 'relative' }}>
-              {i < 2 && (
-                <div style={{ position: 'absolute', right: -10, top: '50%', transform: 'translateY(-50%)', zIndex: 1 }}>
-                  <ArrowRight size={16} color="rgba(0,0,0,0.15)" />
-                </div>
-              )}
-              <div style={{ width: 8, height: 8, borderRadius: '50%', background: l.color, marginBottom: 12 }} />
-              <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: l.color, fontWeight: 600, marginBottom: 4 }}>{l.level}</div>
-              <div style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: 18, fontWeight: 600, color: '#1a1a2e', marginBottom: 8 }}>{l.who}</div>
-              <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.65)', lineHeight: 1.6 }}>{l.scope}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Outils de contrôle */}
-        <div style={{ fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', color: ac.main, fontWeight: 600, marginBottom: 16 }}>Outils de contrôle</div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 16 }}>
-          {[
-            { tool: 'Brand Book digital', desc: 'Ce document — référence unique et centralisée pour toutes les décisions de marque. Mis à jour trimestriellement.', freq: 'Référence permanente' },
-            { tool: 'Kit média téléchargeable', desc: 'Logos (tous formats), templates (PPT, social, print), polices officielles. Accessible via un lien protégé par mot de passe.', freq: 'Mis à jour à chaque évolution' },
-            { tool: 'Checklist validation enseigne', desc: 'Formulaire standardisé que chaque nouveau locataire doit compléter avant installation. Vérification façade, signalétique, matériaux.', freq: 'À chaque nouvelle enseigne' },
-            { tool: 'Audit de cohérence', desc: 'Revue terrain trimestrielle de tous les points de contact : signalétique, propreté, conformité enseignes, état des supports.', freq: 'Trimestriel' },
-          ].map((t, i) => (
-            <div key={i} style={{ ...cardStyle, display: 'flex' }}>
-              <div style={{ width: 4, background: ac.main, flexShrink: 0 }} />
-              <div style={{ padding: '16px 20px', flex: 1 }}>
-                <div style={{ fontSize: 12, fontWeight: 600, color: '#1a1a2e', marginBottom: 6 }}>{t.tool}</div>
-                <div style={{ fontSize: 10, color: 'rgba(0,0,0,0.65)', lineHeight: 1.6, marginBottom: 8 }}>{t.desc}</div>
-                <div style={{ fontSize: 9, color: ac.main, fontWeight: 600 }}>{t.freq}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
     </>
   );
 }

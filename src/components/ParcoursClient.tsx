@@ -230,7 +230,7 @@ const VerticalJourneyFlow: React.FC = () => {
               <Route size={22} strokeWidth={1.5} />
             </div>
             <div>
-              <h3 className="font-cormorant text-[28px] font-light text-white leading-tight">The Customer Journey</h3>
+              <h3 className="font-cormorant text-[28px] font-light text-white leading-tight">Le Parcours Client</h3>
               <p className="text-[10px] text-white/60 mt-0.5">Cosmos Angré · Centre commercial · Angré 8ème tranche, Abidjan</p>
             </div>
           </div>
@@ -241,13 +241,13 @@ const VerticalJourneyFlow: React.FC = () => {
           <div className="flex-1 text-center">
             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-amber-400/15 border border-amber-400/25">
               <MapPin size={14} className="text-amber-300" />
-              <span className="text-[11px] font-bold tracking-[.12em] uppercase text-amber-200">Offline</span>
+              <span className="text-[11px] font-bold tracking-[.12em] uppercase text-amber-200">Physique</span>
             </div>
           </div>
           <div className="flex-1 text-center">
             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-sky-400/15 border border-sky-400/25">
               <Smartphone size={14} className="text-sky-300" />
-              <span className="text-[11px] font-bold tracking-[.12em] uppercase text-sky-200">Online</span>
+              <span className="text-[11px] font-bold tracking-[.12em] uppercase text-sky-200">Digital</span>
             </div>
           </div>
         </div>
@@ -407,7 +407,7 @@ const VerticalJourneyFlow: React.FC = () => {
                       <div className="absolute left-0 top-0 bottom-0 w-1.5 rounded-l-xl" style={{ background: color }} />
                       <div className="text-[8px] font-bold tracking-[.15em] uppercase mb-2 pl-2"
                         style={{ color }}>
-                        Proposed Solution
+                        Solution proposée
                       </div>
                       <div className="space-y-2 pl-2">
                         {opps.slice(0, 3).map((opp, j) => (
@@ -473,7 +473,7 @@ const JourneyMapModule: React.FC = () => {
         </div>
         <div>
           <div className="text-[9px] font-bold tracking-[.25em] uppercase text-emerald-600">Module 1</div>
-          <div className="font-cormorant text-[28px] font-medium text-navy leading-tight">Customer Journey <span className="font-bold">Layers</span></div>
+          <div className="font-cormorant text-[28px] font-medium text-navy leading-tight">Parcours Client <span className="font-bold">· Couches</span></div>
         </div>
         <div className="h-px flex-1 bg-emerald-600/15" />
       </div>
@@ -520,7 +520,7 @@ const JourneyMapModule: React.FC = () => {
 
             {/* ── ROW 1: STAGES (chevron arrows) ── */}
             <div className="flex border-b border-black/[.06]">
-              <SwimLabel label="Customer Journey" sub="Stages" color="#059669" />
+              <SwimLabel label="Parcours Client" sub="Étapes" color="#059669" />
               <div className="flex-1 flex">
                 {stages.map((stage, i) => (
                   <div
@@ -550,7 +550,7 @@ const JourneyMapModule: React.FC = () => {
 
             {/* ── ROW 2: STEPS (customer actions) ── */}
             <div className="flex border-b border-black/[.06] bg-black/[.01]">
-              <SwimLabel label="Customer Journey" sub="Steps — Actions client" color="#3B82F6" />
+              <SwimLabel label="Parcours Client" sub="Actions client" color="#3B82F6" />
               <div className="flex-1 flex">
                 {stageSteps.map((steps, i) => (
                   <div key={i} className="flex-1 px-2 py-3 border-r border-black/[.04] last:border-r-0">
@@ -591,7 +591,7 @@ const JourneyMapModule: React.FC = () => {
 
             {/* ── ROW 4: TOUCHPOINTS DOT MATRIX ── */}
             <div className="flex border-b border-black/[.06] bg-black/[.01]">
-              <SwimLabel label="Customer Journey" sub={`Touchpoints — ${touchpointLabels.length} points`} color="#8B5CF6" />
+              <SwimLabel label="Customer Journey" sub={`Points de contact — ${touchpointLabels.length}`} color="#8B5CF6" />
               <div className="flex-1">
                 {/* Touchpoint count row */}
                 <div className="flex border-b border-black/[.04]">
@@ -627,7 +627,7 @@ const JourneyMapModule: React.FC = () => {
 
             {/* ── ROW 5: DEPARTMENTS DOT MATRIX ── */}
             <div className="flex border-b border-black/[.06]">
-              <SwimLabel label="Customer Journey" sub={`Départements — ${departments.length}`} color="#F59E0B" />
+              <SwimLabel label="Parcours Client" sub={`Départements — ${departments.length}`} color="#F59E0B" />
               <div className="flex-1">
                 {/* Dept count row */}
                 <div className="flex border-b border-black/[.04]">
@@ -748,7 +748,7 @@ const JourneyMapModule: React.FC = () => {
 
             {/* ── ROW 11: DURATION BAR ── */}
             <div className="flex">
-              <SwimLabel label="Customer Journey" sub="Durée estimée" color="#0EA5E9" />
+              <SwimLabel label="Parcours Client" sub="Durée estimée" color="#0EA5E9" />
               <div className="flex-1 flex items-center py-3 px-1">
                 {stageDurations.map((dur, i) => {
                   const total = stageDurations.reduce((a, b) => a + b, 0);
@@ -1420,7 +1420,7 @@ const ParcoursClient: React.FC = () => {
       {/* Plan 3D */}
       <div className="px-8 lg:px-[72px] py-8 border-t border-black/[.06]">
         <button
-          onClick={() => window.open('/plan-3d.html', '_blank')}
+          onClick={() => window.open('/plan-3d-parcours.html', '_blank')}
           className="w-full group flex items-center justify-between px-7 py-5 rounded-2xl border border-emerald-200/30 bg-emerald-50/50 hover:bg-emerald-50 hover:border-emerald-300/40 transition-all"
         >
           <div className="flex items-center gap-4">

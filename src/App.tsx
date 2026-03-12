@@ -28,6 +28,8 @@ import MatriceRisques from './components/MatriceRisques';
 import GouvernanceCalendrier from './components/GouvernanceCalendrier';
 import PlanContingence from './components/PlanContingence';
 import SegmentationQuantitative from './components/SegmentationQuantitative';
+import CompetitiveLandscape from './components/CompetitiveLandscape';
+import GouvernanceMarque from './components/GouvernanceMarque';
 import PlateformeMarque from './components/PlateformeMarque';
 import PrismeKapferer from './components/PrismeKapferer';
 import ScenarioMasterBook from './components/ScenarioMasterBook';
@@ -340,7 +342,9 @@ function App() {
             <DefinitionPremium />
             <BudgetConsolide />
             <BusinessCaseROI />
+            <CompetitiveLandscape />
             <BenchmarkInternational />
+            <GouvernanceMarque />
             <MatriceRisques />
             <GouvernanceCalendrier />
             <PlanContingence />

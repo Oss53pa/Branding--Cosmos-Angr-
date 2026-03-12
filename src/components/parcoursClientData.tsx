@@ -149,7 +149,7 @@ export const journeyStages: JourneyStage[] = [
       techno:      ['Beacons Bluetooth Low Energy (×60) — push promo contextualisé', 'Bornes catalogue tactile 32" ×4/niveau', 'Système Click & collect intégré (API enseignes → app)', 'Compteurs de flux par galerie (heatmap en temps réel)', 'Éclairage galeries adaptatif (intensité selon affluence)'],
       painPoints:  ['Rupture de stock enseignes (frustration achat manqué)', 'Parcours trop long sans repos avant installation banquettes', 'Enseignes avec vendeurs trop insistants (culture vente CI)', 'Prises USB insuffisantes aux points de repos', 'Escalators en panne (problème fréquent Abidjan)'],
       opportunites: ['Programme fidélité croisé enseignes (points Cosmos Club chez toutes)', 'Gamification parcours shopping (badge « Explorateur » 10 boutiques)', 'Personal shopper democratisé (Gold, pas juste Platinum)', 'Pop-up boutiques créateurs ivoiriens (rotation mensuelle)', 'Nocturne shopping (vendredi jusqu\'à 22h)'],
-      kpis:        ['Panier moyen global et par enseigne', 'Taux de conversion visite → achat (cible > 55%)', 'Nombre moyen boutiques visitées / visite', 'CA/m²/mois par enseigne', 'Taux d\'utilisation beacons / push'],
+      kpis:        ['Panier moyen global et par enseigne', 'Taux de conversion visite → achat (cible > 45%)', 'Nombre moyen boutiques visitées / visite', 'CA/m²/mois par enseigne', 'Taux d\'utilisation beacons / push'],
     },
   },
   {
@@ -343,7 +343,7 @@ export const kpiCategories: KpiCategory[] = [
   {
     id: 'satisfaction', label: 'Satisfaction Client', icon: <Heart size={18} />, color: '#F43F5E',
     kpis: [
-      { label: 'NPS global Cosmos', target: '> 50', unit: 'score -100/+100', frequency: 'Trimestriel', source: 'Enquête NPS' },
+      { label: 'NPS global Cosmos', target: '> 40', unit: 'score -100/+100', frequency: 'Trimestriel', source: 'Enquête NPS' },
       { label: 'NPS parking', target: '> 35', unit: 'score', frequency: 'Trimestriel', source: 'Enquête parking' },
       { label: 'NPS food court', target: '> 45', unit: 'score', frequency: 'Trimestriel', source: 'Enquête F&B' },
       { label: 'Avis Google Maps', target: '> 4.3 ★', unit: 'étoiles /5', frequency: 'Continu', source: 'Google Business' },
@@ -352,10 +352,10 @@ export const kpiCategories: KpiCategory[] = [
   {
     id: 'fidelite', label: 'Cosmos Club — Fidélisation', icon: <Target size={18} />, color: '#8B5CF6',
     kpis: [
-      { label: 'Membres Cosmos Club actifs', target: '5 000 à M+6', unit: 'membres', frequency: 'Mensuel', source: 'CRM HubSpot' },
-      { label: 'Upgrade Silver → Gold', target: '> 25%', unit: '% à 6 mois', frequency: 'Trimestriel', source: 'CRM' },
+      { label: 'Membres Cosmos Club actifs', target: '12 000 à M+6', unit: 'membres', frequency: 'Mensuel', source: 'CRM HubSpot' },
+      { label: 'Upgrade Silver → Gold', target: '> 15%', unit: '% à 6 mois', frequency: 'Trimestriel', source: 'CRM' },
       { label: 'Panier membre vs non-membre', target: '+35%', unit: 'différentiel', frequency: 'Mensuel', source: 'Caisse + CRM' },
-      { label: 'Churn à 6 mois', target: '< 15%', unit: '%', frequency: 'Semestriel', source: 'CRM HubSpot' },
+      { label: 'Churn à 6 mois', target: '< 25%', unit: '%', frequency: 'Semestriel', source: 'CRM HubSpot' },
     ],
   },
   {
@@ -363,8 +363,8 @@ export const kpiCategories: KpiCategory[] = [
     kpis: [
       { label: 'CA enseignes/m²/mois', target: '> 180k FCFA', unit: 'FCFA/m²', frequency: 'Mensuel', source: 'Reporting enseignes' },
       { label: 'Taux d\'occupation commerciale', target: '> 92%', unit: '%', frequency: 'Trimestriel', source: 'Asset Management' },
-      { label: 'Conversion visite → achat', target: '> 55%', unit: '%', frequency: 'Mensuel', source: 'Compteurs + caisses' },
-      { label: 'CA food court + restaurants', target: '> 250k/m²', unit: 'FCFA/m²', frequency: 'Mensuel', source: 'F&B reporting' },
+      { label: 'Conversion visite → achat', target: '> 45%', unit: '%', frequency: 'Mensuel', source: 'Compteurs + caisses' },
+      { label: 'CA food court + restaurants', target: '> 120k/m²', unit: 'FCFA/m²', frequency: 'Mensuel', source: 'F&B reporting' },
     ],
   },
   {

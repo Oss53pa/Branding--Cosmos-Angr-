@@ -4,7 +4,6 @@ import { smbThemes, smbContent } from './scenarioMasterBookData';
 import BrandWorld from './BrandWorld';
 import BrandNarrative from './BrandNarrative';
 import BrandGovernance from './BrandGovernance';
-import CompetitiveLandscape from './CompetitiveLandscape';
 import './scenario-masterbook.css';
 
 /* ── Logo SVG réutilisable ── */
@@ -740,9 +739,6 @@ const ScenarioMasterBook: React.FC<ScenarioMasterBookProps> = ({ scenarioKey, on
 
         {/* C8–C9, D2 — GOUVERNANCE */}
         <BrandGovernance scenarioKey={scenarioKey} />
-
-        {/* D3 — CONCURRENCE */}
-        <CompetitiveLandscape scenarioKey={scenarioKey} />
 
         {/* FINALE */}
         <section className="finale">

@@ -806,6 +806,10 @@ body{font-family:'Inter',sans-serif;background:${CREAM};color:#1a1410;line-heigh
       <a href="#decisions">Décisions</a>
       <a href="#calendrier">Calendrier</a>
       <a href="#scenarios">4 Scénarios</a>
+      <a href="scenario-A.html" style="color:#4A7558">A</a>
+      <a href="scenario-B.html" style="color:#0D1B4B">B</a>
+      <a href="scenario-C.html" style="color:#C9943A">C</a>
+      <a href="scenario-D.html" style="color:#898D5D">D</a>
       <a href="#comparatif">Comparatif</a>
       <a href="#focusgroup">Focus Group</a>
       <a href="#grille">Grille d'analyse</a>
@@ -912,6 +916,9 @@ ${sc.values.map((v, vi) => `          <div class="sc-val" style="border-left:3px
         <div class="sc-risk" style="background:${sc.risk.label.includes('Avantage') ? 'rgba(16,185,129,.04)' : 'rgba(245,158,11,.04)'};border-color:${sc.risk.label.includes('Avantage') ? 'rgba(16,185,129,.2)' : 'rgba(245,158,11,.2)'}">
           ${escHtml(sc.risk.text)}
         </div>
+      </div>
+      <div style="padding:20px 28px 28px;text-align:center">
+        <a href="scenario-${sc.key}.html" style="display:inline-block;padding:12px 32px;background:${sc.accent};color:#fff;border-radius:8px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Voir le Master Book ${sc.key} complet &rarr;</a>
       </div>
     </div>
   </div>`).join('\n\n')}
