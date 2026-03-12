@@ -1148,28 +1148,24 @@ if (!fs.existsSync(distDir)) {
   const pubDir = path.join(__dirname, '..', 'public');
   if (!fs.existsSync(pubDir)) fs.mkdirSync(pubDir, { recursive: true });
   for (const key of ['A', 'B', 'C', 'D']) {
-    const html = generateHTML(key);
-    if (html) {
-      fs.writeFileSync(path.join(pubDir, `scenario-${key}.html`), html, 'utf-8');
-      console.log(`✓ public/scenario-${key}.html`);
-    }
+    const redir = `<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=index.html#scenario-${key}"><title>Cosmos Angré — Scénario ${key}</title></head><body><p>Redirection… <a href="index.html#scenario-${key}">Cliquez ici</a></p></body></html>`;
+    fs.writeFileSync(path.join(pubDir, `scenario-${key}.html`), redir, 'utf-8');
+    console.log(`✓ public/scenario-${key}.html (redirect)`);
   }
-  // Plan Marketing complet
-  const pmHtml = generatePlanMarketingHTML();
-  fs.writeFileSync(path.join(pubDir, 'plan-marketing.html'), pmHtml, 'utf-8');
-  console.log('✓ public/plan-marketing.html');
+  // Plan Marketing — redirect to React app
+  const pmRedirect = `<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=index.html#marketing"><title>Cosmos Angré — Vol. 1 Stratégie Marketing</title></head><body><p>Redirection… <a href="index.html#marketing">Cliquez ici</a></p></body></html>`;
+  fs.writeFileSync(path.join(pubDir, 'plan-marketing.html'), pmRedirect, 'utf-8');
+  console.log('✓ public/plan-marketing.html (redirect)');
 } else {
   for (const key of ['A', 'B', 'C', 'D']) {
-    const html = generateHTML(key);
-    if (html) {
-      fs.writeFileSync(path.join(distDir, `scenario-${key}.html`), html, 'utf-8');
-      console.log(`✓ dist/scenario-${key}.html`);
-    }
+    const redir = `<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=index.html#scenario-${key}"><title>Cosmos Angré — Scénario ${key}</title></head><body><p>Redirection… <a href="index.html#scenario-${key}">Cliquez ici</a></p></body></html>`;
+    fs.writeFileSync(path.join(distDir, `scenario-${key}.html`), redir, 'utf-8');
+    console.log(`✓ dist/scenario-${key}.html (redirect)`);
   }
-  // Plan Marketing complet
-  const pmHtml = generatePlanMarketingHTML();
-  fs.writeFileSync(path.join(distDir, 'plan-marketing.html'), pmHtml, 'utf-8');
-  console.log('✓ dist/plan-marketing.html');
+  // Plan Marketing — redirect to React app
+  const pmRedirect = `<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=index.html#marketing"><title>Cosmos Angré — Vol. 1 Stratégie Marketing</title></head><body><p>Redirection… <a href="index.html#marketing">Cliquez ici</a></p></body></html>`;
+  fs.writeFileSync(path.join(distDir, 'plan-marketing.html'), pmRedirect, 'utf-8');
+  console.log('✓ dist/plan-marketing.html (redirect)');
 }
 
 console.log('Static pages generated.');
