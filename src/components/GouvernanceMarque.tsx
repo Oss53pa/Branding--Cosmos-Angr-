@@ -42,8 +42,8 @@ const actors = [
 ];
 
 const validationLevels = [
-  { level: 'Niveau 1', who: 'Pame (SDR)', scope: 'Usage quotidien, posts réseaux sociaux, signalétique standard, campagnes publicitaires, événements, partenariats commerciaux', color: '#16a34a' },
-  { level: 'Niveau 2', who: 'Pame (SDR) → Fernand', scope: 'Production graphique, créations visuelles, supports de communication', color: GOLD },
+  { level: 'Niveau 1', who: 'Pame (SDR) → Fernand', scope: 'Production graphique, créations visuelles, supports de communication', color: '#16a34a' },
+  { level: 'Niveau 2', who: 'Pame (SDR)', scope: 'Usage quotidien, posts réseaux sociaux, signalétique standard, campagnes publicitaires, événements, partenariats commerciaux', color: GOLD },
   { level: 'Niveau 3', who: 'EXCO (Cheick, Mariama, Julien)', scope: 'Évolutions identitaires, partenariats stratégiques, refonte majeure', color: '#dc2626' },
 ];
 
