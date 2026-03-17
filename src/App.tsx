@@ -32,6 +32,7 @@ import CompetitiveLandscape from './components/CompetitiveLandscape';
 import GouvernanceMarque from './components/GouvernanceMarque';
 import PlateformeMarque from './components/PlateformeMarque';
 import PrismeKapferer from './components/PrismeKapferer';
+import StimuliAmbiance from './components/StimuliAmbiance';
 import ScenarioMasterBook from './components/ScenarioMasterBook';
 import CatalogueHome from './components/CatalogueHome';
 import type { VolumeKey } from './components/CatalogueHome';
@@ -44,7 +45,7 @@ type PageView = 'home' | 'marketing' | 'securite' | 'parcours' | 'scenario-A' | 
 
 const sectionIds = [
   'cover', 'plan', 'decisions', 'calendrier',
-  'etape1', 'plateforme', 'kapferer', 'scenarios', 'sc-A', 'sc-B', 'sc-C', 'sc-D', 'comparatif',
+  'etape1', 'plateforme', 'kapferer', 'scenarios', 'sc-A', 'sc-B', 'sc-C', 'sc-D', 'stimuli-ambiance', 'comparatif',
   'etape2', 'da',
   'etape3', 'protocole', 'recrutement', 'grille',
   'etape4', 'plan360', 'plan360axes',
@@ -321,6 +322,7 @@ function App() {
             <PlateformeMarque />
             <PrismeKapferer />
             <Scenarios />
+            <StimuliAmbiance />
             <Comparatif />
 
             <SectionHeader

@@ -3,7 +3,7 @@ import CosmosLogo from './CosmosLogo';
 import {
   FileText, Table, Presentation, Printer,
   Home, LayoutDashboard, CheckCircle2, CalendarDays,
-  Compass, Hexagon, Layers, BarChart3,
+  Compass, Hexagon, Layers, BarChart3, Music,
   Palette, Paintbrush,
   Users, ClipboardList, UserPlus, Grid3X3,
   Megaphone, Globe2, Crosshair,
@@ -64,6 +64,7 @@ const tocData: TocSection[] = [
         { id: 'sc-C', label: "C · L'Exception Naturelle", color: '#C9943A' },
         { id: 'sc-D', label: 'D · Nature Contemporaine', color: '#898D5D' },
       ] },
+      { id: 'stimuli-ambiance', num: '1.2b', label: "Stimuli d'ambiance", icon: <Music size={11} /> },
       { id: 'comparatif', num: '1.3', label: 'Comparatif A·B·C·D', icon: <BarChart3 size={11} /> },
     ],
   },
