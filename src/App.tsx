@@ -33,6 +33,7 @@ import GouvernanceMarque from './components/GouvernanceMarque';
 import PlateformeMarque from './components/PlateformeMarque';
 import PrismeKapferer from './components/PrismeKapferer';
 import ScenarioMasterBook from './components/ScenarioMasterBook';
+import StimuliAmbiance from './components/StimuliAmbiance';
 import CatalogueHome from './components/CatalogueHome';
 import type { VolumeKey } from './components/CatalogueHome';
 import PlanSecuritaire from './components/PlanSecuritaire';
@@ -388,11 +389,7 @@ function App() {
           </div>
         ) : currentPage === 'stimuli' ? (
           <div className="flex-1 overflow-y-auto">
-            <iframe
-              src="/stimuli-ambiance.html"
-              title="Stimuli d'ambiance"
-              style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
-            />
+            <StimuliAmbiance />
           </div>
         ) : isScenario ? (
           <ScenarioMasterBook
