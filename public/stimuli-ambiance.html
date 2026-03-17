@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;font-family:'Montserrat',sans-serif}
+
+/* NAV */
+.nav{display:flex;position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(0,0,0,0.92);border-bottom:0.5px solid #222}
+.nb{flex:1;padding:11px 6px;border:none;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:8.5px;letter-spacing:2.5px;text-transform:uppercase;font-weight:500;color:rgba(255,255,255,0.25);background:transparent;transition:all 0.3s;border-right:0.5px solid #1a1a1a}
+.nb:last-child{border-right:none}
+.nb:hover{color:rgba(255,255,255,0.55)}
+.nb.on-a{color:#7DC99A;border-bottom:2px solid #2F5439}
+.nb.on-b{color:#B8924A;border-bottom:2px solid #0D1B4B}
+.nb.on-c{color:#C9943A;border-bottom:2px solid #C9943A}
+
+.page{display:none;padding-top:40px}
+.page.active{display:block}
+
+/* ============================================================
+   PLANCHE A
+   Philosophie : vert forêt profond · chaleur · appartenance
+   Tout l'espace respire. La signature règne.
+   ============================================================ */
+.pa{
+  min-height:100vh;
+  background:#2F5439;
+  display:grid;
+  grid-template-rows:1fr auto auto;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Texture géométrique subtile — lignes diagonales */
+.pa::before{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,transparent 60px,
+      rgba(255,255,255,0.018) 60px,rgba(255,255,255,0.018) 61px
+    );
+  pointer-events:none;
+}
+
+/* Bloc couleur accent — coin haut droit */
+.pa-accent{
+  position:absolute;top:0;right:0;
+  width:28vw;height:28vw;max-width:340px;max-height:340px;
+  background:#B8AA8C;
+  opacity:0.12;
+  border-radius:0 0 0 100%;
+}
+
+/* Cercle or mat */
+.pa-circle{
+  position:absolute;bottom:-8vw;left:-6vw;
+  width:40vw;height:40vw;max-width:480px;max-height:480px;
+  border-radius:50%;
+  background:transparent;
+  border:1px solid rgba(201,148,58,0.15);
+}
+
+.pa-meta{
+  position:absolute;top:28px;left:48px;
+  font-size:8px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.22);
+}
+
+/* Swatches palette — vertical gauche */
+.pa-swatches{
+  position:absolute;top:50%;left:48px;
+  transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:10px;
+}
+.psw{
+  width:14px;height:14px;border-radius:50%;
+}
+
+/* Zone centrale — signature */
+.pa-center{
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;
+  padding:80px 15vw 40px 15vw;
+  text-align:center;
+  position:relative;z-index:2;
+}
+.pa-pre{
+  font-size:8px;letter-spacing:5px;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);margin-bottom:32px;
+}
+.pa-sig-main{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,7vw,96px);
+  font-weight:300;
+  font-style:italic;
+  color:#fff;
+  line-height:1.05;
+  margin-bottom:20px;
+  letter-spacing:-0.5px;
+}
+.pa-sig-main span{color:#D4C9B0}
+.pa-gold-line{
+  width:48px;height:1px;background:#C9943A;margin:0 auto 20px;
+}
+.pa-sig-sub{
+  font-size:9.5px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.28);
+}
+
+/* Signatures secondaires */
+.pa-sigs-row{
+  display:flex;
+  border-top:0.5px solid rgba(255,255,255,0.08);
+  position:relative;z-index:2;
+}
+.pa-sig-alt{
+  flex:1;padding:28px 36px;
+  border-right:0.5px solid rgba(255,255,255,0.08);
+}
+.pa-sig-alt:last-child{border-right:none}
+.pa-sig-alt-num{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,148,58,0.6);margin-bottom:8px}
+.pa-sig-alt-txt{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:20px;font-weight:300;
+  color:rgba(255,255,255,0.55);line-height:1.3;
+}
+
+/* Footer */
+.pa-foot{
+  padding:12px 48px;background:rgba(0,0,0,0.2);
+  display:flex;justify-content:space-between;
+  position:relative;z-index:2;
+}
+.pa-foot span{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.18)}
+
+/* ============================================================
+   PLANCHE B
+   Philosophie : nuit absolue · or mat · exception silencieuse
+   ============================================================ */
+.pb{
+  min-height:100vh;
+  background:#040A1E;
+  display:grid;
+  grid-template-rows:1fr auto auto;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Halo or mat central */
+.pb::before{
+  content:'';
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:70vw;height:70vw;
+  max-width:700px;max-height:700px;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(184,146,74,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* Ligne verticale or */
+.pb-vline{
+  position:absolute;top:0;bottom:0;left:calc(50% - 0.5px);
+  width:1px;background:rgba(184,146,74,0.07);
+}
+
+/* Arc décoratif */
+.pb-arc{
+  position:absolute;top:-30vw;right:-20vw;
+  width:70vw;height:70vw;
+  max-width:700px;max-height:700px;
+  border-radius:50%;
+  border:1px solid rgba(184,146,74,0.06);
+}
+
+.pb-meta{
+  position:absolute;top:28px;left:48px;
+  font-size:8px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.15);
+}
+
+.pb-swatches{
+  position:absolute;top:50%;left:48px;
+  transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:10px;
+}
+
+.pb-center{
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;
+  padding:80px 15vw 40px 15vw;
+  text-align:center;
+  position:relative;z-index:2;
+}
+.pb-pre{
+  font-size:8px;letter-spacing:5px;text-transform:uppercase;
+  color:rgba(184,146,74,0.35);margin-bottom:32px;
+}
+.pb-sig-main{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,7vw,96px);
+  font-weight:300;
+  font-style:italic;
+  color:#fff;
+  line-height:1.05;
+  margin-bottom:20px;
+  letter-spacing:-0.5px;
+}
+.pb-sig-main span{color:#B8924A}
+.pb-gold-line{
+  width:48px;height:1px;background:#B8924A;margin:0 auto 20px;
+}
+.pb-sig-sub{
+  font-size:9.5px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,0.18);
+}
+
+.pb-sigs-row{
+  display:flex;
+  border-top:0.5px solid rgba(184,146,74,0.08);
+  position:relative;z-index:2;
+}
+.pb-sig-alt{
+  flex:1;padding:28px 36px;
+  border-right:0.5px solid rgba(184,146,74,0.07);
+}
+.pb-sig-alt:last-child{border-right:none}
+.pb-sig-alt-num{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(184,146,74,0.4);margin-bottom:8px}
+.pb-sig-alt-txt{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:20px;font-weight:300;
+  color:rgba(184,146,74,0.5);line-height:1.3;
+}
+
+.pb-foot{
+  padding:12px 48px;background:rgba(0,0,0,0.4);
+  display:flex;justify-content:space-between;
+  position:relative;z-index:2;
+}
+.pb-foot span{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.12)}
+
+/* ============================================================
+   PLANCHE C — VUE COMPARATIVE
+   ============================================================ */
+.pc{
+  min-height:100vh;
+  background:#080808;
+  display:flex;flex-direction:column;
+}
+
+.pc-head{
+  padding:28px 52px 24px;
+  border-bottom:0.5px solid #1a1a1a;
+  display:flex;align-items:baseline;justify-content:space-between;
+}
+.pc-head-ttl{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-weight:300;color:#fff;letter-spacing:1px;
+}
+.pc-head-sub{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#333;margin-top:4px}
+.pc-conf{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:#222}
+
+.pc-cols{flex:1;display:grid;grid-template-columns:1fr 0.5px 1fr}
+
+.pc-div{background:#1a1a1a}
+
+/* Col A */
+.pca{
+  background:#2F5439;
+  padding:60px 52px;
+  display:flex;flex-direction:column;
+  gap:0;
+  position:relative;overflow:hidden;
+}
+.pca::before{
+  content:'';position:absolute;
+  bottom:-80px;right:-80px;
+  width:280px;height:280px;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.06);
+}
+.pca-tag{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:20px}
+.pca-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,4vw,56px);
+  font-weight:300;color:#fff;line-height:1;
+  margin-bottom:6px;
+}
+.pca-sub{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#7DC99A;margin-bottom:36px}
+.pca-swrow{display:flex;gap:10px;margin-bottom:36px}
+.pca-sw{display:flex;flex-direction:column;align-items:center;gap:6px}
+.pca-swd{width:36px;height:36px;border-radius:50%}
+.pca-swh{font-size:7px;color:rgba(255,255,255,0.25);letter-spacing:0.5px}
+.pca-divider{width:40px;height:1px;background:#C9943A;margin-bottom:36px}
+.pca-sigs{display:flex;flex-direction:column;gap:20px;margin-top:auto}
+.pca-sig{padding-bottom:20px;border-bottom:0.5px solid rgba(255,255,255,0.07)}
+.pca-sig:last-child{border-bottom:none;padding-bottom:0}
+.pca-sig-r{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,148,58,0.6);margin-bottom:6px}
+.pca-sig-q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;font-weight:300;color:#fff;line-height:1.25}
+
+/* Col B */
+.pcb{
+  background:#040A1E;
+  padding:60px 52px;
+  display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.pcb::before{
+  content:'';position:absolute;
+  top:-60px;left:-60px;
+  width:250px;height:250px;border-radius:50%;
+  border:1px solid rgba(184,146,74,0.06);
+}
+.pcb-tag{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.18);margin-bottom:20px}
+.pcb-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,4vw,56px);
+  font-weight:300;color:#fff;line-height:1;
+  margin-bottom:6px;
+}
+.pcb-sub{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#B8924A;margin-bottom:36px}
+.pcb-swrow{display:flex;gap:10px;margin-bottom:36px}
+.pcb-sw{display:flex;flex-direction:column;align-items:center;gap:6px}
+.pcb-swd{width:36px;height:36px;border-radius:50%}
+.pcb-swh{font-size:7px;color:rgba(255,255,255,0.2);letter-spacing:0.5px}
+.pcb-divider{width:40px;height:1px;background:#B8924A;margin-bottom:36px}
+.pcb-sigs{display:flex;flex-direction:column;gap:20px;margin-top:auto}
+.pcb-sig{padding-bottom:20px;border-bottom:0.5px solid rgba(184,146,74,0.08)}
+.pcb-sig:last-child{border-bottom:none;padding-bottom:0}
+.pcb-sig-r{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(184,146,74,0.45);margin-bottom:6px}
+.pcb-sig-q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;font-weight:300;color:#D4C9B0;line-height:1.25}
+
+.pc-foot{padding:12px 52px;background:#050505;border-top:0.5px solid #111;display:flex;justify-content:space-between}
+.pc-foot span{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:#222}
+
+@media print{
+  .nav{display:none!important}
+  .page{padding-top:0!important;display:block!important;page-break-after:always}
+  .page:last-child{page-break-after:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <button class="nb on-a" onclick="go('pA',this,'on-a')">Planche A — Proximité Premium</button>
+  <button class="nb" onclick="go('pB',this,'on-b')">Planche B — Destination Premium</button>
+  <button class="nb" onclick="go('pC',this,'on-c')">A vs B — Vue comparative</button>
+</div>
+
+<!-- ===== PLANCHE A ===== -->
+<div class="page pa active" id="pA">
+  <div class="pa-meta">Scénario A · Focus Group Cosmos Angré · Mars 2026</div>
+  <div class="pa-accent"></div>
+  <div class="pa-circle"></div>
+  <div class="pa-swatches">
+    <div class="psw" style="background:#B8AA8C"></div>
+    <div class="psw" style="background:#2F5439;border:0.5px solid rgba(255,255,255,0.3)"></div>
+    <div class="psw" style="background:#A85430"></div>
+    <div class="psw" style="background:#D4C9B0"></div>
+  </div>
+  <div class="pa-center">
+    <div class="pa-pre">Premium de Proximité</div>
+    <div class="pa-sig-main">"Enfin tout,<br><span>enfin ici."</span></div>
+    <div class="pa-gold-line"></div>
+    <div class="pa-sig-sub">Signature principale · Façade &amp; institutionnel</div>
+  </div>
+  <div class="pa-sigs-row">
+    <div class="pa-sig-alt">
+      <div class="pa-sig-alt-num">02 · Fréquentation quotidienne</div>
+      <div class="pa-sig-alt-txt">"Votre repère, votre rythme."</div>
+    </div>
+    <div class="pa-sig-alt">
+      <div class="pa-sig-alt-num">03 · Institutionnel &amp; BtoB</div>
+      <div class="pa-sig-alt-txt">"Le centre de vos envies."</div>
+    </div>
+  </div>
+  <div class="pa-foot">
+    <span>Cosmos Angré · Planche Ambiance A · Focus Group 20–25 Mars 2026</span>
+    <span>Confidentiel — New Heaven SA / CRMC</span>
+  </div>
+</div>
+
+<!-- ===== PLANCHE B ===== -->
+<div class="page pb" id="pB">
+  <div class="pb-meta">Scénario B · Focus Group Cosmos Angré · Mars 2026</div>
+  <div class="pb-vline"></div>
+  <div class="pb-arc"></div>
+  <div class="pb-swatches">
+    <div class="psw" style="background:#B8AA8C"></div>
+    <div class="psw" style="background:#0D1B4B;border:0.5px solid rgba(184,146,74,0.3)"></div>
+    <div class="psw" style="background:#B8924A"></div>
+    <div class="psw" style="background:#D4C9B0"></div>
+  </div>
+  <div class="pb-center">
+    <div class="pb-pre">Destination Premium</div>
+    <div class="pb-sig-main">"Un monde<br><span>à part."</span></div>
+    <div class="pb-gold-line"></div>
+    <div class="pb-sig-sub">Signature principale · Façade &amp; institutionnel</div>
+  </div>
+  <div class="pb-sigs-row">
+    <div class="pb-sig-alt">
+      <div class="pb-sig-alt-num">02 · Campagne &amp; digital</div>
+      <div class="pb-sig-alt-txt">"Vivez l'exception."</div>
+    </div>
+    <div class="pb-sig-alt">
+      <div class="pb-sig-alt-num">03 · Partenaires &amp; presse</div>
+      <div class="pb-sig-alt-txt">"Un monde d'exception."</div>
+    </div>
+  </div>
+  <div class="pb-foot">
+    <span>Cosmos Angré · Planche Ambiance B · Focus Group 20–25 Mars 2026</span>
+    <span>Confidentiel — New Heaven SA / CRMC</span>
+  </div>
+</div>
+
+<!-- ===== PLANCHE COMPARATIVE ===== -->
+<div class="page pc" id="pC">
+  <div class="pc-head">
+    <div>
+      <div class="pc-head-ttl">Scénario A vs Scénario B</div>
+      <div class="pc-head-sub">Vue comparative · Focus Group Cosmos Angré · Mars 2026</div>
+    </div>
+    <div class="pc-conf">Confidentiel — New Heaven SA / CRMC</div>
+  </div>
+  <div class="pc-cols">
+    <div class="pca">
+      <div class="pca-tag">Scénario A</div>
+      <div class="pca-name">Premium<br>de Proximité</div>
+      <div class="pca-sub">L'évidence du quartier</div>
+      <div class="pca-swrow">
+        <div class="pca-sw"><div class="pca-swd" style="background:#B8AA8C"></div><div class="pca-swh">#B8AA8C</div></div>
+        <div class="pca-sw"><div class="pca-swd" style="background:#2F5439"></div><div class="pca-swh">#2F5439</div></div>
+        <div class="pca-sw"><div class="pca-swd" style="background:#A85430"></div><div class="pca-swh">#A85430</div></div>
+        <div class="pca-sw"><div class="pca-swd" style="background:#D4C9B0"></div><div class="pca-swh">#D4C9B0</div></div>
+      </div>
+      <div class="pca-divider"></div>
+      <div class="pca-sigs">
+        <div class="pca-sig"><div class="pca-sig-r">01 · Principale</div><div class="pca-sig-q">"Enfin tout, enfin ici."</div></div>
+        <div class="pca-sig"><div class="pca-sig-r">02 · Quotidien</div><div class="pca-sig-q">"Votre repère, votre rythme."</div></div>
+        <div class="pca-sig"><div class="pca-sig-r">03 · Institutionnel</div><div class="pca-sig-q">"Le centre de vos envies."</div></div>
+      </div>
+    </div>
+    <div class="pc-div"></div>
+    <div class="pcb">
+      <div class="pcb-tag">Scénario B</div>
+      <div class="pcb-name">Destination<br>Premium</div>
+      <div class="pcb-sub">L'exception abidjanaise</div>
+      <div class="pcb-swrow">
+        <div class="pcb-sw"><div class="pcb-swd" style="background:#B8AA8C"></div><div class="pcb-swh">#B8AA8C</div></div>
+        <div class="pcb-sw"><div class="pcb-swd" style="background:#0D1B4B"></div><div class="pcb-swh">#0D1B4B</div></div>
+        <div class="pcb-sw"><div class="pcb-swd" style="background:#B8924A"></div><div class="pcb-swh">#B8924A</div></div>
+        <div class="pcb-sw"><div class="pcb-swd" style="background:#D4C9B0"></div><div class="pcb-swh">#D4C9B0</div></div>
+      </div>
+      <div class="pcb-divider"></div>
+      <div class="pcb-sigs">
+        <div class="pcb-sig"><div class="pcb-sig-r">01 · Principale</div><div class="pcb-sig-q">"Un monde à part."</div></div>
+        <div class="pcb-sig"><div class="pcb-sig-r">02 · Campagne</div><div class="pcb-sig-q">"Vivez l'exception."</div></div>
+        <div class="pcb-sig"><div class="pcb-sig-r">03 · BtoB &amp; presse</div><div class="pcb-sig-q">"Un monde d'exception."</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pc-foot">
+    <span>Cosmos Angré · Vue comparative A vs B · Focus Group 20–25 Mars 2026</span>
+    <span>Confidentiel — New Heaven SA / CRMC</span>
+  </div>
+</div>
+
+<script>
+function go(id,btn,cls){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>{b.className='nb'});
+  document.getElementById(id).classList.add('active');
+  btn.classList.add(cls);
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

@@ -32,7 +32,6 @@ import CompetitiveLandscape from './components/CompetitiveLandscape';
 import GouvernanceMarque from './components/GouvernanceMarque';
 import PlateformeMarque from './components/PlateformeMarque';
 import PrismeKapferer from './components/PrismeKapferer';
-import StimuliAmbiance from './components/StimuliAmbiance';
 import ScenarioMasterBook from './components/ScenarioMasterBook';
 import CatalogueHome from './components/CatalogueHome';
 import type { VolumeKey } from './components/CatalogueHome';
@@ -41,11 +40,11 @@ import ParcoursClient from './components/ParcoursClient';
 import SidebarSecurite from './components/SidebarSecurite';
 import SidebarParcours from './components/SidebarParcours';
 
-type PageView = 'home' | 'marketing' | 'securite' | 'parcours' | 'scenario-A' | 'scenario-B' | 'scenario-C' | 'scenario-D';
+type PageView = 'home' | 'marketing' | 'securite' | 'parcours' | 'scenario-A' | 'scenario-B' | 'scenario-C' | 'scenario-D' | 'stimuli';
 
 const sectionIds = [
   'cover', 'plan', 'decisions', 'calendrier',
-  'etape1', 'plateforme', 'kapferer', 'scenarios', 'sc-A', 'sc-B', 'sc-C', 'sc-D', 'stimuli-ambiance', 'comparatif',
+  'etape1', 'plateforme', 'kapferer', 'scenarios', 'sc-A', 'sc-B', 'sc-C', 'sc-D', 'comparatif',
   'etape2', 'da',
   'etape3', 'protocole', 'recrutement', 'grille',
   'etape4', 'plan360', 'plan360axes',
@@ -70,7 +69,7 @@ const volumeLabels: Record<string, { label: string; accent: string }> = {
 function App() {
   const getInitialPage = (): PageView => {
     const hash = window.location.hash.replace('#', '');
-    if (['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D'].includes(hash)) return hash as PageView;
+    if (['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D', 'stimuli'].includes(hash)) return hash as PageView;
     if (['marketing', 'securite', 'parcours'].includes(hash)) return hash as PageView;
     if ((window as any).__STANDALONE__) return 'marketing';
     return 'home';
@@ -92,7 +91,7 @@ function App() {
 
   const isHome = currentPage === 'home' && !standalone;
   const isMarketing = currentPage === 'marketing';
-  const isScenario = currentPage.startsWith('scenario-');
+  const isScenario = currentPage.startsWith('scenario-') || currentPage === 'stimuli';
   const isVolume = ['marketing', 'securite', 'parcours'].includes(currentPage);
 
   // Sync hash
@@ -109,13 +108,13 @@ function App() {
       const hash = window.location.hash.replace('#', '');
       // In standalone mode, only allow navigation within the locked volume
       if (standaloneVolume) {
-        if (standaloneVolume === 'marketing' && ['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D'].includes(hash)) {
+        if (standaloneVolume === 'marketing' && ['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D', 'stimuli'].includes(hash)) {
           setCurrentPage(hash as PageView);
         }
         // Block switching to other volumes
         return;
       }
-      if (['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D'].includes(hash)) {
+      if (['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D', 'stimuli'].includes(hash)) {
         setCurrentPage(hash as PageView);
       } else if (['marketing', 'securite', 'parcours'].includes(hash)) {
         setCurrentPage(hash as PageView);
@@ -300,6 +299,23 @@ function App() {
                     </button>
                   );
                 })}
+                <button
+                  onClick={() => setCurrentPage('stimuli')}
+                  className={`flex items-center gap-2 px-3 h-full text-[10px] font-medium tracking-wide border-b-2 transition-all whitespace-nowrap ${
+                    currentPage === 'stimuli'
+                      ? 'text-white'
+                      : 'border-transparent text-white/35 hover:text-white/60'
+                  }`}
+                  style={{ borderColor: currentPage === 'stimuli' ? '#B8924A' : 'transparent' }}
+                >
+                  <span
+                    className={`w-1.5 h-1.5 rounded-full flex-shrink-0 transition-opacity ${
+                      currentPage === 'stimuli' ? 'opacity-100' : 'opacity-30'
+                    }`}
+                    style={{ background: '#B8924A' }}
+                  />
+                  Stimuli
+                </button>
               </>
             )}
           </div>
@@ -322,7 +338,6 @@ function App() {
             <PlateformeMarque />
             <PrismeKapferer />
             <Scenarios />
-            <StimuliAmbiance />
             <Comparatif />
 
             <SectionHeader
@@ -370,6 +385,14 @@ function App() {
             <MatriceRisques />
             <GouvernanceCalendrier />
             <PlanContingence />
+          </div>
+        ) : currentPage === 'stimuli' ? (
+          <div className="flex-1 overflow-y-auto">
+            <iframe
+              src="/stimuli-ambiance.html"
+              title="Stimuli d'ambiance"
+              style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+            />
           </div>
         ) : isScenario ? (
           <ScenarioMasterBook
