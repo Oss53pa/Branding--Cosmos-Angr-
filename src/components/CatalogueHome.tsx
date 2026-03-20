@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import CosmosLogo from './CosmosLogo';
-import { Megaphone, ShieldCheck, Route, Box, ArrowRight, Link2, Check } from 'lucide-react';
+import { Megaphone, ShieldCheck, Route, Box, ArrowRight, Link2, Check, Layers } from 'lucide-react';
 
-export type VolumeKey = 'marketing' | 'securite' | 'parcours';
+export type VolumeKey = 'marketing' | 'securite' | 'parcours' | 'plan-interactif';
 
 interface VolumeCard {
   key: VolumeKey;
@@ -66,6 +66,21 @@ const volumes: VolumeCard[] = [
       { n: '∞', l: 'Expériences' },
     ],
   },
+  {
+    key: 'plan-interactif',
+    num: 'CDC',
+    title: 'Plan Interactif 3D',
+    subtitle: 'AutoCAD · 2D/3D · IA Proph3t · Collaboration',
+    desc: "Cahier des charges du module Atlas Plan : ingestion AutoCAD, visualisation 2D/3D, plan sécuritaire, parcours client, IA Proph3t et exports normés.",
+    icon: <Layers size={28} strokeWidth={1.5} />,
+    accent: '#8B5CF6',
+    gradient: 'from-[#0c0c1e] via-[#1a1535] to-[#0c0c1e]',
+    stats: [
+      { n: '100+', l: 'Fonctionnalités' },
+      { n: '6', l: 'Couches' },
+      { n: '7', l: 'Phases' },
+    ],
+  },
 ];
 
 interface CatalogueHomeProps {
@@ -124,7 +139,7 @@ const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => {
 
     {/* Volume cards */}
     <div className="flex-1 px-8 sm:px-12 lg:px-20 pb-16">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-[1400px] mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-[1600px] mx-auto">
         {volumes.map((vol) => (
           <button
             key={vol.key}
@@ -210,7 +225,7 @@ const CatalogueHome: React.FC<CatalogueHomeProps> = ({ onSelectVolume }) => {
       </div>
 
       {/* Plan 3D commun */}
-      <div className="mt-10 max-w-[1400px] mx-auto">
+      <div className="mt-10 max-w-[1600px] mx-auto">
         <button
           onClick={() => window.open('/plan-3d.html', '_blank')}
           className="w-full group flex items-center justify-between px-8 py-5 rounded-2xl border border-white/[.06] bg-white/[.02] hover:bg-white/[.05] hover:border-gold/20 transition-all"

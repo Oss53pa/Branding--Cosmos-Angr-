@@ -40,8 +40,10 @@ import PlanSecuritaire from './components/PlanSecuritaire';
 import ParcoursClient from './components/ParcoursClient';
 import SidebarSecurite from './components/SidebarSecurite';
 import SidebarParcours from './components/SidebarParcours';
+import PlanInteractif3D from './components/PlanInteractif3D';
+import SidebarPlanInteractif from './components/SidebarPlanInteractif';
 
-type PageView = 'home' | 'marketing' | 'securite' | 'parcours' | 'scenario-A' | 'scenario-B' | 'scenario-C' | 'scenario-D' | 'stimuli';
+type PageView = 'home' | 'marketing' | 'securite' | 'parcours' | 'plan-interactif' | 'scenario-A' | 'scenario-B' | 'scenario-C' | 'scenario-D' | 'stimuli';
 
 const sectionIds = [
   'cover', 'plan', 'decisions', 'calendrier',
@@ -65,13 +67,14 @@ const volumeLabels: Record<string, { label: string; accent: string }> = {
   marketing: { label: 'Vol. 1 — Stratégie Marketing', accent: '#C9943A' },
   securite: { label: 'Vol. 2 — Sécurité', accent: '#3B82F6' },
   parcours: { label: 'Vol. 3 — Parcours', accent: '#10B981' },
+  'plan-interactif': { label: 'CDC — Plan Interactif 3D', accent: '#8B5CF6' },
 };
 
 function App() {
   const getInitialPage = (): PageView => {
     const hash = window.location.hash.replace('#', '');
     if (['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D', 'stimuli'].includes(hash)) return hash as PageView;
-    if (['marketing', 'securite', 'parcours'].includes(hash)) return hash as PageView;
+    if (['marketing', 'securite', 'parcours', 'plan-interactif'].includes(hash)) return hash as PageView;
     if ((window as any).__STANDALONE__) return 'marketing';
     return 'home';
   };
@@ -93,7 +96,7 @@ function App() {
   const isHome = currentPage === 'home' && !standalone;
   const isMarketing = currentPage === 'marketing';
   const isScenario = currentPage.startsWith('scenario-') || currentPage === 'stimuli';
-  const isVolume = ['marketing', 'securite', 'parcours'].includes(currentPage);
+  const isVolume = ['marketing', 'securite', 'parcours', 'plan-interactif'].includes(currentPage);
 
   // Sync hash
   useEffect(() => {
@@ -117,7 +120,7 @@ function App() {
       }
       if (['scenario-A', 'scenario-B', 'scenario-C', 'scenario-D', 'stimuli'].includes(hash)) {
         setCurrentPage(hash as PageView);
-      } else if (['marketing', 'securite', 'parcours'].includes(hash)) {
+      } else if (['marketing', 'securite', 'parcours', 'plan-interactif'].includes(hash)) {
         setCurrentPage(hash as PageView);
       } else {
         setCurrentPage('home');
@@ -145,6 +148,7 @@ function App() {
       return;
     }
 
+
     if (id.startsWith('da-')) {
       const dirKey = id.replace('da-', '');
       const el = document.getElementById('da');
@@ -164,7 +168,19 @@ function App() {
 
   const handleNavigateGeneric = useCallback((id: string) => {
     // Plan 3D links
-    if (id === 'sec-plan3d' || id === 'pc-plan3d') {
+    if (id === 'sec-plan3d') {
+      window.open('/plan-3d-securite.html', '_blank');
+      return;
+    }
+    if (id === 'pc-plan3d') {
+      window.open('/plan-3d-parcours.html', '_blank');
+      return;
+    }
+    if (id === 'pc-plan-commercial') {
+      window.open('/plan-commercial.html', '_blank');
+      return;
+    }
+    if (id === 'pi-plan3d') {
       window.open('/plan-3d.html', '_blank');
       return;
     }
@@ -234,6 +250,9 @@ function App() {
         )}
         {currentPage === 'parcours' && (
           <SidebarParcours activeSection={activeSection} onNavigate={(id) => { handleNavigateGeneric(id); setSidebarOpen(false); }} onExport={() => setExportOpen(true)} />
+        )}
+        {currentPage === 'plan-interactif' && (
+          <SidebarPlanInteractif activeSection={activeSection} onNavigate={(id) => { handleNavigateGeneric(id); setSidebarOpen(false); }} onExport={() => setExportOpen(true)} />
         )}
       </div>
 
@@ -403,6 +422,10 @@ function App() {
         ) : currentPage === 'parcours' ? (
           <div className="flex-1 overflow-y-auto">
             <ParcoursClient />
+          </div>
+        ) : currentPage === 'plan-interactif' ? (
+          <div className="flex-1 overflow-y-auto">
+            <PlanInteractif3D />
           </div>
         ) : null}
       </div>
