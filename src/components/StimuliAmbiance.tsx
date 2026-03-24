@@ -1,6 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 type Tab = 'pA' | 'pB' | 'pComp';
+
+/* ═══════════════════════════════════════════════════
+   HOOK — Responsive breakpoint
+   ═══════════════════════════════════════════════════ */
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < breakpoint);
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < breakpoint);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [breakpoint]);
+  return isMobile;
+}
 
 /* ═══════════════════════════════════════════════════
    IMAGES — Planche A  (Premium de Proximité)
@@ -84,7 +97,7 @@ const vLabelsB = [
    PLANCHE A — Scénario Premium de Proximité
    Fond : blanc cassé / crème — lumière naturelle — douceur
    ═══════════════════════════════════════════════════════════════ */
-const PlancheA: React.FC<{ sigIdx: number }> = ({ sigIdx }) => {
+const PlancheA: React.FC<{ sigIdx: number; mobile?: boolean }> = ({ sigIdx, mobile }) => {
   const s = signaturesA[sigIdx];
   const lines = s.sig.split('\n');
   const vignettes = [imgA.v1, imgA.v2, imgA.v3, imgA.v4];
@@ -92,7 +105,7 @@ const PlancheA: React.FC<{ sigIdx: number }> = ({ sigIdx }) => {
   return (
     <div style={{
       background: '#F8F4EE',
-      padding: '48px 56px',
+      padding: mobile ? '24px 16px' : '48px 56px',
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
@@ -101,8 +114,8 @@ const PlancheA: React.FC<{ sigIdx: number }> = ({ sigIdx }) => {
       position: 'relative',
     }}>
       {/* Header discret */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 28, alignItems: 'baseline' }}>
-        <span style={{ fontSize: 8, letterSpacing: 3, textTransform: 'uppercase', color: '#B8AA8C' }}>
+      <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', justifyContent: 'space-between', marginBottom: mobile ? 16 : 28, alignItems: mobile ? 'flex-start' : 'baseline', gap: mobile ? 4 : 0 }}>
+        <span style={{ fontSize: mobile ? 7 : 8, letterSpacing: 3, textTransform: 'uppercase', color: '#B8AA8C' }}>
           Stimulus A · Scénario Premium de Proximité · Planche {sigIdx + 1}/{signaturesA.length}
         </span>
         <span style={{ fontSize: 7.5, letterSpacing: 2, textTransform: 'uppercase', color: '#C4B9A0' }}>
@@ -110,8 +123,8 @@ const PlancheA: React.FC<{ sigIdx: number }> = ({ sigIdx }) => {
         </span>
       </div>
 
-      {/* ─── Corps principal : 3 colonnes ─── */}
-      <div style={{ display: 'grid', gridTemplateColumns: '60% 1fr', gap: 24, flex: 1 }}>
+      {/* ─── Corps principal ─── */}
+      <div style={{ display: 'grid', gridTemplateColumns: mobile ? '1fr' : '60% 1fr', gap: mobile ? 16 : 24, flex: 1 }}>
 
         {/* ZONE 1 — Images principales (60%) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -221,7 +234,7 @@ const PlancheA: React.FC<{ sigIdx: number }> = ({ sigIdx }) => {
       </div>
 
       {/* Footer */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 20, paddingTop: 12, borderTop: '1px solid #E8E0D4' }}>
+      <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', justifyContent: 'space-between', marginTop: mobile ? 12 : 20, paddingTop: 12, borderTop: '1px solid #E8E0D4', gap: mobile ? 4 : 0 }}>
         <span style={{ fontSize: 7, letterSpacing: 2, textTransform: 'uppercase', color: '#C4B9A0' }}>
           Cosmos Angré · Stimulus A · Focus Group 20–25 Mars 2026
         </span>
@@ -237,7 +250,7 @@ const PlancheA: React.FC<{ sigIdx: number }> = ({ sigIdx }) => {
    PLANCHE B — Scénario Premium Destination Mixed-Use
    Fond : noir profond / anthracite — lumière dramatique
    ═══════════════════════════════════════════════════════════════ */
-const PlancheB: React.FC<{ sigIdx: number }> = ({ sigIdx }) => {
+const PlancheB: React.FC<{ sigIdx: number; mobile?: boolean }> = ({ sigIdx, mobile }) => {
   const s = signaturesB[sigIdx];
   const lines = s.sig.split('\n');
   const vignettes = [imgB.v1, imgB.v2, imgB.v3, imgB.v4];
@@ -245,7 +258,7 @@ const PlancheB: React.FC<{ sigIdx: number }> = ({ sigIdx }) => {
   return (
     <div style={{
       background: '#0A0A0F',
-      padding: '48px 56px',
+      padding: mobile ? '24px 16px' : '48px 56px',
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
@@ -263,8 +276,8 @@ const PlancheB: React.FC<{ sigIdx: number }> = ({ sigIdx }) => {
       }} />
 
       {/* Header discret */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 28, alignItems: 'baseline', position: 'relative', zIndex: 1 }}>
-        <span style={{ fontSize: 8, letterSpacing: 3, textTransform: 'uppercase', color: 'rgba(184,146,74,0.4)' }}>
+      <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', justifyContent: 'space-between', marginBottom: mobile ? 16 : 28, alignItems: mobile ? 'flex-start' : 'baseline', position: 'relative', zIndex: 1, gap: mobile ? 4 : 0 }}>
+        <span style={{ fontSize: mobile ? 7 : 8, letterSpacing: 3, textTransform: 'uppercase', color: 'rgba(184,146,74,0.4)' }}>
           Stimulus B · Scénario Premium Destination Mixed-Use · Planche {sigIdx + 1}/{signaturesB.length}
         </span>
         <span style={{ fontSize: 7.5, letterSpacing: 2, textTransform: 'uppercase', color: 'rgba(184,146,74,0.25)' }}>
@@ -272,8 +285,8 @@ const PlancheB: React.FC<{ sigIdx: number }> = ({ sigIdx }) => {
         </span>
       </div>
 
-      {/* ─── Corps principal : 2 colonnes ─── */}
-      <div style={{ display: 'grid', gridTemplateColumns: '60% 1fr', gap: 24, flex: 1, position: 'relative', zIndex: 1 }}>
+      {/* ─── Corps principal ─── */}
+      <div style={{ display: 'grid', gridTemplateColumns: mobile ? '1fr' : '60% 1fr', gap: mobile ? 16 : 24, flex: 1, position: 'relative', zIndex: 1 }}>
 
         {/* ZONE 1 — Images principales (60%) */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -392,7 +405,7 @@ const PlancheB: React.FC<{ sigIdx: number }> = ({ sigIdx }) => {
       </div>
 
       {/* Footer */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 20, paddingTop: 12, borderTop: '1px solid rgba(184,146,74,0.08)', position: 'relative', zIndex: 1 }}>
+      <div style={{ display: 'flex', flexDirection: mobile ? 'column' : 'row', justifyContent: 'space-between', marginTop: mobile ? 12 : 20, paddingTop: 12, borderTop: '1px solid rgba(184,146,74,0.08)', position: 'relative', zIndex: 1, gap: mobile ? 4 : 0 }}>
         <span style={{ fontSize: 7, letterSpacing: 2, textTransform: 'uppercase', color: 'rgba(184,146,74,0.25)' }}>
           Cosmos Angré · Stimulus B · Focus Group 20–25 Mars 2026
         </span>
@@ -407,15 +420,15 @@ const PlancheB: React.FC<{ sigIdx: number }> = ({ sigIdx }) => {
 /* ═══════════════════════════════════════════════════════════════
    VUE COMPARATIVE — Côte à côte miniature
    ═══════════════════════════════════════════════════════════════ */
-const CompView: React.FC = () => (
+const CompView: React.FC<{ mobile?: boolean }> = ({ mobile }) => (
   <div style={{ background: '#080808', minHeight: '100vh' }}>
     {/* Header */}
-    <div style={{ padding: '32px 56px 24px', borderBottom: '0.5px solid #1a1a1a', display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+    <div style={{ padding: mobile ? '20px 16px 16px' : '32px 56px 24px', borderBottom: '0.5px solid #1a1a1a', display: 'flex', flexDirection: mobile ? 'column' : 'row', alignItems: mobile ? 'flex-start' : 'baseline', justifyContent: 'space-between', gap: mobile ? 6 : 0 }}>
       <div>
-        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 300, color: '#fff', letterSpacing: 1 }}>
+        <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: mobile ? 20 : 26, fontWeight: 300, color: '#fff', letterSpacing: 1 }}>
           Stimulus A vs Stimulus B
         </div>
-        <div style={{ fontSize: 8, letterSpacing: 3, textTransform: 'uppercase', color: '#333', marginTop: 4 }}>
+        <div style={{ fontSize: mobile ? 7 : 8, letterSpacing: 3, textTransform: 'uppercase', color: '#333', marginTop: 4 }}>
           Vue comparative · Focus Group Cosmos Angré · Mars 2026
         </div>
       </div>
@@ -432,11 +445,11 @@ const CompView: React.FC = () => (
       return (
         <div key={i} style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 2px 1fr',
+          gridTemplateColumns: mobile ? '1fr' : '1fr 2px 1fr',
           borderBottom: i < signaturesA.length - 1 ? '0.5px solid #1a1a1a' : 'none',
         }}>
           {/* ─── Côté A ─── */}
-          <div style={{ background: '#F8F4EE', padding: '32px 36px' }}>
+          <div style={{ background: '#F8F4EE', padding: mobile ? '20px 16px' : '32px 36px' }}>
             <div style={{ fontSize: 7, letterSpacing: 2.5, textTransform: 'uppercase', color: '#B8AA8C', marginBottom: 16 }}>
               Stimulus A · Planche {i + 1}
             </div>
@@ -476,10 +489,10 @@ const CompView: React.FC = () => (
           </div>
 
           {/* Divider */}
-          <div style={{ background: '#1a1a1a' }} />
+          {!mobile && <div style={{ background: '#1a1a1a' }} />}
 
           {/* ─── Côté B ─── */}
-          <div style={{ background: '#0A0A0F', padding: '32px 36px' }}>
+          <div style={{ background: '#0A0A0F', padding: mobile ? '20px 16px' : '32px 36px' }}>
             <div style={{ fontSize: 7, letterSpacing: 2.5, textTransform: 'uppercase', color: 'rgba(184,146,74,0.4)', marginBottom: 16 }}>
               Stimulus B · Planche {i + 1}
             </div>
@@ -523,7 +536,7 @@ const CompView: React.FC = () => (
     })}
 
     {/* Footer */}
-    <div style={{ padding: '12px 56px', background: '#050505', borderTop: '0.5px solid #111', display: 'flex', justifyContent: 'space-between' }}>
+    <div style={{ padding: mobile ? '12px 16px' : '12px 56px', background: '#050505', borderTop: '0.5px solid #111', display: 'flex', flexDirection: mobile ? 'column' : 'row', justifyContent: 'space-between', gap: mobile ? 4 : 0 }}>
       <span style={{ fontSize: 7.5, letterSpacing: 2, textTransform: 'uppercase', color: '#222' }}>Cosmos Angré · Vue comparative A vs B · Focus Group 20–25 Mars 2026</span>
       <span style={{ fontSize: 7.5, letterSpacing: 2, textTransform: 'uppercase', color: '#222' }}>Confidentiel — New Heaven SA / CRMC</span>
     </div>
@@ -535,22 +548,25 @@ const CompView: React.FC = () => (
    ═══════════════════════════════════════════════════════════════ */
 const StimuliAmbiance: React.FC = () => {
   const [tab, setTab] = useState<Tab>('pA');
+  const mobile = useIsMobile();
+
+  const tabs: { t: Tab; label: string; shortLabel: string; activeColor: string; borderColor: string }[] = [
+    { t: 'pA', label: 'Stimulus A — Proximité Premium', shortLabel: 'Stimulus A', activeColor: '#7DC99A', borderColor: '#2F5439' },
+    { t: 'pB', label: 'Stimulus B — Destination Premium', shortLabel: 'Stimulus B', activeColor: '#B8924A', borderColor: '#B8924A' },
+    { t: 'pComp', label: 'A vs B — Vue comparative', shortLabel: 'A vs B', activeColor: '#C9943A', borderColor: '#C9943A' },
+  ];
 
   return (
     <div style={{ height: '100%', background: '#000', fontFamily: "'Inter', sans-serif", overflow: 'auto' }}>
       {/* NAV */}
       <div style={{ display: 'flex', position: 'sticky', top: 0, zIndex: 100, background: 'rgba(0,0,0,0.94)', backdropFilter: 'blur(12px)', borderBottom: '0.5px solid #222' }}>
-        {([
-          { t: 'pA' as Tab, label: 'Stimulus A — Proximité Premium', activeColor: '#7DC99A', borderColor: '#2F5439' },
-          { t: 'pB' as Tab, label: 'Stimulus B — Destination Premium', activeColor: '#B8924A', borderColor: '#B8924A' },
-          { t: 'pComp' as Tab, label: 'A vs B — Vue comparative', activeColor: '#C9943A', borderColor: '#C9943A' },
-        ]).map(({ t, label, activeColor, borderColor }, idx, arr) => (
+        {tabs.map(({ t, label, shortLabel, activeColor, borderColor }, idx, arr) => (
           <button
             key={t}
             onClick={() => setTab(t)}
             style={{
-              flex: 1, padding: '14px 6px', border: 'none', cursor: 'pointer',
-              fontFamily: "'Inter', sans-serif", fontSize: '8.5px', letterSpacing: '2.5px',
+              flex: 1, padding: mobile ? '10px 4px' : '14px 6px', border: 'none', cursor: 'pointer',
+              fontFamily: "'Inter', sans-serif", fontSize: mobile ? '7px' : '8.5px', letterSpacing: mobile ? '1.5px' : '2.5px',
               textTransform: 'uppercase', fontWeight: 500,
               color: tab === t ? activeColor : 'rgba(255,255,255,0.25)',
               background: 'transparent', transition: 'all 0.3s',
@@ -558,7 +574,7 @@ const StimuliAmbiance: React.FC = () => {
               borderBottom: tab === t ? `2px solid ${borderColor}` : '2px solid transparent',
             }}
           >
-            {label}
+            {mobile ? shortLabel : label}
           </button>
         ))}
       </div>
@@ -566,20 +582,20 @@ const StimuliAmbiance: React.FC = () => {
       {/* PLANCHE A */}
       <div style={{ display: tab === 'pA' ? 'block' : 'none' }}>
         {signaturesA.map((_, i) => (
-          <PlancheA key={i} sigIdx={i} />
+          <PlancheA key={i} sigIdx={i} mobile={mobile} />
         ))}
       </div>
 
       {/* PLANCHE B */}
       <div style={{ display: tab === 'pB' ? 'block' : 'none' }}>
         {signaturesB.map((_, i) => (
-          <PlancheB key={i} sigIdx={i} />
+          <PlancheB key={i} sigIdx={i} mobile={mobile} />
         ))}
       </div>
 
       {/* VUE COMPARATIVE */}
       <div style={{ display: tab === 'pComp' ? 'block' : 'none' }}>
-        <CompView />
+        <CompView mobile={mobile} />
       </div>
     </div>
   );
